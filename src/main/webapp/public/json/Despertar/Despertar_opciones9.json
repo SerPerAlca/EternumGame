@@ -1,0 +1,13 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "pregunta": "1.- De acuerdo, espero que nos perdone la Inquisición después de completar nuestra misión"
+  },
+  {
+    "obligatoria" : "NO",
+    "id" : "2",
+    "pregunta": "2.- ¿Hay algún tipo de recompensa?."
+  }
+]
+

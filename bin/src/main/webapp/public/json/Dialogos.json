@@ -1,0 +1,33 @@
+[
+  {
+    "titulo": "Habitación Kislev",
+    "mensajes": [
+      {
+        "tipo": "TEXTO",
+        "contenido": "Despertáis en una cama de paja. No reconocéis la habitación. Hay una vela consumiéndose lentamente, en una mesilla en el centro de la estancia y un blasón azul colgado a la derecha de la puerta. Una anciana, camina entre cama y cama murmurando y sonriendo al mismo tiempo. "
+      },
+      {
+        "tipo": "DIALOGO",
+        "emisor": "anciano1",
+        "contenido": "Bien, bien por fin despertáis. Pensaba que no sobreviviríais. Habéis sido los únicos. Todos los demás están muertos. ",
+        "opciones": [
+          {
+            "id": "0",
+            "pregunta": "-¿Qué pasó exactamente?",
+            "respuesta": "Fuisteis rescatados por el Capitán Rostford cuando realizaba una salida de exploración más allá de la puerta del norte. Estáis en Kislev. Me he encargado todo este tiempo de haceros sangrados para expulsar los malos humores de vuestro cuerpo. Ya os digo que sois los únicos que habéis sobrevivido. Debéis ser unos chicos muy fuertes."
+          },
+          {
+            "id": "1",
+            "pregunta": "-¿Quién coño eres tú?",
+            "respuesta": "Soy el matasanos"
+          }
+        ]
+      },
+      {
+        "tipo": "DIALOGO",
+        "emisor": "anciano1",
+        "contenido": "El Capitán quiere veros cuanto antes, no le hagáis esperar. Esta en la Casa Consistorial al otro lado de la Gran Plaza Central."
+      }
+    ]
+  }
+]

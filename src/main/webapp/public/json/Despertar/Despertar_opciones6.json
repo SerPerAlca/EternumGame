@@ -1,0 +1,18 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "pregunta": "1.- Recordamos unos barrotes, y frío. Voces heladas. Estar marcados… no recordamos más, hemos despertado aquí. Nos han dicho que éramos prisioneros. No sabemos muy bien de que, o de quien…pero no somos herejes…"
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "pregunta": "2.- Veníamos a comerciar a estas tierras cuando un grupo de bandidos nos atacó."
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "3",
+    "pregunta": "3.- Somos humildes servidores de Sigmar, nada más. Fuimos atrapados por unas viles criaturas y gracias a la inquisición conservamos aún nuestros cuerpos terrenales para seguir sirviendo al señor."
+  }
+]
+

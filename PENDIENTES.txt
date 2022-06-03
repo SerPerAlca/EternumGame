@@ -1,0 +1,7 @@
+
+
+Despertar --->
+	1. Realizar la captura del evento "click" de forma genérica y no que ahora 	se repite en primeraSecuencia() y terceraSecuencia().
+
+
+	2. Pasar el mensaje del PALACIO DEL CONDE al div texto y pintar 	correctamente las tildes.

@@ -1,0 +1,20 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "SI",
+    "pregunta": "1. - <mentira> ¡Queremos unirnos a vosotros! hemos recorrido un largo camino desde Wislen entusiasmados por vuestras hazañas contadas por los bardos de la región (+3)"
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "especial" : "NO",
+    "pregunta": "2. - Hemos venido a ejecutar la justicia de Sigmar. ¡Arrepentiros pecadores! (COMBATE)"
+  },
+  {"obligatoria" : "SI",
+    "id" : "3",
+    "especial" : "NO",
+    "pregunta": "3. - Se nos ha ordenado ejecutar una sentencia a muerte contra todo aquel forajido que haya delinquido en Kislev. Es el momento de reuniros con vuestro creador. (COMBATE)"
+
+  }
+]

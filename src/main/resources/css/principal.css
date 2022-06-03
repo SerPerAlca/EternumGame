@@ -1,0 +1,166 @@
+        @font-face {
+            font-family: GoticaBastard;
+            src: url('../fuentes/GoticaBastard.ttf');
+        }
+        @font-face {
+            font-family: medieval;
+            src: url('../fuentes/MedievalSharp-Regular.ttf');
+        }
+
+
+body{
+    background-color: black !important;
+
+}
+
+.cabecera{
+    margin-top: 10rem;
+    z-index: 999
+}
+
+.cabeceraMenu{
+    font-family: GoticaBastard !important;
+    font-size: 4rem;
+    color: #F9461F;
+    border: 29px solid transparent;
+    border-image: url('../images/bordeCenefa.jpg') 30 round;
+}
+
+.Inicio{
+    color: black;
+    font-family: GoticaBastard !important;
+    font-size: 3rem;
+}
+.Inicio:hover{
+    color: #F9461F;
+}
+
+#padre{
+     background-color: inherit;
+     padding: 1rem;
+     margin: 4rem;
+}
+
+#cuerpo{
+    background-color: inherit;
+    margin-left: 4rem;
+    margin-right: auto;
+    background-image: url('../images/FondoLibroAntiguo.png');
+
+
+}
+
+#imagenes{
+    float: left;
+    padding-right: 5rem;
+    padding-left: 14rem;
+    padding-bottom: 1rem;
+    overflow:hidden;
+    padding-top: 2rem;
+  /*  background-image: url('../images/FondoPapiro.jpg');  */
+
+}
+#imagenes img{
+    border-radius: 20px;
+    box-shadow: 0 0 15px 10px maroon;
+}
+
+#cuerpo-texto{
+    float: left;
+    font-family: medieval !important;
+    border: solid 1px green;
+   /* background-image: url('../images/FondoPapiro.jpg'); */
+    overflow:hidden;
+    font-weight: bold;
+
+}
+
+#texto{
+      background-color: inherit;
+      color: black;
+      width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 4rem;
+      font-family: medieval !important;
+      font-size: 1.6rem;
+      padding-top: 3rem;
+      overflow:hidden;
+      font-weight: bold;
+
+}
+#textoOpciones{
+      background-color: inherit;
+      width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+      color: black;
+      overflow: hidden;
+      pointer-events: auto;
+      font-family: medieval !important;
+      font-size: 1.6rem;
+      overflow:hidden;
+
+}
+
+#textoRespuestas {
+      background-color: inherit;
+      width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+      color: black;
+      font-family: medieval !important;
+      font-size: 1.6rem;
+      overflow:hidden;
+}
+#siguiente{
+     background-color: inherit;
+     width: 6rem;
+     margin-left: auto;
+     margin-right: auto;
+     color: black;
+     font-family: medieval !important;
+
+}
+
+#siguiente button{
+    padding: 0.7rem;
+    margin: 0.5rem;
+    font-family: medieval !important;
+}
+
+#itineracion{
+    background-color: inherit;
+    width: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    font-family: medieval !important;
+    margin-left: 5rem;
+
+}
+
+#itineracion button{
+    padding: 0.7rem;
+    margin: 0.5rem;
+    font-family: medieval !important;
+    background-color: black;
+}
+
+.preguntaJson {
+    color: black;
+    font-family: medieval !important;
+
+}
+
+.textoJson {
+    color: black;
+    font-family: medieval !important;
+
+}
+
+#informacion{
+    color: white;
+    border-color: yellow;
+}

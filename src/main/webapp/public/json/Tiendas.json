@@ -1,0 +1,24 @@
+[
+  {
+    "titulo": "TIENDAS DE ETERNUM",
+    "tiendas": [
+      {
+        "localizacion": "K I S L E V",
+        "tipos": [
+          {
+            "establecimiento": "TIENDA DE ITEMS",
+            "cartel": "Aviso: ¡¡¡ Ultimas existencias del unico Repelente eficaz de Andrógenes !!!",
+            "objetos": [
+              {
+                "id": "1",
+                "objeto": "- POCION DE SALUD ",
+                "precio": " 15 G",
+                "comentario": "Posibles Efectos Secundarios: Alopecia, flujo menstrual abundante, perdida de extremidades..."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

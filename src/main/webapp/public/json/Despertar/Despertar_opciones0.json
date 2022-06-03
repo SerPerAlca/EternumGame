@@ -1,0 +1,12 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "pregunta": "1. -¿Qué pasó exactamente?"
+  },
+  {
+    "obligatoria" : "NO",
+    "id" : "2",
+    "pregunta": "2. -¿Quién coño eres tú?"
+  }
+]

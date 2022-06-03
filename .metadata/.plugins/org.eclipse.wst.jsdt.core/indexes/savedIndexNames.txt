@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+Z:\EternumGame\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2701216307.index
+1743059056.index
+3218017408.index
+582620090.index
+3596191787.index
+445092539.index
+2133639172.index

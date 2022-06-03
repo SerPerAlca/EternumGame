@@ -1,0 +1,14 @@
+[{
+  "texto_1": "Despertáis en una cama de paja. No reconocéis la habitación. Hay una vela consumiéndose lentamente, en una mesilla en el centro de la estancia y un blasón azul colgado a la derecha de la puerta. Una anciana, camina entre cama y cama murmurando y sonriendo al mismo tiempo. ",
+  "Anciano1_1": "Bien, bien por fin despertáis. Pensaba que no sobreviviríais. Habéis sido los únicos. Todos los demás están muertos. ",
+  "Conver1": [{
+    "Usuario1_1": "-¿Qué pasó exactamente?",
+    "Usuario1_2": "-¿Quién coño eres tú?"
+  },
+    {
+      "PNJ1_1": "Fuisteis rescatados por el Capitán Rostford cuando realizaba una salida de exploración más allá de la puerta del norte. Estáis en Kislev. Me he encargado todo este tiempo de haceros sangrados para expulsar los malos humores de vuestro cuerpo. Ya os digo que sois los únicos que habéis sobrevivido. Debéis ser unos chicos muy fuertes.",
+      "PNJ1_2": "Soy el matasanos"
+    }
+  ],
+  "Anciano1_2": "El Capitán quiere veros cuanto antes, no le hagáis esperar. Esta en la Casa Consistorial al otro lado de la Gran Plaza Central."
+}]

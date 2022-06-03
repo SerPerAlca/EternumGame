@@ -1,0 +1,13 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "pregunta": "1. - Describís lo que recordáis."
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "pregunta": "2. - No logramos recordar nada…"
+  }
+]
+

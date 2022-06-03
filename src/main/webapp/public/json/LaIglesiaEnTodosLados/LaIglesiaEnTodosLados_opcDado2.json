@@ -1,0 +1,12 @@
+[
+  {
+    "tipo" : "error",
+    "requisito" : "3",
+    "texto": "(ERROR)- Jajaja, ¿nuestras hazañas se cuentan en Wislen? Es gracioso, si, es gracioso que hablen de nosotros en Wislen cuando nunca dejamos testigos en nuestros ataques. Malditos embusteros, ¡vais a morir!"
+  },
+  {
+    "tipo" : "acierto",
+    "requisito" : "3",
+    "texto": "(ACIERTO) - Jajaja, sangre nueva. Al jefe le encantará. Id al centro del campamento, Veréis una roca con forma de puño. Allí encontraréis a nuestro jefe. Hablad con él y rezad porque os acepte jajaja. Por cierto, su nombre es Grerius Bron."
+  }
+]

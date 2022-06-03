@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.conte-padre{
+    background-color: black;
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+}
+
+.conte-texto{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.conte-texto > h1{
+    font-size: 3rem;
+    background: linear-gradient(0deg, rgba(132,43,64,1) 0%, black 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Nosifer', cursive;
+    font-size: 15rem;
+}
+
+.conte-degradado{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}

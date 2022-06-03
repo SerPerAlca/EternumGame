@@ -1,0 +1,36 @@
+body{
+    background-color: black;
+
+}
+#padre{
+     background-color: inherit;
+     border: 2px solid white;
+     padding: 1rem;
+     margin: 4rem;
+}
+
+#texto{
+      background-color: inherit;
+      border: 2px solid white;
+      color: white;
+      width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+}
+#siguiente{
+     background-color: inherit;
+     width: 6rem;
+     margin-left: auto;
+     margin-right: auto;
+     color: white;
+}
+
+.preguntaJson {
+    color: white;
+
+}
+
+.textoJson {
+    color: white;
+
+}
