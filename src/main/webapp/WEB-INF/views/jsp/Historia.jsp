@@ -32,7 +32,6 @@
         <div class="row cabecera">
             <jsp:include page="Cabecera.jsp" />
         </div>
-        <div class="row" />
         <div class="row mt-6">
             <div id="cuerpo" class="row">
                 <div id="imagenes" class="col-md-6"></div>
@@ -48,7 +47,7 @@
         <div class="row">
 	        <div id="siguiente" class="col align-self-center">
 	            <button type="button" class="btn btn-success" id="btn_empezar">Empezar</button>
-	            <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="pagSiguienteDespertar()">Página Siguiente</button>
+	            <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="ControladorBotonSiguiente()">Página Siguiente</button>
 	        </div>
 	    </div>
 	    <div class="row">

@@ -14,6 +14,8 @@
 
     function rollDice() {
 
+        $("#resultado").hide();
+
         setTimeout(function(){
            dado();
         }, 200);
@@ -46,8 +48,13 @@
         }, 3000);
         setTimeout(function(){
             dado();
-            AccionDeSuerte(randNum, itinerador);
+            ControladorTiradaDadoGeneral(randNum, itinerador);
         }, 3400);
+
+        setTimeout( function(){
+            $("#resultado").show().fadeIn();
+        }, 4000);
+
 
     }
 
@@ -72,27 +79,10 @@
  });
 
 
- function AccionDeSuerte(resultado, itinerador){
 
-    switch (itinerador) {
-        case 1:
-            var cookieDirectorio = readCookie("ubicacion");
-            if ( cookieDirectorio == "campamentoBandidosBron"){
-                //accionDeSuerteBron(resultado);
-                mostrarResultadoDados(itinerador, resultado);
-            }
-            break;
-        case 2:
-            console.log("caso 2");
-            break;
-        default:
-            console.log("Resultado de la tirada: " + resultado);
-        }
-
- }
 
      //fUNCION PARA MOSTRAR EL SIDEBAR DEL DADO
-     function mostrar() {
+     function mostrarDado() {
         document.getElementById("sidebar").style.width = "300px";
         document.getElementById("abrir").style.display = "none";
         document.getElementById("cerrar").style.display = "inline";
@@ -100,6 +90,7 @@
 
      //fUNCION PARA OCULTAR EL SIDEBAR DEL DADO
      function ocultarDado() {
+        $("#resultado p").text(" ");
         document.getElementById("sidebar").style.width = "0";
         document.getElementById("abrir").style.display = "inline";
         document.getElementById("cerrar").style.display = "none";

@@ -7,9 +7,14 @@
             src: url('../fuentes/MedievalSharp-Regular.ttf');
         }
 
+        @font-face {
+            font-family: marcador;
+            src: url('../fuentes/m06.TTF');
+        }
 
 body{
     background-color: black !important;
+    height: 100vh;
 
 }
 
@@ -47,6 +52,10 @@ body{
     margin-left: 4rem;
     margin-right: auto;
     background-image: url('../images/FondoLibroAntiguo.png');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
     position: relative;
 
 }
@@ -64,6 +73,7 @@ body{
 #imagenes img{
     border-radius: 20px;
     box-shadow: 0 0 15px 10px maroon;
+    height: 100%;
 }
 
 #cuerpo-texto{

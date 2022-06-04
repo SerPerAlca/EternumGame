@@ -6,16 +6,17 @@ var contDegradado= 0;
 
     $("#btn-itinerar").click(function(){
         itinerador= 0;
-        inicioLaIglesiaEnTodosLados();
+        inicioLIEL();
     });
  });
 
 
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
-function fight(itinerador){
+function fight(){
 
     borradoCuerpoTexto();
-    $("#imagenes").hide();
+    //$("#imagenes").hide();
+    $("#imagenes img").remove();
     ocultacionBotones();
 
     $(".conte-degradado").show();
@@ -29,7 +30,7 @@ function fight(itinerador){
         setTimeout(function () {
             console.log(i);
             degradadoFight();
-        }, 40 * i);
+        }, 20 * i);
     }
 
     setTimeout(function () {
@@ -41,7 +42,6 @@ function fight(itinerador){
 
     $("#btn_siguiente").show();
 
-    console.log("Control del Contador: " + itinerador);
 
 }
 
@@ -88,16 +88,16 @@ function fight(itinerador){
                 .fadeIn(2000);
             }
          }
-        function pintarOpcionesConPruebaSuerte(itinerador, especial, id, pregunta){
+        function pintarOpcionesConPruebaSuerte(especial, id, pregunta){
         // SE realiza comprobación para pintar (OPCIONAL) en las opciones no obligatorias.
             if (especial){
-                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="tiradaDados()"
+                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="controladorDadoGeneral()"
                 onmouseout="this.style.color='red';"> ${pregunta} <span style="color:#ea8069; font-size:small">(TIRADA DE DADOS)</span> </div>`)
                 .appendTo("#textoOpciones")
                 .hide()
                 .fadeIn(2000);
             } else {
-                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="fight(${itinerador})"
+                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="fight()"
                 onmouseout="this.style.color='red';"> ${pregunta} </div>`)
                 .appendTo("#textoOpciones")
                 .hide()
@@ -157,13 +157,15 @@ function fight(itinerador){
             document.getElementById("textoOpciones").style['pointer-events'] = 'auto';
        }
 
+/************************** F U N C I O N E S   A D M I N I S T R A D O R A  *************************************************************************************/
     // funcion controladora cuando no se logra la tirada necesaria con los dados.
-        function administraPifia(itinerador){
-            var cookieCapitulo = readCookie("capitulo");
+        function administrarPifiaGeneral(itinerador){
+            let cookieCapitulo = readCookie("capitulo");
+            let ramificacion = readCookie("ramificacion");
 
-            switch(cookieCapitulo){
-                case "LaIglesiaEnTodosLados":
-                    pifiaLaIglesiaEnTodosLados(itinerador);
+            switch(true){
+                case cookieCapitulo == "LaIglesiaEnTodosLados":
+                    ControladorPifiaLIEL(itinerador);
                     break;
                 default:
                     console.log("No se ha encontrado metodo pifia()");
@@ -172,6 +174,24 @@ function fight(itinerador){
 
         }
 
+    // Funcion controladora cuando se pulsa sobre el boton Pagina siguiente */
+        function ControladorBotonSiguiente(){
+            var cookieCapitulo = readCookie("capitulo");
+
+            switch(cookieCapitulo){
+                case "Despertar":
+                    pagSiguienteDespertar();
+                    break;
+                case "LaIglesiaEnTodosLados":
+                    ControladorPagSiguienteLIEL();
+                    break;
+                default:
+                    console.log("pagina no encontrada");
+                    break;
+            }
+        }
+
+/**********************************************************************************************************************************************/
     /** funcion encargada de llamar al servicio después de tirar los dados
     y de llamar a las funciones que pintan la respuesta **/
         function mostrarResultadoDados(itinerador, resultado){
@@ -179,3 +199,63 @@ function fight(itinerador){
             itinerador++;
             llamadaOpcionesDados(resultado,itinerador);
         }
+
+    /* Funcion controladora de la tirada del Dado.
+    Es llamada cuando se tira el dado y se encarga de llamar a la escena correcta */
+        function ControladorTiradaDadoGeneral(resultado, itinerador){
+
+            let capitulo = readCookie("capitulo");
+            let ubicacion = readCookie("ubicacion");
+
+            setTimeout(function(){
+                ocultarDado();
+            }, 4000);
+
+            switch (true) {
+                case capitulo == "LaIglesiaEnTodosLados":
+                    ControladorTiradaDadoLIEL(resultado);
+                    break;
+                default:
+                    console.log("Resultado de la tirada: " + resultado);
+            }
+
+        }
+    /* Funcion controladora cuando se pulsa sobre opciones de dialogo
+    que conllevan tirada de dados */
+        function controladorDadoGeneral(){
+            let capitulo = readCookie("capitulo");
+
+            switch ( capitulo ){
+                case "LaIglesiaEnTodosLados":
+                    controladorDadoLIEL();
+                    break;
+                default:
+                    console.log(" :) ")
+                    break;
+            }
+            mostrarDado();
+        }
+
+    /* COntrolador Auxiliar para determinados momentos en los que se
+        acierta en una tirada pero no hay texto después */
+        function controladorAciertosGeneral(){
+
+            let capitulo = readCookie("capitulo");
+            switch ( capitulo ){
+                case "LaIglesiaEnTodosLados":
+                    controladorAciertosLIEL();
+                    break;
+                default:
+                    console.log(" :) ")
+                    break;
+            }
+        }
+
+       /* Función que devuelve el cuerpo del jsp a su estado normal
+        después del modo combate */
+        function retornarDeFight(){
+            $(".conte-degradado").hide();
+            $(".conte-texto").hide();
+            $("#cuerpo").css({'height' : '100%', 'width' : '100%'});
+        }
+

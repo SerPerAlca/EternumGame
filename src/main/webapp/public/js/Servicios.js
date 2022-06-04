@@ -3,7 +3,6 @@
 // LLAMA A LOS JSON QUE CONTIENEN EL TEXTO COMÚN DE LOS DIÁLOGOS
         function llamadaTexto(itinerador){
 
-
             reproducirTexto(itinerador);
 
             var cookieDirectorio = readCookie("capitulo");
@@ -35,11 +34,18 @@
                     var requerido = Number.parseInt(index.requisito);
 
                     if(resultado > requerido && index.tipo == "acierto"){
-                        pintarTexto(index.texto)
+                        pintarTexto(index.texto);
+                        $("#btn_siguiente").show();
                     }
                     if(resultado <= requerido && index.tipo == "error"){
                         pintarTexto(index.texto);
-                        administraPifia(itinerador);
+                        administrarPifiaGeneral(itinerador);
+                    }
+                    if(resultado <= requerido){
+                        administrarPifiaGeneral(itinerador);
+                    }
+                    if (resultado > requerido){
+                        controladorAciertosGeneral();
                     }
                 }
             });
@@ -118,9 +124,8 @@
         }
 
 
-/* LLAMADA ESPECIAL EN EL CAMPAMENTO DE BRON CAPITULO II.
-    SE LLAMA A UN METODO ESPECIAL PARA PINTAR EL TEXTO  */
-        function llamadaOpcionesEspCampBron(itinerador){
+
+        function llamadaOpcionesDadoOCombate(itinerador){
 
             var especial = false;
 
@@ -136,9 +141,9 @@
                         var especial = false;
                         if ( texto.especial == "SI") {
                             especial= true;
-                            pintarOpcionesConPruebaSuerte(itinerador, especial, texto.id, texto.pregunta);
+                            pintarOpcionesConPruebaSuerte(especial, texto.id, texto.pregunta);
                         } else {
-                            pintarOpcionesConPruebaSuerte(itinerador, especial, texto.id, texto.pregunta);
+                            pintarOpcionesConPruebaSuerte(especial, texto.id, texto.pregunta);
                         }
                         console.log(texto.pregunta);
                     }

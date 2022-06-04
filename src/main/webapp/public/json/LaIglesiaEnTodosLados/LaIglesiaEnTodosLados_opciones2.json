@@ -1,0 +1,14 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "NO",
+    "pregunta": "1. - ¡¡ Habéis elegido un mal día para cabrearnos !! AAAAAARRRRHHHHGGGGGGG (OS LANZÁIS A LA CARGA)."
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "especial" : "SI",
+    "pregunta": "Primero disparáis contra los barriles de polvora. (+4 arco o magia). Sois vos o nosotros. ¡Ahora morid! (COMBATE REDUCIDO)."
+  }
+]

@@ -1,5 +1,5 @@
-   $(document).ready(function() {
-   //ocultamos y mostramos los botones necesarios
+    $(document).ready(function() {
+    //ocultamos y mostramos los botones necesarios
         ocultarDado();
         ocultacionBotones();
 
@@ -44,7 +44,18 @@
                 }
         });
 /**********************************************************************************************************/
-   });
+    });
+
+           //Creo esta función porque se repite la creacion del div Inicio
+    function inicioDespertar(){
+        if(!despertarBoolean){
+            $("<div class='Inicio'>I. El Despertar </div>")
+            .filter(".Inicio").click(function(){
+                primeraSecuenciaDespertar();
+            }).end().appendTo("#texto");
+            despertarBoolean= true;
+        };
+    };
 /************************ S E C U E N C I A S *****************************************************************/
 
         // contador para la Itineracion
@@ -316,7 +327,7 @@
     // funcion si decide no incar rodilla ante Sir Gregor en Despertar Casa COnsistorial
         function decideNo(){
             if (!decide){
-                $(`<p class='textoJson' style="color:green;font-size:small"> -10 de relación con el Imperio </p>`).appendTo("#textoRespuestas");5
+                $(`<p class='textoJson' style="color:green;font-size:small"> -10 de relación con el Imperio </p>`).appendTo("#textoRespuestas");
                 decide = true;
                 $("#textoOpciones p").text("");
                 $("#textoOpciones div").remove();
@@ -326,13 +337,13 @@
                 $("#textoRespuestas p").text("");
             },  2500);
         }
-    /*  funcion que se activa si no se decidio por incar o
+    /*  funcion que se activa si no se decidió por incar o
         no incar rodilla en Despertar Casa Consistorial */
         function porNoDecidir(){
-            $(`<p class='textoJson' style="color:green;font-size:small"> -10 de relación con el Imperio por no incar la rodilla </p>`).appendTo("#siguiente");
+            $(`<p class='textoJson' style="color:green;font-size:small"> -10 de relación con el Imperio por no incar la rodilla </p>`).appendTo("#textoRespuestas");
             decide = true;
             setTimeout(function(){
-                $("#siguiente p").text("");
+                $("#textoRespuestas p").text("");
             },  1500);
         }
 
@@ -358,16 +369,7 @@
             });
         }
 
-        //Creo esta función porque se repite la creacion del div Inicio
-        function inicioDespertar(){
-            if(!despertarBoolean){
-                $("<div class='Inicio'>I. El Despertar </div>")
-                .filter(".Inicio").click(function(){
-                    primeraSecuenciaDespertar();
-                }).end().appendTo("#texto");
-                despertarBoolean= true;
-            };
-        };
+
 
 
 
