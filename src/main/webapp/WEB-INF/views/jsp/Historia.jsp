@@ -32,7 +32,7 @@
         <div class="row cabecera">
             <jsp:include page="Cabecera.jsp" />
         </div>
-        <div class="row mt-6">
+        <div id="padreCuerpo" class="row mt-6">
             <div id="cuerpo" class="row">
                 <div id="imagenes" class="col-md-6"></div>
                 <div id="cuerpo-texto" class="col-md-6">
@@ -58,7 +58,7 @@
 	                <button type="button" class="btn btn-secondary" id="btn-CasaC">Casa Consistorial </button>
 	                <button type="button" class="btn btn-secondary" id="btn-Salir">Salir de la Ciudad </button>
 	                <button type="button" class="btn btn-secondary" value="itinerar" id="btn-itinerar">Siguiente Capítulo</button>
-	                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()">Abrir Dado</a>
+	                <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>
 	                <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultarDado()">Ocultar Dado</a>
 	            </p>
  	        </div>

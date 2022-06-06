@@ -1,0 +1,14 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "NO",
+    "pregunta": "1. - Ha llegado tu momento. ¿Cuáles son tus últimas palabras? (COMBATE)"
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "especial" : "NO",
+    "pregunta": "¡¡¡Por el Imperio y por Sigmaaar!!! (COMBATE)"
+  }
+]

@@ -17,6 +17,8 @@ $(document).ready(function() {
     var booleanCapitulo2= false;
     var booleanErrorChromeI= false;
     var booleanErrorChromeII= false;
+    var booleanErrorChromeIII = false;
+    var contFilasCarta = 0;
 
  //Creo esta función porque se repite la creacion del div Inicio
         function inicioLIEL(){
@@ -92,15 +94,8 @@ $(document).ready(function() {
 
     }
 
-    /* Secuencia que se activa cuando se intenta incendias los barriles
-    de polvora y no se logra por la tirada de dados */
- /*   function secuenciaErrorPolvoraLIEL(){
-        mostrarResultadoDados(itinerador, resultado)
-        console.log("Itinerador ahora ----> " + itinerador);
-        ocultarDado();
-    } */
 
-    //RAMA "A" DEL CAPITULO
+    //Encontráis a un hombre, con aspecto de montaraz
     function terceraSecuenciaLIEL(){
 
         if (!booleanErrorChromeII){
@@ -112,6 +107,8 @@ $(document).ready(function() {
             itinerador = 4;
             retornarDeFight();
 
+            document.cookie = "ramificacion=X";
+
             new Promise(function(resolve) {
                 borradoCuerpoTexto();
                 resolve(llamadaTexto(itinerador));
@@ -120,10 +117,63 @@ $(document).ready(function() {
                 $(`<img src="images/Grerius Bron.jpg"
                     style="border-radius:12px; width: 450px; height: 40rem;">`)
                 .appendTo("#imagenes");
-                console.log ("HASTA AQUI BIEN");
+
+                setTimeout( function(){
+                    llamadaOpcionesDadoOCombate(itinerador);
+                }, 4000);
             });
         }
     }
+
+    //¡Malditos Herejes! ¡¿Cómo os atrevéis…
+    function cuartaSecuenciaLIEL(){
+
+        $("#imagenes").show();
+        insertarSangreEnemigo();
+        $(`<img src="images/Grerius Bron.jpg"
+            style="border-radius:12px; width: 450px; height: 40rem;">`)
+        .appendTo("#imagenes");
+        retornarDeFight();
+
+        new Promise(function(resolve) {
+            borradoCuerpoTexto();
+            resolve(llamadaTexto(itinerador));
+        })
+        .then(function(result) {
+            setTimeout(function(){
+                llamadaEspecialLIEL(itinerador);
+            }, 2000);
+        });
+    };
+
+    /* Grerius Bron pone una expresión parecida a la incredulidad */
+    function preQuintaSecuenciaLIEL(){
+
+        new Promise(function(resolve) {
+            borradoCuerpoTexto();
+            resolve(llamadaEspecialLIELDos());
+        })
+        .then(function(result){
+            setTimeout(function(){
+                quintaSecuenciaLIEL();
+            }, 3000);
+        });
+    }
+
+    //Encontráis una carta bastante desgastada...
+    function quintaSecuenciaLIEL(){
+
+        itinerador++;
+        console.log("Itinerador ahora --> " + itinerador);
+
+        new Promise(function(resolve) {
+            resolve(llamadaTexto(itinerador));
+        })
+        .then(function(result){
+            $(`<button class="btn btn-secondary" id="btn_abrirCarta" onclick="mostrarCarta()">Mostrar Carta </button>`)
+            .appendTo("#siguiente").show();
+        });
+    };
 
 /******************************************************************************************************************************/
     // Función respuesta a las tiradas de dados no conseguidas.
@@ -140,15 +190,19 @@ $(document).ready(function() {
                 }, 4500);
                 break;
             case ramificacion = "B" && itinerador == 3:
-                setTimeout(function (){
-                    $("#texto")
-                });
+                if (!booleanErrorChromeIII){
 
+                    booleanErrorChromeIII = true;
+                    $(`<p class='textoJson' style="color:green;font-size:small"> -1 punto de vida para el lanzador </p>`)
+                    .appendTo("#textoRespuestas");
+
+                }
                 setTimeout( function(){
                     console.log("Itinerador ahora ----> " + itinerador);
                     ocultarDado();
                     fight(itinerador);
                 }, 6000);
+                break;
             default:
                 console.log("pifia no encontrada");
                 break;
@@ -183,6 +237,9 @@ $(document).ready(function() {
                 break;
             case  ramificacion == "B" && itinerador == 3:
                 terceraSecuenciaLIEL();
+                break;
+            case ramificacion == "X" && itinerador == 5:
+                cuartaSecuenciaLIEL();
                 break;
             default:
                 console.log("no se encuentra secuencia: Ramificación --> " +
@@ -220,6 +277,9 @@ $(document).ready(function() {
             case ramificacion == "B" && itinerador == 2:
                 mostrarResultadoDados(itinerador, resultado);
                 break;
+            case ramificacion == "X" && itinerador == 6:
+                llamadaCarta(resultado);
+                break;
             default:
                 console.log(" :/ ");
                 break;
@@ -240,4 +300,107 @@ $(document).ready(function() {
             console.log(" :) ")
             break;
         }
+    }
+
+    function pintadoEspecial(booleanInqui, texto, id){
+        if (!booleanInqui){
+            $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="inquisicion(${booleanInqui})"
+                onmouseout="this.style.color='red';"> ${texto} </div>`)
+            .appendTo("#textoOpciones")
+            .hide()
+            .fadeIn(2000);
+        }else{
+            $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="inquisicion(${booleanInqui})"
+                onmouseout="this.style.color='red';"> ${texto} </div>`)
+            .appendTo("#textoOpciones")
+            .hide()
+            .fadeIn(2000);
+        }
+    }
+
+    function pintarCarta( texto, id, booleanPintaGarabatos){
+
+
+        // TEXTO DE TIRADA SUPERADA
+        if ( !booleanPintaGarabatos && contFilasCarta == 0 ){
+            $(`<div id=${id} class="textoCarta"
+                style="width: 46%;margin: 18rem auto 8rem auto; color: black; font-weight: bold; overflow:hidden; font-family: medieval !important;background-color: inherit; font-size: 1.7rem;">
+                    <p> ${texto} </p></div>`)
+            .appendTo("#padrePapiro");
+            contFilasCarta++;
+        } else if ( !booleanPintaGarabatos && contFilasCarta != 0 ) {
+            $(`<div id=${id} class="textoCarta"
+                style="width: 46%;margin: 8rem auto; color: black; font-weight: bold; overflow:hidden; font-family: medieval !important;background-color: inherit; font-size: 1.7rem;">
+                    <p> ${texto} </p></div>`)
+            .appendTo("#padrePapiro");
+        }
+
+        if ( booleanPintaGarabatos && contFilasCarta == 0 ){
+            $(`<div id=${id} class="textoCarta"
+                style=" width: 46%; margin: 18rem auto 8rem auto; color: black; overflow:hidden; font-family: medieval !important; background-color: inherit; font-weight: bold; font-size: 1.7rem;">
+                    <p> (TIRADA NO SUPERADA) jiandan amdapowmda adkwapdkad
+                    dapdomapodm dmapwomdpadma madwpmwpamdamdajdajd akdpowkdd akwdpdad ajdawjdap dam pakdwk </div></span>`)
+            .appendTo("#padrePapiro");
+             contFilasCarta++;
+        } else if( booleanPintaGarabatos && contFilasCarta != 0 ){
+            $(`<div id=${id} class="textoCarta"
+                style=" width: 46%; margin: 8rem auto; color: black; overflow:hidden; font-family: medieval !important; background-color: inherit; font-weight: bold; font-size: 1.7rem;">
+                    <p> (TIRADA NO SUPERADA) jiandan amdapowmda adkwapdkad
+                    dapdomapodm dmapwomdpadma madwpmwpamdamdajdajd akdpowkdd akwdpdad ajdawjdap dam pakdwk </div></span>`)
+            .appendTo("#padrePapiro");
+        }
+
+
+    }
+
+    // Pinta +200g en pantalla si se consigue destapar el texto con id 2. en la carta
+    function masDoscientosG(){
+         setTimeout( function() {
+                $(`<p> <span style="color: red; font-weight: bold;"> +200G por descubrir dinero del cofre </span> </p>`)
+                .appendTo("#2")
+                .hide()
+                .fadeIn(2000);
+         }, 1500);
+    }
+    //Pinta el remitente de la carta
+    function pintarRemitente(){
+
+        $(`<p> <span style="color: black; font-weight: bold;"> - Sir Gregor. Sumo Inquisidor de la Santa Iglesia de Sigmar</span> </p>`)
+        .appendTo("#4")
+        .hide()
+        .fadeIn(5000);
+
+    }
+
+    // Funcion que añade un parrafo de texto más dicho por Grerius Bron
+    function inquisicion(booleanInqui){
+
+        if(!booleanInqui){
+            $("#imagenes img").remove();
+            animacionX();
+            insertarSangreEnemigo();
+            $(`<img src="images/Grerius Bron.jpg"
+                style="border-radius:12px; width: 450px; height: 40rem;">`)
+            .appendTo("#imagenes");
+            setTimeout(function(){
+                borradoCuerpoTexto();
+                quintaSecuenciaLIEL();
+            }, 2000);
+        } else{
+            preQuintaSecuenciaLIEL();
+        }
+    }
+
+    function mostrarCarta(){
+        mostrarDado();
+        $("#cuerpo").hide();
+        $("#siguiente").hide();
+
+        $(`<a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>`)
+        .appendTo(".container-fluid");
+
+        $(`<div id="padrePapiro" style='text-align:center; background-image: url("images/papiro.jpg");background-repeat: no-repeat; color: white; margin: auto; position: absolute; width: 100%; height: 100vh; background-size: cover; background-color: inherit; flex-wrap: wrap; z-index: 1;'>
+        <span style="color: aqua">&nbsp</div>`)
+        .appendTo("#padreCuerpo");
+
     }

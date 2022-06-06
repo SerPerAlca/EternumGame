@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "requisito" : "3",
+    "texto": "Llevad la luz de Sigmar a esos traidores….\n Da igual hombres, mujeres o niños, no dejéis ni uno vivo…"
+  },
+  {
+    "id": "2",
+    "requisito" : "4",
+    "texto": "Id a la iglesia. Debajo del altar de Sigmar debe haber un cofre con las reservas de oro de la iglesia. Cogedlo y matad al Sacerdote."
+  },
+  {
+    "id": "3",
+    "requisito" : "1",
+    "texto": "Ese insensato se puso del lado de esos infelices. Decía que no podían pagar el tributo a la Inquisición esta vez,que morirían de hambre "
+  },
+  {
+    "id": "4",
+    "requisito" : "2",
+    "texto": "Quiero que vayáis a enseñarles que es mejor morir de hambre que traicionando a Dios. "
+  }
+]

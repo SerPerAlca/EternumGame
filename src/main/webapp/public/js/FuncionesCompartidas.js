@@ -15,7 +15,7 @@ var contDegradado= 0;
 function fight(){
 
     borradoCuerpoTexto();
-    //$("#imagenes").hide();
+    $(".conte-texto h1").remove();
     $("#imagenes img").remove();
     ocultacionBotones();
 
@@ -33,12 +33,12 @@ function fight(){
         }, 20 * i);
     }
 
-    setTimeout(function () {
+  /*  setTimeout(function () {
         $(".conte-texto h1").remove();
         $(`<h1 style="color:black" > ¡¡¡VIICTORIA!!!</h1>`)
         .appendTo(".conte-texto")
         .hide().fadeIn(1000);
-    }, 6500);
+    }, 6500); */
 
     $("#btn_siguiente").show();
 
@@ -197,7 +197,7 @@ function fight(){
         function mostrarResultadoDados(itinerador, resultado){
             borradoCuerpoTexto();
             itinerador++;
-            llamadaOpcionesDados(resultado,itinerador);
+            llamadaDespuesDeDado(resultado,itinerador);
         }
 
     /* Funcion controladora de la tirada del Dado.
@@ -259,3 +259,13 @@ function fight(){
             $("#cuerpo").css({'height' : '100%', 'width' : '100%'});
         }
 
+        function insertarSangreEnemigo(){
+            $(`<img src="images/gotasDeSangre.png"
+                style="z-index: 3; position:absolute; width: 100%; height: 100%; box-shadow: none !important; border:0 !important;">`)
+            .appendTo("#imagenes").hide().fadeIn(2000);
+        }
+
+        function animacionX(){
+            $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
+            .appendTo("#imagenes").hide().fadeIn(2000);;
+        }

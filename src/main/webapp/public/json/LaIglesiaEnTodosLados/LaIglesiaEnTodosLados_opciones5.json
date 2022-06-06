@@ -1,0 +1,14 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "inquisicion" : "SI",
+    "pregunta": "1. - ¿La inquisición? Es la inquisición la que nos ha mandado aquí…"
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "inquisicion" : "NO",
+    "pregunta": "2. - ¡Es la Inquisición quien te quiere muerte imbécil! ¡No vales nada! (REMATAR)"
+  }
+]

@@ -19,7 +19,8 @@
             });
         }
 
-        function llamadaOpcionesDados(resultado, itinerador){
+        /* Llamada que se realiza después de tirar el dado */
+        function llamadaDespuesDeDado(resultado, itinerador){
 
             var cookieDirectorio = readCookie("capitulo");
             let directorio = cookieDirectorio + "_opcDado";
@@ -124,7 +125,8 @@
         }
 
 
-
+        /* llamada que se realiza a los json que traen opcion
+            de combate o tirar los dados */
         function llamadaOpcionesDadoOCombate(itinerador){
 
             var especial = false;
@@ -150,50 +152,68 @@
                 });
         }
 
+        /* Llamada auxiliar para el final del capitulo II */
+        function llamadaEspecialLIEL(itinerador){
 
+            var cookieDirectorio = readCookie("capitulo");
+            let directorio = cookieDirectorio + "_opciones";
 
-
-
-
-
-
-
-
-
-
-/*   LLAMADA ENCARGADA DE EXTRAER Y MOSTRAR EL TEXTO Y LAS OPCIONES DE
-    DIALOGO DE LOS JSON */
-/*        function llamadaTexto(itinerador){
-            let contadorDiv= 0;
-            let directorio = "Despertar_texto";
             directorio += itinerador;
-            directorio += ".json"
+            directorio += ".json";
 
+            fetch('json/'+ cookieDirectorio + '/'+ directorio)
+                .then(res => res.json())
+                .then(data =>{
+                    for(let jeyson of Object.values(data)){
+                        let booleanInqui = false;
+                        if (jeyson.inquisicion == "SI"){
+                            booleanInqui = true;
+                            pintadoEspecial(booleanInqui, jeyson.pregunta, jeyson.id);
+                        } else {
+                            pintadoEspecial(booleanInqui, jeyson.pregunta, jeyson.id);
+                        }
+                    }
+                });
+        }
+        /* Llamada Auxiliar 2 capitulo II */
+        function llamadaEspecialLIELDos(){
 
-            $.ajax({
-                url: "json/" + directorio,
-                type: "GET",
-                success: function(data) {
-                    data.forEach(function(conversacion, index) {
+            var cookieDirectorio = readCookie("capitulo");
+            let directorio = cookieDirectorio + "_esp";
+            directorio += itinerador;
+            directorio += ".json";
 
-                        $("#texto").append("<h3> " + conversacion.titulo + "</h3>")
+            fetch('json/'+ cookieDirectorio + '/'+ directorio)
+                .then(res => res.json())
+                .then(data =>{
+                    for(let jeyson of Object.values(data)){
+                        pintarTexto(jeyson.texto);
+                    }
+                });
+        }
 
-                        conversacion.mensajes.forEach(function(mensaje, index) {
+        /* obtiene los datos de la carta en el campamento de Bron
+        Es llamada despues de tirar los dados */
+        function llamadaCarta(resultado){
+            let booleanPintaGarabatos = false;
 
-                            $("#texto").append("<p class='textoJson'> " + mensaje.contenido + "</p>");
-                            if (typeof mensaje.opciones != "undefined") {
-
-                                mensaje.opciones.forEach(function(opcion, index) {
-
-                                    contadorDiv++;
-                                    $(`<div id=${contadorDiv} style="color:red" onmouseover="this.style.color='yellow';" onmouseout="this.style.color='red';"> ${opcion.pregunta} </div>`)
-                                    .appendTo("#textoOpciones");
-
-                                });
-                            }
-                        });
-
-                    });
-                }
-            });
-        } */
+            fetch('json/' + "/LaIglesiaEnTodosLados/cartaCampamentoBron.json")
+                .then( res => res.json())
+                .then(data => {
+                    for (let jeyson of Object.values(data)){
+                        if (resultado > jeyson.requisito){
+                           booleanPintaGarabatos = false;
+                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos);
+                        }else {
+                           booleanPintaGarabatos = true;
+                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos);
+                        }
+                        if (resultado > jeyson.requisito && jeyson.id == 2){
+                            masDoscientosG();
+                        }
+                        if (jeyson.id == 4){
+                            pintarRemitente();
+                        }
+                    }
+                });
+        }
