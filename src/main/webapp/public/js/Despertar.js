@@ -14,7 +14,7 @@
        inicioDespertar();
 
 /************************** I T I N E R A C I O N  **************************************/
-        $('body').on('click', '#btn_tiendas', function() {
+        $('#btn_tiendas').unbind('click').click(function() {
             borradoCuerpoTexto();
             borradoTextoItineracion();
             llamadaTiendas();
@@ -91,8 +91,7 @@
             setTimeout(function(){
                 $("#imagenes img").attr({
                     src : "images/ItineracionKislev.jpg",
-                    width : "430rem",
-                    height : "550rem"
+                    width : "430rem"
                 });
                 libreAlbedrio();
             }, 1000);

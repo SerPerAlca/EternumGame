@@ -203,16 +203,17 @@
                     for (let jeyson of Object.values(data)){
                         if (resultado > jeyson.requisito){
                            booleanPintaGarabatos = false;
-                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos);
+                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos, jeyson.requisito );
                         }else {
                            booleanPintaGarabatos = true;
-                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos);
+                           pintarCarta( jeyson.texto, jeyson.id, booleanPintaGarabatos, jeyson.requisito );
                         }
                         if (resultado > jeyson.requisito && jeyson.id == 2){
                             masDoscientosG();
                         }
                         if (jeyson.id == 4){
                             pintarRemitente();
+                            mostrarBotónSalir();
                         }
                     }
                 });

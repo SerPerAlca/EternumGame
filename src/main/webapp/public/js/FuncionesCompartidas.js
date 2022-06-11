@@ -14,6 +14,8 @@ var contDegradado= 0;
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
 function fight(){
 
+    $("#btn-Salir").hide();
+
     borradoCuerpoTexto();
     $(".conte-texto h1").remove();
     $("#imagenes img").remove();
@@ -115,7 +117,7 @@ function fight(){
             $("#btn-CasaC").hide();
             $("#btn-Salir").hide();
             $("#CabeceraAudio").show();
-            $("#btn-itinerar").show();
+            //$("#btn-itinerar").show();
         }
 
     //FUNCION PARA LEER OBTENER LAS COOKIES
@@ -269,3 +271,22 @@ function fight(){
             $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
             .appendTo("#imagenes").hide().fadeIn(2000);;
         }
+
+/*
+        //FUncion que comprueba si el sidebar del dado esta a la vista
+        function booleanaDadoPulsado(){
+            // inline = oculto
+            // está oculto
+            if ($("#abrir").css("display") == "inline"){
+                return true;
+            }
+            // está a la vista
+            return false;
+        }
+
+        function comprobarDadoPulsado() {
+            if (booleanaDadoPulsado()){
+                mostrarDado();
+            }
+        } */
+

@@ -14,7 +14,7 @@
 
     function rollDice() {
 
-        $("#resultado").hide();
+        $(".rollBtn").hide();
 
         setTimeout(function(){
            dado();
@@ -83,6 +83,7 @@
 
      //fUNCION PARA MOSTRAR EL SIDEBAR DEL DADO
      function mostrarDado() {
+        $(".rollBtn").show();
         document.getElementById("sidebar").style.width = "300px";
         document.getElementById("abrir").style.display = "none";
         document.getElementById("cerrar").style.display = "inline";

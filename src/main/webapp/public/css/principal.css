@@ -15,6 +15,7 @@
 body{
     background-color: black !important;
     height: 100vh;
+    
 
 }
 
@@ -45,6 +46,11 @@ body{
      padding: 1rem;
      margin: 4rem;
 
+}
+
+#padreCuerpo{
+
+    font-family: medieval !important;
 }
 
 #cuerpo{

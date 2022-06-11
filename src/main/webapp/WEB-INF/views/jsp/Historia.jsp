@@ -13,7 +13,6 @@
 
     <script src="js/Despertar.js"></script>
     <script src="js/Servicios.js"></script>
-    <script src="js/Llamadas.js"></script>
     <script src="js/TratamientoAudio.js"></script>
     <script src="js/Dado.js"></script>
     <script src="js/LaIglesiaEnTodosLados.js"></script>
