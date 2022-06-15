@@ -12,10 +12,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="js/Despertar.js"></script>
-    <script src="js/Servicios.js"></script>
+    <script src="js/LaIglesiaEnTodosLados.js"></script>
+    <script src="js/ElForajido.js"></script>
+    <script src="js/Servicios/ServiciosLIEL.js"></script>
+    <script src="js/Servicios/ServiciosGenerales.js"></script>
+    <script src="js/Servicios/ServiciosEF.js"></script>
     <script src="js/TratamientoAudio.js"></script>
     <script src="js/Dado.js"></script>
-    <script src="js/LaIglesiaEnTodosLados.js"></script>
+    
     <script src="js/FuncionesCompartidas.js"></script>
 
 

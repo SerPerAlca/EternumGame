@@ -1,12 +1,14 @@
 var contDegradado= 0;
+var itineradorIndice = 0;
+var itineradorAmbiente = 1;
 
  $(document).ready(function() {
     $(".conte-degradado").hide();
     $(".conte-texto").hide();
 
-    $("#btn-itinerar").click(function(){
-        itinerador= 0;
-        inicioLIEL();
+    $("#btn-itinerar").unbind('click').click(function(){
+        itineradorIndice++;
+        controladorCapi();
     });
  });
 
@@ -42,7 +44,8 @@ function fight(){
         .hide().fadeIn(1000);
     }, 6500); */
 
-    $("#btn_siguiente").show();
+   enseniarSig();
+
 
 
 }
@@ -90,6 +93,26 @@ function fight(){
                 .fadeIn(2000);
             }
          }
+
+         // Pinta las opciones con pausa a partir del capítulo 2.
+         function pintarOpcionesPausaV2(opcionObligada, id, pregunta, rama){
+            // SE realiza comprobación para pintar (OPCIONAL) en las opciones no obligatorias.
+
+            if (!opcionObligada){
+                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="pausarAccionV2(${id},${itinerador},${opcionObligada},'${rama}')"
+                    onmouseout="this.style.color='red';"> ${pregunta} <span style="color:#ea8069; font-size:small">(OPCIONAL)</span> </div>`)
+                   .appendTo("#textoOpciones")
+                   .hide()
+                   .fadeIn(2000);
+            } else {
+                $(`<div id=${id} class="Opciones" style="color:red" onmouseover="this.style.color='#196883';" onclick="pausarAccionV2(${id},${itinerador},${opcionObligada},'${rama}')"
+                   onmouseout="this.style.color='red';"> ${pregunta} </div>`)
+                   .appendTo("#textoOpciones")
+                   .hide()
+                   .fadeIn(2000);
+            }
+        }
+
         function pintarOpcionesConPruebaSuerte(especial, id, pregunta){
         // SE realiza comprobación para pintar (OPCIONAL) en las opciones no obligatorias.
             if (especial){
@@ -187,20 +210,15 @@ function fight(){
                 case "LaIglesiaEnTodosLados":
                     ControladorPagSiguienteLIEL();
                     break;
+                case "ElForajido":
+                    ControladorPagSiguienteEF();
+                    break;
                 default:
                     console.log("pagina no encontrada");
                     break;
             }
         }
 
-/**********************************************************************************************************************************************/
-    /** funcion encargada de llamar al servicio después de tirar los dados
-    y de llamar a las funciones que pintan la respuesta **/
-        function mostrarResultadoDados(itinerador, resultado){
-            borradoCuerpoTexto();
-            itinerador++;
-            llamadaDespuesDeDado(resultado,itinerador);
-        }
 
     /* Funcion controladora de la tirada del Dado.
     Es llamada cuando se tira el dado y se encarga de llamar a la escena correcta */
@@ -253,6 +271,22 @@ function fight(){
             }
         }
 
+    /* Función controladora del botón Al siguiente capítulo */
+        function controladorCapi(){
+
+            switch(itineradorIndice){
+                case 1:
+                    inicioLIEL();
+                    break;
+                case 2:
+                    inicioEF();
+                    break;
+                default:
+                    console.log("No se encuentra Capítulo");
+                    break;
+            }
+        }
+/*******************************************************************************************************************************************************/
        /* Función que devuelve el cuerpo del jsp a su estado normal
         después del modo combate */
         function retornarDeFight(){
@@ -272,21 +306,48 @@ function fight(){
             .appendTo("#imagenes").hide().fadeIn(2000);;
         }
 
-/*
-        //FUncion que comprueba si el sidebar del dado esta a la vista
-        function booleanaDadoPulsado(){
-            // inline = oculto
-            // está oculto
-            if ($("#abrir").css("display") == "inline"){
-                return true;
-            }
-            // está a la vista
-            return false;
+        /** Función que controla la respuesta que se muestra, además de mostrar el botón siguiente **/
+        function pausarAccion(id, itinerador, opcionObligada){
+            new Promise(function(resolve) {
+                resolve(llamadaRespuestas(id, itinerador));
+            })
+            .then(function(result) {
+                if(opcionObligada){
+                    desabilitarOpcion();
+                   enseniarSig();
+                }
+            });
         }
 
-        function comprobarDadoPulsado() {
-            if (booleanaDadoPulsado()){
-                mostrarDado();
-            }
-        } */
+        /** Función que controla la respuesta que se muestra, además de mostrar el botón siguiente a partir del capítulo 2 **/
+        function pausarAccionV2(id, itinerador, opcionObligada, rama){
+            new Promise(function(resolve) {
+                document.cookie = "ramificacion="+ rama;
+                resolve(llamadaRespuestas(id, itinerador));               
+            })
+            .then(function(result) {
+                if(opcionObligada){
+                    desabilitarOpcion();
+                   enseniarSig();
+                }
+            });        
 
+        }
+
+        /** funcion encargada de llamar al servicio después de tirar los dados
+            y de llamar a las funciones que pintan la respuesta **/
+            function mostrarResultadoDados(itinerador, resultado){
+                borradoCuerpoTexto();
+                itinerador++;
+                llamadaDespuesDeDado(resultado,itinerador);
+            }
+
+            function enseniarSig(){
+               $("#siguiente").show();
+               $("#btn_siguiente").show();
+            }
+
+            function esconderSig(){
+                $("#siguiente").hide();
+                $("#btn_siguiente").hide();
+            }

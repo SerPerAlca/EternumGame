@@ -14,21 +14,17 @@ $(document).ready(function() {
     var contFilasCarta = 0;
     var botonDado = $(".rollBtn");
 
- //Creo esta función porque se repite la creacion del div Inicio (!DICHOSOS EVENTOS!)
+
         function inicioLIEL(){
                 // Cookies
                  document.cookie = "ubicacion=campamentoBandidosBron";
                  document.cookie = "capitulo=LaIglesiaEnTodosLados";
                  document.cookie = "ramificacion=X";
 
-                $("#btn-itinerar").hide();
-                $("#btn-Salir").remove();
+                borradoCuerpoTexto();
 
-                if (!booleanErrorChromeI){
-                    borradoCuerpoTexto();
-                    booleanErrorChromeI=true;
-                    $("#btn-itinerar").hide();
-                }
+                $("#btn-Salir").remove();
+                itinerador = 0;
 
                 if(!booleanCapitulo2){
                     $("#imagenes img").remove();
@@ -37,6 +33,8 @@ $(document).ready(function() {
                         primeraSecuenciaLIEL();
                     }).end().appendTo("#texto");
                     booleanCapitulo2 = true;
+                } else {
+                    animacionFinalCapiLIEL();
                 }
         };
 
@@ -47,9 +45,13 @@ $(document).ready(function() {
 // LLEGADA AL CAMPAMENTO DE BRON
     function primeraSecuenciaLIEL(){
         borradoCuerpoTexto();
+        reproducirAmbiente();
+
+        $("#btn-itinerar").hide();
         $("#btn_empezar").hide();
+
         //$("#btn_tiendas").hide();
-        $(`<img src="images/CampamentoDeBron.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+        $(`<img src="images/LIELImg/CampamentoDeBron.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
 
         new Promise(function(resolve) {
@@ -60,7 +62,7 @@ $(document).ready(function() {
         setTimeout(function(){
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/BandidoCampBron.jpg",
+                src : "images/LIELImg/BandidoCampBron.jpg",
                 width : "450px"
             });
             llamadaTexto(itinerador);
@@ -81,7 +83,7 @@ $(document).ready(function() {
 
         document.cookie = "ramificacion=B";
 
-        $(`<img src="images/peleaBandidos.jpg"
+        $(`<img src="images/LIELImg/peleaBandidos.jpg"
             style="border-radius:12px; width: 500px; height: 35rem;">`)
         .appendTo("#imagenes");
 
@@ -109,7 +111,7 @@ $(document).ready(function() {
                 resolve(llamadaTexto(itinerador));
             })
             .then(function(result) {
-                $(`<img src="images/Grerius Bron.jpg"
+                $(`<img src="images/LIELImg/Grerius Bron.jpg"
                     style="border-radius:12px; width: 450px; height: 40rem;">`)
                 .appendTo("#imagenes");
 
@@ -125,7 +127,7 @@ $(document).ready(function() {
 
         $("#imagenes").show();
         insertarSangreEnemigo();
-        $(`<img src="images/Grerius Bron.jpg"
+        $(`<img src="images/LIELImg/Grerius Bron.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
         .appendTo("#imagenes");
         retornarDeFight();
@@ -175,7 +177,7 @@ $(document).ready(function() {
 
         itinerador++;
         borradoCuerpoTexto();
-        $(`<img src="images/papiro IMG.jpg"
+        $(`<img src="images/LIELImg/papiro IMG.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
             .appendTo("#imagenes");
     }
@@ -185,7 +187,7 @@ $(document).ready(function() {
             itinerador++;
             borradoCuerpoTexto();
             $("#imagenes img").remove();
-            $(`<img src="images/papiro IMG.jpg"
+            $(`<img src="images/LIELImg/papiro IMG.jpg"
                 style="border-radius:12px; width: 450px; height: 40rem;">`)
                 .appendTo("#imagenes");
 
@@ -212,7 +214,7 @@ $(document).ready(function() {
             
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/desenvainando.jpg"
+                src : "images/LIELImg/desenvainando.jpg"
             });
 
             new Promise(function(resolve) {
@@ -233,7 +235,7 @@ $(document).ready(function() {
         function finCapitulo(){
 
             borradoCuerpoTexto();       
-            $(`<button type="button" class="btn btn-secondary" id="btn-SalirLIEL" onclick="animacionFinalCapi()">Salir del campamento</button>`)
+            $(`<button type="button" class="btn btn-secondary" id="btn-SalirLIEL" onclick="animacionFinalCapiLIEL()">Salir del campamento</button>`)
                 .appendTo("#siguiente");
 
         }
@@ -250,7 +252,7 @@ $(document).ready(function() {
 
             insertarSangreEnemigo();
 
-            $(`<img src="images/CabezaGrerius.jpg"
+            $(`<img src="images/LIELImg/CabezaGrerius.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
             .appendTo("#imagenes");
 
@@ -272,7 +274,7 @@ $(document).ready(function() {
             borradoCuerpoTexto();
 
             $("#imagenes img").attr({
-                src : "images/cartaArdiendo.jpg"
+                src : "images/LIELImg/cartaArdiendo.jpg"
             });
 
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Quemáis la carta. </p>`)
@@ -281,8 +283,8 @@ $(document).ready(function() {
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Es peligroso tener eso en vuestro poder... </p>`)
             .appendTo("#textoRespuestas").hide().fadeIn(3000);
             
-            $("#siguiente").show();
-            $("#btn_siguiente").show();
+           enseniarSig();
+
         }
 
         // Función que se ejecuta cuando se decide guardar la carta
@@ -291,7 +293,7 @@ $(document).ready(function() {
             borradoCuerpoTexto();
  
          /*   $("#imagenes img").attr({
-                src : "images/CabezaGrerius.jpg"
+                src : "images/LIELImg/CabezaGrerius.jpg"
             });  */
 
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Os guardáis la carta. </p>`)
@@ -300,8 +302,8 @@ $(document).ready(function() {
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Puede ser un buen salvavidas llegado el momento... </p>`)
             .appendTo("#textoRespuestas").hide().fadeIn(3000);
             
-            $("#siguiente").show();
-            $("#btn_siguiente").show();
+           enseniarSig();
+
         }
 
 
@@ -313,7 +315,7 @@ $(document).ready(function() {
             $("#imagenes img").remove();
             animacionX();
             insertarSangreEnemigo();
-            $(`<img src="images/Grerius Bron.jpg"
+            $(`<img src="images/LIELImg/Grerius Bron.jpg"
                 style="border-radius:12px; width: 450px; height: 40rem;">`)
             .appendTo("#imagenes");
             setTimeout(function(){
@@ -329,12 +331,12 @@ $(document).ready(function() {
     function mostrarCarta(){
         mostrarDado();
         $("#cuerpo").hide();
-        $("#siguiente").hide();
+         esconderSig();
 
         $(`<a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>`)
         .appendTo(".container-fluid");
 
-        $(`<div id="padrePapiro" style='text-align:center; background-image: url("images/papiro.jpg");background-repeat: no-repeat; color: white; margin: auto; position: absolute; width: 100%; height: 100vh; background-size: cover; background-color: inherit; flex-wrap: wrap; z-index: 1;'>
+        $(`<div id="padrePapiro" style='text-align:center; background-image: url("images/LIELImg/papiro.jpg");background-repeat: no-repeat; color: white; margin: auto; position: absolute; width: 100%; height: 100vh; background-size: cover; background-color: inherit; flex-wrap: wrap; z-index: 1;'>
         <span style="color: aqua">&nbsp</div>`)
         .appendTo("#padreCuerpo");
 
@@ -561,18 +563,18 @@ $(document).ready(function() {
         }
     }
 
-    function animacionFinalCapi(){
+    function animacionFinalCapiLIEL(){
 
         $("#btn-SalirLIEL").hide();
         $("#cuerpo").hide();
 		$("#imagenes img").hide();
         $('#padreCuerpo')
-            .css({"background-image":"url('images/fuego.gif')", "height": "100vh", "background-size": "cover", "text-align" : "center"});
-        
+            .css({"background-image":"url('images/LIELImg/fuego.gif')", "height": "100vh", "background-size": "cover", "text-align" : "center"});
+
         setTimeout(function(){
 
                 $(`<div style="margin-top: 8rem"> <span style="color: aqua;" > Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día… </span> </div> `)
-                .appendTo('#padreCuerpo').hide().fadeIn(3000);
+                .appendTo('#padreCuerpo').hide().fadeIn(2000);
                 $("#btn-itinerar").show();
             
         }, 3000);    

@@ -69,7 +69,7 @@
             borradoCuerpoTexto();
             $("#btn_empezar").hide();
             $("#btn_tiendas").hide();
-            $(`<img src="images/ancianoKislev.jpeg" style="border-radius:12px">`)
+            $(`<img src="images/DespertarImg/ancianoKislev.jpeg" style="border-radius:12px">`)
             .appendTo("#imagenes");
 
             new Promise(function(resolve) {
@@ -90,7 +90,7 @@
 
             setTimeout(function(){
                 $("#imagenes img").attr({
-                    src : "images/ItineracionKislev.jpg",
+                    src : "images/DespertarImg/ItineracionKislev.jpg",
                     width : "430rem"
                 });
                 libreAlbedrio();
@@ -102,7 +102,7 @@
         function terceraSecuenciaDespertar(){
             var textoCasaCons = "Guardia: ¡El capitán Rostford no se encuentra en este momento!";
             $("#imagenes img").attr({
-                src : "images/CapitanBorvskark.jpg",
+                src : "images/DespertarImg/CapitanBorvskark.jpg",
                 width : "450px",
                 height : "550rem"
             });
@@ -134,7 +134,7 @@
             .then(function(result) {
             //CAMBIAMOS A LA IMAGEN DE SIR GREGOR
                 $("#imagenes img").attr({
-                    src : "images/Inquisidor_Gregor_Eisenhorn.jpg",
+                    src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
                     width : "450px",
                     height : "550rem"
                 });
@@ -167,7 +167,7 @@
                 //SI señor, esto… no son herejes,
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/CapitanBorvskark.jpg",
+                        src : "images/DespertarImg/CapitanBorvskark.jpg",
                         width : "450px",
                         height : "550rem"
                     });
@@ -179,7 +179,7 @@
                 //SILENCIO!!
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/Inquisidor_Gregor_Eisenhorn.jpg",
+                        src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
                         width : "450px",
                         height : "550rem"
                     });
@@ -208,7 +208,7 @@
                 // ehhh si.. esos malnacidos...
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/CapitanBorvskark.jpg",
+                        src : "images/DespertarImg/CapitanBorvskark.jpg",
                         width : "450px",
                         height : "550rem"
                     });
@@ -220,7 +220,7 @@
                 //Está bien..Quiero que acabéis con ellos
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/Inquisidor_Gregor_Eisenhorn.jpg",
+                        src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
                         width : "450px",
                         height : "550rem"
                     });
@@ -284,12 +284,12 @@
             switch (itinerador) {
                 case 0:
                     if ( id == 1){
-                        $("#btn_siguiente").show();
+                       enseniarSig();
                         itinerador++;
                     }
                     break;
                 case 2:
-                    $("#btn_siguiente").show();
+                   enseniarSig();
                     /* Cuando se pulse la primera o la segunda opción se
                     deshabilitará el evento 'click' en las opciones de diálogo  **/
                     if ( id == "1" || id == "2"){
@@ -354,19 +354,7 @@
             $("#btn-CasaC").show().fadeIn(6000);
         }
 
-/** FUNCION AUXILIAR PARA cuartaSecuencia(). De esta manera controlo el flujo
-    a pesar de las funciones asíncronas **/
-        function pausarAccion(id, itinerador, opcionObligada){
-            new Promise(function(resolve) {
-                resolve(llamadaRespuestas(id, itinerador));
-            })
-            .then(function(result) {
-                if(opcionObligada){
-                    desabilitarOpcion();
-                    $("#btn_siguiente").show();
-                }
-            });
-        }
+
 
 
 

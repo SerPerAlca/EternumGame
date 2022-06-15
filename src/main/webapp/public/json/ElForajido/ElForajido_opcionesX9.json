@@ -1,0 +1,16 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "NO",
+    "rama" : "A",
+    "pregunta": "1. - Nada en especial. Nos dedicamos a decapitar malhechores y crucificar herejes…todo por la Inquisición."
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "especial" : "NO",
+    "rama" : "B",
+    "pregunta": "2. - Solo le hemos servido una única y última vez. Nosotros no servimos a la Inquisición. "
+  }
+]

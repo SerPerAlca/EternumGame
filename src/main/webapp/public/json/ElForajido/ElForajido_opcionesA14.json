@@ -1,0 +1,16 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "NO",
+    "rama" : "A",
+    "pregunta": "1. - No haremos daño a nadie. Siempre y cuando vacíen sus bolsillos en este saco. Queremos todo el oro que tengáis. No vamos a dejar que esta ofrenda quede impune. "
+  },
+  {
+    "obligatoria" : "SI",
+    "id" : "2",
+    "especial" : "NO",
+    "rama" : "X",
+    "pregunta": "2. - No queríamos haceros daño desde un principio. Fuistéis vosotros quienes empezastéis la pelea"
+  }
+]
