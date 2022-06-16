@@ -9,6 +9,7 @@
     // Cookies
          document.cookie = "ubicacion=kislev";
          document.cookie = "capitulo=Despertar";
+         document.cookie = "batalla=false";
 /***********************************************************************/
     //Pintamos el titulo del capitulo como portada
        inicioDespertar();

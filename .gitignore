@@ -34,3 +34,5 @@ build/
 
 ./src/main/webapp/public/images
 *.jfif
+
+./src/main/webapp/public/audio/*

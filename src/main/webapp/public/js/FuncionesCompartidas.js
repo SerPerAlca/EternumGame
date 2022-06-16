@@ -16,7 +16,10 @@ var itineradorAmbiente = 1;
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
 function fight(){
 
+    document.cookie = "batalla=true";
     $("#btn-Salir").hide();
+    reproducirMusicaBattalla();
+    interMusicaBatalla(true);
 
     borradoCuerpoTexto();
     $(".conte-texto h1").remove();
@@ -286,10 +289,44 @@ function fight(){
                     break;
             }
         }
+
+        // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA
+        function comprobarSiEstamosEnBatalla(){
+            let batalla = readCookie("batalla");
+            if (batalla){
+                console.log("Estamos en Batalla");
+                reproducirMusicaBattalla();
+            }
+        }
+
+        // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA (esta funcion actúa como una especie de observer)
+        function interMusicaBatalla(boleano){
+
+            var intervaloMusicaBatalla = false;
+            if (boleano){          
+                intervaloMusicaBatalla = setInterval(function(){  
+                    console.log("***** COMPROBANDO BATALLA ******");
+                    comprobarSiEstamosEnBatalla();
+                }, 420000);            
+            } else {
+                console.log("Se acabó la batalla");
+                clearInterval(intervaloMusicaBatalla);
+            }
+        }
 /*******************************************************************************************************************************************************/
        /* Función que devuelve el cuerpo del jsp a su estado normal
         después del modo combate */
         function retornarDeFight(){
+            
+            try{
+                musicaBatalla.pause();
+            }catch(e){
+                logMyErrors(e);
+            }
+            interMusicaBatalla(false);
+            reproducirAmbiente();
+
+            document.cookie = "batalla=false";
             $(".conte-degradado").hide();
             $(".conte-texto").hide();
             $("#cuerpo").css({'height' : '100%', 'width' : '100%'});

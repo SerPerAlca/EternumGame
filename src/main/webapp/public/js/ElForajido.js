@@ -8,6 +8,7 @@ var booleanCapitulo3 = false;
                  document.cookie = "ubicacion=BosqueDeAverlan";
                  document.cookie = "capitulo=ElForajido";
                  document.cookie = "ramificacion=X";
+                 document.cookie = "batalla=false";
 
                 borradoCuerpoTexto();
                 $("#btn-itinerar").hide();
@@ -331,8 +332,164 @@ var booleanCapitulo3 = false;
 
                 itinerador = 17;
                 // HOOD: Rápido Rolo. -Grita Hood desesperado. Coge a las mujeres y los niños 
-                llamadaTexto(itinerador)
+                llamadaTexto(itinerador);
             }, 9500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                itinerador = 18;
+                // HOOD: Se, que después de todo no somos enemigos
+                llamadaTexto(itinerador);
+            }, 12000);
+
+            setTimeout(()=>{
+                
+                $(`<div id="Ayudar" style="color: black; font-weight: bold;"> ¿ AYUDAR ? </div>`)
+                .appendTo("#textoOpciones");
+                $(`<div id="si" style="color: red; font-weight: bold;" onmouseover="this.style.color='purple';" onmouseout="this.style.color='red';" onclick="octavaSecuenciaEF()"> SI </div>`)
+                .appendTo("#textoRespuestas").hide().fadeIn(1000);
+                $(`<div id="no" style="color: red; font-weight: bold;" onmouseover="this.style.color='purple';" onmouseout="this.style.color='red';" onclick="secuenciaNoAyuda()"> NO </div>`)
+                .appendTo("#textoRespuestas").hide().fadeIn(1000);
+
+            }, 14000);
+        });
+    }
+    
+    // HOOD: - ¡Bien! ¡Debemos aguantar guerreros! 
+    function octavaSecuenciaEF(){
+        borradoCuerpoTexto();
+        new Promise(function(resolve) {
+            itinerador = 19;
+            // HOOD: - ¡Bien! ¡Debemos aguantar guerreros! 
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+
+            setTimeout(()=>{
+                fight();
+            }, 3500);
+        })
+    }
+
+
+
+    ////////////////////////////// SECUENCIA SI SE DECIDE NO AYUDAR A HOOD Y SU GENTE
+    function secuenciaNoAyuda(){
+
+        borradoCuerpoTexto();
+        $("#no").remove();
+        $("#imagenes img").remove();
+        $(`<img src="images/ElForajidoImg/Hood_llorando.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+        .appendTo("#imagenes");
+
+        document.cookie = "ramificacion=B";
+        
+        // HOOD: De acuerdo, lo entiendo perfectamente
+        new Promise(function(resolve){
+            itinerador=19;
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+
+            setTimeout(()=>{
+                $(`<p> <span style="color: blue"> Obtenéis SalvoConducto de Averlan </span></p>`)
+                .appendTo("#textoOpciones").hide().fadeIn(1000);
+            }, 2000)
+           
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").remove();
+                $(`<img src="images/ElForajidoImg/correr.png" style="border-radius:12px; width: 540px; height: 50rem;">`)
+                .appendTo("#imagenes");
+                itinerador = 20;
+                // Corréis por la espesura huyendo del combate
+                llamadaTexto(itinerador);
+                $("#itineracion").show();
+                $("#btn-itinerar").show();
+            }, 5500);
+        })
+    }
+    
+    // Mientras lucháis veis a Hood luchando con su pistola y su espada.
+    function novenaSecuenciaEF(){
+        
+        retornarDeFight();
+        borradoCuerpoTexto();
+        $("#imagenes img").remove();
+        $(`<img src="images/ElForajidoImg/batallaCampamentoHood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+        .appendTo("#imagenes");
+
+        new Promise(function(resolve){
+            itinerador = 20;
+            // Mientras lucháis veis a Hood luchando con su pistola y su espada.
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+
+            setTimeout(()=>{
+                fight();
+            }, 3500);
+        });    
+    }
+
+    // Notáis que las fuerzas comienzan a faltar
+    function decimaSecuenciaEF(){
+        
+        retornarDeFight();
+        borradoCuerpoTexto();
+        $("#imagenes img").remove();
+        $(`<img src="images/ElForajidoImg/batallaCampamentoHood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+        .appendTo("#imagenes");
+
+        new Promise(function(resolve){
+            itinerador = 21;
+            // Notáis que las fuerzas comienzan a faltar
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/Hood.jpg",
+                    width : "450px"
+                });
+
+                itinerador = 22;
+                // HOOD: ¿¡Que haces aquí?! ¡Te ordené que pusieras
+                llamadaTexto(itinerador);
+            }, 4500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/Rulo.jpg",
+                    width : "450px"
+                });
+                itinerador = 23;
+                //RULO: ¡Nos estaban esperando Hood! 
+                llamadaTexto(itinerador);
+            }, 7500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/Hood.jpg",
+                    width : "450px"
+                });
+                itinerador = 24;
+                //HOOD: - ¡Mierda! ¡Os necesito! 
+                llamadaTexto(itinerador);
+            }, 10500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/correrPorElBosque.jpg",
+                    width : "450px"
+                });
+                itinerador = 25;
+                // Corréis, como no habéis corrido nunca 
+                llamadaTexto(itinerador);
+            }, 13500);
+
         });
     }
 /********************** C O N T R O L A D O R A S *************************************/
@@ -379,7 +536,14 @@ var booleanCapitulo3 = false;
                 SecuenciaAespDos();
                 break;
             case itinerador == 15:
-                septimaSecuenciaEF();             
+                septimaSecuenciaEF();
+                break;
+            case itinerador == 20 && rama == "X":
+                novenaSecuenciaEF();
+                break;             
+            case itinerador == 21 && rama == "X":
+                decimaSecuenciaEF();
+                break;        
             default:
                 console.log("No se encuentra condición para el botón siguiente");
                 break;    

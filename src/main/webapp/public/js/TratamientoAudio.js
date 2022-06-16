@@ -18,7 +18,8 @@ $(document).ready(function() {
     var etiquetaAudio2 = document.createElement("audio");
     var etiquetaAudio3 = document.createElement("audio");
     var etiquetaAudioAmbiente = document.createElement("audio");
-    etiquetaAudioAmbiente.autoplay = true;
+    var musicaBatalla = document.createElement("audio");
+    //etiquetaAudioAmbiente.autoplay = true;
 
     function reproducirRespuesta(id,itinerador){
 
@@ -94,6 +95,26 @@ $(document).ready(function() {
             logMyErrors(e);
         }
         etiquetaAudioAmbiente.setAttribute("src", rutaAudio);
+        etiquetaAudioAmbiente.setAttribute("autoplay", "true");
         etiquetaAudioAmbiente.play();
+
+    }
+
+    function reproducirMusicaBattalla(){
+        cancionAlAzar = Math.floor(Math.random()*4);
+          
+        let rutaAudio = "audio/Batalla/";
+        rutaAudio += "batalla" + cancionAlAzar + ".mp3"; 
+        console.log("Ruta Audio Batalla : " + rutaAudio);
+        
+        try{
+            etiquetaAudioAmbiente.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+
+        musicaBatalla.setAttribute("src", rutaAudio);
+        musicaBatalla.play();
+
 
     }

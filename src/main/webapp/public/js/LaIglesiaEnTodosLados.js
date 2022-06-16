@@ -20,6 +20,7 @@ $(document).ready(function() {
                  document.cookie = "ubicacion=campamentoBandidosBron";
                  document.cookie = "capitulo=LaIglesiaEnTodosLados";
                  document.cookie = "ramificacion=X";
+                 document.cookie = "batalla=false";
 
                 borradoCuerpoTexto();
 
