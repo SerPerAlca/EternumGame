@@ -11,10 +11,11 @@ var booleanCapitulo3 = false;
                  document.cookie = "batalla=false";
 
                 borradoCuerpoTexto();
-                $("#btn-itinerar").hide();
                 $("#btn-Salir").remove();
+                obtenerTituloCapitulo();
                 itinerador = 0;
-
+                itineradorAmbiente = 1;
+                
                 if(!booleanCapitulo3){
                     $("#imagenes img").remove();
                     $("<div class='Inicio'>III. El Forajido </div>")
@@ -32,7 +33,7 @@ var booleanCapitulo3 = false;
 
     // Según os acercáis a las afueras de Averlan....
     function primeraSecuenciaEF(){
-
+        
         $("#CabeceraAudio").hide();
         $("#btn-itinerar").hide();
         $("#imagenes img").remove();
@@ -309,7 +310,7 @@ var booleanCapitulo3 = false;
             borradoCuerpoTexto();
             setTimeout(()=>{
                 bruum();
-                reproducirLluviaDeFLechas();
+                
             }, 2500)    
 
             setTimeout(() =>{
@@ -318,6 +319,9 @@ var booleanCapitulo3 = false;
                 $(`<img src="images/ElForajidoImg/lluviaDeFlechas.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
                 .appendTo("#imagenes");
                 $("#imagenBrum").remove();
+                reproducirLluviaDeFLechas();
+                itineradorAmbiente = 2;
+                reproducirAmbiente();
 
                 itinerador = 16;
                 //¡¡¡Nos atacan!!! Se escucha
@@ -369,7 +373,6 @@ var booleanCapitulo3 = false;
             }, 3500);
         })
     }
-
 
 
     ////////////////////////////// SECUENCIA SI SE DECIDE NO AYUDAR A HOOD Y SU GENTE
@@ -485,13 +488,142 @@ var booleanCapitulo3 = false;
                     src : "images/ElForajidoImg/correrPorElBosque.jpg",
                     width : "450px"
                 });
+                animacionCorazon();
+                reproducirLatido();
                 itinerador = 25;
                 // Corréis, como no habéis corrido nunca 
                 llamadaTexto(itinerador);
             }, 13500);
 
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/matanza.png",
+                    width : "450px"
+                });
+                itineradorAmbiente = 3
+                reproducirAmbiente();
+
+                itinerador= 26;
+                // Cuerpos. Cadáveres, por todas partes
+                llamadaTexto(itinerador);
+            }, 16500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/SoldadoViolador1.jpg",
+                    width : "450px"
+                });
+                itinerador= 27;
+                // SOLDADOVIOLADOR1: Jejeje. Aquí queda una viva. Ven aquí preciosa 
+                llamadaTexto(itinerador);
+            }, 20500);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/SoldadoViolador2.png",
+                    width : "450px"
+                });
+                itinerador= 28;
+                // SOLDADOVIOLADOR2: Puta hereje. Te voy a enseñar a que sabe una polla de Sigmar.
+                llamadaTexto(itinerador);
+            }, 22000);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/sacerdoteDeLaConfesion.jpg",
+                    width : "450px"
+                });
+                itinerador= 29;
+                // SACERDOTE: Hijos míos. Está prohibido mancillar
+                llamadaTexto(itinerador);
+            }, 24000);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/SoldadoViolador2.png",
+                    width : "450px"
+                });
+                itinerador= 30;
+                // SOLDADOVIOLADOR2: Como usted mande padre. Jejeje
+                llamadaTexto(itinerador);
+            }, 26000);
+
+            setTimeout(()=>{
+                borradoCuerpoTexto();
+                $("#imagenes img").attr({
+                    src : "images/ElForajidoImg/escenaPreViolacion.png",
+                    width : "450px"
+                });
+                itinerador= 31;
+                // Prometisteis proteger a esta gente, al menos a ella la protegeréis...
+                llamadaTexto(itinerador);
+            }, 27000);
+
+            setTimeout(()=>{
+                fight();                
+            }, 28500);
         });
     }
+
+    // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes! 
+    function onceavaSecuenciaEF(){
+        borradoCuerpoTexto();
+        retornarDeFight();
+
+            
+        $("#imagenes img").remove();
+        $(`<img src="images/ElForajidoImg/sacerdoteDeLaConfesion.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+        .appendTo("#imagenes");
+        
+        new Promise(function(resolve){
+            itinerador= 32;
+            // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes! 
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+            setTimeout(()=>{
+                $(`<p><span style="color: black; font-weight: bold;"> ¿ ATACAR AL SACERDOTE ? </span><span style="color: grey; font-weight: bold> 
+                (puede tener repercusiones más adelante)</span></p>`)
+                .appendTo("#textoOpciones").hide().fadeIn();
+                $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="AtacarSacer()"> SI</span></p>`)
+                .appendTo("#textoRespuestas").hide().fadeIn();
+                $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="noAtacarSacer()"> NO</span></p>`)
+                .appendTo("#textoRespuestas").hide().fadeIn();
+            }, 3000);
+        });     
+    }
+
+    // Final del capitulo
+    function duodecimaSecuenciaEF(){
+        borradoCuerpoTexto();
+        retornarDeFight();
+        
+        var rama = readCookie("ramificacion");
+
+        $("#imagenes img").remove();
+        if (rama == "B"){
+            $(`<img src="images/ElForajidoImg/sacerdoteDeLaConfesion.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+            .appendTo("#imagenes");  
+        }else if (rama == "A") {
+            insertarSangreEnemigo();
+            $(`<img src="images/ElForajidoImg/sacerdoteDeLaConfesionHerido.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
+            .appendTo("#imagenes"); 
+        }
+        new Promise(function(resolve){
+            itinerador= 33;
+            // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes! 
+            resolve(llamadaTexto(itinerador));
+        }).then(function(result){
+            $("#itineracion").show();
+            $("#btn-itinerar").show();
+        });
+    }
+
+    
 /********************** C O N T R O L A D O R A S *************************************/
 
     function ControladorPagSiguienteEF(){
@@ -543,7 +675,13 @@ var booleanCapitulo3 = false;
                 break;             
             case itinerador == 21 && rama == "X":
                 decimaSecuenciaEF();
-                break;        
+                break;
+            case itinerador == 32 && rama == "X":
+                onceavaSecuenciaEF();
+                break;  
+            case itinerador == 33 && rama == "A":
+                duodecimaSecuenciaEF();
+                break;              
             default:
                 console.log("No se encuentra condición para el botón siguiente");
                 break;    
@@ -563,12 +701,27 @@ var booleanCapitulo3 = false;
         $(`<div> ¿ Pagar ? </div>`)
         .appendTo("#texto");
 
-        $(`<div> <span style="color: red"> SI </span> <span style="color: red"> NO </span></div>`)
+        $(`<div> <span style="color: red"> SI </span> <span style="color: red" onclick="segundaSecuenciaEF()"> NO </span></div>`)
         .appendTo("#textoOpciones").hide().fadeIn(2000);
     }
 
+    // Funcion que reproduce una animacion de cuernos de guerra
     function bruum(){
         reproducirCuerno();
         $(`<img id="imagenBrum" src="images/ElForajidoImg/cuernoNegro.jpg" style="position: absolute; width: 90%; margin-top: 1px; z-index: 5; opacity: 0.6">`)
         .appendTo("#padreCuerpo").hide().fadeIn(2500);
+    }
+
+    // Funcion que se activa cuando decidimos atacar al sacerdote al final del capítulo.
+    function AtacarSacer(){
+
+        document.cookie = "ramificacion=A";
+        fight();
+    }
+
+    // Funcion que se activa cuando decidimos no atacar al sacerdote al final del capítulo.
+    function noAtacarSacer(){
+
+        document.cookie = "ramificacion=B";
+        duodecimaSecuenciaEF();
     }

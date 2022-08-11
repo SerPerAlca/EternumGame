@@ -24,10 +24,19 @@ $(document).ready(function() {
     function reproducirRespuesta(id,itinerador){
 
         var cookieDirectorio = readCookie("capitulo");
+        var rama = readCookie("ramificacion");
+
+
         let rutaAudio = "audio/" + cookieDirectorio + "/";
         let nombreAudio= cookieDirectorio + "AudioRespuesta";
-        nombreAudio += itinerador;
-        nombreAudio += id;
+        if (cookieDirectorio !="Despertar" || cookieDirectorio != "LaIglesiaEnTodosLados"){
+            nombreAudio += itinerador;
+            nombreAudio += id;
+        } else {
+            nombreAudio += rama;
+            nombreAudio += itinerador;
+        }
+        
         nombreAudio += ".mp3";
         rutaAudio += nombreAudio;
         console.log("RUTA AUDIO: "+rutaAudio);
@@ -43,8 +52,14 @@ $(document).ready(function() {
     function reproducirTexto(itinerador){
 
         var cookieDirectorio = readCookie("capitulo");
+        var rama = readCookie("ramificacion");
+
         let rutaAudio = "audio/" + cookieDirectorio + "/";
         let nombreAudio= cookieDirectorio +"Audio";
+        // EL primer capitulo lleva un tratamiento distinto de los audios
+        if (cookieDirectorio != "Despertar"){
+            nombreAudio += rama;
+        }
         nombreAudio += itinerador;
         nombreAudio += ".mp3";
         rutaAudio += nombreAudio;
@@ -115,6 +130,16 @@ $(document).ready(function() {
 
         musicaBatalla.setAttribute("src", rutaAudio);
         musicaBatalla.play();
+    }
 
+    function reproducirLatido(){
+        let rutaAudio = "audio/corazonLatiendo.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();
 
     }

@@ -3,7 +3,7 @@
         ocultarDado();
         ocultacionBotones();
 
-
+        obtenerTituloCapitulo();
 
 /***********************************************************************/
     // Cookies
@@ -92,7 +92,7 @@
             setTimeout(function(){
                 $("#imagenes img").attr({
                     src : "images/DespertarImg/ItineracionKislev.jpg",
-                    width : "430rem"
+                    width : "830rem"
                 });
                 libreAlbedrio();
             }, 1000);

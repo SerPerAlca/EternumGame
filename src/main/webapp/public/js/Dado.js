@@ -1,16 +1,11 @@
 
+var resultadoDado="";
+
  $(document).ready(function() {
     var cube = document.querySelector(".cube");
     var rollBtn = document.querySelector(".rollBtn");
     var currentClass = "";
 
-
-
-    function getRandomInt(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-    }
 
     function rollDice() {
 
@@ -51,6 +46,7 @@
             ControladorTiradaDadoGeneral(randNum, itinerador);
         }, 3400);
 
+        
         setTimeout( function(){
             $("#resultado").show().fadeIn();
         }, 4000);
@@ -70,7 +66,7 @@
 
         var divResultado = document.getElementById("resultado");
         divResultado.innerHTML=`<p style="color:white;"> ${randNum} </p>`;
-        return randNum;
+        resultadoDado = randNum;
         //$(`<p style="color:white; font-weight: bold;"> ${randNum} </p>`).appendTo("#resultado");
     }
 

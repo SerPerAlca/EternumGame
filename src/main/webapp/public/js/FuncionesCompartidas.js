@@ -9,13 +9,14 @@ var itineradorAmbiente = 1;
     $("#btn-itinerar").unbind('click').click(function(){
         itineradorIndice++;
         controladorCapi();
+        mostrarTituloCapitulo();
     });
  });
 
 
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
 function fight(){
-
+    $("#rowDosCabecera").hide();
     document.cookie = "batalla=true";
     $("#btn-Salir").hide();
     reproducirMusicaBattalla();
@@ -216,6 +217,9 @@ function fight(){
                 case "ElForajido":
                     ControladorPagSiguienteEF();
                     break;
+                case "Itineracion":
+                    $("#btn-mostrarMapa").click();   
+                    break;
                 default:
                     console.log("pagina no encontrada");
                     break;
@@ -230,14 +234,20 @@ function fight(){
             let capitulo = readCookie("capitulo");
             let ubicacion = readCookie("ubicacion");
 
-            setTimeout(function(){
-                ocultarDado();
-            }, 4000);
+            if (!booleanItineracion){
+                setTimeout(function(){
+                    ocultarDado();
+                }, 4000);
+            } 
 
             switch (true) {
                 case capitulo == "LaIglesiaEnTodosLados":
                     ControladorTiradaDadoLIEL(resultado);
                     break;
+                case (booleanItineracion):
+                    // Llamamos a una funcion de Itineracion.js
+                    calcularRecorrido();
+                    break;    
                 default:
                     console.log("Resultado de la tirada: " + resultado);
             }
@@ -284,6 +294,9 @@ function fight(){
                 case 2:
                     inicioEF();
                     break;
+                case 3:
+                    inicioAV();
+                    break;     
                 default:
                     console.log("No se encuentra Capítulo");
                     break;
@@ -332,16 +345,7 @@ function fight(){
             $("#cuerpo").css({'height' : '100%', 'width' : '100%'});
         }
 
-        function insertarSangreEnemigo(){
-            $(`<img src="images/gotasDeSangre.png"
-                style="z-index: 3; position:absolute; width: 100%; height: 100%; box-shadow: none !important; border:0 !important;">`)
-            .appendTo("#imagenes").hide().fadeIn(2000);
-        }
-
-        function animacionX(){
-            $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
-            .appendTo("#imagenes").hide().fadeIn(2000);;
-        }
+        
 
         /** Función que controla la respuesta que se muestra, además de mostrar el botón siguiente **/
         function pausarAccion(id, itinerador, opcionObligada){
@@ -387,4 +391,105 @@ function fight(){
             function esconderSig(){
                 $("#siguiente").hide();
                 $("#btn_siguiente").hide();
+            }
+
+/************** A N I M A C I O N E S  ******************************************************************************************************************/
+            function insertarSangreEnemigo(){
+                $(`<img src="images/gotasDeSangre.png"
+                    style="z-index: 3; position:absolute; width: 100%; height: 100%; box-shadow: none !important; border:0 !important;">`)
+                .appendTo("#imagenes").hide().fadeIn(2000);
+            }
+    
+            function animacionX(){
+                $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
+                .appendTo("#imagenes").hide().fadeIn(2000);;
+            }
+    
+            function animacionCorazon(){
+ 
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },600)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },1200)
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },1800)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },2400)
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },2900)
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },3500)
+               
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },4100)
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },4700)
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },5200)
+            
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },5800)
+                
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },6400)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },7000)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },7600)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },8200)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },8700)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },9300)
+
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 0.5});
+                },9600)
+            
+                setTimeout(()=>{
+                    $('#imagenes img').css({opacity: 1});
+                },9900)
+            }
+
+
+            /*function cabeceraCapitulo(){
+                
+                $("#capiActual")
+            } */
+
+
+
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
             }

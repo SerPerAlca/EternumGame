@@ -21,36 +21,36 @@
     <script src="js/Despertar.js"></script>
     <script src="js/Llamadas.js"></script>
     <script src="js/TratamientoAudio.js"></script>
+    <script src="js/FuncionesCompartidas.js"></script>
+    <script src="js/Cabecera.js"></script>
+    <script src="js/Itineracion.js"></script>
 
 
-    <link rel="stylesheet type="text/css" href="${pageContext.request.contextPath}/css/prueba.css">
+    <link rel="stylesheet type="text/css" href="${pageContext.request.contextPath}/css/cabecera.css">
 
 </head>
 <body>
 
+       
                 <div class="container">
-                    <div id="navbarCollapse" class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle cabeceraMenu" href="#">Capítulos</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">0. Prólogo</a></li>
-                                    <li><a href="#">1. El Despertar</a></li>
-                                    <li><a href="#">2. La Iglesia En todos Lados</a></li>
-                                    <li><a href="#">3. El Forajido</a></li>
-                                    <li><a href="#">4. Averlan</a></li>
-                                    <li><a href="#">5. La Emperatriz Hermosa</a></li>
-                                    <li><a href="#">6. La Santa Boda</a></li>
-                                    <li><a href="#">7. La Grieta</a></li>
-                                    <li><a href="#">8. El Concilio</a></li>
-                                    <li><a href="#">9. La Partida</a></li>
-                                    <li><a href="#">10. Viaje a lo Desconocido I</a></li>
-                                    <li><a href="#">11. Viaje a lo Desconocido II</a></li>
-                                    <li><a href="#">12. Viaje a lo Desconocido III</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    <div id="rowUnoCabecera" class="row mt-12">
+                        <div id="botonesCabecera" class="col-md-6">
+                            <button type="button" class="btn btn-secondary" value="mostrarMapaNacional" id="btn-mostrarMapa">Mostrar Mapa</button>
+                        </div>
+                        <div id="capiActual" class="col-md-4"></div>
+                    </div> 
+                    <div id="rowDosCabecera" class="row"> 
+                        <div id="descripcionItineracion" class="col">
+                            <h1>Resultado Necesario:</h1>
+                            <p></p>
+                        </div> 
+                        <div id="progreso" class="col">
+                            <div id="barraProgreso"></div>
+                        </div>                                         
+                        <div id="divMapa" class="col">
+                            <img id="divImagen" usemap="#mapaImperio" onclick="coordenadas(event)" src="images/Mapas/Imperio.jpg" />
+                        </div>                   
+                    </div>                  
                 </div>
 
 	 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

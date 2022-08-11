@@ -3,7 +3,6 @@ $(document).ready(function() {
     ocultacionBotones();
 
 
-
   });
 
 
@@ -17,15 +16,17 @@ $(document).ready(function() {
 
         function inicioLIEL(){
                 // Cookies
-                 document.cookie = "ubicacion=campamentoBandidosBron";
-                 document.cookie = "capitulo=LaIglesiaEnTodosLados";
-                 document.cookie = "ramificacion=X";
-                 document.cookie = "batalla=false";
-
+                document.cookie = "ubicacion=campamentoBandidosBron";
+                document.cookie = "capitulo=LaIglesiaEnTodosLados";
+                document.cookie = "ramificacion=X";
+                document.cookie = "batalla=false";
+                obtenerTituloCapitulo();
                 borradoCuerpoTexto();
 
                 $("#btn-Salir").remove();
+                
                 itinerador = 0;
+                itineradorAmbiente = 1;
 
                 if(!booleanCapitulo2){
                     $("#imagenes img").remove();
@@ -247,7 +248,9 @@ $(document).ready(function() {
 
     // Función que se ejecuta cuando se decide decapitar a Grerius Bron
         function decapitar(){
-        
+            
+            document.cookie = "grerius=decapitado";
+
             borradoCuerpoTexto();
             $("#imagenes img").remove()
 
@@ -291,6 +294,7 @@ $(document).ready(function() {
         // Función que se ejecuta cuando se decide guardar la carta
         function decideGuardar(){
             
+            document.cookie = "carta=guardada";
             borradoCuerpoTexto();
  
          /*   $("#imagenes img").attr({
