@@ -17,6 +17,7 @@ $(document).ready(function() {
     var etiquetaAudio = document.createElement("audio");
     var etiquetaAudio2 = document.createElement("audio");
     var etiquetaAudio3 = document.createElement("audio");
+    var etiquetaAudio4 = document.createElement("audio");
     var etiquetaAudioAmbiente = document.createElement("audio");
     var musicaBatalla = document.createElement("audio");
     //etiquetaAudioAmbiente.autoplay = true;
@@ -73,6 +74,71 @@ $(document).ready(function() {
         etiquetaAudio.play();
     }
     
+    function reproducirTextoEspLIEL(itinerador){
+        var cookieDirectorio = readCookie("capitulo");
+        var rama = readCookie("ramificacion");
+
+        let rutaAudio = "audio/" + cookieDirectorio + "/";
+        let nombreAudio= cookieDirectorio +"Audio" + "Esp";
+        // EL primer capitulo lleva un tratamiento distinto de los audios
+        
+        nombreAudio += itinerador;
+        nombreAudio += ".mp3";
+        rutaAudio += nombreAudio;
+
+        try{
+            etiquetaAudio.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio.setAttribute("src", rutaAudio);
+        etiquetaAudio.play();
+    }
+
+    // Reproducción de error al tirar un dado
+    function reproducirOpcDadoError(itinerador){
+        var cookieDirectorio = readCookie("capitulo");
+        var rama = readCookie("ramificacion");
+        let rutaAudio = "audio/" + cookieDirectorio + "/";
+        let nombreAudio= cookieDirectorio +"OpcErrorAudio";
+        // En estos dos capitulos no se cuenta la rama
+        if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
+            nombreAudio += rama;
+        }
+        nombreAudio += itinerador;
+        nombreAudio += ".mp3";
+        rutaAudio += nombreAudio;
+        try{
+            etiquetaAudio.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio.setAttribute("src", rutaAudio);
+        etiquetaAudio.play();
+    }
+    
+    // Reproducción de acierto al tirar un dado
+    function reproducirOpcDadoAcierto(itinerador){
+        var cookieDirectorio = readCookie("capitulo");
+        var rama = readCookie("ramificacion");
+        let rutaAudio = "audio/" + cookieDirectorio + "/";
+        let nombreAudio= cookieDirectorio +"OpcAciertoAudio";
+        // En estos dos capitulos no se cuenta la rama
+        if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
+            nombreAudio += rama;
+        }
+        nombreAudio += itinerador;
+        nombreAudio += ".mp3";
+        rutaAudio += nombreAudio;
+        try{
+            etiquetaAudio.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio.setAttribute("src", rutaAudio);
+        etiquetaAudio.play();
+    }
+
 
     function reproducirCuerno(){
 
@@ -142,4 +208,105 @@ $(document).ready(function() {
         etiquetaAudio2.setAttribute("src", rutaAudio);
         etiquetaAudio2.play();
 
+    }
+
+    function reproducirFlecha(){
+        let rutaAudio= "audio/flechaImpactando.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();
+    }
+
+
+    function reproducirDecapitacion(){
+        let rutaAudio= "audio/decapitacion.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();
+    }
+
+    function reproducirDecapitacionDos(){
+        let rutaAudio= "audio/decapitacionDos.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();
+    }
+
+
+    function reproducirFuegoDebil(){
+        let rutaAudio= "audio/fuegoDebil.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();  
+    }
+
+    function reproducirFuegoFuerte(){
+        let rutaAudio= "audio/fuegoFuerte.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();  
+    }
+
+    function reproducirGentioYNinios(){
+        let rutaAudio= "audio/gentioNiñosJugando.mp3";
+        try{
+            etiquetaAudio2.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio2.setAttribute("src", rutaAudio);
+        etiquetaAudio2.play();  
+    }
+
+    function reproducirYunque(){
+        let rutaAudio= "audio/yunque.mp3";
+        try{
+            etiquetaAudio3.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio3.setAttribute("src", rutaAudio);
+        etiquetaAudio3.play();  
+    }
+
+    function reproducirMujeresCantando(){
+        let rutaAudio= "audio/mujeresCantando.mp3";
+        try{
+            etiquetaAudio4.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio4.setAttribute("src", rutaAudio);
+        etiquetaAudio4.play();  
+    }
+
+    function reproducirLaud(){
+        let rutaAudio= "audio/laud.mp3";
+        try{
+            etiquetaAudio3.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio3.setAttribute("src", rutaAudio);
+        etiquetaAudio3.play();  
     }

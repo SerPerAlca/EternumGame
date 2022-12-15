@@ -1,7 +1,7 @@
 [
   {
     "obligatoria" : "NO",
-    "id" : "3",
+    "id" : "2",
     "especial" : "NO",
     "rama" : "X",
     "pregunta": "1. - ¿Qué problema hay? ¿Por qué tanta gente a las puertas de la ciudad? ¿Y por qué no les dejáis entrar?"
@@ -15,7 +15,7 @@
   },
   {
     "obligatoria" : "SI",
-    "id" : "2",
+    "id" : "3",
     "especial" : "NO",
     "rama" : "B",
     "pregunta": "3. - Saludos Soldado. Trabajamos para la Inquisición asÍ que ordena a tus hombres que se aparten... Tenemos asuntos que atender con el Sumo Inquisidor."

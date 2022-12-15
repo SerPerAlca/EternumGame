@@ -16,17 +16,25 @@ $(document).ready(function() {
         mostrarPosicionPuntero(event);
     });
 
+    $("#areaImperium").on("mouseover", function(event){
+        mostrarTooltip(event);
+    });
 });   
 
+// Funcion que obtiene las coordenadas del click sobre el mapa
 function coordenadas(event){
     var posicionX = event.pageX;
     var posicionY = event.pageY;
     puntero = [posicionX, posicionY];
+    // si no nos encontramos ya en medio de una itineración
     if (!booleanItinerando){
+        // Si aún no hemos hecho click en el punto de inicio
         if (!booleanDistancia) {
             console.log("INICIO : " + inicio);
             inicio = [posicionX,posicionY];
             booleanDistancia = true;
+
+        // cuando ya hemos hecho click en el punto de inicio    
         } else {
             console.log("INICIO : "+ inicio + " DESTINO : " + destino);
             destino = [posicionX, posicionY];
@@ -40,7 +48,7 @@ function coordenadas(event){
    
 
 
-// Función para mostrar las coordenadas del puntero
+// Función para mostrar las coordenadas del puntero (Cuando lo necesito)
 function mostrarPosicionPuntero(event) {
     var posicionX = event.pageX;
     var posicionY = event.pageY;
@@ -56,6 +64,7 @@ function mostrarPosicionPuntero(event) {
     console.log("offset X: " + offsetX + " offset Y: " + offsetY);
 }
 
+// Función que genera toda la acción en lo referente a la itineración
 function generarMovimiento(){
 
     resultadoNecesario = calcularDistancia();
@@ -88,6 +97,7 @@ function calcularDistancia() {
 }
 
 
+// Funcion que controla si ya hemos llegado al destino o seguimos en camino
 function calcularRecorrido(){
     console.log(recorrido);
      
@@ -109,6 +119,7 @@ function calcularRecorrido(){
     }
 }
 
+// Funcion que lanza aleatoriamente un evento al final de cada día
 function calcularEventoMapa(){
 
     let randomNum = getRandomInt(1, 4);
@@ -130,6 +141,9 @@ function calcularEventoMapa(){
 }
 
 // Función que muestra la espada en el mapa como situacion actual.
+/**
+ * TODO: Se mueve el mapa cuando se muestra el resultado necesario lo que provoca que el puntero se descoloque.
+ */
 function situarPuntero(longitud, latitud){
     $("#punteroEspada").remove();
     let long = longitud -20;
@@ -183,6 +197,7 @@ function resetearValoresItineracion(){
     resultadoNecesario = 0;
 }
 
+// Función que se invoca al llegar al destino en la itineración
 function llegarDestino(){
     booleanItinerando = false;
     alert("¡¡ HAS LLEGADO A TU DESTINO !!");
@@ -191,4 +206,19 @@ function llegarDestino(){
     $("#punteroEspada").show();
     booleanPrimeraIti = false;
     $("#descripcionItineracion p").text("");
+}
+
+function mostrarTooltip(event){
+   
+    var posMouse = event.pageX; 
+    var textoTooltip = "Imperium. Capital del Imperio. Centro del poder y la administración de todo el Imperio."
+
+    if (textoTooltip.length > 0) {
+        $("#divMapa").append(`<div class="tooltip">  ${textoTooltip}  </div>`);
+        $("#divMapa .tooltip").fadeIn(300);
+    }
+}    
+
+function ocultarTooltip(){
+
 }

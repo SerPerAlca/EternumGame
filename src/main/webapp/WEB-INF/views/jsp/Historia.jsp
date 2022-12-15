@@ -35,7 +35,7 @@
     <div class="container-fluid">
         <div class="row cabecera">
             <jsp:include page="Cabecera.jsp" />
-        </div>
+        </div> 
         <div id="padreCuerpo" class="row mt-6">
             <div id="cuerpo" class="row">
                 <div id="imagenes" class="col-md-6"></div>

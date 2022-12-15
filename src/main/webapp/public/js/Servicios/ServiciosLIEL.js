@@ -24,6 +24,8 @@
         /* Llamada Auxiliar 2 capitulo II */
         function llamadaEspecialLIELDos(){
 
+            reproducirTextoEspLIEL(itinerador);
+
             var cookieDirectorio = readCookie("capitulo");
             let directorio = cookieDirectorio + "_esp";
             directorio += itinerador;

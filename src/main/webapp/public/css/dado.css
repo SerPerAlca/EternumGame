@@ -117,11 +117,12 @@ body {
 label { margin-right: 10px; }
 
 #resultado{
-    //margin-top: 100px;
+    margin-top: 100px;
     clear: both;
     color: white;
     justify-content: center;
     text-align: center;
     font-family: marcador !important;
     font-size: 4rem;
+    
 }

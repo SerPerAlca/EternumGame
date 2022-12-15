@@ -35,7 +35,7 @@
                 <div class="container">
                     <div id="rowUnoCabecera" class="row mt-12">
                         <div id="botonesCabecera" class="col-md-6">
-                            <button type="button" class="btn btn-secondary" value="mostrarMapaNacional" id="btn-mostrarMapa">Mostrar Mapa</button>
+                            <!--<button type="button" class="btn btn-secondary" value="mostrarMapaNacional" id="btn-mostrarMapa">Mostrar Mapa</button> -->
                         </div>
                         <div id="capiActual" class="col-md-4"></div>
                     </div> 
@@ -49,6 +49,9 @@
                         </div>                                         
                         <div id="divMapa" class="col">
                             <img id="divImagen" usemap="#mapaImperio" onclick="coordenadas(event)" src="images/Mapas/Imperio.jpg" />
+                            <map name="mapaImperio">
+                                <area id="areaImperium" shape="rect" coords="447,350,570,430" alt="Write" href="#" /> 
+                            </map>
                         </div>                   
                     </div>                  
                 </div>

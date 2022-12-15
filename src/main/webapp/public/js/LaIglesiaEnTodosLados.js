@@ -56,10 +56,16 @@ $(document).ready(function() {
         $(`<img src="images/LIELImg/CampamentoDeBron.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
 
+        // A medida que vislumbráis el campamento ...
         new Promise(function(resolve) {
+            itinerador=0;
             resolve(llamadaTexto(itinerador));
         })
-        itinerador++;
+        
+        //Efecto de SOnido flecha impactando
+        setTimeout(()=>{
+            reproducirFlecha();
+        }, 10500)
 
         setTimeout(function(){
             borradoCuerpoTexto();
@@ -67,12 +73,14 @@ $(document).ready(function() {
                 src : "images/LIELImg/BandidoCampBron.jpg",
                 width : "450px"
             });
+            itinerador=1;
+            // Quienes sois y que queréis
             llamadaTexto(itinerador);
-        }, 4000);
+        }, 14500);
 
         setTimeout(function(){
             llamadaOpcionesDadoOCombate(itinerador);
-        }, 6000);
+        }, 17000);
     }
 
     //sEGUNDO COMBATE RAMA B DEL CAPITULO
@@ -94,7 +102,7 @@ $(document).ready(function() {
     }
 
 
-    //Encontráis a un hombre, con aspecto de montaraz
+    // Encontráis a un hombre, con aspecto de montaraz...
     function terceraSecuenciaLIEL(){
 
         if (!booleanErrorChromeII){
@@ -108,6 +116,7 @@ $(document).ready(function() {
 
             document.cookie = "ramificacion=X";
 
+            itinerador = 4;
             new Promise(function(resolve) {
                 borradoCuerpoTexto();
                 resolve(llamadaTexto(itinerador));
@@ -119,7 +128,7 @@ $(document).ready(function() {
 
                 setTimeout( function(){
                     llamadaOpcionesDadoOCombate(itinerador);
-                }, 4000);
+                }, 6500);
             });
         }
     }
@@ -134,6 +143,7 @@ $(document).ready(function() {
         .appendTo("#imagenes");
         retornarDeFight();
 
+        itinerador = 5;
         new Promise(function(resolve) {
             borradoCuerpoTexto();
             resolve(llamadaTexto(itinerador));
@@ -141,7 +151,7 @@ $(document).ready(function() {
         .then(function(result) {
             setTimeout(function(){
                 llamadaEspecialLIEL(itinerador);
-            }, 2000);
+            }, 7500);
         });
     };
 
@@ -155,7 +165,7 @@ $(document).ready(function() {
         .then(function(result){
             setTimeout(function(){
                 quintaSecuenciaLIEL();
-            }, 3000);
+            }, 8000);
         });
     }
 
@@ -255,6 +265,7 @@ $(document).ready(function() {
             $("#imagenes img").remove()
 
             insertarSangreEnemigo();
+            reproducirDecapitacionDos();
 
             $(`<img src="images/LIELImg/CabezaGrerius.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
@@ -277,6 +288,7 @@ $(document).ready(function() {
 
             borradoCuerpoTexto();
 
+            reproducirFuegoDebil();
             $("#imagenes img").attr({
                 src : "images/LIELImg/cartaArdiendo.jpg"
             });
@@ -323,6 +335,7 @@ $(document).ready(function() {
             $(`<img src="images/LIELImg/Grerius Bron.jpg"
                 style="border-radius:12px; width: 450px; height: 40rem;">`)
             .appendTo("#imagenes");
+            reproducirDecapitacion();
             setTimeout(function(){
                 borradoCuerpoTexto();
                 quintaSecuenciaLIEL();
@@ -450,7 +463,7 @@ $(document).ready(function() {
                     console.log("Itinerador ahora ----> " + itinerador);
                     ocultarDado();
                     fight(itinerador);
-                }, 4500);
+                }, 13500);
                 break;
             case ramificacion = "B" && itinerador == 3:
 
@@ -575,12 +588,14 @@ $(document).ready(function() {
 		$("#imagenes img").hide();
         $('#padreCuerpo')
             .css({"background-image":"url('images/LIELImg/fuego.gif')", "height": "100vh", "background-size": "cover", "text-align" : "center"});
-
+        reproducirFuegoFuerte();
         setTimeout(function(){
 
                 $(`<div style="margin-top: 8rem"> <span style="color: aqua;" > Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día… </span> </div> `)
                 .appendTo('#padreCuerpo').hide().fadeIn(2000);
                 $("#btn-itinerar").show();
+                itinerador=9;
+                reproducirTexto(itinerador);
             
         }, 3000);    
         

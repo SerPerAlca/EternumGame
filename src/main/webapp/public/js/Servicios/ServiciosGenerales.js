@@ -10,6 +10,7 @@
 
             let directorio = cookieDirectorio + "_texto";
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
+                // apartir del capitulo 3 se introduce un parámetro de ramificación.
                 directorio += ramificacion;
             }
             directorio += itinerador;
@@ -45,10 +46,12 @@
                     var requerido = Number.parseInt(index.requisito);
 
                     if(resultado > requerido && index.tipo == "acierto"){
+                        reproducirOpcDadoAcierto(itinerador);
                         pintarTexto(index.texto);
                        enseniarSig();
                     }
                     if(resultado <= requerido && index.tipo == "error"){
+                        reproducirOpcDadoError(itinerador);
                         pintarTexto(index.texto);
                         administrarPifiaGeneral(itinerador);
                     }
@@ -66,6 +69,8 @@
         function llamadaRespuestas(id, itinerador){
             var idRecibido = id;
             var It = itinerador;
+
+            reproducirRespuesta(id, itinerador);
 
             $("#textoRespuestas").text("");
 
@@ -91,7 +96,9 @@
                     }
                 }
             });
-            ValidarOpcionDialogoClave(id, itinerador);
+            if (cookieDirectorio =="Despertar"  ) {
+                ValidarOpcionDialogoClave(id, itinerador);
+            }         
         }
 
         /** FUNCION que carga la info de todas las tiendas
@@ -149,6 +156,8 @@
 
 // V.2 --> LLAMA A LOS JSON QUE CONTIENEN LAS OPCIONES DE DIÁLOGO A PARTIR DEL CAPITULO 2.
         function llamadaOpcionesPausaV2(itinerador){
+
+            //reproducirTexto(itinerador);
 
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");

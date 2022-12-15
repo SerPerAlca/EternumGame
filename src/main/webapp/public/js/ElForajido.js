@@ -57,7 +57,7 @@ var booleanCapitulo3 = false;
             });
             itinerador=1;
             llamadaTexto(itinerador);
-        }, 5000);
+        }, 21500);
 
         //itinerador++;
         console.log("Itinerador ----> " + itinerador);
@@ -71,12 +71,12 @@ var booleanCapitulo3 = false;
             itinerador= 2;
             llamadaTexto(itinerador);
 
-        }, 10000);
+        }, 36500);
 
         setTimeout(function(){
             itinerador = 2;
             llamadaOpcionesPausaV2(itinerador);
-        }, 11000);
+        }, 40000);
 
     }
 
@@ -111,7 +111,7 @@ var booleanCapitulo3 = false;
             })
 
            enseniarSig();
-        }, 4500);
+        }, 21000);
     }
 
  //Os adentráis a la espesura del bosque siguiendo al encapuchado.
@@ -123,7 +123,7 @@ var booleanCapitulo3 = false;
             src : "images/ElForajidoImg/espesura.jpg",
             width : "450px"
         });
-
+        
         itinerador= 5;
         new Promise(function(resolve) {
             resolve(llamadaTexto(itinerador));
@@ -131,13 +131,15 @@ var booleanCapitulo3 = false;
         .then(function(result) {
           
             setTimeout(function(){      
-                borradoCuerpoTexto();   
+                borradoCuerpoTexto();
+                // SFX de gente hablando y niños jugando
+                reproducirGentioYNinios();
                 itinerador = 6;
                 //Poco a poco, el viento empieza a traer voces y ruidos
                 new Promise(function(resolve) {
                     resolve(llamadaTexto(itinerador));
                 })
-            }, 4000)
+            }, 18000)
 
             setTimeout(function(){
                 borradoCuerpoTexto();
@@ -145,16 +147,22 @@ var booleanCapitulo3 = false;
                     src : "images/ElForajidoImg/puebloDeHood.jpg",
                     width : "450px"
                 });  
+                //SFX de sonido de Yunque 
+                reproducirYunque();
+                // SFX de mujeres cantando
+                reproducirMujeresCantando();
                 itinerador = 7; 
                 //En este véis personas de todo tipo:
                 new Promise(function(resolve) {
                     resolve(llamadaTexto(itinerador));
                 })
-            }, 7000);
+            }, 29000);
 
             setTimeout(function(){
                 borradoCuerpoTexto();
                 itinerador= 8;
+                //SFX de sonido de laúd
+                reproducirLaud()
                 // En el medio del campamento, encontráis una fila
                 new Promise(function(resolve) {
                     resolve(llamadaTexto(itinerador));
@@ -162,7 +170,7 @@ var booleanCapitulo3 = false;
                     enseniarSig();
                 })
                 
-            }, 10500 );
+            }, 47500);
         });
             
     }
@@ -248,7 +256,7 @@ var booleanCapitulo3 = false;
                 // Se llama directamente a la septima secuencia y se unen las ramaS
                 septimaSecuenciaEF();
             });
-        }, 5000);
+        }, 13000);
     }
 
     // ¿Creéis que Sigmar os va a proteger?
