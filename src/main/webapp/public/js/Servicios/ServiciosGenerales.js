@@ -8,15 +8,20 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_texto";
+            let directorioJSON = cookieDirectorio + "_texto";
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
                 // apartir del capitulo 3 se introduce un parámetro de ramificación.
-                directorio += ramificacion;
+                directorioJSON += ramificacion;
             }
-            directorio += itinerador;
-            directorio += ".json";
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            //Machaco el valor de directorio con la ruta definitiva del JSON
+            directorioJSON = 'json/' + cookieDirectorio + '/'+ directorioJSON;
 
-            fetch('json/' + cookieDirectorio + '/'+ directorio)
+            //Mostramos la info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
             .then(res => res.json())
             .then(data =>{
                 for(let index of Object.values(data)){
@@ -31,14 +36,18 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_opcDado";
+            let directorioJSON = cookieDirectorio + "_opcDado";
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
-                directorio += ramificacion;
+                directorioJSON += ramificacion;
             }
-            directorio += itinerador;
-            directorio += ".json";
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            directorioJSON = 'json/' + cookieDirectorio + '/'+ directorioJSON;
 
-            fetch('json/' + cookieDirectorio + '/'+ directorio)
+            //Mostrar Info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
             .then(res => res.json())
             .then(data =>{
                 for(let index of Object.values(data)){
@@ -77,15 +86,19 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_respuestas";
+            let directorioJSON = cookieDirectorio + "_respuestas";
 
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
-                directorio += ramificacion;
+                directorioJSON += ramificacion;
             }
-            directorio += itinerador;
-            directorio += ".json";
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            directorioJSON = 'json/' + cookieDirectorio + '/' + directorioJSON
 
-            fetch('json/' + cookieDirectorio + '/' + directorio)
+            //Mostrar Info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
             .then(res => res.json())
             .then(data =>{
                 for(let texto of Object.values(data)){
@@ -130,15 +143,19 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_opciones";
+            let directorioJSON = cookieDirectorio + "_opciones";
             
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
-                directorio += ramificacion;
+                directorioJSON += ramificacion;
             }
-            directorio += itinerador;
-            directorio += ".json";
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            directorioJSON = 'json/'+ cookieDirectorio + '/'+ directorioJSON;
 
-            fetch('json/'+ cookieDirectorio + '/'+ directorio)
+            //Mostrar Info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
                 .then(res => res.json())
                 .then(data =>{
                     for(let texto of Object.values(data)){
@@ -162,12 +179,16 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_opciones";
-            directorio += ramificacion;
-            directorio += itinerador;
-            directorio += ".json";
+            let directorioJSON = cookieDirectorio + "_opciones";
+            directorioJSON += ramificacion;
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            directorioJSON = 'json/'+ cookieDirectorio + '/'+ directorioJSON;
 
-            fetch('json/'+ cookieDirectorio + '/'+ directorio)
+            //Mostrar Info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
                 .then(res => res.json())
                 .then(data =>{
                     for(let texto of Object.values(data)){
@@ -193,15 +214,19 @@
             var cookieDirectorio = readCookie("capitulo");
             var ramificacion = readCookie("ramificacion");
 
-            let directorio = cookieDirectorio + "_opciones";
+            let directorioJSON = cookieDirectorio + "_opciones";
             
             if (cookieDirectorio != "LaIglesiaEnTodosLados" && cookieDirectorio != "Despertar"){
-                directorio += ramificacion;
+                directorioJSON += ramificacion;
             }
-            directorio += itinerador;
-            directorio += ".json";
+            directorioJSON += itinerador;
+            directorioJSON += ".json";
+            directorioJSON = 'json/'+ cookieDirectorio + '/'+ directorioJSON;
 
-            fetch('json/'+ cookieDirectorio + '/'+ directorio)
+            //Mostrar Info Debug
+            mostrarInfoJSON(directorioJSON);
+
+            fetch(directorioJSON)
                 .then(res => res.json())
                 .then(data =>{
                     for(let texto of Object.values(data)){
@@ -213,6 +238,20 @@
                             pintarOpcionesConPruebaSuerte(especial, texto.id, texto.pregunta);
                         }
                         console.log(texto.pregunta);
+                    }
+                });
+        }
+
+        function llamadaDescripcionPNJ(pnjActual){
+
+           var directorioJSON = 'json/PNJ/' + pnjActual + 'Descripcion.json';
+
+            limpiarDescripcionPnj();
+            fetch(directorioJSON)
+                .then(res => res.json())
+                .then(data =>{
+                    for(let item of Object.values(data)){
+                       pintarDescripcionPnj(item)
                     }
                 });
         }

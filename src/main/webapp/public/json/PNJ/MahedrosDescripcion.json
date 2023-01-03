@@ -1,0 +1,20 @@
+[
+  {
+    "nombrePnj" : "Mahedros",
+    "sobreNombre" : "El Pirata del Mar del Terror",
+    "raza" : "Elfo Oscuro",
+    "descripcion" : "Mahedros nació en Nargoth en el año 1250 de nuestra era."
+  },
+  {
+    "descripcion" : "Se hizo a la mar en el arca de la Larga Noche cuando solo contaba con un lustro de vida. Aprendió el arte de la espada y ballesta enfrentándose a todo tipo de criaturas marinas y guerreros del mar."
+  },
+  {
+    "descripcion" : "Cuando contaba con la suficiente experiencia en la mar y una increíble destreza luchando, retó a su capitán Cabeza de Hydra a un duelo a muerte por el liderazgo de la Larga Noche."
+  },
+  {
+    "descripcion" : "Pero Cabeza de Hydra deseoso de vencer a toda costa, hizo un pacto con el CAOS, y gracias a los poderes que obtuvo venció a Mahedros."
+  },
+  {
+    "descripcion" : "Después lo lanzó por la borda a merced del océano, pero Mahedros, inexplicablemente, sobrevivió. Desde entonces, busca a Cabeza de Hydra para vengarse y reclamar el timón de la Larga Noche."
+  }
+]

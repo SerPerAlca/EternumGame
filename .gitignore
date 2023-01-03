@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
-./src/main/webapp/public/images
+./src/main/webapp/public/images/*
 *.jfif
 
 ./src/main/webapp/public/audio/*

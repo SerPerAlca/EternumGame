@@ -33,7 +33,8 @@ var booleanCapitulo3 = false;
 
     // Según os acercáis a las afueras de Averlan....
     function primeraSecuenciaEF(){
-        
+
+        mostrarInfoSecuencia("primeraSecuenciaEF");
         $("#CabeceraAudio").hide();
         $("#btn-itinerar").hide();
         $("#imagenes img").remove();
@@ -83,6 +84,7 @@ var booleanCapitulo3 = false;
     // Os dais media vuelta y os alejáis de la mirada 
     function segundaSecuenciaEF(){
 
+        mostrarInfoSecuencia("segundaSecuenciaEF");
         esconderSig();
         borradoCuerpoTexto();
         document.cookie = "ramificacion=X";
@@ -119,6 +121,7 @@ var booleanCapitulo3 = false;
 
         
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("terceraSecuenciaEF");
         $("#imagenes img").attr({
             src : "images/ElForajidoImg/espesura.jpg",
             width : "450px"
@@ -178,7 +181,8 @@ var booleanCapitulo3 = false;
     // El encapuchado se acerca a él y le dice unas cosas al oído
     function cuartaSecuenciaEF(){
 
-        borradoCuerpoTexto();       
+        borradoCuerpoTexto();
+        mostrarInfoSecuencia("cuartaSecuenciaEF");
         $("#imagenes img").attr({
             src : "images/ElForajidoImg/HoodYRulo.jpg",
             width : "450px"
@@ -197,7 +201,10 @@ var booleanCapitulo3 = false;
     }
 
     function quintaSecuenciaEF(){
+
+        document.cookie = "ramificacion=B";
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("quintaSecuenciaEF");
         $("#imagenes img").attr({
             src : "images/ElForajidoImg/Hood.jpg",
             width : "450px"
@@ -205,14 +212,20 @@ var booleanCapitulo3 = false;
 
         itinerador= 10;
         new Promise(function(resolve) {
-            llamadaOpcionesPausaV2(itinerador);
+            // Le pasamos directamente el ID "2".
+            llamadaRespuestas("2",itinerador);
         })
+        setTimeout(() => {
+            enseniarSig();
+        }, 9500);
+
     }
 
     // HOOD: Parece que lucháis bien.
     function sextaSecuenciaEF_A(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("sextaSecuenciaEF_A");
         retornarDeFight();
         esconderSig();
       
@@ -228,7 +241,7 @@ var booleanCapitulo3 = false;
 
             setTimeout(() => {
                 fight();
-            }, 3500);
+            }, 7500);
         })
     }
 
@@ -236,45 +249,51 @@ var booleanCapitulo3 = false;
     function sextaSecuenciaEF_B(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("sextaSecuenciaEF_B");
+
+        // PONEMOS NEGRA LA PANTALLA CON UN MENSAJE EN BLANCO
+
         $("#cuerpo").hide();
         esconderSig();
         $("#itineracion").hide();
+        $(`<div id="aniadido" style="margin: auto; color: white; text-align: center; justify-content: center;"><p>Le contáis todo.</p> 
+                <p>La caravana de esclavos, Grerius Bron, la carta incriminatoria...</p>  </div>`)
+            .appendTo("#padreCuerpo").hide().fadeIn(3000);
 
-        $(`<div id="aniadido" style="margin: auto; color: white; text-align: center; justify-content: center;"> Le contáis todo. La caravana de esclavos, Grerius Bron, la carta incriminatoria... </div>`)
-        .appendTo("#padreCuerpo").hide().fadeIn(3000);
 
         setTimeout(function(){
             $("#aniadido").remove();
             $("#cuerpo").show();
-
             itinerador = 11;
             // Maldito bastardo. Utiliza a criminales
             new Promise(function(resolve) {
                 resolve(llamadaTexto(itinerador));
             })
-            .then(function(result){
-                // Se llama directamente a la septima secuencia y se unen las ramaS
-                septimaSecuenciaEF();
-            });
-        }, 13000);
+        }, 6000);
+
+        setTimeout(function (){
+            septimaSecuenciaEF();
+        }, 21000);
+
     }
 
     // ¿Creéis que Sigmar os va a proteger?
     function SecuenciaAespUno(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("SecuenciaAespUno");
         retornarDeFight();
         $(`<img src="images/ElForajidoImg/Hood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
 
         itinerador = 13;
-        // ¿Creéis que Sigmar os va a proteger?
+        //  Está bien, está visto que me voy a tener que ocupar yo mismo
         new Promise(function(resolve) {
             resolve(llamadaTexto(itinerador));
         }).then(function(result){
             setTimeout(() => {
                 fight();
-            }, 5000);
+            }, 8500);
         });
         
     }
@@ -283,6 +302,7 @@ var booleanCapitulo3 = false;
     function SecuenciaAespDos(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("SecuenciaAespDos");
         retornarDeFight();
 
         insertarSangreEnemigo();
@@ -297,14 +317,15 @@ var booleanCapitulo3 = false;
             setTimeout(() => {           
                 // No haremos daño a nadie más
                 llamadaOpcionesPausaV2(itinerador);
-            }, 2000);
+            }, 5000);
         })      
     }
 
     //En ese momento se escuchan cuernos desde varias direcciones
     function septimaSecuenciaEF(){
 
-        borradoCuerpoTexto(); 
+        borradoCuerpoTexto();
+        mostrarInfoSecuencia("septimaSecuenciaEF");
         document.cookie = "ramificacion=X";
 
         itinerador = 15;
@@ -318,8 +339,7 @@ var booleanCapitulo3 = false;
             borradoCuerpoTexto();
             setTimeout(()=>{
                 bruum();
-                
-            }, 2500)    
+            }, 3500)
 
             setTimeout(() =>{
                 borradoCuerpoTexto();
@@ -328,7 +348,7 @@ var booleanCapitulo3 = false;
                 .appendTo("#imagenes");
                 $("#imagenBrum").remove();
                 reproducirLluviaDeFLechas();
-                itineradorAmbiente = 2;
+                itineradorAmbiente = 5;
                 reproducirAmbiente();
 
                 itinerador = 16;
@@ -341,18 +361,18 @@ var booleanCapitulo3 = false;
                 $("#imagenes img").remove();
                 $(`<img src="images/ElForajidoImg/Hood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
                 .appendTo("#imagenes");
-
+                reproducirAmbienteBatallaI();
                 itinerador = 17;
                 // HOOD: Rápido Rolo. -Grita Hood desesperado. Coge a las mujeres y los niños 
                 llamadaTexto(itinerador);
-            }, 9500);
+            }, 18500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
                 itinerador = 18;
                 // HOOD: Se, que después de todo no somos enemigos
                 llamadaTexto(itinerador);
-            }, 12000);
+            }, 29500);
 
             setTimeout(()=>{
                 
@@ -363,13 +383,15 @@ var booleanCapitulo3 = false;
                 $(`<div id="no" style="color: red; font-weight: bold;" onmouseover="this.style.color='purple';" onmouseout="this.style.color='red';" onclick="secuenciaNoAyuda()"> NO </div>`)
                 .appendTo("#textoRespuestas").hide().fadeIn(1000);
 
-            }, 14000);
+            }, 37500);
         });
     }
     
     // HOOD: - ¡Bien! ¡Debemos aguantar guerreros! 
     function octavaSecuenciaEF(){
+
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("octavaSecuenciaEF");
         new Promise(function(resolve) {
             itinerador = 19;
             // HOOD: - ¡Bien! ¡Debemos aguantar guerreros! 
@@ -378,7 +400,7 @@ var booleanCapitulo3 = false;
 
             setTimeout(()=>{
                 fight();
-            }, 3500);
+            }, 10500);
         })
     }
 
@@ -387,6 +409,7 @@ var booleanCapitulo3 = false;
     function secuenciaNoAyuda(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("secuenciaNoAyuda");
         $("#no").remove();
         $("#imagenes img").remove();
         $(`<img src="images/ElForajidoImg/Hood_llorando.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
@@ -403,7 +426,7 @@ var booleanCapitulo3 = false;
             setTimeout(()=>{
                 $(`<p> <span style="color: blue"> Obtenéis SalvoConducto de Averlan </span></p>`)
                 .appendTo("#textoOpciones").hide().fadeIn(1000);
-            }, 2000)
+            }, 9000)
            
 
             setTimeout(()=>{
@@ -416,7 +439,7 @@ var booleanCapitulo3 = false;
                 llamadaTexto(itinerador);
                 $("#itineracion").show();
                 $("#btn-itinerar").show();
-            }, 5500);
+            }, 15000);
         })
     }
     
@@ -424,7 +447,9 @@ var booleanCapitulo3 = false;
     function novenaSecuenciaEF(){
         
         retornarDeFight();
+        reproducirAmbienteBatallaI();
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("novenaSecuenciaEF");
         $("#imagenes img").remove();
         $(`<img src="images/ElForajidoImg/batallaCampamentoHood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
@@ -437,7 +462,7 @@ var booleanCapitulo3 = false;
 
             setTimeout(()=>{
                 fight();
-            }, 3500);
+            }, 16000);
         });    
     }
 
@@ -446,6 +471,7 @@ var booleanCapitulo3 = false;
         
         retornarDeFight();
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("decimaSecuenciaEF");
         $("#imagenes img").remove();
         $(`<img src="images/ElForajidoImg/batallaCampamentoHood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
@@ -466,7 +492,7 @@ var booleanCapitulo3 = false;
                 itinerador = 22;
                 // HOOD: ¿¡Que haces aquí?! ¡Te ordené que pusieras
                 llamadaTexto(itinerador);
-            }, 4500);
+            }, 12500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -477,7 +503,7 @@ var booleanCapitulo3 = false;
                 itinerador = 23;
                 //RULO: ¡Nos estaban esperando Hood! 
                 llamadaTexto(itinerador);
-            }, 7500);
+            }, 17500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -488,7 +514,7 @@ var booleanCapitulo3 = false;
                 itinerador = 24;
                 //HOOD: - ¡Mierda! ¡Os necesito! 
                 llamadaTexto(itinerador);
-            }, 10500);
+            }, 25500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -501,21 +527,24 @@ var booleanCapitulo3 = false;
                 itinerador = 25;
                 // Corréis, como no habéis corrido nunca 
                 llamadaTexto(itinerador);
-            }, 13500);
+            }, 33500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
+                pausarMusicaAmbiente();
                 $("#imagenes img").attr({
                     src : "images/ElForajidoImg/matanza.png",
                     width : "450px"
                 });
-                itineradorAmbiente = 3
-                reproducirAmbiente();
-
                 itinerador= 26;
                 // Cuerpos. Cadáveres, por todas partes
                 llamadaTexto(itinerador);
-            }, 16500);
+            }, 54500);
+
+            setTimeout(()=>{
+                itineradorAmbiente = 3
+                reproducirAmbiente();
+            },56500)
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -526,7 +555,7 @@ var booleanCapitulo3 = false;
                 itinerador= 27;
                 // SOLDADOVIOLADOR1: Jejeje. Aquí queda una viva. Ven aquí preciosa 
                 llamadaTexto(itinerador);
-            }, 20500);
+            }, 72000);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -537,7 +566,7 @@ var booleanCapitulo3 = false;
                 itinerador= 28;
                 // SOLDADOVIOLADOR2: Puta hereje. Te voy a enseñar a que sabe una polla de Sigmar.
                 llamadaTexto(itinerador);
-            }, 22000);
+            }, 95000);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -548,7 +577,7 @@ var booleanCapitulo3 = false;
                 itinerador= 29;
                 // SACERDOTE: Hijos míos. Está prohibido mancillar
                 llamadaTexto(itinerador);
-            }, 24000);
+            }, 100000);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -559,7 +588,7 @@ var booleanCapitulo3 = false;
                 itinerador= 30;
                 // SOLDADOVIOLADOR2: Como usted mande padre. Jejeje
                 llamadaTexto(itinerador);
-            }, 26000);
+            }, 110500);
 
             setTimeout(()=>{
                 borradoCuerpoTexto();
@@ -570,18 +599,21 @@ var booleanCapitulo3 = false;
                 itinerador= 31;
                 // Prometisteis proteger a esta gente, al menos a ella la protegeréis...
                 llamadaTexto(itinerador);
-            }, 27000);
+            }, 113500);
 
             setTimeout(()=>{
                 fight();                
-            }, 28500);
+            }, 118500);
         });
     }
 
     // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes! 
     function onceavaSecuenciaEF(){
+
         borradoCuerpoTexto();
+        onceavaSecuenciaEF
         retornarDeFight();
+        mostrarInfoSecuencia("onceavaSecuenciaEF");
 
             
         $("#imagenes img").remove();
@@ -601,15 +633,17 @@ var booleanCapitulo3 = false;
                 .appendTo("#textoRespuestas").hide().fadeIn();
                 $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="noAtacarSacer()"> NO</span></p>`)
                 .appendTo("#textoRespuestas").hide().fadeIn();
-            }, 3000);
+            }, 12000);
         });     
     }
 
     // Final del capitulo
     function duodecimaSecuenciaEF(){
+
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("duodecimaSecuenciaEF");
         retornarDeFight();
-        
+
         var rama = readCookie("ramificacion");
 
         $("#imagenes img").remove();
@@ -623,9 +657,15 @@ var booleanCapitulo3 = false;
         }
         new Promise(function(resolve){
             itinerador= 33;
-            // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes! 
+            // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes!
+            // Al acabar. Hundís vuestro cuchillo en su cuello
             resolve(llamadaTexto(itinerador));
         }).then(function(result){
+            if (rama == "A"){
+                setTimeout(()=>{
+                    reproducirGrito();
+                }, 10000 )
+            }
             $("#itineracion").show();
             $("#btn-itinerar").show();
         });
@@ -732,4 +772,28 @@ var booleanCapitulo3 = false;
 
         document.cookie = "ramificacion=B";
         duodecimaSecuenciaEF();
+    }
+
+
+    // Funcion que ilumina y apaga la pantalla al son de un corazón
+    function animacionCorazon(){
+        var tiempos = [600,1600,2200,2800,3400,4000,4600,5200,5800,6400,7000,7600,8200,8800,9400,10000,10600,11200,11800,12400,
+            13000,13600,14200,14800,15400,15800,16200,16800,17400,18000,18600,19000,19600];
+        for (var index in tiempos) {
+            setTimeout(()=>{cambiaVisibilidad();},tiempos[index]);
+            if (index == tiempos.length -1){
+                setTimeout(()=>{$('#imagenes img').css({opacity: 1});},tiempos[index] + 100);
+            }
+        }
+
+    }
+
+    function cambiaVisibilidad() {
+        var opacidad = $('#imagenes img').css("opacity");
+        if (opacidad == 1) {
+            opacidad = 0.5;
+        } else {
+            opacidad = 1;
+        }
+        $('#imagenes img').css({opacity: opacidad});
     }

@@ -68,6 +68,7 @@
          Sala de curas  **********/
         function primeraSecuenciaDespertar(){
             borradoCuerpoTexto();
+            mostrarInfoSecuencia("primeraSecuenciaDespertar");
             $("#btn_empezar").hide();
             $("#btn_tiendas").hide();
             $(`<img src="images/DespertarImg/ancianoKislev.jpeg" style="border-radius:12px">`)
@@ -87,6 +88,7 @@
         function segundaSecuenciaDespertar(){
                 console.log("Contador btn despues de click siguiente: " +itinerador);
                 borradoCuerpoTexto();
+                mostrarInfoSecuencia("segundaSecuenciaDespertar");
                 llamadaTexto(itinerador);
 
             setTimeout(function(){
@@ -102,6 +104,8 @@
          Llegada Casa Consistorial   ********/
         function terceraSecuenciaDespertar(){
             var textoCasaCons = "Guardia: ¡El capitán Rostford no se encuentra en este momento!";
+
+            mostrarInfoSecuencia("terceraSecuenciaDespertar");
             $("#imagenes img").attr({
                 src : "images/DespertarImg/CapitanBorvskark.jpg",
                 width : "450px",
@@ -124,11 +128,11 @@
         function cuartaSecuenciaDespertar(){
             var finDeSecuencia = false;
 
-           $("#texto").text("");
-           $("#textoOpciones div").remove();
-           $("#textoRespuestas").text("");
+            $("#texto").text("");
+            $("#textoOpciones div").remove();
+            $("#textoRespuestas").text("");
+            mostrarInfoSecuencia("cuartaSecuenciaDespertar");
 
-            // INICIAMOS SECUENCIA
             new Promise(function(resolve) {
                 resolve(llamadaTexto(itinerador));
             })
@@ -200,11 +204,12 @@
   /***QUINTA FUNCION DE LA SECUENCIA
         CASA CONSISTORIAL 3ª PARTE   **********/
         function quintaSecuenciaDespertar(){
-        new Promise(function(resolve) {
+            new Promise(function(resolve) {
                 borradoCuerpoTexto();
+                mostrarInfoSecuencia("cuartaSecuenciaDespertar");
+
                 resolve(llamadaTexto(itinerador));
-            })
-            .then(function(result) {
+            }).then(function(result) {
 
                 // ehhh si.. esos malnacidos...
                 setTimeout(function(){
@@ -239,8 +244,11 @@
       /***SEXTA FUNCION DE LA SECUENCIA
             CASA CONSISTORIAL 3ª PARTE   **********/
       function sextaSecuenciaDespertar(){
+
             borradoCuerpoTexto();
+            mostrarInfoSecuencia("sextaSecuenciaDespertar");
             reproducirTexto(itinerador);
+
             $(`<p class='textoJson'> SIR GREGOR: ¡Ahora marchad! ¡De inmediato! Si lo conseguís, buscadme en
             <span style="color:#7876cc;font-weight: bold">Averlan </span>. Si no, más os vale morir a manos de esos infelices.</p>`)
             .appendTo("#texto");

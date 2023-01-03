@@ -1,0 +1,20 @@
+[
+  {
+    "nombrePnj" : "Yennefer",
+    "sobreNombre" : "Hoja Ardiente",
+    "raza" : "Elfa Silvana",
+    "descripcion" : "Nació en 1375 de nuestra era en Silvania, la capital oculta de Silvanas."
+  },
+  {
+    "descripcion" : "Desde muy pequeña sobresalió entre los demás Elfos Silvanos en el uso del arco, algo en lo que ellos ya de por sí son grandes expertos."
+  },
+  {
+    "descripcion" : "Se convirtió en Rastreadora del Reino, título que obtienen los elfos con mayor talento, cuya labor consiste en proteger y dar caza a todo intruso que atente contra la paz del bosque."
+  },
+  {
+    "descripcion" : "Hace años que las criaturas malignas se adentran más y más en el bosque del elfo y su trabajo se torna cada vez más importante, pues recibe la orden real de investigar el porqué de este suceso."
+  },
+  {
+    "descripcion" : "No sabe a donde le deparará su misión, pero hará todo lo posible por proteger el bosque de sus antepasados."
+  }
+]

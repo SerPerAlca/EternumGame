@@ -1,0 +1,23 @@
+[
+  {
+    "nombrePnj" : "Séphiro",
+    "sobreNombre" : "El Viudo Negro",
+    "raza" : "Elfo Oscuro",
+    "descripcion" : "Séphiro nació en Ruth, Provincia de Ulthuan el año 750 de nuestra era."
+  },
+  {
+    "descripcion" : "Luchó en la Guerra de Secesión de Ulthuan en el 820, en el bando de Malekith, hijo de Caledor, hasta que fueron derrotados y desterrados de Ulthuan para siempre."
+  },
+  {
+    "descripcion" : "Cuando los derrotados, ahora llamados Elfos Oscuros, se establecieron en Nargan, Sephiro hizo riqueza con el negocio de los esclavos. Pero no era suficiente para él, ya que no podía desprenderse del odio que le consumía por haber sido derrotado."
+  },
+  {
+    "descripcion" : "Empezó a dirigir ese odio hacia Malekith a quien culpaba de la derrota de su pueblo, y poco a poco fue encontrando otros que pensaban como él. Hasta que decidieron asesinar a Malekith."
+  },
+  {
+    "descripcion" : "Pero Malekith iba un paso por delante, y gracias a sus espías advirtió de la traición antes de que se ejecutase. Mandó apresar a todos los integrantes de la conjura, pero shépiro consiguió escapar. No así su familia."
+  },
+  {
+    "descripcion" : "Malekith quemó en cal viva a su mujer y a sus dos hijas y juró que si volvía a pisar Nargan moriría entre terribles sufrimientos."
+  }
+]

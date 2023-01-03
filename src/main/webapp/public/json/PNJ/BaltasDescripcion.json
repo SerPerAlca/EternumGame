@@ -1,0 +1,20 @@
+[
+  {
+    "nombrePnj" : "Baltas",
+    "sobreNombre" : "El Mago del Fuego Eterno",
+    "raza" : "Alto Elfo",
+    "descripcion" : "Baltas nació en Lyrn en el año 1400 de nuestra era."
+  },
+  {
+    "descripcion" : "Desde muy pequeño sintió el poder del Fénix dentro de él, y accedió como estudiante de la escuela Solar de Ulthuan."
+  },
+  {
+    "descripcion" : "Intentó ascender a Archimago de la Torre Blanca, pero al provenir de una familia humilde, fue rechazado por motivos elitistas."
+  },
+  {
+    "descripcion" : "Fue el único hechicero de esta Era capaz de atrapar la llama Eterna de un Escupe Fuego de Tracia sin perecer en el intento."
+  },
+  {
+    "descripcion" : "Desde entonces, decidió recorrer el mundo en busca de conocimiento y poder, para volver algún día a Ulthuan convertido en uno de los mayores hechiceros del mundo y demostrar a las razas nobles de los Elfos, que el poder no va en la sangre, si no en la voluntad de cada uno"
+  }
+]

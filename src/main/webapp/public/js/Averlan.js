@@ -36,10 +36,12 @@ function primeraSecuenciaAV(){
     $("#btn-itinerar").hide();
     $("#imagenes img").remove();
     borradoCuerpoTexto();
+    mostrarInfoSecuencia("primeraSecuenciaAV");
     esconderSig();
 
     $(`<img src="images/Averlan/callePrincipal.png" style="border-radius:12px; width: 540px; height: 50rem;">`)
     .appendTo("#imagenes");
+    itineradorAmbiente= 2;
     reproducirAmbiente();
     
     itinerador = 0;
@@ -57,10 +59,11 @@ function primeraSecuenciaAV(){
             itinerador = 1;
             // Subís por la calle principal y llegáis a la plaza central.
             llamadaTexto(itinerador);
-        }, 4000)
+        }, 23000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
+            reproducirAbucheos();
             $("#imagenes img").attr({
                 src : "images/Averlan/multitudAverlan.jpg",
                 width : "450px"
@@ -68,7 +71,7 @@ function primeraSecuenciaAV(){
             itinerador = 2;
             // SACERDOTE: Estos Herejes, le dieron la espalda a Sigmar.
             llamadaTexto(itinerador);
-        }, 8000)
+        }, 57000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -79,7 +82,7 @@ function primeraSecuenciaAV(){
             itinerador = 3;
             // SACERDOTE: SACERDOTE: Gracias a Sigmar y a su sagrado ejército
             llamadaTexto(itinerador);
-        }, 12000)
+        }, 72000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -90,7 +93,7 @@ function primeraSecuenciaAV(){
             itinerador = 4;
             // Miráis a lo alto, a la derecha del patíbulo
             llamadaTexto(itinerador);
-        }, 16000)
+        }, 87500)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -101,7 +104,7 @@ function primeraSecuenciaAV(){
             itinerador = 5;
             // SACERDOTE: Un paso al frente condenados
             llamadaTexto(itinerador);
-        }, 20000)
+        }, 108500)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -112,10 +115,11 @@ function primeraSecuenciaAV(){
             itinerador = 6;
             // Se trata de cuatro personas y un enano. Os llama la atención uno de ellos. 
             llamadaTexto(itinerador);
-        }, 24000)
+        }, 122000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
+            reproducirAbucheos();
             $("#imagenes img").attr({
                 src : "images/Averlan/RuloYSacerdote.png",
                 width : "450px"
@@ -123,10 +127,11 @@ function primeraSecuenciaAV(){
             itinerador = 7;
             // SACERDOTE: Aquí los tenéis fieles de Averlan 
             llamadaTexto(itinerador);
-        },28000)
+        },140000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
+            reproducirAbucheos();
             $("#imagenes img").attr({
                 src : "images/Averlan/vergudoSoga.png",
                 width : "450px"
@@ -134,7 +139,7 @@ function primeraSecuenciaAV(){
             itinerador = 8;
             //SACERDOTE: Vais a ser colgados como dicta
             llamadaTexto(itinerador);
-        },32000)
+        },152000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -145,10 +150,11 @@ function primeraSecuenciaAV(){
             itinerador = 9;
             //SACERDOTE: Decid ahora vuestras últimas palabras
             llamadaTexto(itinerador);
-        },36000)
+        },171000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
+            reproducirAbucheos();
             $("#imagenes img").attr({
                 src : "images/Averlan/condenado.png",
                 width : "450px"
@@ -156,7 +162,7 @@ function primeraSecuenciaAV(){
             itinerador = 10;
             //CONDENADO: Pido perdón a Sigmar
             llamadaTexto(itinerador);
-        },40000)
+        },179000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -167,7 +173,8 @@ function primeraSecuenciaAV(){
             itinerador = 11;
             //La base de sus pies se abre y el individuo
             llamadaTexto(itinerador);
-        },44000)
+            reproducirAhorcado();
+        },187000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
@@ -178,10 +185,11 @@ function primeraSecuenciaAV(){
             itinerador = 12;
             //NIÑO: ¿!Paadre?!
             llamadaTexto(itinerador);
-        },48000)
+        },198000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
+            reproducirAbucheos();
             $("#imagenes img").remove();
             $(`<img src="images/Averlan/lengua arrancara.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
             .appendTo("#imagenes");
@@ -189,13 +197,13 @@ function primeraSecuenciaAV(){
             itinerador = 13;
             //SACERDOTE: –¡La lengua de un hereje
             llamadaTexto(itinerador);
-        },52000)
+        },210000)
 
         setTimeout(()=>{
             borradoCuerpoTexto();
             $("#imagenes img").remove();
             animacionRuloHorca();
-        },56000)
+        },221000)
 
     });
     
@@ -209,6 +217,8 @@ function primeraSecuenciaAV(){
 /***** FUNCIONES AUXILIARES *************************************************************************************************************/
 
 function animacionRuloHorca(){
+    itinerador = 14;
+    reproducirTexto(itinerador);
     $("#imagenes").hide();
     $("#cuerpo").hide();
     $('#padreCuerpo')

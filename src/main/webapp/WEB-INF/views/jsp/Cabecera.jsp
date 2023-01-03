@@ -36,6 +36,7 @@
                     <div id="rowUnoCabecera" class="row mt-12">
                         <div id="botonesCabecera" class="col-md-6">
                             <!--<button type="button" class="btn btn-secondary" value="mostrarMapaNacional" id="btn-mostrarMapa">Mostrar Mapa</button> -->
+                            <a href="viajeCampaña">Viaje Campaña</a>
                         </div>
                         <div id="capiActual" class="col-md-4"></div>
                     </div> 

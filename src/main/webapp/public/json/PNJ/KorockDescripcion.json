@@ -1,0 +1,20 @@
+[
+  {
+    "nombrePnj" : "Korock Rompe-Estrellas",
+    "sobreNombre" : "El Mata-Ogros",
+    "raza" : "Enano",
+    "descripcion" : "Korock nació en la antigua ciudad de Karak en el año 989 de nuestra era."
+  },
+  {
+    "descripcion" : "Vivió de niño el fatídico final de esta ciudad a manos de los Orcos liderados por PicaEnanoz, conocido así por poner las cabezas de los enanos de la ciudad en picas a lo largo de toda la muralla."
+  },
+  {
+    "descripcion" : "Después de eso, fue adoptado por el clan Rompe-Estrellas, quienes le enseñaron a combatir y a forjar sus propias armas."
+  },
+  {
+    "descripcion" : "Se hizo famoso al matar al gran ogro CraneoDuro, hundiéndole la maza en el cráneo."
+  },
+  {
+    "descripcion" : "Pero no es suficiente, sabe que su sed de sangre no acabará hasta que no elimine hasta el último de esos miserables Pieles Verdes."
+  }
+]

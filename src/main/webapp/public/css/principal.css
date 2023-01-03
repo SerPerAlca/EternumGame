@@ -186,3 +186,60 @@ body{
     color: white;
     border-color: yellow;
 }
+
+#infoDebug{
+    display: grid;
+    justify-content: end;
+}
+#infoDebugSecuencia{
+    color: #FDD017;
+    justify-content: end;
+    display: flex;
+}
+#infoDebugTexto{
+    color: #FDD017;
+    justify-content: end;
+    display: flex;
+}
+
+#infoDebugAudio{
+    color: #FDD017;
+    justify-content: end;
+    display: flex;
+}
+
+
+/******* listar-Enemigos *****************************/
+
+#imgEnemigo{
+    width: 6rem;
+    height: 9rem;
+}
+
+#tableEnemigos{
+    color: white;
+    font-size: large;
+}
+
+/*********** Seleccionar Enemigos ****************************/
+#imagenCarousel{
+   /* width: 60% !important; */
+    height: 80%;
+}
+
+#carouselExampleIndicators{
+    /*
+    width: 80% !important;
+     */
+    float: left;
+    position: relative;
+}
+
+
+#DescripcionPnj{
+    position: relative;
+    float: left;
+    /*border: solid #4CAF50; */
+    color: white;
+
+}

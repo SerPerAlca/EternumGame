@@ -48,7 +48,7 @@ $(document).ready(function() {
     function primeraSecuenciaLIEL(){
         borradoCuerpoTexto();
         reproducirAmbiente();
-
+        mostrarInfoSecuencia("primeraSecuenciaLIEL");
         $("#btn-itinerar").hide();
         $("#btn_empezar").hide();
 
@@ -87,6 +87,7 @@ $(document).ready(function() {
     function segundaSecuenciaLIELB(){
 
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("segundaSecuenciaLIELB");
         retornarDeFight();
         $("#imagenes img").remove();
         $("#imagenes").show();
@@ -113,7 +114,7 @@ $(document).ready(function() {
             }
             itinerador = 4;
             retornarDeFight();
-
+            mostrarInfoSecuencia("terceraSecuenciaLIEL");
             document.cookie = "ramificacion=X";
 
             itinerador = 4;
@@ -136,6 +137,7 @@ $(document).ready(function() {
     //¡Malditos Herejes! ¡¿Cómo os atrevéis…
     function cuartaSecuenciaLIEL(){
 
+        mostrarInfoSecuencia("cuartaSecuenciaLIEL");
         $("#imagenes").show();
         insertarSangreEnemigo();
         $(`<img src="images/LIELImg/Grerius Bron.jpg"
@@ -160,6 +162,7 @@ $(document).ready(function() {
 
         new Promise(function(resolve) {
             borradoCuerpoTexto();
+            mostrarInfoSecuencia("preQuintaSecuenciaLIEL");
             resolve(llamadaEspecialLIELDos());
         })
         .then(function(result){
@@ -174,7 +177,7 @@ $(document).ready(function() {
 
         itinerador++;
         console.log("Itinerador ahora --> " + itinerador);
-
+        mostrarInfoSecuencia("quintaSecuenciaLIEL");
         new Promise(function(resolve) {
             resolve(llamadaTexto(itinerador));
         })
@@ -189,6 +192,7 @@ $(document).ready(function() {
 
         itinerador++;
         borradoCuerpoTexto();
+        mostrarInfoSecuencia("sextaSecuenciaLIEL");
         $(`<img src="images/LIELImg/papiro IMG.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
             .appendTo("#imagenes");
@@ -225,6 +229,7 @@ $(document).ready(function() {
         function septimaSecuencia(){
             
             borradoCuerpoTexto();
+            mostrarInfoSecuencia("septimaSecuencia");
             $("#imagenes img").attr({
                 src : "images/LIELImg/desenvainando.jpg"
             });

@@ -1,0 +1,20 @@
+[
+  {
+    "nombrePnj" : "Yonniras",
+    "sobreNombre" : "El Ruiseñor",
+    "raza" : "Elfo Silvano",
+    "descripcion" : "Yónniras nació en el año 1052 de nuestra era, en Silvania, capital oculta de Silvanas."
+  },
+  {
+    "descripcion" : "Es descendiente de los Primeros Elfos, y hermano pequeño del Rey Lasir, aunque no le interesan los títulos reales ni las obligaciones de su casa."
+  },
+  {
+    "descripcion" : "Ama el bosque y todas las criaturas que habitan en él como cualquier otro Elfo Silvano, pero siente una curiosidad por el mundo que hay fuera del bosque como ningún otro Elfo de su especie."
+  },
+  {
+    "descripcion" : "Eso le lleva a salir del bosque y recorrer las tierras prohibidas hasta incluso los reinos humanos. Le encanta observar oculto y aprender de otras criaturas y gracias al don del sigilo que le otorga la Madre Luna, puede hacerlo sin problemas."
+  },
+  {
+    "descripcion" : "Lo malo es que su curiosidad le lleva a veces a exponerse demasiado y hay lugares donde un elfo no está a salvo."
+  }
+]

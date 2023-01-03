@@ -18,6 +18,7 @@ var itineradorAmbiente = 1;
 function fight(){
     $("#rowDosCabecera").hide();
     document.cookie = "batalla=true";
+    pausarAudio();
     $("#btn-Salir").hide();
     reproducirMusicaBattalla();
     interMusicaBatalla(true);
@@ -41,17 +42,7 @@ function fight(){
         }, 20 * i);
     }
 
-  /*  setTimeout(function () {
-        $(".conte-texto h1").remove();
-        $(`<h1 style="color:black" > ¡¡¡VIICTORIA!!!</h1>`)
-        .appendTo(".conte-texto")
-        .hide().fadeIn(1000);
-    }, 6500); */
-
    enseniarSig();
-
-
-
 }
 
     function degradadoFight(){
@@ -405,80 +396,7 @@ function fight(){
                 .appendTo("#imagenes").hide().fadeIn(2000);;
             }
     
-            function animacionCorazon(){
- 
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },600)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },1200)
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },1800)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },2400)
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },2900)
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },3500)
-               
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },4100)
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },4700)
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },5200)
-            
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },5800)
-                
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },6400)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },7000)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },7600)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },8200)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },8700)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },9300)
 
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 0.5});
-                },9600)
-            
-                setTimeout(()=>{
-                    $('#imagenes img').css({opacity: 1});
-                },9900)
-            }
 
 
             /*function cabeceraCapitulo(){
@@ -492,4 +410,19 @@ function fight(){
                 min = Math.ceil(min);
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+            }
+
+            function mostrarInfoSecuencia(nombreSecuencia){
+                $("#infoDebugSecuencia").text("");
+                $("#infoDebugSecuencia").text(nombreSecuencia);
+            }
+
+            function mostrarInfoJSON(directorioJSON){
+                $("#infoDebugTexto").text("");
+                $("#infoDebugTexto").text(directorioJSON);
+            }
+
+            function mostrarInfoAudio(rutaAudio){
+                $("#infoDebugAudio").text("");
+                $("#infoDebugAudio").text(rutaAudio);
             }

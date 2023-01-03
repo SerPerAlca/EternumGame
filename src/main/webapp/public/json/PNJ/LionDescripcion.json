@@ -1,0 +1,17 @@
+[
+  {
+    "nombrePnj" : "Lion Hearth",
+    "sobreNombre" : "El Desterrado",
+    "raza" : "Khimari",
+    "descripcion" : "Lion Heart nació en 1558 en la Selva de los Ancestros."
+  },
+  {
+    "descripcion" : "Desde pequeño fue instruido en el combate cuerpo a cuerpo por su tío."
+  },
+  {
+    "descripcion" : "Fue aceptado en la Orden del León cuando solo contaba con 16 años, convirtiéndose en el Kimahri más joven en conseguirlo. Luchó en incontables batallas contra invasores y piratas que amenazaban la paz de la selva lo que le hizo ingresar en la guardia del Rey. Lion era respetado y admirado en todo el reino. Tanto es así, que la hija del Rey se enamoró de él y empezaron un romance en secreto."
+  },
+  {
+    "descripcion" : "Su romance llegó a oídos del Rey quien no puedo consentir que su hija se enamorara de un simple guerrero. Castigó públicamente a Lion exiliándole de Lustria y obligándole a vivir para siempre con el sobrenombre de El Desterrado. "
+  }
+]

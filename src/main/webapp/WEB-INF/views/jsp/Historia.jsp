@@ -74,12 +74,17 @@
 	    <div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div id="CabeceraAudio" class="col-md-5">
+            <!--<div id="CabeceraAudio" class="col-md-5">
                 <button type="button" class="btn btn-warning" id="btn-PararAudio">MUTE</button>
-            </div>
+            </div> -->
             <div class="col-md-3"></div>
         </div>
 	</div>
+    <div id="infoDebug">
+        <p> Secuencia: <span id="infoDebugSecuencia"></span></p>
+        <p> JSON Texto: <span id="infoDebugTexto"></span></p>
+        <p> Audio: <span id="infoDebugAudio"></span></p>
+    </div>
 	<div id="sidebar" class="sidebar">
         <a href="#" class="boton-cerrar" onclick="ocultarDado()"><i class="bi bi-arrow-left-circle-fill">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">

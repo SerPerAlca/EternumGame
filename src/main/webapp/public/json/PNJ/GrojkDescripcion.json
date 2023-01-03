@@ -1,0 +1,17 @@
+[
+  {
+    "nombrePnj" : "Grojk",
+    "sobreNombre" : "El Bucanero de la Piedra",
+    "raza" : "Enano",
+    "descripcion" : "Grojk nació en Karak Thon en el año 1362 de nuestra era."
+  },
+  {
+    "descripcion" : "Desde pequeño su padre le contó historias sobre el gran Barba Roja, el rey enano que se hizo a la mar. Una vez, beodo le confesó que eran descendientes del propio Barba Roja y eso despertó en Grojk el ansia por salir a la mar."
+  },
+  {
+    "descripcion" : "Formó parte de muchas expediciones marítimas que ordenaba el rey Olof de Thun, hasta que a éste le dejo de interesar el mundo más allá de sus montañas."
+  },
+  {
+    "descripcion" : "Desde entonces Grojk sueña con acumular el suficiente oro para comprar su propio barco y hacerse a la mar en busca de fama y gloria, como hizo su antepasado Barba Roja."
+  }
+]
