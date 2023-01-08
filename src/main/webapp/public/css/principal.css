@@ -88,7 +88,7 @@ body{
 #cuerpo-texto{
     float: left;
     font-family: medieval !important;
-    border: solid 1px green;
+   /* border: solid 1px green; */
    /* background-image: url('../images/FondoPapiro.jpg'); */
     overflow:hidden;
     font-weight: bold;
@@ -221,7 +221,11 @@ body{
     font-size: large;
 }
 
-/*********** Seleccionar Enemigos ****************************/
+/*********** Seleccionar PNJ ****************************/
+
+#formPNJ{
+    margin-top: 5rem;
+}
 #imagenCarousel{
    /* width: 60% !important; */
     height: 80%;
@@ -235,6 +239,9 @@ body{
     position: relative;
 }
 
+#descripcionCarousel{
+    margin-top: 4rem;
+}
 
 #DescripcionPnj{
     position: relative;
@@ -243,3 +250,38 @@ body{
     color: white;
 
 }
+
+#aliasPlayer{
+    margin: 2rem;
+    color: white;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+#playerActual{
+    color: #a71d2a;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+/****** O R D E N A R    T A B L A  ********************************/
+
+        table tr th {
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .sorting {
+            background-color: #D4D4D4;
+        }
+
+        .asc:after {
+            content: ' ↑';
+        }
+
+        .desc:after {
+            content: " ↓";
+        }

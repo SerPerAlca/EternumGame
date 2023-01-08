@@ -11,6 +11,44 @@ var itineradorAmbiente = 1;
         controladorCapi();
         mostrarTituloCapitulo();
     });
+
+/************* ordenar por campos en las listas *****************************/
+     $('th').click(function() {
+         var table = $(this).parents('table').eq(0)
+         var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+         this.asc = !this.asc
+         if (!this.asc) {
+             rows = rows.reverse()
+         }
+         for (var i = 0; i < rows.length; i++) {
+             table.append(rows[i])
+         }
+         setIcon($(this), this.asc);
+     })
+
+     function comparer(index) {
+         return function(a, b) {
+             var valA = getCellValue(a, index),
+                 valB = getCellValue(b, index)
+             return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+         }
+     }
+
+     function getCellValue(row, index) {
+         return $(row).children('td').eq(index).html()
+     }
+
+     function setIcon(element, asc) {
+         $("th").each(function(index) {
+             $(this).removeClass("sorting");
+             $(this).removeClass("asc");
+             $(this).removeClass("desc");
+         });
+         element.addClass("sorting");
+         if (asc) element.addClass("asc");
+         else element.addClass("desc");
+     }
+ /**********************************************************************/
  });
 
 
@@ -385,44 +423,37 @@ function fight(){
             }
 
 /************** A N I M A C I O N E S  ******************************************************************************************************************/
-            function insertarSangreEnemigo(){
-                $(`<img src="images/gotasDeSangre.png"
+    function insertarSangreEnemigo(){
+        $(`<img src="images/gotasDeSangre.png"
                     style="z-index: 3; position:absolute; width: 100%; height: 100%; box-shadow: none !important; border:0 !important;">`)
-                .appendTo("#imagenes").hide().fadeIn(2000);
-            }
-    
-            function animacionX(){
-                $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
-                .appendTo("#imagenes").hide().fadeIn(2000);;
-            }
-    
+            .appendTo("#imagenes").hide().fadeIn(2000);
+    }
+
+    function animacionX(){
+        $(`<img src="images/equis.png" style="z-index: 4; position:absolute; width: 60%; height: 100%; margin-left: auto; box-shadow: none !important; border:0 !important;">`)
+            .appendTo("#imagenes").hide().fadeIn(2000);
+        ;
+    }
+
+    function getRandomInt(min, max){
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    }
+
+    function mostrarInfoSecuencia(nombreSecuencia){
+        $("#infoDebugSecuencia").text("");
+        $("#infoDebugSecuencia").text(nombreSecuencia);
+    }
+
+    function mostrarInfoJSON(directorioJSON){
+        $("#infoDebugTexto").text("");
+        $("#infoDebugTexto").text(directorioJSON);
+    }
+
+    function mostrarInfoAudio(rutaAudio){
+        $("#infoDebugAudio").text("");
+        $("#infoDebugAudio").text(rutaAudio);
+    }
 
 
-
-            /*function cabeceraCapitulo(){
-                
-                $("#capiActual")
-            } */
-
-
-
-            function getRandomInt(min, max) {
-                min = Math.ceil(min);
-                max = Math.floor(max);
-                return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-            }
-
-            function mostrarInfoSecuencia(nombreSecuencia){
-                $("#infoDebugSecuencia").text("");
-                $("#infoDebugSecuencia").text(nombreSecuencia);
-            }
-
-            function mostrarInfoJSON(directorioJSON){
-                $("#infoDebugTexto").text("");
-                $("#infoDebugTexto").text(directorioJSON);
-            }
-
-            function mostrarInfoAudio(rutaAudio){
-                $("#infoDebugAudio").text("");
-                $("#infoDebugAudio").text(rutaAudio);
-            }

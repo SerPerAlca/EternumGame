@@ -1,0 +1,17 @@
+#cuerpo{
+    height: 70% !important;
+    word-wrap: break-word !important;
+    width: 100% !important;
+    justify-content: center !important;
+}
+
+#tarjetaEnemy{
+
+    margin: 2rem;
+    float: left;
+    background-color: darkgray;
+}
+
+.card-title{
+    font-weight: bolder;
+}

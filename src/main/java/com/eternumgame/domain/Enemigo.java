@@ -3,10 +3,9 @@ package com.eternumgame.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
-@ToString
+
 @NoArgsConstructor
 public class Enemigo {
 
@@ -52,4 +51,34 @@ public class Enemigo {
     @Getter @Setter
     private MultipartFile imagen;
 
+    @Getter @Setter
+    private int probabilidadAparicion;
+
+    //@Getter @Setter
+   // private List<Zona> zonaEntityList;
+
+    @Getter @Setter
+    private int numeroEnemigos;
+
+    @Override
+    public String toString() {
+        return "Enemigo{" +
+                "idEnemigo=" + idEnemigo +
+                ", nombreEnemigo='" + nombreEnemigo + '\'' +
+                ", raza='" + raza + '\'' +
+                ", ataqueFisico=" + ataqueFisico +
+                ", ataqueMagico=" + ataqueMagico +
+                ", defensaFisica=" + defensaFisica +
+                ", defensaMagica=" + defensaMagica +
+                ", is_boss=" + is_boss +
+                ", alcance=" + alcance +
+                ", velocidad=" + velocidad +
+                ", esquiva=" + esquiva +
+                ", vitalidad=" + vitalidad +
+                ", rutaImagen='" + rutaImagen + '\'' +
+                ", imagen=" + imagen +
+                ", probabilidadAparicion=" + probabilidadAparicion +
+                ", numeroEnemigos=" + numeroEnemigos +
+                '}';
+    }
 }

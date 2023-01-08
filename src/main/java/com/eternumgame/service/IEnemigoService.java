@@ -16,5 +16,7 @@ public interface IEnemigoService {
 
     public void crearFichero();
 
+    public List<Enemigo> findEnemyFromZone(int idZona);
+
    // public Enemigo enemigoFindByName(String name);
 }
