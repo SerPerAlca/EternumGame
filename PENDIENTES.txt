@@ -4,10 +4,8 @@
 
 2. Agregar más SFX. 
 
-3. Crear sistema de login. (numero de jugadores, y heroe).
-
 4. Introducir armas en BD. 
 
 5. Sistema de compra 
 
-6. Evitar el poder elegirse al mismo heroe dos jugadores distintos.
+

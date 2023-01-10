@@ -11,7 +11,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/principal.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/seleccionPNJ.js"></script>
     <script src="js/Servicios/ServiciosGenerales.js"></script>
@@ -30,14 +30,14 @@
                     <input type="hidden" id="numeroJugadores" value=<%= session.getAttribute("numeroJugadores") %>>
                     <input type="hidden" id="jugadorActual" value=<%= session.getAttribute("jugadorActual") %>>
                     <input type="hidden" id="heroesElegidos" value="">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExampleIndicators" class="carousel slide">
                         <div class="carousel-inner">
                             <c:forEach var="heroe" items="${heroes}" varStatus="loop">
-                                <div id="${heroe}Carousel" class="carousel-item
+                                <div id="${heroe}Carousel" data-interval="false" class="carousel-item
                                     <c:if test="${loop.index == 0}">
                                         active
                                     </c:if>
-                                ">
+                                 ">
                                     <img src="images/Heroes/${heroe}Fondo.png" id="imagenCarousel" class="d-block w-100" alt="...">
                                 </div>
                             </c:forEach>

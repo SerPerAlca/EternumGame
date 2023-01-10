@@ -2,6 +2,7 @@ package com.eternumgame.controller;
 
 import com.eternumgame.domain.Enemigo;
 import com.eternumgame.domain.util.UtilidadesEnemigos;
+import com.eternumgame.service.IArmaduraService;
 import com.eternumgame.service.IEnemigoService;
 import com.eternumgame.service.IJugadorService;
 import com.eternumgame.service.ISessionPnjService;
@@ -35,20 +36,36 @@ public class MainController {
 	@Autowired
 	private IJugadorService jugadorService;
 
+	@Autowired
+	private IArmaduraService armaduraService;
 
+	// PROLOGO
+	@RequestMapping(value = "/prologo", method = RequestMethod.GET)
+	public String prologo() {
+		return "Prologo";
+	}
+
+	// CAPITULOS
 	@RequestMapping(value = "/historia", method = RequestMethod.GET)
 	public String index() {
 		return "Historia";
 	}
 
+	// PAGINA PRINCIPAL
 	@RequestMapping(value= "/", method = RequestMethod.GET)
 	public String home() { return "Home"; }
 
-
+	// PROTOTIPO MAPA DE CAMPAÑA
 	@RequestMapping(value = "/itinerar", method = RequestMethod.GET)
-	public String Mapas() {
-		return "mapas";
+	public String mapaCampaña() {
+		return "MapaCampania";
 	}
+
+	@RequestMapping(value = "/cabecera", method = RequestMethod.GET)
+	public String cabecera() {
+		return "Cabecera";
+	}
+
 
 
 	// CODIGO DE PRUEBA *************************************************************
@@ -77,22 +94,17 @@ public class MainController {
 		return "viajeCampaña";
 	}
 
-	@RequestMapping(value = "/listarEnemigos", method = RequestMethod.GET)
-	public String listarEnemigos(Model model) {
-		List<Enemigo> enemigoLista = enemigoService.findAllEnemys();
-		model.addAttribute("enemigos", enemigoLista);
-		return "listadoEnemigos";
-	}
+
 
 
 	/******************** L O G I N ***********************************************/
-	@RequestMapping(value = "/numPnj", method = RequestMethod.GET)
+	@RequestMapping(value = "/registrarNumeroJugadores", method = RequestMethod.GET)
 	public String login() {
 		return "NumPnj";
 	}
 
-	@RequestMapping(value="/registroPlayer", method = RequestMethod.POST)
-	public String guardarNumeroPnj(@RequestParam int playersNumbers, HttpServletRequest request,
+	@RequestMapping(value="/registroJugadores", method = RequestMethod.POST)
+	public String registrarNumeroJugadores(@RequestParam int playersNumbers, HttpServletRequest request,
 								   HttpServletResponse response, Model model){
 
 		request.getSession().setAttribute("numeroJugadores", playersNumbers);
@@ -108,42 +120,35 @@ public class MainController {
 			e.printStackTrace();
 		}
 
-		return "seleccionPNJ";
+		return "SeleccionHeroe";
 	}
 
+	// Controller AJAX
 	@RequestMapping(value="/registrarHeroe", method = RequestMethod.POST)
-	public String guardarNumeroPnj(@RequestParam String personaje, @RequestParam String alias, HttpServletRequest request,
+	@ResponseBody public int registrarJugador(@RequestParam String personaje, @RequestParam String alias, HttpServletRequest request,
 								   HttpServletResponse response, Model model) {
 		//Obtenemos cuantos jugadores quedan por elegir heroe
 		int numeroJugadores = (int) request.getSession().getAttribute("numeroJugadores");
 		try{
 			// Guardamos Jugador en BD
 			jugadorService.savePlayer(personaje, alias, numeroJugadores);
+			numeroJugadores--;
+			request.getSession().setAttribute("numeroJugadores", numeroJugadores);
 
-			// Si todavía quedan jugadores por elegir
-			if (numeroJugadores > 0){
-				numeroJugadores--;
-				request.getSession().setAttribute("numeroJugadores", "");
-				request.getSession().setAttribute("numeroJugadores", numeroJugadores);
-				//Obtenemos el jugador Actual
-				int jugadorActual = (int) request.getSession().getAttribute("jugadorActual");
-				jugadorActual++;
-				request.getSession().setAttribute("jugadorActual", "");
-				request.getSession().setAttribute("jugadorActual", jugadorActual);
-				// me traigo la lista de heroes de un json para pintarla en el carousel
-				List<String> heroesList = enemigoService.findHeroesFromJson();
-				if(null != heroesList){
-					model.addAttribute("heroes", heroesList);
-				}
-				return "seleccionPNJ";
-			}
+			//Obtenemos el jugador Actual
+			int jugadorActual = (int) request.getSession().getAttribute("jugadorActual");
+			jugadorActual++;
+			request.getSession().setAttribute("jugadorActual", jugadorActual);
 
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return null;
+		// Devolvemos el número de jugadores que quedan por elegir al Front
+		return numeroJugadores;
 	}
 
 	/*********************************************************************************************/
+
+
 
 }

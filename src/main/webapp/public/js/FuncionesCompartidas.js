@@ -1,7 +1,7 @@
 var contDegradado= 0;
 var itineradorIndice = 0;
 var itineradorAmbiente = 1;
-
+var ventanaMapaCampaña="width=2000,height=1000,scrollbars=NO,resizable=NO"
  $(document).ready(function() {
     $(".conte-degradado").hide();
     $(".conte-texto").hide();
@@ -51,37 +51,43 @@ var itineradorAmbiente = 1;
  /**********************************************************************/
  });
 
+     function abrirMapaCampania(){
 
-//FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
-function fight(){
-    $("#rowDosCabecera").hide();
-    document.cookie = "batalla=true";
-    pausarAudio();
-    $("#btn-Salir").hide();
-    reproducirMusicaBattalla();
-    interMusicaBatalla(true);
+         window.open('/itinerar',"MapaCampania", ventanaMapaCampaña);
+     }
 
-    borradoCuerpoTexto();
-    $(".conte-texto h1").remove();
-    $("#imagenes img").remove();
-    ocultacionBotones();
 
-    $(".conte-degradado").show();
-    $(".conte-texto").show();
-    $("#cuerpo").css({'height' : '40rem', 'width' : '100%'});
 
-    $(`<h1 style="color:black" > ¡¡¡FIIIGHTTT!!!</h1>`)
-    .appendTo(".conte-texto");
+    //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
+    function fight(){
+        $("#rowDosCabecera").hide();
+        document.cookie = "batalla=true";
+        pausarAudio();
+        $("#btn-Salir").hide();
+        reproducirMusicaBattalla();
+        interMusicaBatalla(true);
 
-  	for (var i=0 ; i < 70; i++) {
-        setTimeout(function () {
-            console.log(i);
-            degradadoFight();
-        }, 20 * i);
+        borradoCuerpoTexto();
+        $(".conte-texto h1").remove();
+        $("#imagenes img").remove();
+        ocultacionBotones();
+
+        $(".conte-degradado").show();
+        $(".conte-texto").show();
+        $("#cuerpo").css({'height' : '40rem', 'width' : '100%'});
+
+        $(`<h1 style="color:black" > ¡¡¡FIIIGHTTT!!!</h1>`)
+        .appendTo(".conte-texto");
+
+        for (var i=0 ; i < 70; i++) {
+            setTimeout(function () {
+                console.log(i);
+                degradadoFight();
+            }, 20 * i);
+        }
+
+       enseniarSig();
     }
-
-   enseniarSig();
-}
 
     function degradadoFight(){
         $(".conte-degradado").css({'background' : `radial-gradient(transparent 0%, transparent 0%, black ${contDegradado}%)`});

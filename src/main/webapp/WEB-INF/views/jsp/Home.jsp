@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrapHome.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
+    <script src="js/FuncionesCompartidas.js"></script>
     <title>Home</title>
 </head>
 <body>
@@ -28,19 +29,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mr-2">
                         <li class="nav-item  active">
-                            <a class="nav-link" href="/numPnj">Empezar </a>
+                            <a class="nav-link" title="Selección de Personajes" href="/registrarNumeroJugadores">Empezar </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Introducción <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" title="Video Introducción" href="/prologo">Prólogo <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/historia">Historia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html">Listado de elementos</a>
+                            <a class="nav-link" title="Listado de objetos, armas, enemigos..." href="/listarElementos">Listado de elementos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Kit de juego</a>
+                            <a class="nav-link" title="Mapa de Campaña" href="javascript:abrirMapaCampania()">Viaje Campaña</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Sobre Eternum </a>

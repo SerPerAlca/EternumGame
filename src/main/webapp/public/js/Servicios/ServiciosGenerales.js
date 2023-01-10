@@ -256,3 +256,17 @@
                 });
         }
 
+
+        /***************  P R O L O G O  *******************************************************/
+
+        function llamadaPrologo(itinerador){
+
+            directorioJSON = "json/Prologo/Prologo" + itinerador + ".json"
+            fetch(directorioJSON)
+                .then(res => res.json())
+                .then(data =>{
+                    for(let index of Object.values(data)){
+                        pintarPrologo(index.texto);
+                    }
+                });
+        }

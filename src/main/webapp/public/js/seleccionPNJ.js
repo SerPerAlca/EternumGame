@@ -10,6 +10,7 @@ var heroesElegidos = [];
 var elegidosHidden = document.getElementById("heroesElegidos");
 $(document).ready(function() {
 
+    $('.carousel').carousel({ interval: false });
     var data = new Object();
     //reproducirMusicaPNJ();
     llamadaDescripcionPNJ(pnjActivo);
@@ -63,20 +64,27 @@ function llamadaAjax(){
         encode: true,
     });
 
-    request.done(function(data)
-    {
+    request.done(function(data){
         alert("Personaje Registrado Correctamente");
-        document.getElementById("namePlayer").value = "";
-        mostrarPnj();
-        heroesElegidos.push(submit.personaje);
-        // Metemos en el hidden la lista de heroes YA elegidos
-        if (null == elegidosHidden){
-            elegidosHidden = heroesElegidos;
+        // Si aún quedan Jugadores por elegir personaje
+        if (data > 0){
+            document.getElementById("namePlayer").value = "";
+            mostrarPnj();
+            heroesElegidos.push(submit.personaje);
+            // Metemos en el hidden la lista de heroes YA elegidos
+            if (null == elegidosHidden){
+                elegidosHidden = heroesElegidos;
+            } else {
+                elegidosHidden += heroesElegidos;
+            }
         } else {
-            elegidosHidden += heroesElegidos;
+            window.location.replace("/prologo");
         }
+    });
 
-
+    request.fail(function( e,textStatus )
+    {
+        alert( "Falló el registro de Heroe --> " +textStatus );
     });
 }
 function mostrarPnjActivo() {
@@ -111,3 +119,5 @@ function mostrarPnj(){
     $("#playerActual").text("Jugador " + pnjActual);
 
 }
+
+

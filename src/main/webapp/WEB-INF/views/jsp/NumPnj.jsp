@@ -23,7 +23,7 @@
         </c:forEach>
         <div class="row">
             <div class="col-sm-6">
-                <form:form action="/registroPlayer" method="POST" modelAttribute="listaPlayers">
+                <form:form action="/registroJugadores" method="POST" modelAttribute="listaPlayers">
                     <div class="card-body">
                         <div class="form-group">
                             <label><h5>Introduce número de jugadores</h5> </label>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <input type="submit" value="Guardar" class="btn btn-success">
+                        <input type="submit" value="Siguiente" class="btn btn-success">
                     </div>
                 </form:form>
             </div>

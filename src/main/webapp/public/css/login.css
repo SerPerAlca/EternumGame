@@ -22,3 +22,44 @@ body{
 ol li {
     color: #19692c;
 }
+
+#formPNJ{
+    margin-top: 5rem;
+}
+#imagenCarousel{
+    /* width: 60% !important; */
+    height: 80%;
+}
+
+#carouselExampleIndicators{
+    /*
+    width: 80% !important;
+     */
+    float: left;
+    position: relative;
+}
+
+#descripcionCarousel{
+    margin-top: 4rem;
+}
+
+#DescripcionPnj{
+    position: relative;
+    float: left;
+    /*border: solid #4CAF50; */
+    color: white;
+
+}
+
+#aliasPlayer{
+    margin: 2rem;
+    color: white;
+    font-weight: bolder;
+    font-size: 2rem;
+}
+
+#playerActual{
+    color: #a71d2a;
+    font-weight: bolder;
+    font-size: 3rem;
+}

@@ -12,10 +12,11 @@ var booleanItinerando = false;
 
 $(document).ready(function() {
 
+    /*
     $('body').on("mousemove", "#divImagen", function(event){
         mostrarPosicionPuntero(event);
     });
-
+    */
     $("#areaImperium").on("mouseover", function(event){
         mostrarTooltip(event);
     });
@@ -23,21 +24,22 @@ $(document).ready(function() {
 
 // Funcion que obtiene las coordenadas del click sobre el mapa
 function coordenadas(event){
-    var posicionX = event.pageX;
-    var posicionY = event.pageY;
-    puntero = [posicionX, posicionY];
+    var longitud = event.pageX;
+    var latitud = event.pageY;
+    puntero = [longitud, latitud];
     // si no nos encontramos ya en medio de una itineración
     if (!booleanItinerando){
         // Si aún no hemos hecho click en el punto de inicio
         if (!booleanDistancia) {
-            console.log("INICIO : " + inicio);
-            inicio = [posicionX,posicionY];
+            inicio = [longitud,latitud];
+            console.log("INICIO: " + inicio);
             booleanDistancia = true;
+            situarPuntero(longitud,latitud);
 
         // cuando ya hemos hecho click en el punto de inicio    
         } else {
             console.log("INICIO : "+ inicio + " DESTINO : " + destino);
-            destino = [posicionX, posicionY];
+            destino = [longitud, latitud];
             booleanItinerando = true;
             generarMovimiento();
             // booleanDistancia = false;
@@ -49,7 +51,7 @@ function coordenadas(event){
 
 
 // Función para mostrar las coordenadas del puntero (Cuando lo necesito)
-function mostrarPosicionPuntero(event) {
+/*function mostrarPosicionPuntero(event) {
     var posicionX = event.pageX;
     var posicionY = event.pageY;
     var clientX = event.clientX;
@@ -62,8 +64,9 @@ function mostrarPosicionPuntero(event) {
     console.log("Client X: " + clientX + " Client Y: " + clientY);
     console.log("Screen X: " + screenX + " Screen Y: " + screenY);
     console.log("offset X: " + offsetX + " offset Y: " + offsetY);
+    console.log("---------------------------------------------------------------------------")
 }
-
+*/
 // Función que genera toda la acción en lo referente a la itineración
 function generarMovimiento(){
 
@@ -126,7 +129,7 @@ function calcularEventoMapa(){
 
     switch ( randomNum){
         case 1:
-            fight();
+            alert("COMBATEEEEE");
             break;
         case 2:
             alert("Evento Bueno");
@@ -146,45 +149,22 @@ function calcularEventoMapa(){
  */
 function situarPuntero(longitud, latitud){
     $("#punteroEspada").remove();
-    let long = longitud -20;
+    let long = longitud -40;
     long += "px";
     let lat = latitud - 70; 
     lat += "px";
     $(`<img id="punteroEspada" src="images/Mapas/punteroEspada.png" style="top: ${lat}; left: ${long}; position: absolute; visibility: visible">`)
-    .appendTo("#rowDosCabecera").hide();
-  /*  $("#punteroEspada").css({
+    .appendTo("#rowDosCabecera").show();
+   /* $("#punteroEspada").css({
         "top" : `${lat}`,
         "left" : `${long}`,
         "position" : "absolute",
         "visibility" : "visible"
-    }).hide(); */
+    }).show(); */
 
 }
 
-// Función que simula el avance de una barra de progreso
-function progreso(){
 
-    resultadoNecesario
-    caminoRecorrido = caminoRecorrido + resultadoDado;
-    let porcentajeAncho = caminoRecorrido * 100 / resultadoNecesario;
-    widthProgreso = porcentajeAncho + '%';
-
-    //Controlamos el desbordamiento de la barra de progreso
-    let widthInt = parseInt(widthProgreso.replace('%',''));
-    if( widthInt > 100){
-        widthProgreso= '102%';
-    }
-
-    //Seteamos el width de la barra para simular el progreso.
-    $("#barraProgreso").css({
-        "width" : `${widthProgreso}`
-    });
-
-    //Añadimos la imagen del monigote al final de la barra de progreso.
-    $("#personajeAndando").remove();
-    $(`<img id="personajeAndando" src="images/Mapas/personajeAndando.png"/>`)
-    .appendTo("#barraProgreso").show();
-}
 
 // Función para reiniciar los valores que forman la barra de progreso
 function resetearValoresItineracion(){
@@ -221,4 +201,28 @@ function mostrarTooltip(event){
 
 function ocultarTooltip(){
 
+}
+// Función que simula el avance de una barra de progreso
+function progreso(){
+
+    // resultadoNecesario
+    caminoRecorrido = caminoRecorrido + resultadoDado;
+    let porcentajeAncho = caminoRecorrido * 100 / resultadoNecesario;
+    widthProgreso = porcentajeAncho + '%';
+
+    //Controlamos el desbordamiento de la barra de progreso
+    let widthInt = parseInt(widthProgreso.replace('%',''));
+    if( widthInt > 100){
+        widthProgreso= '102%';
+    }
+
+    //Seteamos el width de la barra para simular el progreso.
+    $("#barraProgreso").css({
+        "width" : `${widthProgreso}`
+    });
+
+    //Añadimos la imagen del monigote al final de la barra de progreso.
+    $("#personajeAndando").remove();
+    $(`<img id="personajeAndando" src="images/Mapas/personajeAndando.png"/>`)
+        .appendTo("#barraProgreso").show();
 }

@@ -26,12 +26,7 @@
 
     <link rel="stylesheet type="text/css" href="${pageContext.request.contextPath}/css/prueba.css">
 
-    <script>
-        function blaBlaBla() {
-            console.log("Bla bla bla");
-        }
 
-    </script>
 
 </head>
 <body>

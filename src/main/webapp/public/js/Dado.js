@@ -43,7 +43,12 @@ var resultadoDado="";
         }, 3000);
         setTimeout(function(){
             dado();
-            ControladorTiradaDadoGeneral(randNum, itinerador);
+            // Si nos encontramos en el mapa de campaña viajando...
+            if (booleanItinerando){
+                calcularRecorrido();
+            } else {
+                ControladorTiradaDadoGeneral(randNum, itinerador);
+            }
         }, 3400);
 
         
