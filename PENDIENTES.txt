@@ -8,4 +8,4 @@
 
 5. Sistema de compra 
 
-
+6. Sistema de Recompensa en Batalla

@@ -22,9 +22,6 @@ public class ZonaEntity {
     @Getter @Setter
     private String nombreZona;
 
-    @Column(name="ID_TERRITORIO")
-    @Getter @Setter
-    private int idTerritorio;
 
     @Column(name="PELIGROSIDAD")
     @Getter @Setter
@@ -42,7 +39,6 @@ public class ZonaEntity {
         return "ZonaEntity{" +
                 "idZona=" + idZona +
                 ", nombreZona='" + nombreZona + '\'' +
-                ", idTerritorio=" + idTerritorio +
                 ", peligrosidad=" + peligrosidad +
                 '}';
     }

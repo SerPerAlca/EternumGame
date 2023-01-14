@@ -25,16 +25,15 @@ CREATE TABLE IF NOT EXISTS HEROE (
     );
 
     CREATE TABLE IF NOT EXISTS ZONA (
-    ID_ZONA INT(3) NOT NULL AUTO_INCREMENT,
+    ID_ZONA INT(3) NOT NULL,
     NOMBRE_ZONA VARCHAR(30) NOT NULL,
-    ID_TERRITORIO INT(3) NOT NULL,
     COD_TIPO_ZONA VARCHAR(3) NOT NULL,
     PELIGROSIDAD INT(1) NOT NULL,
     PRIMARY KEY(ID_ZONA)
     );
 
     CREATE TABLE IF NOT EXISTS ENEMIGO(
-    ID_ENEMIGO INT(3) NOT NULL AUTO_INCREMENT,
+    ID_ENEMIGO INT(3) NOT NULL,
     NOMBRE_ENEMIGO VARCHAR(35) NOT NULL,
     RAZA VARCHAR(15) NOT NULL,
     ATAQUE_FISICO INT(2),
@@ -340,22 +339,28 @@ INSERT INTO HEROE_ATRIBUTO(COD_HEROE,COD_ATRIBUTO,VALOR_DEFECTO,VALOR_ACTUAL)VAL
                                                                                    ('LION','ESQ',0,0);                     
 
 
-INSERT INTO ZONA(NOMBRE_ZONA,ID_TERRITORIO,COD_TIPO_ZONA,PELIGROSIDAD)VALUES('CAMPOS DE KISLEV',1,'NEV',1),
-                                                                            ('BOSQUE DE LOS RIOS',1,'BOS',2),
-                                                                            ('CAMPOS DE IMPERIUM',1,'LLA',1),
-                                                                            ('COSTA DE STIRLAN',1,'LLA',2);          
+INSERT INTO ZONA(ID_ZONA,NOMBRE_ZONA,COD_TIPO_ZONA,PELIGROSIDAD)VALUES(1,'KISLEV','NEV',1),
+                                                              (2,'AVERLAN','BOS',2),
+                                                              (3,'IMPERIUM','LLA',1),
+                                                              (4,'STIRLAN','LLA',2),  
+                                                              (5,'CARREBURGO','LLA',1),
+                                                              (6,'TIERRAS_INTERMEDIAS','LLA',2),
+                                                              (7,'TRANSILVANIA','PAN',3),
+                                                              (8,'WISLEN','LLA',2),
+                                                              (9,'TIERRAS_DE_HOET','LLA',2),
+                                                              (10,'CARRERA_BLANCA','LLA',2);        
 
-INSERT INTO ENEMIGO(NOMBRE_ENEMIGO,RAZA,ATAQUE_FISICO,ATAQUE_MAGICO,DEFENSA_FISICA,DEFENSA_MAGICA,IS_BOSS,ALCANCE,VELOCIDAD,ESQUIVA,VITALIDAD,RUTA_IMAGEN,PROBABILIDAD_APARACION)VALUES('ANDRÓGENES','MONSTRUO',3,0,5,6,'N',1,3,2,10,'/public/images/Unidades/monstruos/Androgenes.png',1),
-                                                                                                                                                                ('FORAJIDO','HUMANO',2,0,3,0,'N',4,2,1,6,'/public/images/Unidades/humanos/Forajido.png',3),
-                                                                                                                                                                ('ASALTA BOSQUES','HUMANO',3,0,4,0,'N',3,3,1,6,'/public/images/Unidades/humanos/asalta-bosques.png',3),
-                                                                                                                                                                ('SALTEADOR DE CAMINOS','HUMANO',2,0,4,0,'N',1,2,1,6,'/public/images/Unidades/humanos/Salteador.png',3),
-                                                                                                                                                                ('GRERIUS BRON','HUMANO',3,1,8,4,'S',1,3,2,12,'/public/images/Unidades/humanos/greriusBron.png',3),
-                                                                                                                                                                ('HOOD EL FORAJIDO','HUMANO',4,3,10,6,'S',4,3,2,15,'/public/images/Unidades/humanos/Hood.png',3),
-                                                                                                                                                                ('TRITÓN GUERRERO','TRITÓN',4,0,6,2,'N',1,3,2,10,'/public/images/Unidades/monstruos/TritonGuerrero.png',3),
-                                                                                                                                                                ('ROMPE-CORAZAS','MONSTRUO',2,2,5,2,'N',1,2,2,9,'/public/images/Unidades/monstruos/RompeCorazas.png',3),
-                                                                                                                                                                ('BATIDOR','HUMANO',2,0,6,0,'N',4,4,1,7,'/public/images/Unidades/humanos/batidor.png',3),
-                                                                                                                                                                ('MERCENARIO','HUMANO',3,0,7,0,'N',1,2,1,5,'/public/images/Unidades/humanos/mercenario.png',3),
-                                                                                                                                                                ('TRITÓN BUSCA-PESCA','TRITÓN',3,0,4,2,'N',3,3,2,8,'/public/images/Unidades/monstruos/BuscaPesca.png',2);
+INSERT INTO ENEMIGO(ID_ENEMIGO,NOMBRE_ENEMIGO,RAZA,ATAQUE_FISICO,ATAQUE_MAGICO,DEFENSA_FISICA,DEFENSA_MAGICA,IS_BOSS,ALCANCE,VELOCIDAD,ESQUIVA,VITALIDAD,RUTA_IMAGEN,PROBABILIDAD_APARACION)VALUES(1,'ANDRÓGENES','MONSTRUO',3,0,5,6,'N',1,3,2,10,'/public/images/Unidades/monstruos/Androgenes.png',1),
+                                                                                                                                                                (2,'FORAJIDO','HUMANO',2,0,3,0,'N',4,2,1,6,'/public/images/Unidades/humanos/Forajido.png',3),
+                                                                                                                                                                (3,'ASALTA BOSQUES','HUMANO',3,0,4,0,'N',3,3,1,6,'/public/images/Unidades/humanos/asalta-bosques.png',3),
+                                                                                                                                                                (4,'SALTEADOR DE CAMINOS','HUMANO',2,0,4,0,'N',1,2,1,6,'/public/images/Unidades/humanos/Salteador.png',3),
+                                                                                                                                                                (5,'GRERIUS BRON','HUMANO',3,1,8,4,'S',1,3,2,12,'/public/images/Unidades/humanos/greriusBron.png',3),
+                                                                                                                                                                (6,'HOOD EL FORAJIDO','HUMANO',4,3,10,6,'S',4,3,2,15,'/public/images/Unidades/humanos/Hood.png',3),
+                                                                                                                                                                (7,'TRITÓN GUERRERO','TRITÓN',4,0,6,2,'N',1,3,2,10,'/public/images/Unidades/monstruos/TritonGuerrero.png',3),
+                                                                                                                                                                (8,'ROMPE-CORAZAS','MONSTRUO',2,2,5,2,'N',1,2,2,9,'/public/images/Unidades/monstruos/RompeCorazas.png',3),
+                                                                                                                                                                (9,'BATIDOR','HUMANO',2,0,6,0,'N',4,4,1,7,'/public/images/Unidades/humanos/batidor.png',3),
+                                                                                                                                                                (10,'MERCENARIO','HUMANO',3,0,7,0,'N',1,2,1,5,'/public/images/Unidades/humanos/mercenario.png',3),
+                                                                                                                                                                (11,'TRITÓN BUSCA-PESCA','TRITÓN',3,0,4,2,'N',3,3,2,8,'/public/images/Unidades/monstruos/BuscaPesca.png',2);
 
 INSERT INTO ENEMIGO_ZONA(ID_ZONA,ID_ENEMIGO)VALUES(1,1),
                                                   (1,2),
@@ -370,7 +375,12 @@ INSERT INTO ENEMIGO_ZONA(ID_ZONA,ID_ENEMIGO)VALUES(1,1),
                                                   (3,10),
                                                   (4,7),
                                                   (4,8),
-                                                  (4,9);
+                                                  (4,9),
+                                                  (4,11),
+                                                  (5,2),
+                                                  (5,3),
+                                                  (5,4),
+                                                  (5,9);
 
 
 

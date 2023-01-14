@@ -9,6 +9,8 @@ var x1, y1, x2, y2, catAbs, catOrd, distancia;
 var caminoRecorrido = 0;
 var widthProgreso = "";
 var booleanItinerando = false;
+var ventanaFight = "width=1500,height=1000,scrollbars=NO,resizable=NO"
+document.cookie =  "ubicacionMapa=KISLEV";
 
 $(document).ready(function() {
 
@@ -17,10 +19,28 @@ $(document).ready(function() {
         mostrarPosicionPuntero(event);
     });
     */
-    $("#areaImperium").on("mouseover", function(event){
-        mostrarTooltip(event);
+
+    $("#mapaImperio").children().on("mouseover", function(event){
+        var cadenaZona = "zona";
+        var nombreLugar = this.id;
+        var posicion = nombreLugar.search(cadenaZona);
+        // comprobamos si estamos en zona de combate o en una ubicacion concreta
+        if (posicion != -1){
+            // Estamos dentro de una zona de combate
+            nombreLugar = nombreLugar.slice(4);
+            document.cookie = "ubicacionMapa="+nombreLugar;
+        } else {
+            //Estamos en una ubicacion concreta
+            llamadaDescripcionLugar(this.id);
+        }
+
     });
-});   
+
+    $("#mapaImperio").children().on("mouseout", function(event){
+        borrarDescripcion();
+    });
+
+});
 
 // Funcion que obtiene las coordenadas del click sobre el mapa
 function coordenadas(event){
@@ -51,7 +71,7 @@ function coordenadas(event){
 
 
 // Función para mostrar las coordenadas del puntero (Cuando lo necesito)
-/*function mostrarPosicionPuntero(event) {
+function mostrarPosicionPuntero(event) {
     var posicionX = event.pageX;
     var posicionY = event.pageY;
     var clientX = event.clientX;
@@ -60,13 +80,13 @@ function coordenadas(event){
     var screenY = event.screenY;
     var offsetX = event.offsetX;
     var offsetY = event.offsetY;
-    console.log("Posicion X: " + posicionX + " Posicion Y: " + posicionY);
+    /*console.log("Posicion X: " + posicionX + " Posicion Y: " + posicionY);
     console.log("Client X: " + clientX + " Client Y: " + clientY);
-    console.log("Screen X: " + screenX + " Screen Y: " + screenY);
+    console.log("Screen X: " + screenX + " Screen Y: " + screenY);*/
     console.log("offset X: " + offsetX + " offset Y: " + offsetY);
     console.log("---------------------------------------------------------------------------")
 }
-*/
+
 // Función que genera toda la acción en lo referente a la itineración
 function generarMovimiento(){
 
@@ -79,7 +99,6 @@ function generarMovimiento(){
 
 // Función que calcula la distancia entre dos coodenadas (Teorema de Pitágoras)
 function calcularDistancia() {
-    
     try{
         x1 = inicio[0];
         y1 = inicio[1];
@@ -91,12 +110,14 @@ function calcularDistancia() {
         //situarPuntero(x2, y2);
         inicio = destino;
         distancia = Math.trunc(distancia / 16);
+        /*
+        Para la prueba BETA aumentaremos la distancia
+         */
+        distancia = distancia + 10;
         return distancia;
-
     }catch(e){
         console.log(`Se produjo el siguiente error:  ${e.message}`);
     }
-    
 }
 
 
@@ -125,17 +146,14 @@ function calcularRecorrido(){
 // Funcion que lanza aleatoriamente un evento al final de cada día
 function calcularEventoMapa(){
 
-    let randomNum = getRandomInt(1, 4);
+    let randomNum = getRandomInt(1, 2);
 
     switch ( randomNum){
         case 1:
-            alert("COMBATEEEEE");
+            window.open('/fight', "fight", ventanaFight);
             break;
         case 2:
-            alert("Evento Bueno");
-            break;
-        case 3: 
-            alert("Evento Malo");
+            eventoMapaCampaña();
             break;
         default:
             console.log("evento No encontrado");
@@ -151,8 +169,9 @@ function situarPuntero(longitud, latitud){
     $("#punteroEspada").remove();
     let long = longitud -40;
     long += "px";
-    let lat = latitud - 70; 
+    let lat = latitud -90;
     lat += "px";
+    console.log("Puntero: Longitud --> " + long + " Latitud ----> " + lat);
     $(`<img id="punteroEspada" src="images/Mapas/punteroEspada.png" style="top: ${lat}; left: ${long}; position: absolute; visibility: visible">`)
     .appendTo("#rowDosCabecera").show();
    /* $("#punteroEspada").css({
@@ -163,8 +182,6 @@ function situarPuntero(longitud, latitud){
     }).show(); */
 
 }
-
-
 
 // Función para reiniciar los valores que forman la barra de progreso
 function resetearValoresItineracion(){
@@ -188,20 +205,6 @@ function llegarDestino(){
     $("#descripcionItineracion p").text("");
 }
 
-function mostrarTooltip(event){
-   
-    var posMouse = event.pageX; 
-    var textoTooltip = "Imperium. Capital del Imperio. Centro del poder y la administración de todo el Imperio."
-
-    if (textoTooltip.length > 0) {
-        $("#divMapa").append(`<div class="tooltip">  ${textoTooltip}  </div>`);
-        $("#divMapa .tooltip").fadeIn(300);
-    }
-}    
-
-function ocultarTooltip(){
-
-}
 // Función que simula el avance de una barra de progreso
 function progreso(){
 
@@ -225,4 +228,14 @@ function progreso(){
     $("#personajeAndando").remove();
     $(`<img id="personajeAndando" src="images/Mapas/personajeAndando.png"/>`)
         .appendTo("#barraProgreso").show();
+}
+
+
+function pintarDescripcionLugar(texto){
+    $(`<p>${texto}</p>`).appendTo("#cuadroDescripcion");
+}
+
+
+function borrarDescripcion(){
+    $("#cuadroDescripcion").text("");
 }

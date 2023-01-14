@@ -21,7 +21,6 @@ public class ZonaMapper {
         List<Enemigo> enemigoList = new ArrayList<>();
         zona.setIdZona(zonaEntity.getIdZona());
         zona.setNombreZona(zonaEntity.getNombreZona());
-        zona.setIdTerritorio(zonaEntity.getIdTerritorio());
         zona.setPeligrosidad(zonaEntity.getPeligrosidad());
         List<EnemigoEntity> listaEntity = zonaEntity.getEnemigoEntityList();
         for (EnemigoEntity enemy : listaEntity){
@@ -37,7 +36,6 @@ public class ZonaMapper {
         List<EnemigoEntity> enemigoEntityList = new ArrayList<>();
         zonaEntity.setIdZona(zona.getIdZona());
         zonaEntity.setNombreZona(zona.getNombreZona());
-        zonaEntity.setIdTerritorio(zona.getIdTerritorio());
         zonaEntity.setPeligrosidad(zona.getPeligrosidad());
         List<Enemigo> enemigoList = zona.getEnemigoList();
         for( Enemigo enemy : enemigoList){

@@ -12,8 +12,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/principal.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/combate.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/AJAXcombate.js"></script>
+    <script src="js/FuncionesCompartidas.js"></script>
+    <script src="js/Dado.js"></script>
+    <script src="js/Itineracion.js"></script>
+
     <title>JSP de Prueba</title>
 </head>
 <body>
@@ -36,8 +41,7 @@
         </div>
         <div class="row">
             <div id="siguiente" class="col align-self-center">
-                <button type="button" class="btn btn-success" id="btn_empezar">Empezar</button>
-                <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="ControladorBotonSiguiente()">Página Siguiente</button>
+                <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="calcularRecompensa()">Volver al mapa de campaña</button>
             </div>
         </div>
         <div class="row mt-4">

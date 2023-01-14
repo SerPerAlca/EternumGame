@@ -12,14 +12,27 @@ body{
 
     width: 1000px;
     height: 1000px;
+    z-index: 0;
+}
+
+#cuadroDescripcion{
+
+    margin-top: -63rem;
+    width: 40rem;
+    padding: 5rem;
+    z-index: 1;
+    position: absolute;
+    float: left;
+    height: 25rem;
+
 }
 
 #descripcionItineracion p{
-
     font-size: 5rem !important;
     color: chartreuse;
     justify-content: end;
     text-align: right;
+    z-index: 2;
 }
 
 /* MAPA */
@@ -46,6 +59,7 @@ body{
     background-color: #4CAF50;
     padding: 0;
     margin-left: -1rem;
+    z-index: 3;
 }
 
 #personajeAndando{
@@ -54,7 +68,10 @@ body{
     height: 100%;
     margin-left: auto;
     display: block;
+}
 
+#zonaKislev{
+    background-color: white;
 }
 
 /*    TOOOLTIIIIIP ********************************************************/

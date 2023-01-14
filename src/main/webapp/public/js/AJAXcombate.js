@@ -3,11 +3,13 @@ $(document).ready(function() {
     $(".conte-texto").hide();
     $("#tarjetaEnemy").hide();
 
+    var cookieLugar = readCookie("ubicacionMapa");
     fight2();
     var data = {
-        jugadores: 4,
-        id: 1
+        zona: cookieLugar
     };
+
+    $("#capiActual").text("¡¡¡¡ C O M B A T E !!!!")
 
     var enemigo = new Object();
 
@@ -109,7 +111,7 @@ $(document).ready(function() {
         return rutaCorregida;
     }
 
-    /*$("#imgEnemy").attr({
-        src : "images/Averlan/callePrincipal.png",
-        width : "450px"
-    });*/
+    function calcularRecompensa(){
+        console.log("RECOMPENSAAA");
+    }
+

@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EnemigoServiceImpl implements IEnemigoService {
@@ -89,12 +88,14 @@ public class EnemigoServiceImpl implements IEnemigoService {
     }
 
     @Override
-    public List<Enemigo> findEnemyFromZone(int idZonaParam) {
+    public List<Enemigo> findEnemyFromZone(String zona) {
         List<Enemigo> enemigoList = new ArrayList<>();
         try {
-            Optional<ZonaEntity> zonaEntity = zonaRepository.findById(idZonaParam);
-            if(zonaEntity.isPresent()) {
-                List<EnemigoEntity> listaEnemysEntity = zonaEntity.get().getEnemigoEntityList();
+            // Obtengo la zona filtrando por el nombre
+            ZonaEntity zonaEntity = zonaRepository.findByName(zona);
+            if (null != zonaEntity){
+                // Obtengo la lista de enemigos de la zona
+                List<EnemigoEntity> listaEnemysEntity = zonaEntity.getEnemigoEntityList();
                 for ( EnemigoEntity enemigo : listaEnemysEntity){
                     Enemigo enemigoDom = enemyMapper.fromEnemigoEntityToDomain(enemigo);
                     enemigoList.add(enemigoDom);
