@@ -14,18 +14,24 @@ public class ItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="COD_ITEM")
-    private String codItem;
+    @Column(name="ID_ITEM")
+    private int idItem;
 
     @Column(name="NOMBRE_ITEM")
-    private String nombreItem;
+    private String nombre;
 
     @Column(name="DESCRIPCION_ITEM")
-    private String descripcionItem;
+    private String descripcion;
 
     @Column(name="RUTA_IMAGEN")
     private String rutaImagen;
 
     @Column(name="PRECIO_BASE")
     private int precioBase;
+
+    @Column(name="PROBABILIDAD_APARACION")
+    private int probabilidad;
+
+    @Column(name="TAMAÑO")
+    private int tamanio;
 }

@@ -20,7 +20,7 @@ public class TipoArmaduraEntity {
     @Getter  @Setter
     private String codTipoArmadura;
 
-    @Column(name="DESCRIPCION_TIPO_ARMA")
+    @Column(name="DESCRIPCION_TIPO_ARMADURA")
     @Getter @Setter
     private String descripcion;
 }

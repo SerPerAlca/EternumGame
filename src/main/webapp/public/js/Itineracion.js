@@ -14,6 +14,7 @@ document.cookie =  "ubicacionMapa=KISLEV";
 
 $(document).ready(function() {
 
+
     /*
     $('body').on("mousemove", "#divImagen", function(event){
         mostrarPosicionPuntero(event);
@@ -143,29 +144,14 @@ function calcularRecorrido(){
     }
 }
 
-// Funcion que lanza aleatoriamente un evento al final de cada día
-function calcularEventoMapa(){
 
-    let randomNum = getRandomInt(1, 2);
-
-    switch ( randomNum){
-        case 1:
-            window.open('/fight', "fight", ventanaFight);
-            break;
-        case 2:
-            eventoMapaCampaña();
-            break;
-        default:
-            console.log("evento No encontrado");
-            break;        
-    }
-}
 
 // Función que muestra la espada en el mapa como situacion actual.
 /**
  * TODO: Se mueve el mapa cuando se muestra el resultado necesario lo que provoca que el puntero se descoloque.
  */
 function situarPuntero(longitud, latitud){
+    document.cookie = "capitulo=MapaCampaña";
     $("#punteroEspada").remove();
     let long = longitud -40;
     long += "px";
@@ -231,11 +217,80 @@ function progreso(){
 }
 
 
-function pintarDescripcionLugar(texto){
-    $(`<p>${texto}</p>`).appendTo("#cuadroDescripcion");
+
+
+// Funcion que lanza aleatoriamente un evento al final de cada día
+function calcularEventoMapa(){
+
+    let randomNum = getRandomInt(1,5);
+
+    switch ( randomNum){
+        case 1: eventoMapaCampaña();
+                break;
+        default:
+            eventoCombate();
+            break;
+    }
 }
 
+// Función que determina que tipo de evento se mostrará
+function eventoMapaCampaña(){
+
+    let randomNum = getRandomInt(1, 3);
+
+    switch(randomNum){
+        case 1: eventoMapaBueno();
+                break;
+        case 2: eventoMapaMalo();
+                break;
+        default: console.log("Evento no encontrado");
+                break;
+    }
+}
+
+function eventoMapaBueno(){
+
+    let randomId = getRandomInt(1,18);
+    var tipo = "Buenos";
+    llamadaEvento(tipo,randomId);
+}
+
+function eventoMapaMalo(){
+
+    let randomId = getRandomInt(1,15);
+    var tipo = "Malos";
+    llamadaEvento(tipo,randomId);
+}
+
+function eventoCombate(){
+
+    /* Metemos la apertura del combate en un setTimeout para que le de tiempo
+        al dado a mostrar el resultado final */
+    setTimeout(()=>{
+        window.open('/fight', "fight", ventanaFight);
+    }, 1000);
+}
+
+/* PIntado en el mapa de campaña */
+function pintarEvento(evento, resultado){
+
+    ocultarDado();
+    //Borramos todos los elementos que se hayan generado
+    $("#cuadroDescripcion p").remove();
+    $("#textoEvento").remove();
+    $("#textoEvento p").remove();
+
+    $(`<div id="textoEvento" >
+        <p>${evento}</p></div>`).appendTo("#cuadroDescripcion");
+    setTimeout(()=>{
+        $(`<p><span style='color:yellow;'>${resultado}</span></p>`).appendTo("#textoEvento");
+    }, 14000);
+}
+
+function pintarDescripcionLugar(texto){
+    $(`<div id="DescripcionTXT"><p>${texto}</p></div>`).appendTo("#cuadroDescripcion");
+}
 
 function borrarDescripcion(){
-    $("#cuadroDescripcion").text("");
+    $("#DescripcionTXT p").text("");
 }

@@ -22,6 +22,7 @@
     <script src="js/TratamientoAudio.js"></script>
     <script src="js/Dado.js"></script>
     <script src="js/Itineracion.js"></script>
+    <!--<script src="js/AJAXcombate.js"></script> -->
 
     <script src="js/FuncionesCompartidas.js"></script>
 
@@ -53,21 +54,16 @@
 <div class="row">
     <div id="siguiente" class="col align-self-center">
         <button type="button" class="btn btn-success" id="btn_empezar">Empezar</button>
-        <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="ControladorBotonSiguiente()">Página
-            Siguiente
-        </button>
+        <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="ControladorBotonSiguiente()">Página Siguiente</button>
     </div>
 </div>
 <div class="row">
     <div id="itineracion" class="col">
         <p>
-            <button type="button" class="btn btn-secondary" id="btn_tiendas">Tiendas</button>
-            <button type="button" class="btn btn-secondary" id="btn-Palacio">Palacio del Conde</button>
-            <button type="button" class="btn btn-secondary" id="btn-CasaC">Casa Consistorial</button>
             <button type="button" class="btn btn-secondary" id="btn-Salir">Salir de la Ciudad</button>
+            <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>
             <button type="button" class="btn btn-secondary" value="itinerar" id="btn-itinerar">Siguiente Capítulo
             </button>
-            <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>
             <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultarDado()">Ocultar Dado</a>
         </p>
     </div>

@@ -209,7 +209,7 @@ body{
 }
 
 
-/******* listar-Enemigos *****************************/
+/******* listar elementos *****************************/
 
 #imgEnemigo{
     width: 6rem;
@@ -221,6 +221,14 @@ body{
     font-size: large;
 }
 
+#botonVolver{
+    float:right;
+}
+
+#botonVolverHome{
+    margin-left: 50%;
+    margin-top: 3rem;
+}
 
 /****** O R D E N A R    T A B L A  ********************************/
 

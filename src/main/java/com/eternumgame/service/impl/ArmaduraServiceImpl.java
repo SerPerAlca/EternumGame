@@ -41,4 +41,21 @@ public class ArmaduraServiceImpl implements IArmaduraService {
             }
         });
     }
+
+    @Override
+    public Armadura getOneArmadura() {
+        Armadura armadura = new Armadura();
+        int cantidadArmaduras = armaduraRepository.findCount();
+        ArmaduraEntity armaduraEntity = new ArmaduraEntity();
+        do{
+          int indexRandom = (int)(Math.random()*cantidadArmaduras+1);
+          armaduraEntity = armaduraRepository.getOne(indexRandom);
+        }  while (armaduraEntity.getRecompensa() == 'N');
+
+        armaduraEntity.setRecompensa('N');
+        armaduraRepository.save(armaduraEntity);
+        armadura = mapper.fromArmaduraEntityToDomain(armaduraEntity);
+        armadura.setCantidad(1);
+        return armadura;
+    }
 }

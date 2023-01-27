@@ -9,20 +9,24 @@ public class ItemMapper {
 
     public Item EntityToDomain (ItemEntity itemEntity){
         Item item = new Item();
-        item.setCodItem(itemEntity.getCodItem());
-        item.setNombreItem(itemEntity.getNombreItem());
-        item.setDescripcionItem(itemEntity.getDescripcionItem());
+        item.setIdItem(itemEntity.getIdItem());
+        item.setNombre(itemEntity.getNombre());
+        item.setDescripcion(itemEntity.getDescripcion());
         item.setRutaImagen(itemEntity.getRutaImagen());
+        item.setProbabilidad(itemEntity.getProbabilidad());
+        item.setTamanio(itemEntity.getTamanio());
         return item;
     }
 
     public ItemEntity DomaintToEntity (Item item){
         ItemEntity itemEntity = new ItemEntity();
-        itemEntity.setCodItem(item.getCodItem());
-        itemEntity.setNombreItem(item.getNombreItem());
-        itemEntity.setDescripcionItem(item.getDescripcionItem());
+        itemEntity.setIdItem(item.getIdItem());
+        itemEntity.setNombre(item.getNombre());
+        itemEntity.setDescripcion(item.getDescripcion());
         itemEntity.setRutaImagen(item.getRutaImagen());
         itemEntity.setPrecioBase(item.getPrecioBase());
+        itemEntity.setProbabilidad(item.getProbabilidad());
+        itemEntity.setTamanio(item.getTamanio());
         return itemEntity;
     }
 }

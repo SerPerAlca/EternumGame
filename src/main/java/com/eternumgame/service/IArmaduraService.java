@@ -12,5 +12,7 @@ public interface IArmaduraService {
 
     public void ordenarPorTipo(List<Armadura> armaduraList);
 
+    public Armadura getOneArmadura();
+
 
 }

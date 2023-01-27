@@ -31,7 +31,7 @@ function inicioAV(){
 
 
 function primeraSecuenciaAV(){
-    
+    document.cookie = "capitulo=Averlan";
     $("#CabeceraAudio").hide();
     $("#btn-itinerar").hide();
     $("#imagenes img").remove();

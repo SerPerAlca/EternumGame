@@ -27,6 +27,14 @@
                 </div>
             </div>
             <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="images/Arma/yoSoyGroot.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Armas</h5>
+                    <p class="card-text">Lista de Armas de Eternum. Valen para defenderte o defender tu honor a partes iguales</p>
+                    <a href="/listarArma" class="btn btn-primary">Ver Armas</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="images/Unidades/monstruos/Androgenes.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Enemigos</h5>
@@ -43,6 +51,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <button type="button" id="botonVolverHome" onclick="volverHome()" class="btn btn-primary">Volver</button>
     </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

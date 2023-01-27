@@ -271,3 +271,17 @@
                     }
                 });
         }
+
+        // Llamada para el mapa de Campaña
+        function llamadaEvento(tipo, id){
+            directorioJSON = "json/Eventos/eventos" + tipo + ".json"
+            fetch(directorioJSON)
+                .then(res => res.json())
+                .then(data =>{
+                    for(let index of Object.values(data)){
+                        if(index.id == id){
+                         pintarEvento(index.evento, index.resultado);
+                        }
+                    }
+                });
+        }

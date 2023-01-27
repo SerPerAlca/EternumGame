@@ -57,7 +57,7 @@ function abrirMapaCampania(){
     window.open('/itinerar', "MapaCampania", ventanaMapaCampaña);
 }
 
-
+/*
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
 function fight(){
     $("#rowDosCabecera").hide();
@@ -88,7 +88,7 @@ function fight(){
 
     enseniarSig();
 }
-
+*/
 function degradadoFight(){
     $(".conte-degradado").css({'background': `radial-gradient(transparent 0%, transparent 0%, black ${contDegradado}%)`});
     contDegradado++;
@@ -244,7 +244,11 @@ function administrarPifiaGeneral(itinerador){
 // Funcion controladora cuando se pulsa sobre el boton Pagina siguiente */
 function ControladorBotonSiguiente(){
     var cookieCapitulo = readCookie("capitulo");
-
+    var batalla = readCookie("batalla");
+    if(batalla == "true"){
+        document.cookie = "batalla=false";
+        window.close();
+    }
     switch (cookieCapitulo) {
         case "Despertar":
             pagSiguienteDespertar();
@@ -449,7 +453,7 @@ function animacionX(){
 function getRandomInt(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 function mostrarInfoSecuencia(nombreSecuencia){
@@ -466,5 +470,16 @@ function mostrarInfoAudio(rutaAudio){
     $("#infoDebugAudio").text("");
     $("#infoDebugAudio").text(rutaAudio);
 }
+// Función del botón  de volver a la Pagina Principal
+function volverHome(){
+    location.href='/';
+}
 
+// Función del botón  de volver de los listados
+function volverListados(){
+    location.href ='/listarElementos';
+}
 
+function salir(){
+    window.close();
+}

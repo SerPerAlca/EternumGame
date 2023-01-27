@@ -3,13 +3,11 @@ package com.eternumgame.persistence.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="ARMADURA")
-@ToString
 @NoArgsConstructor
 public class ArmaduraEntity {
 
@@ -49,23 +47,20 @@ public class ArmaduraEntity {
 
     @Column(name="TAMAÑO")
     @Getter @Setter
-    private int tamaño;
+    private int tamanio;
+
+    @Column(name="RECOMPENSA")
+    @Getter @Setter
+    private char recompensa;
+
+    @Column(name="DESTREZA")
+    @Getter @Setter
+    private int destreza;
 
     @ManyToOne
     @JoinColumn(name="COD_TIPO_ARMADURA")
     @Getter @Setter
     private TipoArmaduraEntity tipoArmaduraEntity;
 
-    public ArmaduraEntity(String codEfectoMagico, String nombreArmadura, String descripcion, int defensaFisica, int defensaMagica, int precioBase, String rutaImagen, int tamaño, TipoArmaduraEntity tipoArmaduraEntity) {
-        this.codEfectoMagico = codEfectoMagico;
-        this.nombreArmadura = nombreArmadura;
-        this.descripcion = descripcion;
-        this.defensaFisica = defensaFisica;
-        this.defensaMagica = defensaMagica;
-        this.precioBase = precioBase;
-        this.rutaImagen = rutaImagen;
-        this.tamaño = tamaño;
-        this.tipoArmaduraEntity = tipoArmaduraEntity;
-    }
 }
 

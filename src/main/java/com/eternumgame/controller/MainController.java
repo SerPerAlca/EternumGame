@@ -2,10 +2,7 @@ package com.eternumgame.controller;
 
 import com.eternumgame.domain.Enemigo;
 import com.eternumgame.domain.util.UtilidadesEnemigos;
-import com.eternumgame.service.IArmaduraService;
-import com.eternumgame.service.IEnemigoService;
-import com.eternumgame.service.IJugadorService;
-import com.eternumgame.service.ISessionPnjService;
+import com.eternumgame.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
@@ -37,6 +34,12 @@ public class MainController {
 
 	@Autowired
 	private IArmaduraService armaduraService;
+
+	@Autowired
+	private IArmaService armaService;
+
+	@Autowired
+	private IItemService itemService;
 
 	// PROLOGO
 	@RequestMapping(value = "/prologo", method = RequestMethod.GET)
@@ -106,9 +109,20 @@ public class MainController {
 	}
 
 
-
-
-
-
-
+	@RequestMapping(value = "/obtenerRecompensa", method = RequestMethod.POST)
+	@ResponseBody public Object  obtenerRecompensa(@RequestParam String zona, HttpServletRequest request,
+												   HttpServletResponse response) {
+		// generamos un numero random
+		int indexRandom = (int)(Math.random()*20);
+		Object object = new Object();
+		switch (indexRandom){
+			case 1: object = armaService.getOneArma();
+					break;
+			case 2: object = armaduraService.getOneArmadura();
+					break;
+			default: object = itemService.getOneItem();
+					break;
+		}
+		return object;
+	}
 }

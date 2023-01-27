@@ -3,15 +3,16 @@ package com.eternumgame.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
-@ToString
 @NoArgsConstructor
 public class Armadura {
 
     @Getter @Setter
     private int idArmadura;
+
+    @Getter
+    private String codigoClase = "armadura";
 
     @Getter @Setter
     private String codTipoArmadura;
@@ -23,7 +24,7 @@ public class Armadura {
     private int idPNJ;
 
     @Getter @Setter
-    private String nombreArmadura;
+    private String nombre;
 
     @Getter @Setter
     private String descripcion;
@@ -41,7 +42,7 @@ public class Armadura {
     private String rutaImagen;
 
     @Getter @Setter
-    private int tamaño;
+    private int tamanio;
 
     @Getter @Setter
     private MultipartFile imagen;
@@ -49,6 +50,12 @@ public class Armadura {
     @Getter @Setter
     private String tipoArmaduraDescripcion;
 
+    @Getter @Setter
+    private int cantidad;
 
+    @Getter @Setter
+    private int destreza;
 
+    @Getter  @Setter
+    private char recompensa;
 }

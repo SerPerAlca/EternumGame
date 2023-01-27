@@ -9,4 +9,6 @@ import java.util.List;
 public interface IItemService {
 
     public List<Item> findAllItems();
+
+    public Item getOneItem();
 }

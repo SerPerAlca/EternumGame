@@ -4,8 +4,10 @@
 
 2. Agregar más SFX. 
 
-4. Introducir armas en BD. 
+4. Introducir armas en BD. >_HECHO
 
 5. Sistema de compra 
 
 6. Sistema de Recompensa en Batalla
+
+7. Modificar cartas de armas, armaduras y enemigos

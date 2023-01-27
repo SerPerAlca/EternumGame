@@ -74,6 +74,13 @@ body{
     background-color: white;
 }
 
+#textoEvento{
+    z-index: 5;
+    background-color:black;
+    color:white;
+    margin-left: 4rem;
+}
+
 /*    TOOOLTIIIIIP ********************************************************/
 
 .tooltip_elemento {
@@ -118,4 +125,5 @@ body{
     border-bottom: 14px solid transparent;
     width: 50%;
     right: 50%;
+    font-size: 3rem;
 }

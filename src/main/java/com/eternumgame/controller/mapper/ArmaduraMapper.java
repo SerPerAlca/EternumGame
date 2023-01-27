@@ -14,13 +14,15 @@ public class ArmaduraMapper {
         if(null != armaduraEntity.getCodEfectoMagico()){
             armadura.setCodEfectoMagico(armaduraEntity.getCodEfectoMagico());
         }
-        armadura.setNombreArmadura(armaduraEntity.getNombreArmadura());
+        armadura.setRecompensa(armaduraEntity.getRecompensa());
+        armadura.setDestreza(armaduraEntity.getDestreza());
+        armadura.setNombre(armaduraEntity.getNombreArmadura());
         armadura.setDescripcion(armaduraEntity.getDescripcion());
         armadura.setDefensaFisica(armaduraEntity.getDefensaFisica());
         armadura.setDefensaMagica(armaduraEntity.getDefensaMagica());
         armadura.setPrecioBase(armaduraEntity.getPrecioBase());
         armadura.setRutaImagen(armaduraEntity.getRutaImagen());
-        armadura.setTamaño(armaduraEntity.getTamaño());
+        armadura.setTamanio(armaduraEntity.getTamanio());
         armadura.setTipoArmaduraDescripcion(armaduraEntity.getTipoArmaduraEntity().getDescripcion());
         return armadura;
     }
@@ -29,13 +31,15 @@ public class ArmaduraMapper {
         ArmaduraEntity armaduraEntity = new ArmaduraEntity();
         armaduraEntity.setIdArmadura(armadura.getIdArmadura());
         armaduraEntity.setCodEfectoMagico(armadura.getCodEfectoMagico());
-        armaduraEntity.setNombreArmadura(armadura.getNombreArmadura());
+        armaduraEntity.setNombreArmadura(armadura.getNombre());
+        armaduraEntity.setRecompensa(armadura.getRecompensa());
         armaduraEntity.setDescripcion(armadura.getDescripcion());
         armaduraEntity.setDefensaFisica(armadura.getDefensaFisica());
         armaduraEntity.setDefensaMagica(armadura.getDefensaMagica());
         armaduraEntity.setPrecioBase(armadura.getPrecioBase());
         armaduraEntity.setRutaImagen(armadura.getRutaImagen());
-        armaduraEntity.setTamaño(armadura.getTamaño());
+        armaduraEntity.setDestreza(armadura.getDestreza());
+        armaduraEntity.setTamanio(armadura.getTamanio());
         return armaduraEntity;
     }
 }

@@ -54,9 +54,9 @@ public class EnemigoEntity {
     @Getter @Setter
     private int velocidad;
 
-    @Column(name="ESQUIVA")
+    @Column(name="AGILIDAD")
     @Getter @Setter
-    private int esquiva;
+    private int agilidad;
 
     @Column(name="VITALIDAD")
     @Getter @Setter
@@ -65,6 +65,10 @@ public class EnemigoEntity {
     @Column(name="RUTA_IMAGEN")
     @Getter @Setter
     private String rutaImagen;
+
+    @Column(name="EXPERIENCIA")
+    @Getter @Setter
+    private int experiencia;
 
     @Column(name="PROBABILIDAD_APARACION")
     @Getter @Setter
@@ -77,7 +81,7 @@ public class EnemigoEntity {
     @Getter @Setter
     private List<ZonaEntity> zonaEntityList;
 
-    public EnemigoEntity(String nombreEnemigo, String raza, int ataqueFisico, int ataqueMagico, int defensaFisica, int defensaMagica, char is_boss, int alcance, int velocidad, int esquiva, int vitalidad, String rutaImagen, List<ZonaEntity> zonaEntityList) {
+    public EnemigoEntity(String nombreEnemigo, String raza, int ataqueFisico, int ataqueMagico, int defensaFisica, int defensaMagica, char is_boss, int alcance, int velocidad, int agilidad, int vitalidad, String rutaImagen, List<ZonaEntity> zonaEntityList) {
         this.nombreEnemigo = nombreEnemigo;
         this.raza = raza;
         this.ataqueFisico = ataqueFisico;
@@ -87,7 +91,7 @@ public class EnemigoEntity {
         this.is_boss = is_boss;
         this.alcance = alcance;
         this.velocidad = velocidad;
-        this.esquiva = esquiva;
+        this.agilidad = agilidad;
         this.vitalidad = vitalidad;
         this.rutaImagen = rutaImagen;
         this.zonaEntityList = zonaEntityList;

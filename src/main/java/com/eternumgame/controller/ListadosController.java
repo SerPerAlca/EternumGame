@@ -1,8 +1,10 @@
 package com.eternumgame.controller;
 
+import com.eternumgame.domain.Arma;
 import com.eternumgame.domain.Armadura;
 import com.eternumgame.domain.Enemigo;
 import com.eternumgame.domain.Item;
+import com.eternumgame.service.IArmaService;
 import com.eternumgame.service.IArmaduraService;
 import com.eternumgame.service.IEnemigoService;
 import com.eternumgame.service.IItemService;
@@ -26,6 +28,9 @@ public class ListadosController {
     @Autowired
     private IItemService iItemService;
 
+    @Autowired
+    private IArmaService armaService;
+
     // VISTA PRINCIPAL DE LISTADOS
     @RequestMapping(value = "/listarElementos", method = RequestMethod.GET)
     public String listarElementos() {
@@ -41,6 +46,15 @@ public class ListadosController {
         armaduraService.ordenarPorTipo(armaduraList);
         model.addAttribute("armaduras", armaduraList);
         return "ListadoArmaduras";
+    }
+
+    // ARMAS
+    @RequestMapping(value = "/listarArma", method = RequestMethod.GET)
+    public String listarArmas(Model model) {
+        List<Arma> armaList = armaService.findAllWeapon();
+        armaService.ordenarPorTipo(armaList);
+        model.addAttribute("armas", armaList);
+        return "ListadoArmas";
     }
 
     // LISTADO DE ENEMIGOS

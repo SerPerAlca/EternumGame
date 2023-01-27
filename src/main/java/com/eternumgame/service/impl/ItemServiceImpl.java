@@ -2,6 +2,7 @@ package com.eternumgame.service.impl;
 
 import com.eternumgame.controller.mapper.ItemMapper;
 import com.eternumgame.domain.Item;
+import com.eternumgame.domain.util.UtilidadesItems;
 import com.eternumgame.persistence.entity.ItemEntity;
 import com.eternumgame.persistence.repository.ItemRepository;
 import com.eternumgame.service.IItemService;
@@ -20,6 +21,9 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     private ItemMapper itemMapper;
 
+    @Autowired
+    private UtilidadesItems utilidadesItems;
+
     @Override
     public List<Item> findAllItems() {
         List<Item> itemList = new ArrayList<>();
@@ -30,5 +34,20 @@ public class ItemServiceImpl implements IItemService {
             itemList.add(item);
         }
         return itemList;
+    }
+
+    // Metodo para obtener uno o varios items de recompensa
+    @Override
+    public Item getOneItem() {
+        Item item = new Item();
+        List<Item> itemList= new ArrayList<Item>();
+        List<ItemEntity> itemEntityList= new ArrayList<ItemEntity>();
+        itemEntityList = itemRepository.findAll();
+        for(ItemEntity itemEntity : itemEntityList){
+            item = itemMapper.EntityToDomain(itemEntity);
+            itemList.add(item);
+        }
+        Item itemRecompensa = utilidadesItems.obtenerItemRandom(itemList);
+        return itemRecompensa;
     }
 }

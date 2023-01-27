@@ -34,18 +34,19 @@
                     <tbody>
                     <c:forEach var="armadura" items="${armaduras}">
                         <tr>
-                            <td>${armadura.nombreArmadura}</td>
+                            <td>${armadura.nombre}</td>
                             <td>${armadura.tipoArmaduraDescripcion}</td>
                             <td>${armadura.descripcion}</td>
                             <td>${armadura.defensaFisica}</td>
                             <td>${armadura.defensaMagica}</td>
-                            <td>${armadura.tamaño}</td>
+                            <td>${armadura.tamanio}</td>
                             <td><img id="imgEnemigo" src="${pageContext.request.contextPath}${armadura.rutaImagen}" /></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <button type="button" id="botonVolver" onclick="volverListados()" class="btn btn-primary">Volver</button>
         </div>
     </div>
 

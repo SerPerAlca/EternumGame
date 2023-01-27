@@ -15,7 +15,7 @@
        inicioDespertar();
 
 /************************** I T I N E R A C I O N  **************************************/
-        $('#btn_tiendas').unbind('click').click(function() {
+        $('body').on('click', '#btn_tiendas', function() {
             borradoCuerpoTexto();
             borradoTextoItineracion();
             llamadaTiendas();
@@ -27,7 +27,7 @@
         });
  /********** CASA CONSISTORIAL ***********************************************************************/
 
-        $('#btn-CasaC').unbind('click').click(function() {
+        $('body').on('click', '#btn-CasaC', function() {
             console.log("CONTADOR DE BOTON al llamar a terceraSecuencia(): " + itinerador);
                 if (itinerador == 1 ){
                     borradoCuerpoTexto();
@@ -67,6 +67,7 @@
         /* PRIMERA FUNCION DE LA SECUENCIA  TEXTO + PREGUNTAS
          Sala de curas  **********/
         function primeraSecuenciaDespertar(){
+            document.cookie = "capitulo=Despertar";
             borradoCuerpoTexto();
             mostrarInfoSecuencia("primeraSecuenciaDespertar");
             $("#btn_empezar").hide();
@@ -358,9 +359,16 @@
     // funcion que habilita los botones de la itineracion en Despertar (kislev)
         function libreAlbedrio(){
             $("<h3>... TENEIS LIBRE ALBEDRIO ...</h3>").appendTo("#textoRespuestas").hide().fadeIn(5000);
-            $("#btn_tiendas").show().fadeIn(6000);
-            $("#btn-Palacio").show().fadeIn(6000);
-            $("#btn-CasaC").show().fadeIn(6000);
+
+            //$("#btn_tiendas").show().fadeIn(6000);
+            //$("#btn-Palacio").show().fadeIn(6000);
+            //$("#btn-CasaC").show().fadeIn(6000);
+            $(`<button type="button" class="btn btn-secondary" id="btn_tiendas">Tiendas</button>`)
+                .appendTo("#itineracion p");
+            $(`<button type="button" class="btn btn-secondary" id="btn-CasaC">Casa Consistorial</button>`)
+                .appendTo("#itineracion p");
+            $(`<button type="button" class="btn btn-secondary" id="btn-Palacio">Palacio del Conde</button>`)
+                .appendTo("#itineracion p");
         }
 
 

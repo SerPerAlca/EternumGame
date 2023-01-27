@@ -8,15 +8,21 @@ import lombok.Setter;
 @Getter @Setter
 public class Item {
 
-    private String codItem;
+    private int idItem;
 
-    private String nombreItem;
+    private String codigoClase = "item";
 
-    private String descripcionItem;
+    private String nombre;
+
+    private String descripcion;
 
     private String rutaImagen;
 
     private int precioBase;
 
+    private int cantidad;
 
+    private int probabilidad;
+
+    private int tamanio;
 }

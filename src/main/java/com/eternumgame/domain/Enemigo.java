@@ -40,7 +40,7 @@ public class Enemigo {
     private int velocidad;
 
     @Getter @Setter
-    private int esquiva;
+    private int agilidad;
 
     @Getter @Setter
     private int vitalidad;
@@ -50,6 +50,9 @@ public class Enemigo {
 
     @Getter @Setter
     private MultipartFile imagen;
+
+    @Getter @Setter
+    private int experiencia;
 
     @Getter @Setter
     private int probabilidadAparicion;
@@ -73,7 +76,7 @@ public class Enemigo {
                 ", is_boss=" + is_boss +
                 ", alcance=" + alcance +
                 ", velocidad=" + velocidad +
-                ", esquiva=" + esquiva +
+                ", agilidad=" + agilidad +
                 ", vitalidad=" + vitalidad +
                 ", rutaImagen='" + rutaImagen + '\'' +
                 ", imagen=" + imagen +

@@ -30,14 +30,15 @@
                     <tbody>
                     <c:forEach var="item" items="${items}">
                         <tr>
-                            <td>${item.nombreItem}</td>
-                            <td>${item.descripcionItem}</td>
+                            <td>${item.nombre}</td>
+                            <td>${item.descripcion}</td>
                             <td><img id="imgItem" src="${pageContext.request.contextPath}${item.rutaImagen}" /></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <button type="button" id="botonVolver" onclick="volverListados()" class="btn btn-primary">Volver</button>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

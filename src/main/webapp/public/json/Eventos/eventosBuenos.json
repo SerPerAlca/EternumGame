@@ -1,0 +1,87 @@
+[
+  {
+    "id" : 1,
+    "evento" : "Os encontráis por el camino a un sacerdote de la confesión fustigando a tres niños aprendices. Por las marcas y moratones de éstos, deducís que llevan mucho tiempo sufriendo el maltrato del sacerdote. Decidís no actuar, pues ahora mismo tenéis otro objetivo más prioritario. El sacerdote os saluda brevemente con una sonrisa en su rostro.",
+    "resultado": " +10 relaciones con el Imperio"
+  },
+  {
+    "id": 2,
+    "evento" : "Veis un gran arce rojo solitario. De él, cuelga el cadaver de un hombre, el cual, sujeta un cartel con la palabra TRAIDOR escrita en él. De repente, cae un saquito del cadaver al suelo. Al acercaros y abrirlo, descubrís 30 monedas de oro en su interior.",
+    "resultado" : " +30 monedas de oro"
+  },
+  {
+    "id": 3,
+    "evento" : "Os encontráis a una pareja de campesinos que se dirigen hacia el norte. El padre de familia os saluda con tristeza en el rostro. Tras devolverle el saludo, os cuenta que se dirigen a casa de su hermano menor, pues su aldea ha sido arrasada por una banda de bandidos haciendo prisioneros a su hijos pequeños. Al parecer, el Imperio ha reducido las patrullas de vigilancia por motivos presupuestarios pese a que los impuestos no han dejado de subir. El señor de la zona achaca esa bajada de presupuesto a la inflación.",
+    "resultado" : ""
+  },
+  {
+    "id": 4,
+    "evento" : "Escucháis el sonido del acero chocar. Os acercáis al origen, y descubrís a dos hombres batiendose en duelo. Hay una mujer intentando separarles. - Es mía! -grita uno. - No! Me ama a mi- responde el otro al mismo tiempo que descarga su sable sobre el rival. La mujer grita pero el ruido del acero y los gritos de ellos no os dejan escuchar lo que dice. En un instante las dos espadas se cruzan sin encontrase y se introducen en la carne de sus respectivos rivales. Los dos hombres caen al suelo en un charco de sangre. Al acercaros, la mujer os mira y os dice: -Les dije mil veces que ya estoy casada y que no me iría con ninguno de ellos! ¡¿Por qué ha tenido que pasar esto!?. ",
+    "resultado" : ""
+  },
+  {
+    "id": 5,
+    "evento" : "Os encontráis a un anciano en el camino. Va caminando a duras penas sobre su bastón. Al acercaros a ayudarle, os mancháis de sangre. Parece estar herido por debajo de la túnica. -La magia ya no tiene cabida en este lugar. La religión y sus falsos profetas... arghh. - Dice el hombre casi sin aliento. -Tomad, seguro que vosotros podeís hacer mejor uso de esto que yo...a donde voy no lo necesito...- El hombre os da un frasco. Al momento de cogerlo, una llama surge del suelo devorando al anciano hasta dejarle hecho cenizas. Igual que surge la llama, desaparece en un instante. No queda rastro del anciano.",
+    "resultado" : " +1 Poción de PM"
+  },
+  {
+    "id": 6,
+    "evento" : "Una gran humareda se alza hasta el cielo. El olor a madera quemada inunda el aire. Acudís al origen del fuego, para encontrar una cabaña ardiendo. Se escuchan gritos de una mujer desde su interior. Hay una gran multitud observando la escena sin que nadie parezca querer hacer nada para evitarlo. Al veros acercaros, un hombre se interpone en vuestro camino. -No se os ha perdido nada aquí. Esa bruja ha hecho enfermar a muchos de nuestros vecinos. A los tres meses de mudarse aquí, una pandemia azotó nuestro prueblo. Sabemos que ella es la culpable de esto. Arderá junto a su bebé como castigo. -¡Por Sigmar!- Gritan algunos. -¡Justicia! gritan otros... Los gritos han cesado. Sabéis, que ya es tarde para intervenir.",
+    "resultado" : ""
+  },
+  {
+    "id": 7,
+    "evento" : "La tierra comienza a temblar. Escucháis el sonido de cascos de caballos dirigirse hacia vuestra posición. En unos segundos, vislumbráis a un jinete al galope, perseguido por una cuadrilla de batidores que disparan su arcabuces contra él. El jinete saca un frasco de sus alforjas y lo rocía sobre el caballo haciendo que la piel del animal se torne de un color rojizo. El animal comienza a ganar cada vez más velocidad aumentando la distancia respecto a sus perseguidores. Al pasar por vuestro lado, veis caer uno de esos frascos de las alforjas del jinete. La cuadrilla de batidores pasa también por vuestro lado sin reparar en vuestra presencia. Se hace evidente que no podrán alcanzar al jinete.",
+    "resultado" : " +1 Poción de Velocidad"
+  },
+  {
+    "id": 8,
+    "evento" : "La noche cae y con ella, regresa el ruido de los grillos y otros animales nocturnos. Pero esta vez, hay algo más... una melodía triste que se suspende en el aire, penetrando en vuestros oídos y haciendoos recordar sucesos de vuestras vidas que desearíais enterrar. Decidís buscar el origen de ese canto. Atravesando arbustos y maleza, encontraís, iluminada por la luz de la luna, a una mujer de largo pelo plateado y vestida con un fino vestido de seda blanco sentada sobre un tronco. La mujer parece cantarle a la misma luna, la canción más triste que podáis imaginar. Al querer acercaros, pisáis una rama. Lo que detiene el cantar de la mujer. Os mira y descubrís su rostro lleno de lágrimas. -Nunca más veré la luz del sol. Ni lo veré jugar, ni podré hablar con él, ni decirle cuanto le quiero... Solo lo veré dormir, hasta el fin de sus días...-De repente, la mujer desaparece entre la luz de las luciérnagas y con ella, la tristeza que os invadió momentos antes.",
+    "resultado" : " +1 Lágrima de Fenix"
+  },
+  {
+    "id": 9,
+    "evento" : "Os topáis con un hombre bastante orondo, vestido con ropajes de noble, apoyado sobre el tronco de un Sauce. Tiene una pila de frascos vacíos a un lado y al otro una caja de madera, de donde saca más frascos rellenos de un líquido de un color rojizo; los cuales vacía de un solo trago. Entre trago y trago, el hombre tose con brusquedad mientras se tapa con un pañuelo de lino blanco. Al acercaros a él, observáis que el pañuelo se encuentra manchado de sangre. El hombre observa su pañuelo, después os mira y os dice: - Ya lo véis, ni todo el oro del mundo libran a uno de la enfermedad. He gastado mi fortuna en pociones de salud, pero no logro curarme. Sí, se que son para curar otro tipo de dolencias, pero tenía que intentarlo. Aghh. Me duele el estómago. ¡Iros! dejadme morir en paz joder... - Dice al mismo tiempo que patea la caja hacia vosotros con la base de su bota. - ¡Y llevaros eso! está claro que a estas alturas ya no tengo salvación... ",
+    "resultado" : " +3 Pociones de Salud"
+  },
+  {
+    "id": 10,
+    "evento" : "Según camináis, observáis un rastro de sangre reciente entre la hierba. Seguís ese rastro, hasta dar con un cadaver con una flecha clavada en su espalda. En la mano del cadaver encontráis un pergamino a medio abrir. Se trata de un PERGAMINO DE LA CIUDAD. Se ve que el pobre condenando no le dio tiempo de activarlo antes de ser alcanzado por sus peseguidor. ",
+    "resultado" : " +1 Pergamino de la Ciudad"
+  },
+  {
+    "id": 11,
+    "evento" : "Véis una cuerda atada entre dos árboles y las marcas de unas ruedas salir del camino y aventurarse en la hierba. Seguís vuestra intuición y el camino marcado por las ruedas. Según recorréis distancia, os encontráis una rueda suelta tirada. Poco a poco os empezáis a encontrar trozos del carromato repartidos por aquí y allá. También hay ropas y otros enseres que debieron de pertenecer a sus ocupantes. Al final, encontráis lo que queda del carromato y varios cuerpos repartidos alrededor. Hay un hombre peleándose por abrir un cofre grande de hierro que lleva el sello de la inquisición en su tapa. Al darse cuenta de vuestra presencia, el hombre os mira con temor. -Yo, yo no se lo que ha pasado, me he encontrado esto así... -dice medio tartamudenado. Es evidente que miente. En un segundo, suelta lo que lleva en la mano, se incorpora y desaparece corriendo como alma que lleva el diablo. Era un juego de ganzúas lo que sujetaba. Ese cofre, solo se puede abrir con un sello mágico especial de la inquisición y pesa demasiado para cargar con él, por lo que decidís dejarlo.",
+    "resultado" : " +3 Ganzúas"
+  },
+  {
+    "id": 12,
+    "evento" : "A las afueras de un pequeña aldea, véis a una multitud formando un cículo alrededor de un hombre. Se trata de un ser gigantesco de más de dos metros, con unos brazos como troncos. Porta un mandoble, el cual, sujeta con una mano como si de una espada simple se tratara. No deja de rugir y de encararse con el público. Otro hombre más delgado, sujeta una campana que hace sonar al mismo tiempo que dice: -100 monedas a quien derrote a Goliat. Le dejaremos dar el primer golpe. Venga valientes! - En ese momento, un hombre ataviado con una armadura completa da un paso al frente y grita: -Yo mataré a esta bestia. Soy Sir Leodas, el mejor guerrero de Bretonia y no le temo a nadie.- El combate comienza. Sir Leodas se dispone a hundir su espada en el pecho de Goliat y éste, sin moverse ni un ápice, se deja alcanzar. La espada se clava de canto en su pecho, pero Goliat no parece ni inmutarse. Sir Leodas, no puede creerlo al mismo tiempo que intenta sacar la espada del pecho de Goliat. Éste ruge y levanta los brazos en señal de victoria. Después, con un movimiento poderoso hace cortar el aire con su mandoble hasta alcanzar el cuello de Sir Leodas. La cabeza de Sir Leodas sale volando hasta vuestro pies.",
+    "resultado" : " Ganáis un Yelmo del Cruzado"
+  },
+  {
+    "id": 13,
+    "evento" : "El viento comienza a soplar con más fuerza. Lo que parecía un día tranquilo y soleado se esta convirtiendo por instantes en el inicio de una tormenta. El cambio en el cielo ha sido casi inmediato. Véis el cielo cargarse de rayos. Algunos se descargan, pero hay algo raro. Caen todos en el mismo sitio. En lo alto de una ladera. Afináis la vista y veis dos sombras. Una genera rayos que dispara contra la otra. La otra invoca una barrera mágica que los absorve. En seguida comprendéis que son dos hechiceros combatiendo entre sí. Apretáis el paso, debéis llegar hasta ellos, si siguen así causarán una catástrofe. Uno de ellos, hace surgir una ola de llamas que se lanza contra su adversario. El otro, se protege envolviéndose en una burbuja de agua. Sin duda, son poderosos hechiceros. El hechicero de la burbuja crea una bola de fuego que al entrar en contacto con el agua hace surgir una niebla densa que empaña todo alrededor. De repente, no véis nada. Seguís avanzando hacia ellos, y cuando creeís que os encontráis cerca, la niebla se disipa. Ya no hay rastro del hechicero de originó la niebla. Solo del otro, el cual, se encuentra en el suelo. Muerto.",
+    "resultado" : " Ganáis un Bastón del Caracol"
+  },
+  {
+    "id": 14,
+    "evento" : "Hay un cartel clavado en un poste. Está escrito con tinta roja que bien podría ser sangre. El cartel dice: BAJO MANDATO INQUISORIAL, QUEDA TOTALMENTE PROHIBIDO EL ESTUDIO DE LA MAGIA OSCURA, ELFA O DE CUALQUIER ÍNDOLE LEJANA A SIGMAR. QUEDANDO ÉSTA, UNICAMENTE PERMITIDA A LOS MIEMBROS DE LA IGLESIA O EXTERNOS CONTRATADOS POR EL PROPIO IMPERIO. TODO AQUEL QUE SEA DESCUBIERTO HACIENDO USO DE ESTAS HEREJÍAS, SERÁ CONDENADO A LA PRISIÓN DE LA ROCA, DONDE SE LE AMPUTARÁN LAS EXTREMIDADES SUPERIORES PARA EVITAR QUE VUELVA A HACER USO DE ELLA NUNCA MÁS. Fdo: SIR GREGOR, SUMO INQUISIDOR.",
+    "resultado" : ""
+  },
+  {
+    "id": 15,
+    "evento" : "Mientras camináis, una flecha se clava al lado de vuestros pies. Unas carcajadas resuenan desde el Este. Seguís las carcajadas y véis varios muchachos nobles alrededor de un campesino, el cual, tienen amordazado y atado a un árbol con una manzana en la cabeza. El campesino, tiene una flecha clavada en un brazo y otra en una pierna. Además, hay varias flechas clavadas en el árbol y alrededor de éste. Uno de los nobles está cargando su arco, suelta y la flecha sale disparada hasta clavarse en los pies del campesino. -Mira que eres malo Robin.- Dice uno de los nobles mientras los demás estallan en una carcajada. El que disparó la flecha, frunce el entrecejo y saca un pistolón de su cinturón. Dispara y los sesos del campesino se esparcen por doquier. -¡No joder, nos has jodido la diversión imbécil! -Grita otro de los nobles. -Así no os volveréis a reir de mi... .Acto seguido, todos vuelven a estallar en carcajadas. El noble de la pistola coge su arco y lo lanza por los aires. -¡Esto no sirve para nada!- Dice, al mismo tiempo que se dan la vuelta y se alejan del árbol.",
+    "resultado" : " Ganáis un Arco Bretoniano"
+  },
+  {
+    "id": 16,
+    "evento" : "Pasáis por un cementerio. Una luz parece moverse entre las tumbas. Por curiosidad, os acercáis para comprobar de que se trata. Observáis a dos hombre con una pala desenterrando una tumba. Parece tratarse de ladrones de tumbas o simples saqueadores. -Ya está, ya toco madera.- Dice uno de los ladrones. Da unas cuantas paladas más y desentierra la tapa del ataud. Coge una palanca del suelo y abre la tapa. -Ajá, la señora Morris. te dije que la enterraron con su anillo de oro. -Dice el otro ladrón. - Bien ¿a que esperas? córtale el dedo. No querrás que nos descubran... - El otro ladrón saca una daga y se dispone a cortar cuando de repente pega un grito. -¡Ah! ¡No puede ser! ¡Si sangra! -En ese momento, veis unos brazos salir de la tumba y coger al ladron de sus manos, arrastrándole hacia adentro. El ladrón desaparece dentro del ataud y éste se cierra de súbito. El otro ladrón hecha a correr gritando y dejando el farol, la pala y todo lo demás atrás... No entendéis que acaba de pasar, pero decidís que es mejor no acercarse a la tumba.",
+    "resultado" : ""
+  },
+  {
+    "id": 17,
+    "evento" : "Veis a un mercader apeado a un lado del camino junto a su a dos mulas. Parece que una de ellas se ha torcido la pata y no pasará de esta noche. El mercader lleva muchos años viajando por los caminos con esa mula y le apena enormemente tener que sacrificarla, por lo que os pide que lo hagáis vosotros, unos mercenarios curtidos en mil batallas. Accedéis, por lo que hundís vuestro cuchillo en la garganta del animal, tiñiendo todo el suelo de rojo. El mercader, con lágrimas en los ojos, os lo agradece y os obsequia con unas monedas.",
+    "resultado" : " +40 monedas de oro"
+  }
+]

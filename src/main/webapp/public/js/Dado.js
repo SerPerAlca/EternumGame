@@ -84,6 +84,11 @@ var resultadoDado="";
 
      //fUNCION PARA MOSTRAR EL SIDEBAR DEL DADO
      function mostrarDado() {
+        // Si hay un evento mostrado en el mapa de campaña borramos el texto
+        var eventoMapa = document.getElementById("textoEvento");
+        if(eventoMapa){
+            $("#textoEvento").text("");
+        }
         $(".rollBtn").show();
         document.getElementById("sidebar").style.width = "300px";
         document.getElementById("abrir").style.display = "none";
