@@ -2,6 +2,8 @@ var contDegradado = 0;
 var itineradorIndice = 0;
 var itineradorAmbiente = 1;
 var ventanaMapaCampaña = "width=2000,height=1000,scrollbars=NO,resizable=NO"
+document.cookie= "combateJefe=false";
+
 $(document).ready(function (){
     $(".conte-degradado").hide();
     $(".conte-texto").hide();
@@ -57,43 +59,65 @@ function abrirMapaCampania(){
     window.open('/itinerar', "MapaCampania", ventanaMapaCampaña);
 }
 
-/*
+
 //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
 function fight(){
-    $("#rowDosCabecera").hide();
-    document.cookie = "batalla=true";
+    // Funciones de Audio
     pausarAudio();
-    $("#btn-Salir").hide();
     reproducirMusicaBattalla();
     interMusicaBatalla(true);
+    document.cookie= "batalla=true";
+  //  window.open('/fight', "fight", ventanaFight);
 
+    //Preparacion de la vista
+    $("#rowDosCabecera").hide();
+    $("#btn-Salir").hide();
     borradoCuerpoTexto();
     $(".conte-texto h1").remove();
     $("#imagenes img").remove();
     ocultacionBotones();
-
-    $(".conte-degradado").show();
     $(".conte-texto").show();
     $("#cuerpo").css({'height': '40rem', 'width': '100%'});
+    esconderSig();
 
-    $(`<h1 style="color:black" > ¡¡¡FIIIGHTTT!!!</h1>`)
-        .appendTo(".conte-texto");
+    //Este será el número de enemigos que combatirán
+    var numeroEnemigos = getRandomInt(3,7);
 
-    for (var i = 0; i < 70; i++) {
-        setTimeout(function (){
-            console.log(i);
-            degradadoFight();
-        }, 20 * i);
+    // Consultamos si es un combate con un jefe
+    var jefe = readCookie("combateJefe");
+    if(jefe != "false"){
+        // Si es un combate de jefe reducimos el numero de enemigos
+        numeroEnemigos = getRandomInt(2,4);
+        setTimeout( ()=>{
+            obtenerCombateJefe(jefe);
+        }, 1000);
     }
 
-    enseniarSig();
-}
-*/
-function degradadoFight(){
-    $(".conte-degradado").css({'background': `radial-gradient(transparent 0%, transparent 0%, black ${contDegradado}%)`});
-    contDegradado++;
+    // LLamamos a la funcion AJAX encargada de obtener los enemigos
+    for(var i= 0; i < numeroEnemigos; i++){
+        obtenerEnemigos();
+    }
 }
 
+/* Función que devuelve el cuerpo del jsp a su estado normal
+después del modo combate */
+function retornarDeFight(){
+
+    pausarMusicaBatalla();
+    interMusicaBatalla(false);
+    reproducirAmbiente();
+    var cards = document.getElementsByClassName("cards");
+    var cantidadCards = cards.length;
+    for( var i = 0; i < cantidadCards; i++){
+        $("#tarjetaEnemy").remove();
+    }
+    document.cookie = "batalla=false";
+    $(".conte-degradado").hide();
+    $(".conte-texto p").remove();
+    $(".conte-texto").hide();
+    $("#recompensa").remove();
+    $("#cuerpo").css({'height': '100%', 'width': '100%'});
+}
 
 /** FUNCIONES DE PINTADO EN EL JSP ******************************************************************************************************************/
 function pintarTexto(datos){
@@ -246,6 +270,7 @@ function ControladorBotonSiguiente(){
     var cookieCapitulo = readCookie("capitulo");
     var batalla = readCookie("batalla");
     if(batalla == "true"){
+        pausarMusicaBatalla();
         document.cookie = "batalla=false";
         window.close();
     }
@@ -349,7 +374,7 @@ function controladorCapi(){
 // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA
 function comprobarSiEstamosEnBatalla(){
     let batalla = readCookie("batalla");
-    if (batalla) {
+    if (batalla = "true") {
         console.log("Estamos en Batalla");
         reproducirMusicaBattalla();
     }
@@ -357,7 +382,7 @@ function comprobarSiEstamosEnBatalla(){
 
 // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA (esta funcion actúa como una especie de observer)
 function interMusicaBatalla(boleano){
-
+   // alert("seguimos en batalla!");
     var intervaloMusicaBatalla = false;
     if (boleano) {
         intervaloMusicaBatalla = setInterval(function (){
@@ -372,23 +397,6 @@ function interMusicaBatalla(boleano){
 
 /*******************************************************************************************************************************************************/
 
-/* Función que devuelve el cuerpo del jsp a su estado normal
- después del modo combate */
-function retornarDeFight(){
-
-    try {
-        musicaBatalla.pause();
-    } catch (e) {
-        logMyErrors(e);
-    }
-    interMusicaBatalla(false);
-    reproducirAmbiente();
-
-    document.cookie = "batalla=false";
-    $(".conte-degradado").hide();
-    $(".conte-texto").hide();
-    $("#cuerpo").css({'height': '100%', 'width': '100%'});
-}
 
 
 /** Función que controla la respuesta que se muestra, además de mostrar el botón siguiente **/

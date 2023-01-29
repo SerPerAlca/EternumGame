@@ -238,6 +238,21 @@ $(document).ready(function() {
         musicaBatalla.play();
     }
 
+    function pausarMusicaBatalla(){
+        try{
+            musicaBatalla.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+
+    }
+
+    function reproducirVictoria(){
+        pausarMusicaBatalla();
+        let rutaAudio = "audio/Batalla/Victoria.mp3";
+        musicaBatalla.setAttribute("src", rutaAudio);
+        musicaBatalla.play();
+    }
     function reproducirLatido(){
         let rutaAudio = "audio/corazonLatiendo.mp3";
         try{

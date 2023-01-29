@@ -1,3 +1,7 @@
+var cantidadEnemigos = 0;
+var experienciaTotal = 0;
+var datosCombate = {id:1,jugadores:4};
+
 $(document).ready(function() {
     $(".conte-degradado").hide();
     $(".conte-texto").hide();
@@ -8,61 +12,27 @@ $(document).ready(function() {
     $(".conte-texto h1").remove();
     $("#imagenes img").remove();
     $("#btn_botin").hide();
-
-    pausarAudio();
+    $("#btn_Combate").hide();
 
     var btonCombate = document.getElementById("btn_combate");
-    var cookieLugar = readCookie("ubicacionMapa");
-    document.cookie = "batalla=true";
-    //fightMapaCampania();
-    var data = {
-        zona: cookieLugar
-    };
-
-
-    $("#capiActual").text("¡¡¡¡ C O M B A T E !!!!")
-
+    var cookieLugar = readCookie("ubicacion");
+    var capitulo = readCookie("capitulo");
+    var data = { zona: cookieLugar };
     var enemigo = new Object();
     var recompensa = new Object();
-    var cantidadEnemigos = 0
 
+    var cantidadRecompensas = 0;
 
+    /* Si situamos el puntero (la espada) en el mapa campaña,
+    *  se seteó el valor de la cookie de capitulo */
+    if(capitulo == "MapaCampaña"){
+        var numeroRandom = getRandomInt(3,6);
+        // LLamamos a la funcion AJAX encargada de obtener los enemigos
+        for(var i= 0; i < numeroRandom; i++){
+            obtenerEnemigos();
+        }
 
-        console.log("INICIO LLAMADA COMBATE");
-        var request = $.ajax({
-            url: "/calcularEnemigos",
-            type: "POST",
-            data: data,
-            //processData: false,
-            //contentType: false,
-            cache: false,
-            timeout: 600000,
-            //dataType: "json",
-            encode: true,
-        });
-        // SI la llamada se realiza correctamente
-        request.done(function(data){
-            enemigo.name = data.nombreEnemigo,
-            enemigo.race = data.raza,
-            enemigo.ataqFisico = data.ataqueFisico,
-            enemigo.ataqMagico = data.ataqueMagico,
-            enemigo.defFisica = data.defensaFisica,
-            enemigo.defMagica = data.defensaMagica,
-            enemigo.scope = data.alcance,
-            enemigo.velocity = data.velocidad,
-            enemigo.urlImagen = data.rutaImagen,
-            enemigo.vitality = data.vitalidad,
-            enemigo.experience = data.experiencia,
-            enemigo.numero = data.numeroEnemigos
-            console.log(enemigo);
-            pintarTarjetaEnemy(enemigo);
-            $("#btn_botin").show();
-        });
-        // si la llamada falla
-        request.fail(function( e,textStatus ){
-            alert( "Request failed: " +textStatus );
-        });
-
+    }
 
     //Botón de OBTENER BOTÍN
     $("#btn_botin").unbind('click').click(function (){
@@ -92,39 +62,82 @@ $(document).ready(function() {
             obtenerRecompensa(recompensa);
         });
     });
-
-
 });
 
 
-    var datosCombate = {id:1,jugadores:4};
-
+    function obtenerEnemigos(){
+        $("#cuerpo").css({
+            'height' : '70% !important',
+            'word-wrap' : 'break-word !important',
+            'width' : '100% !important',
+            'justity-content' : 'center !important'
+        })
+        esconderSig();
+        var cookieSide = readCookie("ubicacion");
+        var dataLugar = { zona: cookieSide };
+        var enemy = new Object();
+    //    document.cookie = "batalla=true";
+        console.log("INICIO LLAMADA COMBATE");
+        var request = $.ajax({
+            url: "/calcularEnemigos",
+            type: "POST",
+            data: dataLugar,
+            cache: false,
+            timeout: 600000,
+            encode: true,
+        });
+        // SI la llamada se realiza correctamente
+        request.done(function(data){
+                enemy.name = data.nombreEnemigo,
+                enemy.race = data.raza,
+                enemy.ataqFisico = data.ataqueFisico,
+                enemy.ataqMagico = data.ataqueMagico,
+                enemy.defFisica = data.defensaFisica,
+                enemy.defMagica = data.defensaMagica,
+                enemy.scope = data.alcance,
+                enemy.velocity = data.velocidad,
+                enemy.urlImagen = data.rutaImagen,
+                enemy.vitality = data.vitalidad,
+                enemy.experience = data.experiencia
+        //        enemy.numero = data.numeroEnemigos
+            console.log(enemy);
+            pintarTarjetaEnemy(enemy);
+            $("#siguiente").show();
+            $("#btn_botin").show();
+        });
+        // si la llamada falla
+        request.fail(function( e,textStatus ){
+            alert( "Request failed: " +textStatus );
+        });
+    }
 
     // Funcion encargada de pintar las cartas de enemigos
     function pintarTarjetaEnemy(enemigo){
-
+        esconderSig();
+        $(".conte-texto").show();
         $("#tarjetaEnemy").show();
         var imagen = corregirRuta(enemigo.urlImagen);
-        var numeroEnemigos = enemigo.numero;
-        cantidadEnemigos = numeroEnemigos;
-        for ( var i = 0; i < numeroEnemigos; i++){
-            $(`<div id="tarjetaEnemy" class="card" style="width: 18rem;">
-                <img id="imgEnemy" class="card-img-top" src=${imagen} alt="">
-                <div class="card-body">
-                    <h5 id="nombreEnemy" class="card-title">${enemigo.name}</h5> 
-                    <p id ="razaEnemy" class="card-text">${enemigo.race}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Ataque Fisico: ${enemigo.ataqFisico}</li>
-                    <li class="list-group-item">Ataque Magico: ${enemigo.ataqMagico}</li>
-                    <li class="list-group-item">Defensa Fisica: ${enemigo.defFisica}</li>
-                    <li class="list-group-item">Defensa Magica: ${enemigo.defMagica}</li>
-                    <li class="list-group-item">Vitalidad: ${enemigo.vitality}</li>
-                    <li class="list-group-item">Alcance: ${enemigo.scope}</li>
-                    <li class="list-group-item">Velocidad: ${enemigo.velocity}</li>
-                </ul>
-            </div>`).appendTo("#cuerpo");
-        }
+
+        cantidadEnemigos++;
+        experienciaTotal += enemigo.experience;
+        $(`<div id="tarjetaEnemy" class="card" style="width: 18rem;">
+            <img id="imgEnemy" class="card-img-top" src=${imagen} alt="">
+            <div class="card-body">
+                <h5 id="nombreEnemy" class="card-title">${enemigo.name}</h5> 
+                <p id ="razaEnemy" class="card-text">${enemigo.race}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ataque Fisico: ${enemigo.ataqFisico}</li>
+                <li class="list-group-item">Ataque Magico: ${enemigo.ataqMagico}</li>
+                <li class="list-group-item">Defensa Fisica: ${enemigo.defFisica}</li>
+                <li class="list-group-item">Defensa Magica: ${enemigo.defMagica}</li>
+                <li class="list-group-item">Vitalidad: ${enemigo.vitality}</li>
+                <li class="list-group-item">Alcance: ${enemigo.scope}</li>
+                <li class="list-group-item">Velocidad: ${enemigo.velocity}</li>
+                <li class="list-group-item">Experiencia: ${enemigo.experience}</li>
+            </ul>
+        </div>`).appendTo("#cuerpo");
+     //   }
     }
 
     function obtenerRecompensa(recompensa){
@@ -132,20 +145,44 @@ $(document).ready(function() {
         var cards = document.getElementsByClassName("card");
         var contador=0;
         var numeroBorrado = cards.length;
+        var capitulo = readCookie("capitulo");
+
+        // Borramos todas las cards de enemigos
         for(let i=0; i<numeroBorrado; i++){
             $("#tarjetaEnemy").remove();
-            console.log(contador++);
-        }
+          }
+
+        // Quitamos el directorio que sobra en la ruta de la imagen
         var imagen = corregirRuta(recompensa.urlImagen);
         pintarTarjetaRecompensa(recompensa,imagen);
+        var jefe = readCookie("combateJefe");
+        // Se controla que no se muestre dos veces al re-llamar a la recompensa
+        if(cantidadEnemigos != 0 && jefe == "false"){
+            $(`<div id="recompensa" style="color: white; float:left !important;">Experiencia Obtenida: ${experienciaTotal}</div>`)
+                .appendTo(".conte-texto");
+        }
+
         //Repito el flujo si hay más de 4 enemigos
         if(cantidadEnemigos > 4){
             $("#btn_botin").click();
             cantidadEnemigos=0;
         }
+        // Se comprueba si se ha combatido contra un jefe
+        if (jefe != "false"){
+            $("#btn_botin").click();
+            document.cookie= "combateJefe=false";
+        }
+        //Reproducimos sonido de victoria FFVII
+        reproducirVictoria();
+        //Actualizamos la botonería
         $("#btn_botin").hide();
-        $("#btn_siguiente").show();
-
+        if(capitulo == "MapaCampaña"){
+            $("#btn_salir").show();
+        } else {
+            enseniarSig();
+        }
+        document.cookie= "batalla=false";
+        experienciaTotal=0;
     }
 
     //Funcion que pinta la tarjeta de recompensa del combate
@@ -170,8 +207,66 @@ $(document).ready(function() {
         return rutaCorregida;
     }
 
+    function obtenerCombateJefe(jefe){
 
+        var dataJefe = { jefe: jefe };
+        var enemy = new Object();
 
+        var requestJefe = $.ajax({
+            url: "/combateJefe",
+            type: "POST",
+            data: dataJefe,
+            cache: false,
+            timeout: 600000,
+            encode: true,
+        });
+        // SI la llamada se realiza correctamente
+        requestJefe.done(function(data){
+            enemy.name = data.nombreEnemigo,
+                enemy.race = data.raza,
+                enemy.ataqFisico = data.ataqueFisico,
+                enemy.ataqMagico = data.ataqueMagico,
+                enemy.defFisica = data.defensaFisica,
+                enemy.defMagica = data.defensaMagica,
+                enemy.scope = data.alcance,
+                enemy.velocity = data.velocidad,
+                enemy.urlImagen = data.rutaImagen,
+                enemy.vitality = data.vitalidad,
+                enemy.experience = data.experiencia
+            //  enemy.numero = data.numeroEnemigos
+            console.log(enemy);
+            pintarTarjetaJefe(enemy);
+            $("#btn_botin").show();
+        });
+        // si la llamada falla
+        requestJefe.fail(function( e,textStatus ){
+            alert( "Request failed: " +textStatus );
+        });
+    }
+
+    function pintarTarjetaJefe(enemigo){
+        $(".conte-texto").show();
+        $("#tarjetaEnemy").show();
+        var imagen = corregirRuta(enemigo.urlImagen);
+        experienciaTotal += enemigo.experience;
+        $(`<div id="tarjetaEnemy" class="card" style="width: 18rem;background-color: purple !important;">
+            <img id="imgEnemy" class="card-img-top" src=${imagen} alt="">
+            <div class="card-body">
+                <h5 id="nombreEnemy" class="card-title" style="color: white !important;">${enemigo.name}</h5> 
+                <p id ="razaEnemy" class="card-text" style="color: white !important;">${enemigo.race}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ataque Fisico: ${enemigo.ataqFisico}</li>
+                <li class="list-group-item">Ataque Magico: ${enemigo.ataqMagico}</li>
+                <li class="list-group-item">Defensa Fisica: ${enemigo.defFisica}</li>
+                <li class="list-group-item">Defensa Magica: ${enemigo.defMagica}</li>
+                <li class="list-group-item">Vitalidad: ${enemigo.vitality}</li>
+                <li class="list-group-item">Alcance: ${enemigo.scope}</li>
+                <li class="list-group-item">Velocidad: ${enemigo.velocity}</li>
+                <li class="list-group-item">Experiencia: ${enemigo.experience}</li>
+            </ul>
+        </div>`).appendTo("#cuerpo");
+    }
 
 
 

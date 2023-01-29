@@ -64,10 +64,10 @@
                         pintarTexto(index.texto);
                         administrarPifiaGeneral(itinerador);
                     }
-                    if(resultado <= requerido){
+                  /*  if(resultado <= requerido){
                         administrarPifiaGeneral(itinerador);
-                    }
-                    if (resultado > requerido){
+                    } */
+                     if (resultado > requerido){
                         controladorAciertosGeneral();
                     }
                 }

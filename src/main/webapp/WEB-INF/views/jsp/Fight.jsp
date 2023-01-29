@@ -44,8 +44,8 @@
     <div class="row">
         <div id="siguiente" class="col align-self-center">
             <button type="button" class="btn btn-secondary" id="btn_botin">OBTENER BOTÍN</button>
-            <!--<button type="button" class="btn btn-secondary" id="btn_salir" onclick="salir()">VOLVER AL MAPA DE CAMPAÑA
-            </button> -->
+            <!--<button type="button" class="btn btn-secondary" id="btn_Combate">Combate</button> -->
+            <button type="button" class="btn btn-secondary" id="btn_salir" onclick="salir()">VOLVER AL MAPA DE CAMPAÑA</button>
             <button type="button" class="btn btn-secondary" id="btn_siguiente" onclick="ControladorBotonSiguiente()">
                 Página Siguiente
             </button>

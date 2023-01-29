@@ -109,6 +109,13 @@ public class EnemigoServiceImpl implements IEnemigoService {
         return enemigoList;
     }
 
+    public Enemigo findEnemyByName(String enemy){
+        EnemigoEntity enemigoEntity = new EnemigoEntity();
+        enemigoEntity = enemigoRepository.findByName(enemy);
+        Enemigo enemigo = enemyMapper.fromEnemigoEntityToDomain(enemigoEntity);
+        return enemigo;
+    }
+
 
 
 }

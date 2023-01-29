@@ -10,7 +10,7 @@ var caminoRecorrido = 0;
 var widthProgreso = "";
 var booleanItinerando = false;
 var ventanaFight = "width=1500,height=1000,scrollbars=NO,resizable=NO"
-document.cookie =  "ubicacionMapa=KISLEV";
+document.cookie =  "ubicacion=KISLEV";
 
 $(document).ready(function() {
 
@@ -29,7 +29,7 @@ $(document).ready(function() {
         if (posicion != -1){
             // Estamos dentro de una zona de combate
             nombreLugar = nombreLugar.slice(4);
-            document.cookie = "ubicacionMapa="+nombreLugar;
+            document.cookie = "ubicacion="+nombreLugar;
         } else {
             //Estamos en una ubicacion concreta
             llamadaDescripcionLugar(this.id);
@@ -284,7 +284,7 @@ function pintarEvento(evento, resultado){
         <p>${evento}</p></div>`).appendTo("#cuadroDescripcion");
     setTimeout(()=>{
         $(`<p><span style='color:yellow;'>${resultado}</span></p>`).appendTo("#textoEvento");
-    }, 14000);
+    }, 6000);
 }
 
 function pintarDescripcionLugar(texto){

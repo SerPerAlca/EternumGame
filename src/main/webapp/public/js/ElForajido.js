@@ -5,7 +5,7 @@ var booleanCapitulo3 = false;
 
       function inicioEF(){
                 // Cookies
-                 document.cookie = "ubicacion=BosqueDeAverlan";
+                 document.cookie = "ubicacion=CAMPAMENTO_HOOD";
                  document.cookie = "capitulo=ElForajido";
                  document.cookie = "ramificacion=X";
                  document.cookie = "batalla=false";
@@ -202,7 +202,7 @@ var booleanCapitulo3 = false;
 
     function quintaSecuenciaEF(){
 
-        document.cookie = "ramificacion=B";
+        var rama = readCookie("ramificacion");
         borradoCuerpoTexto();
         mostrarInfoSecuencia("quintaSecuenciaEF");
         $("#imagenes img").attr({
@@ -213,7 +213,14 @@ var booleanCapitulo3 = false;
         itinerador= 10;
         new Promise(function(resolve) {
             // Le pasamos directamente el ID "2".
-            llamadaRespuestas("2",itinerador);
+            if(rama == "A"){
+                llamadaOpcionesPausaV2(itinerador);
+               // llamadaRespuestas("1",itinerador);
+            }else  {
+                llamadaOpcionesPausaV2(itinerador);
+               // llamadaRespuestas("2",itinerador);
+            }
+
         })
         setTimeout(() => {
             enseniarSig();
@@ -287,6 +294,7 @@ var booleanCapitulo3 = false;
         .appendTo("#imagenes");
 
         itinerador = 13;
+        document.cookie="combateJefe=HOOD EL FORAJIDO";
         //  Está bien, está visto que me voy a tener que ocupar yo mismo
         new Promise(function(resolve) {
             resolve(llamadaTexto(itinerador));
@@ -330,6 +338,7 @@ var booleanCapitulo3 = false;
 
         itinerador = 15;
         //En ese momento se escuchan cuernos desde varias direcciones
+        document.cookie = "ubicacion=IMPERIALES_HOOD"
         new Promise(function(resolve) {
             borradoCuerpoTexto();
             resolve(llamadaTexto(itinerador));
@@ -350,7 +359,7 @@ var booleanCapitulo3 = false;
                 reproducirLluviaDeFLechas();
                 itineradorAmbiente = 5;
                 reproducirAmbiente();
-
+                reproducirAmbienteBatallaI();
                 itinerador = 16;
                 //¡¡¡Nos atacan!!! Se escucha
                 llamadaTexto(itinerador)
@@ -629,7 +638,7 @@ var booleanCapitulo3 = false;
                 $(`<p><span style="color: black; font-weight: bold;"> ¿ ATACAR AL SACERDOTE ? </span><span style="color: grey; font-weight: bold> 
                 (puede tener repercusiones más adelante)</span></p>`)
                 .appendTo("#textoOpciones").hide().fadeIn();
-                $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="AtacarSacer()"> SI</span></p>`)
+                $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="AtacarSacer()"> SI</span>(COMBATE)</p>`)
                 .appendTo("#textoRespuestas").hide().fadeIn();
                 $(`<p><span style="color: black; font-weight: bold; padding: 2rem;" onclick="noAtacarSacer()"> NO</span></p>`)
                 .appendTo("#textoRespuestas").hide().fadeIn();
@@ -764,6 +773,7 @@ var booleanCapitulo3 = false;
     function AtacarSacer(){
 
         document.cookie = "ramificacion=A";
+        document.cookie = "combateJefe=SACERDOTE DE LA CONFESION"
         fight();
     }
 

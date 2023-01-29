@@ -22,7 +22,7 @@
     <script src="js/TratamientoAudio.js"></script>
     <script src="js/Dado.js"></script>
     <script src="js/Itineracion.js"></script>
-    <!--<script src="js/AJAXcombate.js"></script> -->
+    <script src="js/AJAXcombate.js"></script>
 
     <script src="js/FuncionesCompartidas.js"></script>
 
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/dado.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/sidebar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/fight.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/combate.css">
 
 
 </head>
@@ -59,7 +60,7 @@
 </div>
 <div class="row">
     <div id="itineracion" class="col">
-        <p>
+        <p> <button type="button" class="btn btn-secondary" id="btn_botin">OBTENER BOTÍN</button>
             <button type="button" class="btn btn-secondary" id="btn-Salir">Salir de la Ciudad</button>
             <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>
             <button type="button" class="btn btn-secondary" value="itinerar" id="btn-itinerar">Siguiente Capítulo

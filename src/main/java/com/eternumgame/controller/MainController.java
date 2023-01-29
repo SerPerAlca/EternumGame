@@ -77,6 +77,7 @@ public class MainController {
 	}
 
 
+
 	// Controlador encargado de devolver el enemigo al que se enfrentarán los jugadores
 	@RequestMapping(value = "/calcularEnemigos", method = RequestMethod.POST)
 	@ResponseBody public Enemigo  calcularEnemigos(@RequestParam String zona, HttpServletRequest request,
@@ -98,7 +99,17 @@ public class MainController {
 		Enemigo enemigo = utilidadesEnemigos.enemigoRandom(listaEnemigos);
 
 		// Obtenemos el numero de enemigos de ese tipo que van a salir
-		utilidadesEnemigos.calcularNumEnemigos(enemigo,numeroJugadores);
+		//utilidadesEnemigos.calcularNumEnemigos(enemigo,numeroJugadores);
+
+		return enemigo;
+	}
+	// Controlador encargado de devolver el enemigo al que se enfrentarán los jugadores
+	@RequestMapping(value = "/combateJefe", method = RequestMethod.POST)
+	@ResponseBody public Enemigo  combateJefe(@RequestParam String jefe, HttpServletRequest request,
+												   HttpServletResponse response) {
+
+		// Obtenemos el enemigo que buscamos
+		Enemigo enemigo = enemigoService.findEnemyByName(jefe);
 		return enemigo;
 	}
 
@@ -116,9 +127,9 @@ public class MainController {
 		int indexRandom = (int)(Math.random()*20);
 		Object object = new Object();
 		switch (indexRandom){
-			case 1: object = armaService.getOneArma();
+			case 7: object = armaService.getOneArma();
 					break;
-			case 2: object = armaduraService.getOneArmadura();
+			case 11: object = armaduraService.getOneArmadura();
 					break;
 			default: object = itemService.getOneItem();
 					break;

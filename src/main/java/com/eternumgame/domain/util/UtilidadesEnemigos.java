@@ -17,7 +17,7 @@ public class UtilidadesEnemigos {
         for (Enemigo enemy : enemigoList){
             //Obtenemos la probabilidad de aparición
             int numeroCopias = enemy.getProbabilidadAparicion();
-            // metemos en un alista auxiliar a ese enemigo tantas veces como probabilidad de aparicion tenga
+            // metemos en una lista auxiliar a ese enemigo tantas veces como probabilidad de aparicion tenga
             for(int i = 0; i < numeroCopias ; i++ ){
                 listaAux.add(enemy);
             }

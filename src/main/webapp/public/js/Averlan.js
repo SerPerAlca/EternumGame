@@ -14,7 +14,7 @@ function inicioAV(){
    obtenerTituloCapitulo();
    itinerador = 0;
    itineradorAmbiente = 1;
-   
+   pausarAudio();
    if(!booleanCapitulo4){
        $("#imagenes img").remove();
        $("<div class='Inicio'>IV. Averlan </div>")

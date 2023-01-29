@@ -18,6 +18,5 @@ public interface IEnemigoService {
 
     public List<Enemigo> findEnemyFromZone(String Zona);
 
-
-   // public Enemigo enemigoFindByName(String name);
+    public Enemigo findEnemyByName(String enemy);
 }

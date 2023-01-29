@@ -16,7 +16,7 @@ $(document).ready(function() {
 
         function inicioLIEL(){
                 // Cookies
-                document.cookie = "ubicacion=campamentoBandidosBron";
+                document.cookie = "ubicacion=CAMPAMENTO_GRERIUS";
                 document.cookie = "capitulo=LaIglesiaEnTodosLados";
                 document.cookie = "ramificacion=X";
                 document.cookie = "batalla=false";
@@ -128,6 +128,7 @@ $(document).ready(function() {
                 .appendTo("#imagenes");
 
                 setTimeout( function(){
+                    document.cookie= "combateJefe=GRERIUS BRON";
                     llamadaOpcionesDadoOCombate(itinerador);
                 }, 6500);
             });
@@ -467,7 +468,7 @@ $(document).ready(function() {
                 setTimeout( function(){
                     console.log("Itinerador ahora ----> " + itinerador);
                     ocultarDado();
-                    fight(itinerador);
+                    fight();
                 }, 13500);
                 break;
             case ramificacion = "B" && itinerador == 3:
@@ -481,7 +482,7 @@ $(document).ready(function() {
                 setTimeout( function(){
                     console.log("Itinerador ahora ----> " + itinerador);
                     ocultarDado();
-                    fight(itinerador);
+                    fight();
                 }, 6000);
 
                 break;
