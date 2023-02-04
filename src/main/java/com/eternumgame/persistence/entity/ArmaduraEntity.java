@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="ARMADURA")
@@ -61,6 +62,9 @@ public class ArmaduraEntity {
     @JoinColumn(name="COD_TIPO_ARMADURA")
     @Getter @Setter
     private TipoArmaduraEntity tipoArmaduraEntity;
+
+    @ManyToMany(mappedBy = "armaduraEntitySet")
+    private Set<TiendaEntity> tiendaEntitySet;
 
 }
 

@@ -19,3 +19,11 @@
 #btn_botin{
     margin: 0 auto;
 }
+
+#recompensa{
+    color: red;
+    position: absolute;
+    margin-left: 100rem !important;
+    font-size: 2rem;
+    font-weight: bold;
+}

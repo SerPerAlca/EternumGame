@@ -1,23 +1,35 @@
 [
   {
-    "titulo": "TIENDAS DE ETERNUM",
+    "ubicacion": "KISLEV",
     "tiendas": [
       {
-        "localizacion": "K I S L E V",
-        "tipos": [
-          {
-            "establecimiento": "TIENDA DE ITEMS",
-            "cartel": "Aviso: ¡¡¡ Ultimas existencias del unico Repelente eficaz de Andrógenes !!!",
-            "objetos": [
-              {
-                "id": "1",
-                "objeto": "- POCION DE SALUD ",
-                "precio": " 15 G",
-                "comentario": "Posibles Efectos Secundarios: Alopecia, flujo menstrual abundante, perdida de extremidades..."
-              }
-            ]
-          }
-        ]
+        "tipo" : "Item",
+        "id" : "1"
+      },
+      {
+        "tipo" : "Armadura",
+        "id" : "2"
+      },
+      {
+        "tipo" : "Arma",
+        "id" : "3"
+      }
+    ]
+  },
+  {
+    "ubicacion" : "AVERLAN",
+    "tiendas" : [
+      {
+        "tipo" : "Item",
+        "id" : "4"
+      },
+      {
+        "tipo" : "Armadura",
+        "id" : "5"
+      },
+      {
+        "tipo" : "Arma",
+        "id" : "6"
       }
     ]
   }

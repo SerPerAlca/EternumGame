@@ -1,6 +1,7 @@
 package com.eternumgame.service;
 
 import com.eternumgame.domain.Arma;
+import com.eternumgame.persistence.entity.ArmaEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +15,10 @@ public interface IArmaService {
 
     public Arma getOneArma();
 
-    /*  Long count();
-    Page<Arma> findRandom(SpringDataWebProperties.Pageable pageable);
-    */
+    public void modificarRecompensaArray(int[] ids);
+
+    public boolean comprobarEstadoRecompensa(ArmaEntity armaEntity);
+
+    public boolean modificarEstadoRecompensa(int id);
+
 }

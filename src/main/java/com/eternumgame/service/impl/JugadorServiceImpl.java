@@ -50,7 +50,7 @@ public class JugadorServiceImpl implements IJugadorService {
                 jugadorRepository.save(jugadorEntity);
             } else {
                 // Si no existe, la creamos
-                sessionPnjService.saveSession(numeroJugadores);
+                sessionPnjService.saveFirstSession(numeroJugadores);
                 sessionEntity = sessionPnjService.findLastEntity();
                 jugadorEntity.setSession(sessionEntity);
                 jugadorRepository.save(jugadorEntity);

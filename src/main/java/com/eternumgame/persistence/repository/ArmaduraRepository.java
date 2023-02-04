@@ -8,4 +8,7 @@ public interface ArmaduraRepository extends JpaRepository<ArmaduraEntity, Intege
 
     @Query("SELECT COUNT(armadura.idArmadura) FROM ArmaduraEntity armadura")
     int findCount();
+
+    @Query("SELECT armadura FROM ArmaduraEntity armadura where armadura.idArmadura = ?1")
+    ArmaduraEntity findByIdSure(int id);
 }

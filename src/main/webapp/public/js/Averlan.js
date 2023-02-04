@@ -3,7 +3,7 @@ var booleanCapitulo4 = false;
 
 function inicioAV(){
     // Cookies
-    document.cookie = "ubicacion=Averlan";
+    document.cookie = "ubicacion=AVERLAN";
     document.cookie = "capitulo=Averlan";
     document.cookie = "ramificacion=X";
     document.cookie = "batalla=false";

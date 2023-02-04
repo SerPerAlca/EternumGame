@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @Getter @Setter
@@ -51,5 +52,8 @@ public class ArmaEntity {
 
     @Column(name="DESTREZA")
     private int destreza;
+
+    @ManyToMany(mappedBy = "armaEntitySet")
+    private Set<TiendaEntity> tiendaEntitySet;
 
 }

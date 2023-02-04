@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS HEROE (
     CREATE TABLE IF NOT EXISTS SESSION_PNJ(
         ID_SESSION INT(2) NOT NULL AUTO_INCREMENT,
         NUMERO_PLAYERS INT(1) NOT NULL,
+        DINERO INT(4) NOT NULL,
         CREACION_SESSION DATETIME NOT NULL, 
         PRIMARY KEY(ID_SESSION)
     ); 
@@ -93,8 +94,7 @@ CREATE TABLE IF NOT EXISTS HEROE (
     CREATE TABLE IF NOT EXISTS PNJ(
         ID_PNJ INT(2) NOT NULL AUTO_INCREMENT,
         COD_HEROE VARCHAR(4) NOT NULL,
-        NIVEL INT(2) NOT NULL,
-        DINERO INT(4) NOT NULL,
+        NIVEL INT(2) NOT NULL, 
         NOMBRE_PNJ VARCHAR(25) NOT NULL,
         ID_SESSION INT(2) NOT NULL, 
         PRIMARY KEY(ID_PNJ),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS HEROE (
     );
 
     CREATE TABLE IF NOT EXISTS ARMA(
-        ID_ARMA INT(3) NOT NULL,
+        ID_ARMA INT(2) NOT NULL,
         ID_PNJ INT(2),
         NOMBRE_ARMA VARCHAR(35) NOT NULL,
         COD_TIPO_ARMA VARCHAR(4) NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS HEROE (
     );
 
     CREATE TABLE IF NOT EXISTS ARMADURA(
-        ID_ARMADURA INT(3) NOT NULL,
+        ID_ARMADURA INT(2) NOT NULL,
         COD_TIPO_ARMADURA VARCHAR(4) NOT NULL,
         COD_EFECTO_MAGICO VARCHAR(4),
         ID_PNJ INT(2),
@@ -160,10 +160,43 @@ CREATE TABLE IF NOT EXISTS HEROE (
         FOREIGN KEY(ID_PNJ) REFERENCES PNJ(ID_PNJ)
     );
 
-    
+    CREATE TABLE IF NOT EXISTS TIENDA(
+        ID_TIENDA INT(2) NOT NULL,
+        ID_ZONA INT(3) NOT NULL,
+        NOMBRE_TIENDA VARCHAR(30) NOT NULL,
+        ESLOGAN VARCHAR(50) NOT NULL,
+        MULTIPLICADOR_PRECIO_BASE INT NOT NULL,
+        PRIMARY KEY(ID_TIENDA),
+        FOREIGN KEY(ID_ZONA) REFERENCES ZONA(ID_ZONA)
+    );
+
+     CREATE TABLE IF NOT EXISTS ARMADURA_TIENDA(
+        ID_TIENDA INT(2) NOT NULL,  
+        ID_ARMADURA INT(2) NOT NULL,
+        FOREIGN KEY(ID_ARMADURA) REFERENCES ARMADURA(ID_ARMADURA),
+        FOREIGN KEY(ID_TIENDA) REFERENCES TIENDA(ID_TIENDA),
+        PRIMARY KEY(ID_ARMADURA, ID_TIENDA)
+    );
+
+    CREATE TABLE IF NOT EXISTS ITEM_TIENDA(
+        ID_TIENDA INT(2) NOT NULL,
+             INT(2) NOT NULL,
+        FOREIGN KEY(ID_ITEM) REFERENCES ITEM(ID_ITEM),
+        FOREIGN KEY(ID_TIENDA) REFERENCES TIENDA(ID_TIENDA),
+        PRIMARY KEY(ID_ITEM, ID_TIENDA)
+    );
+
+    CREATE TABLE IF NOT EXISTS ARMA_TIENDA(
+        ID_TIENDA INT(2) NOT NULL,
+        ID_ARMA INT(2) NOT NULL,
+        FOREIGN KEY(ID_ARMA) REFERENCES ARMA(ID_ARMA),
+        FOREIGN KEY(ID_TIENDA) REFERENCES TIENDA(ID_TIENDA),
+        PRIMARY KEY(ID_ARMA, ID_TIENDA)
+    );
+
     
    
-
+    
     
 
 
@@ -482,4 +515,28 @@ INSERT INTO ITEM(ID_ITEM,NOMBRE_ITEM,DESCRIPCION_ITEM,PROBABILIDAD_APARACION,RUT
                                                                                     (12,'MACUTO PEQUEÑO','OTORGA 20 CASILLAS DE ALMACENAMIENTO ADICIONAL',1,'/public/images/Item/mpequeño.jpg',100,6),
                                                                                     (13,'MACUTO MEDIANO','OTORGA 28 CASILLAS DE ALMACENAMIENTO ADICIONAL',1,'/public/images/Item/mMediano.jpg',150,8),
                                                                                     (14,'MACUTO MÁGICO','OTORGA 36 CASILLAS DE ALMACENAMIENTO ADICIONAL',1,'/public/images/Item/mMágico.jpg',250,10),
-                                                                                    (15,'ORO','TE HACE LA VIDA MÁS FÁCIL',4,'/public/images/Item/oro.png',0,0);                                                                                                                                                                                                                                                                                               
+                                                                                    (15,'ORO','TE HACE LA VIDA MÁS FÁCIL',4,'/public/images/Item/oro.png',0,0);       
+
+
+INSERT INTO TIENDA(ID_TIENDA,ID_ZONA,NOMBRE_TIENDA,ESLOGAN,MULTIPLICADOR_PRECIO_BASE)VALUES(1,1,'POCIONES KISLEV','POCIONES QUE NO EXPLOTAN (SI NO QUIERES)',1),
+                                                                                        (2,1,'ARMADURAS KISLEV','NO CAZES GOBLIN SIN UNA DE ESTAS',1),
+                                                                                        (3,1,'ARMERO KISLEV', 'PARA AMANTES DEL ASESINATO',1);
+
+INSERT INTO ITEM_TIENDA(ID_TIENDA,ID_ITEM)VALUES(1,1),
+                                                (1,2),
+                                                (1,4),
+                                                (1,7),
+                                                (1,9),
+                                                (1,10);                                            
+
+INSERT INTO ARMADURA_TIENDA(ID_TIENDA,ID_ARMADURA)VALUES(2,33),
+                                                        (2,11),
+                                                        (2,6),
+                                                        (2,31),
+                                                        (2,38);
+
+INSERT INTO ARMA_TIENDA(ID_TIENDA,ID_ARMA)VALUES(3,4),
+                                                (3,6),
+                                                (3,12),
+                                                (3,16),
+                                                (3,24);

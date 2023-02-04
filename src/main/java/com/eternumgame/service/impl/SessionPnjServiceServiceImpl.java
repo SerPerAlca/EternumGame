@@ -31,7 +31,7 @@ public class SessionPnjServiceServiceImpl implements ISessionPnjService {
                 int id = 1;
                 // Obtenemos la última sessión registrada
                 for (SessionEntity sessionAux : sessionEntityList){
-                    if (id < sessionAux.getIdSession()){
+                    if (id <= sessionAux.getIdSession()){
                         id = sessionAux.getIdSession();
                         sessionEntity = sessionAux;
                     }
@@ -43,8 +43,10 @@ public class SessionPnjServiceServiceImpl implements ISessionPnjService {
         return sessionEntity;
     }
 
+
+
     @Override
-    public void saveSession(int numJugadores) {
+    public void saveFirstSession(int numJugadores) {
         Session session = new Session();
         SessionEntity sessionEntity = new SessionEntity();
         // Seteamos el numero de jugadores
@@ -57,4 +59,30 @@ public class SessionPnjServiceServiceImpl implements ISessionPnjService {
         sessionEntity = sessionMapper.fromDomainToEntity(session);
         sessionPnjRepository.save(sessionEntity);
     }
+
+    @Override
+    public void ganarDinero(int dinero) {
+        SessionEntity sessionEntity = findLastEntity();
+        Session session = new Session();
+        int dineroActual = sessionEntity.getDinero();
+        session.setDinero(dineroActual+dinero);
+        sessionEntity.setDinero(session.getDinero());
+        sessionPnjRepository.save(sessionEntity);
+    }
+
+    @Override
+    public void perderDinero(int dinero) {
+        SessionEntity sessionEntity = findLastEntity();
+        Session session = new Session();
+        int dineroActual = sessionEntity.getDinero();
+        session.setDinero(dineroActual-dinero);
+        sessionEntity.setDinero(session.getDinero());
+        sessionPnjRepository.save(sessionEntity);
+    }
+
+    @Override
+    public void saveSession(SessionEntity sessionEntity) {
+        sessionPnjRepository.save(sessionEntity);
+    }
+
 }

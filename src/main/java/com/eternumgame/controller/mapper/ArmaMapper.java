@@ -1,6 +1,8 @@
 package com.eternumgame.controller.mapper;
 
 import com.eternumgame.domain.Arma;
+import com.eternumgame.domain.Tienda;
+import com.eternumgame.domain.TiendaArmas;
 import com.eternumgame.persistence.entity.ArmaEntity;
 import org.springframework.stereotype.Component;
 
@@ -39,4 +41,6 @@ public class ArmaMapper {
         armaEntity.setDestreza(arma.getDestreza());
         return armaEntity;
     }
+
+
 }

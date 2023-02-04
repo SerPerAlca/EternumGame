@@ -222,7 +222,7 @@ $(document).ready(function() {
     }
 
     function reproducirMusicaBattalla(){
-        cancionAlAzar = Math.floor(Math.random()*4);
+        cancionAlAzar = Math.floor(Math.random()*10);
 
         let rutaAudio = "audio/Batalla/";
         rutaAudio += "batalla" + cancionAlAzar + ".mp3";
@@ -245,6 +245,22 @@ $(document).ready(function() {
             logMyErrors(e);
         }
 
+    }
+    function reproducirMusicaBattallaJefe(){
+        cancionAlAzar = Math.floor(Math.random()*3);
+
+        let rutaAudio = "audio/Batalla/";
+        rutaAudio += "batallaJefe" + cancionAlAzar + ".mp3";
+        console.log("Ruta Audio Batalla Jefe: " + rutaAudio);
+
+        try{
+            etiquetaAudioAmbiente.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+
+        musicaBatalla.setAttribute("src", rutaAudio);
+        musicaBatalla.play();
     }
 
     function reproducirVictoria(){

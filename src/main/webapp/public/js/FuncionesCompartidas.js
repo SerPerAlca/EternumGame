@@ -59,66 +59,6 @@ function abrirMapaCampania(){
     window.open('/itinerar', "MapaCampania", ventanaMapaCampaña);
 }
 
-
-//FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
-function fight(){
-    // Funciones de Audio
-    pausarAudio();
-    reproducirMusicaBattalla();
-    interMusicaBatalla(true);
-    document.cookie= "batalla=true";
-  //  window.open('/fight', "fight", ventanaFight);
-
-    //Preparacion de la vista
-    $("#rowDosCabecera").hide();
-    $("#btn-Salir").hide();
-    borradoCuerpoTexto();
-    $(".conte-texto h1").remove();
-    $("#imagenes img").remove();
-    ocultacionBotones();
-    $(".conte-texto").show();
-    $("#cuerpo").css({'height': '40rem', 'width': '100%'});
-    esconderSig();
-
-    //Este será el número de enemigos que combatirán
-    var numeroEnemigos = getRandomInt(3,7);
-
-    // Consultamos si es un combate con un jefe
-    var jefe = readCookie("combateJefe");
-    if(jefe != "false"){
-        // Si es un combate de jefe reducimos el numero de enemigos
-        numeroEnemigos = getRandomInt(2,4);
-        setTimeout( ()=>{
-            obtenerCombateJefe(jefe);
-        }, 1000);
-    }
-
-    // LLamamos a la funcion AJAX encargada de obtener los enemigos
-    for(var i= 0; i < numeroEnemigos; i++){
-        obtenerEnemigos();
-    }
-}
-
-/* Función que devuelve el cuerpo del jsp a su estado normal
-después del modo combate */
-function retornarDeFight(){
-
-    pausarMusicaBatalla();
-    interMusicaBatalla(false);
-    reproducirAmbiente();
-    var cards = document.getElementsByClassName("cards");
-    var cantidadCards = cards.length;
-    for( var i = 0; i < cantidadCards; i++){
-        $("#tarjetaEnemy").remove();
-    }
-    document.cookie = "batalla=false";
-    $(".conte-degradado").hide();
-    $(".conte-texto p").remove();
-    $(".conte-texto").hide();
-    $("#recompensa").remove();
-    $("#cuerpo").css({'height': '100%', 'width': '100%'});
-}
-
 /** FUNCIONES DE PINTADO EN EL JSP ******************************************************************************************************************/
 function pintarTexto(datos){
     $(`<p class='textoJson'> ${datos} </p>`)
@@ -373,11 +313,19 @@ function controladorCapi(){
 
 // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA
 function comprobarSiEstamosEnBatalla(){
+    var jefe = readCookie("combateJefe");
     let batalla = readCookie("batalla");
     if (batalla = "true") {
-        console.log("Estamos en Batalla");
-        reproducirMusicaBattalla();
+        alert("Estamos en Batalla");
+        if(jefe != "false"){
+            reproducirMusicaBattalla();
+        } else {
+            reproducirMusicaBattallaJefe();
+        }
+    } else {
+        pausarMusicaBatalla();
     }
+
 }
 
 // FUNCIONES CONTROLADORA DEL AUDIO DE BATALLA (esta funcion actúa como una especie de observer)

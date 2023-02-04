@@ -6,6 +6,7 @@
 body{
     background-color: black;
     color: white;
+    cursor: pointer !important;
 }
 
 #divImagen{
@@ -13,6 +14,7 @@ body{
     width: 1000px;
     height: 1000px;
     z-index: 0;
+
 }
 
 #cuadroDescripcion{

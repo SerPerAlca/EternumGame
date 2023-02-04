@@ -64,6 +64,69 @@ $(document).ready(function() {
     });
 });
 
+    //FUNCION ENCARGADA DE MOSTRAR LA INTRO DEL COMBATE
+    function fight(){
+        var jefe = readCookie("combateJefe");
+        // Funciones de Audio
+        pausarAudio();
+        /* if(jefe != "false"){
+             reproducirMusicaBattallaJefe();
+             interMusicaBatalla(true);
+         }else {
+             reproducirMusicaBattalla();
+             interMusicaBatalla(true);
+         } */
+        document.cookie= "batalla=true";
+
+
+        //Preparacion de la vista
+        $("#rowDosCabecera").hide();
+        $("#btn-Salir").hide();
+        borradoCuerpoTexto();
+        $(".conte-texto h1").remove();
+        $("#imagenes img").remove();
+        ocultacionBotones();
+        $(".conte-texto").show();
+        $("#cuerpo").css({'height': '40rem', 'width': '100%'});
+        esconderSig();
+
+        //Este será el número de enemigos que combatirán
+        var numeroEnemigos = getRandomInt(3,7);
+
+        // Consultamos si es un combate con un jefe
+        if(jefe != "false"){
+            // Si es un combate de jefe reducimos el numero de enemigos
+            numeroEnemigos = getRandomInt(2,4);
+            setTimeout( ()=>{
+                obtenerCombateJefe(jefe);
+            }, 1000);
+        }
+
+        // LLamamos a la funcion AJAX encargada de obtener los enemigos
+        for(var i= 0; i < numeroEnemigos; i++){
+            obtenerEnemigos();
+        }
+    }
+
+    /* Función que devuelve el cuerpo del jsp a su estado normal
+    después del modo combate */
+    function retornarDeFight(){
+
+        pausarMusicaBatalla();
+        interMusicaBatalla(false);
+        reproducirAmbiente();
+        var cards = document.getElementsByClassName("cards");
+        var cantidadCards = cards.length;
+        for( var i = 0; i < cantidadCards; i++){
+            $("#tarjetaEnemy").remove();
+        }
+        document.cookie = "batalla=false";
+        $(".conte-degradado").hide();
+        $(".conte-texto p").remove();
+        $(".conte-texto").hide();
+        $("#recompensa").remove();
+        $("#cuerpo").css({'height': '100%', 'width': '100%'});
+    }
 
     function obtenerEnemigos(){
         $("#cuerpo").css({
@@ -72,12 +135,20 @@ $(document).ready(function() {
             'width' : '100% !important',
             'justity-content' : 'center !important'
         })
+        var jefe = readCookie("combateJefe");
         esconderSig();
         var cookieSide = readCookie("ubicacion");
         var dataLugar = { zona: cookieSide };
         var enemy = new Object();
     //    document.cookie = "batalla=true";
         console.log("INICIO LLAMADA COMBATE");
+        if(jefe != "false"){
+            reproducirMusicaBattallaJefe();
+            interMusicaBatalla(true);
+        }else {
+            reproducirMusicaBattalla();
+            interMusicaBatalla(true);
+        }
         var request = $.ajax({
             url: "/calcularEnemigos",
             type: "POST",
@@ -158,7 +229,7 @@ $(document).ready(function() {
         var jefe = readCookie("combateJefe");
         // Se controla que no se muestre dos veces al re-llamar a la recompensa
         if(cantidadEnemigos != 0 && jefe == "false"){
-            $(`<div id="recompensa" style="color: white; float:left !important;">Experiencia Obtenida: ${experienciaTotal}</div>`)
+            $(`<div id="recompensa" >Experiencia Obtenida: ${experienciaTotal}</div>`)
                 .appendTo(".conte-texto");
         }
 

@@ -21,6 +21,9 @@ public class SessionEntity {
     @Column(name="NUMERO_PLAYERS")
     private int numPlayers;
 
+    @Column(name="DINERO")
+    private int dinero;
+
     @Column(name="CREACION_SESSION")
     private Date fechaSession;
 }

@@ -15,8 +15,10 @@ public class ItemMapper {
         item.setRutaImagen(itemEntity.getRutaImagen());
         item.setProbabilidad(itemEntity.getProbabilidad());
         item.setTamanio(itemEntity.getTamanio());
+        item.setPrecioBase(itemEntity.getPrecioBase());
         return item;
     }
+
 
     public ItemEntity DomaintToEntity (Item item){
         ItemEntity itemEntity = new ItemEntity();
@@ -29,4 +31,6 @@ public class ItemMapper {
         itemEntity.setTamanio(item.getTamanio());
         return itemEntity;
     }
+
+
 }

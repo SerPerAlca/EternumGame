@@ -599,10 +599,18 @@ $(document).ready(function() {
 
                 $(`<div style="margin-top: 8rem"> <span style="color: aqua;" > Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día… </span> </div> `)
                 .appendTo('#padreCuerpo').hide().fadeIn(2000);
-                $("#btn-itinerar").show();
+         //       $("#btn-itinerar").show();
                 itinerador=9;
                 reproducirTexto(itinerador);
-            
+                $(`<button type="button" className="btn btn-secondary" style="color:white;" id="btn-SalirLIEL"
+                    onClick="salirDelCampamento()">Salir del campamento</button>`)
+                    .appendTo("#itineracion").fadeIn(3000);
         }, 3000);    
         
+    }
+
+    function salirDelCampamento(){
+        $("#btn-SalirLIEL").remove();
+        $("#btn-itinerar").show();
+        abrirMapaCampania();
     }

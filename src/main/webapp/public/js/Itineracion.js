@@ -15,11 +15,11 @@ document.cookie =  "ubicacion=KISLEV";
 $(document).ready(function() {
 
 
-    /*
+
     $('body').on("mousemove", "#divImagen", function(event){
         mostrarPosicionPuntero(event);
     });
-    */
+
 
     $("#mapaImperio").children().on("mouseover", function(event){
         var cadenaZona = "zona";
@@ -160,13 +160,6 @@ function situarPuntero(longitud, latitud){
     console.log("Puntero: Longitud --> " + long + " Latitud ----> " + lat);
     $(`<img id="punteroEspada" src="images/Mapas/punteroEspada.png" style="top: ${lat}; left: ${long}; position: absolute; visibility: visible">`)
     .appendTo("#rowDosCabecera").show();
-   /* $("#punteroEspada").css({
-        "top" : `${lat}`,
-        "left" : `${long}`,
-        "position" : "absolute",
-        "visibility" : "visible"
-    }).show(); */
-
 }
 
 // Función para reiniciar los valores que forman la barra de progreso

@@ -2,6 +2,7 @@ package com.eternumgame.service.impl;
 
 import com.eternumgame.controller.mapper.ArmaMapper;
 import com.eternumgame.domain.Arma;
+import com.eternumgame.domain.Constantes;
 import com.eternumgame.persistence.entity.ArmaEntity;
 import com.eternumgame.persistence.repository.ArmaRepository;
 import com.eternumgame.service.IArmaService;
@@ -65,6 +66,36 @@ public class ArmaServiceImpl implements IArmaService {
         return arma;
     }
 
+    @Override
+    public void modificarRecompensaArray(int[] ids) {
+        for(int i=0; i < ids.length; i++){
+            ArmaEntity armaEntity = new ArmaEntity();
+            armaEntity = armaRepository.findByIdSure(ids[i]);
+            if (armaEntity.getRecompensa() != Constantes.N){
+                armaEntity.setRecompensa(Constantes.S);
+                armaRepository.save(armaEntity);
+            }
+        }
+    }
+
+    @Override
+    public boolean comprobarEstadoRecompensa(ArmaEntity armaEntity) {
+        if(armaEntity.getRecompensa() != Constantes.N){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean modificarEstadoRecompensa(int id) {
+        ArmaEntity armaEntity = new ArmaEntity();
+        armaEntity = armaRepository.getOne(id);
+        if(comprobarEstadoRecompensa(armaEntity)) {
+            armaEntity.setRecompensa(Constantes.N);
+            return true;
+        }
+        return false;
+    }
 
 
 }

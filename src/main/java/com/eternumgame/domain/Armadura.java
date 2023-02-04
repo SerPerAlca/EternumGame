@@ -6,7 +6,7 @@ import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
-public class Armadura {
+public class Armadura extends ObjetoVenta{
 
     @Getter @Setter
     private int idArmadura;
@@ -58,4 +58,25 @@ public class Armadura {
 
     @Getter  @Setter
     private char recompensa;
+
+    public Armadura(int idArmadura, String codigoClase, String codTipoArmadura, String codEfectoMagico, int idPNJ, String nombre, String descripcion, int defensaFisica, int defensaMagica, int precioBase, String rutaImagen, int tamanio, MultipartFile imagen, String tipoArmaduraDescripcion, int cantidad, int destreza, char recompensa) {
+        super();
+        this.idArmadura = idArmadura;
+        this.codigoClase = codigoClase;
+        this.codTipoArmadura = codTipoArmadura;
+        this.codEfectoMagico = codEfectoMagico;
+        this.idPNJ = idPNJ;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.defensaFisica = defensaFisica;
+        this.defensaMagica = defensaMagica;
+        this.precioBase = precioBase;
+        this.rutaImagen = rutaImagen;
+        this.tamanio = tamanio;
+        this.imagen = imagen;
+        this.tipoArmaduraDescripcion = tipoArmaduraDescripcion;
+        this.cantidad = cantidad;
+        this.destreza = destreza;
+        this.recompensa = recompensa;
+    }
 }

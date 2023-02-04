@@ -8,5 +8,11 @@ public interface ISessionPnjService {
 
     public SessionEntity findLastEntity();
 
-    public void saveSession(int numJugadores);
+    public void saveFirstSession(int numJugadores);
+
+    public void ganarDinero(int dinero);
+
+    public void perderDinero(int dinero);
+
+    public void saveSession(SessionEntity sessionEntity);
 }

@@ -23,6 +23,7 @@
     <script src="js/Dado.js"></script>
     <script src="js/Itineracion.js"></script>
     <script src="js/AJAXcombate.js"></script>
+    <script src="js/Tiendas.js"></script>
 
     <script src="js/FuncionesCompartidas.js"></script>
 

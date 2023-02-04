@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
 @Getter @Setter
-public class Arma {
+public class Arma extends ObjetoVenta {
 
     private int idArma;
 
@@ -40,4 +40,22 @@ public class Arma {
 
     private int cantidad;
 
+    public Arma(int idArma, String codigoClase, String tipoArmaDescripcion, String nombre, String descripcion, int ataqueFisico, int ataqueMagico, int alcance, int precio, String rutaImagen, MultipartFile imagen, char recompensa, int tamanio, int destreza, int cantidad) {
+        super();
+        this.idArma = idArma;
+        this.codigoClase = codigoClase;
+        this.tipoArmaDescripcion = tipoArmaDescripcion;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.ataqueFisico = ataqueFisico;
+        this.ataqueMagico = ataqueMagico;
+        this.alcance = alcance;
+        this.precio = precio;
+        this.rutaImagen = rutaImagen;
+        this.imagen = imagen;
+        this.recompensa = recompensa;
+        this.tamanio = tamanio;
+        this.destreza = destreza;
+        this.cantidad = cantidad;
+    }
 }

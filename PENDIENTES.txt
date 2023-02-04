@@ -6,9 +6,15 @@
 2. SISTEMA BATALLA / BOTIN
 	2.1 Pintar de un color especial la tarjeta de un jefe  <--- HECHO
 	2.2 Revisar las recompensas de los eventos para evitar ser obtenidas mediante batalla. <--- HECHO
-	2.3 Introducir musica especial para combates de jefes.
+	2.3 Introducir musica especial para combates de jefes.   <----HECHO
 	2.4 Revisar mapa de campaña (no sale boton botin)  <--- HECHO
 	2.5 La foto de Grerius Bron no concuerda.  <---- HECHO
+	2.6 Colocar mejor el texto de la experiencia obtenida.  
+	2.7 Invocar los metodos de musica de batalla desde obtenerEnemigos(); <--- HECHO
  
-2. Sistema de compra 
+3. Sistema de compra 
 
+	3.1 Modificar las tablas para añadir el dinero en la session. 
+	3.2 Creación de metodos PNJ para la Session 
+	3.2 Creación de tiendas en Kislev
+	3.2 Metodos AJAX 		

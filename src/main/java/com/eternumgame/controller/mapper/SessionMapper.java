@@ -13,6 +13,7 @@ public class SessionMapper {
         session.setIdSession(sessionEntity.getIdSession());
         session.setNumPlayers(sessionEntity.getNumPlayers());
         session.setFechaSession(sessionEntity.getFechaSession());
+        session.setDinero(sessionEntity.getDinero());
         return session;
     }
 
@@ -21,6 +22,7 @@ public class SessionMapper {
         sessionEntity.setIdSession(session.getIdSession());
         sessionEntity.setNumPlayers(session.getNumPlayers());
         sessionEntity.setFechaSession(session.getFechaSession());
+        sessionEntity.setDinero(session.getDinero());
         return sessionEntity;
     }
 }

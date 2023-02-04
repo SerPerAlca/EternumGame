@@ -7,7 +7,7 @@
 
 /***********************************************************************/
     // Cookies
-         document.cookie = "ubicacion=kislev";
+         document.cookie = "ubicacion=KISLEV";
          document.cookie = "capitulo=Despertar";
          document.cookie = "batalla=false";
 /***********************************************************************/
@@ -15,11 +15,11 @@
        inicioDespertar();
 
 /************************** I T I N E R A C I O N  **************************************/
-        $('body').on('click', '#btn_tiendas', function() {
+      /*  $('body').on('click', '#btn_tiendas', function() {
             borradoCuerpoTexto();
             borradoTextoItineracion();
             llamadaTiendas();
-        });
+        }); */
         $('body').on('click', '#btn-Palacio', function() {
             borradoCuerpoTexto();
             borradoTextoItineracion();
@@ -35,6 +35,7 @@
                     $("#btn-Palacio").hide();
                     $("#btn-CasaC").hide();
                     $("#btn_tiendas").hide();
+                    $("#btn_siguiente").hide();
                     itinerador++;
                     terceraSecuenciaDespertar();
                 } else {
@@ -49,6 +50,7 @@
 
            //Creo esta función porque se repite la creacion del div Inicio
     function inicioDespertar(){
+        $("#btn-itinerar").hide();
         if(!despertarBoolean){
             $("<div class='Inicio'>I. El Despertar </div>")
             .filter(".Inicio").click(function(){
@@ -360,10 +362,11 @@
         function libreAlbedrio(){
             $("<h3>... TENEIS LIBRE ALBEDRIO ...</h3>").appendTo("#textoRespuestas").hide().fadeIn(5000);
 
-            //$("#btn_tiendas").show().fadeIn(6000);
-            //$("#btn-Palacio").show().fadeIn(6000);
-            //$("#btn-CasaC").show().fadeIn(6000);
-            $(`<button type="button" class="btn btn-secondary" id="btn_tiendas">Tiendas</button>`)
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Arma')" id="tiendaArmas">Tienda Armeria</button>`)
+                .appendTo("#itineracion p");
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Armadura')" id="tiendaArmadura">Armaduras Kislev</button>`)
+                .appendTo("#itineracion p");
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Item')" id="tiendaItems">Tienda Item</button>`)
                 .appendTo("#itineracion p");
             $(`<button type="button" class="btn btn-secondary" id="btn-CasaC">Casa Consistorial</button>`)
                 .appendTo("#itineracion p");

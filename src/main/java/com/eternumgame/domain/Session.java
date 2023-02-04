@@ -15,5 +15,7 @@ public class Session {
 
     private int numPlayers;
 
+    private int dinero;
+
     private Date fechaSession;
 }

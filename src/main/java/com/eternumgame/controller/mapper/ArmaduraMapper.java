@@ -42,4 +42,5 @@ public class ArmaduraMapper {
         armaduraEntity.setTamanio(armadura.getTamanio());
         return armaduraEntity;
     }
+
 }

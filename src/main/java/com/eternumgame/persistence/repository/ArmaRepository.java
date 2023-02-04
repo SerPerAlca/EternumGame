@@ -8,4 +8,7 @@ public interface ArmaRepository extends JpaRepository<ArmaEntity, Integer> {
 
     @Query("SELECT COUNT(arma.idArma) FROM ArmaEntity arma")
     int findCount();
+
+    @Query("SELECT arma FROM ArmaEntity arma where arma.idArma = ?1")
+    ArmaEntity findByIdSure(int id);
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @NoArgsConstructor
 @Getter @Setter
-public class Item {
+public class Item extends ObjetoVenta{
 
     private int idItem;
 
@@ -25,4 +25,17 @@ public class Item {
     private int probabilidad;
 
     private int tamanio;
+
+    public Item(int idItem, String codigoClase, String nombre, String descripcion, String rutaImagen, int precioBase, int cantidad, int probabilidad, int tamanio) {
+        super();
+        this.idItem = idItem;
+        this.codigoClase = codigoClase;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.rutaImagen = rutaImagen;
+        this.precioBase = precioBase;
+        this.cantidad = cantidad;
+        this.probabilidad = probabilidad;
+        this.tamanio = tamanio;
+    }
 }

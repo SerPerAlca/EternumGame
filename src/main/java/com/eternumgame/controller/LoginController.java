@@ -40,7 +40,7 @@ public class LoginController {
         int jugadorActual = 1;
         request.getSession().setAttribute("jugadorActual", jugadorActual);
         try{
-            sessionPnjService.saveSession(playersNumbers);
+            sessionPnjService.saveFirstSession(playersNumbers);
             List<String> heroesList = enemigoService.findHeroesFromJson();
             if(null != heroesList){
                 model.addAttribute("heroes", heroesList);
