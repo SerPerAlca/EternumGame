@@ -57,14 +57,16 @@ public class SessionPnjServiceServiceImpl implements ISessionPnjService {
         session.setFechaSession(dataStartSql);
 
         sessionEntity = sessionMapper.fromDomainToEntity(session);
+        // El juego empieza siempre con 200 monedas de oro
+        sessionEntity.setDinero(200);
         sessionPnjRepository.save(sessionEntity);
     }
 
     @Override
     public void ganarDinero(int dinero) {
         SessionEntity sessionEntity = findLastEntity();
-        Session session = new Session();
         int dineroActual = sessionEntity.getDinero();
+        Session session = new Session();
         session.setDinero(dineroActual+dinero);
         sessionEntity.setDinero(session.getDinero());
         sessionPnjRepository.save(sessionEntity);
@@ -73,8 +75,8 @@ public class SessionPnjServiceServiceImpl implements ISessionPnjService {
     @Override
     public void perderDinero(int dinero) {
         SessionEntity sessionEntity = findLastEntity();
-        Session session = new Session();
         int dineroActual = sessionEntity.getDinero();
+        Session session = new Session();
         session.setDinero(dineroActual-dinero);
         sessionEntity.setDinero(session.getDinero());
         sessionPnjRepository.save(sessionEntity);

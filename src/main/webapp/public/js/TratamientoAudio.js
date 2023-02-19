@@ -108,6 +108,21 @@ $(document).ready(function() {
         etiquetaAudio.setAttribute("src", rutaAudio);
         etiquetaAudio.play();
     }
+    function reproducirTextoSec(itineradorSecundaria){
+        var cookieDirectorio = readCookie("mision");
+        var ramificacionSec = readCookie("ramificacionSec");
+
+        let rutaAudio = "audio/" + cookieDirectorio + "/" + "Audio" +
+            ramificacionSec + itineradorSecundaria + ".mp3";
+        mostrarInfoAudio(rutaAudio);
+        try{
+            etiquetaAudio.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio.setAttribute("src", rutaAudio);
+        etiquetaAudio.play();
+    }
 
     function reproducirTextoEspLIEL(itinerador){
         var cookieDirectorio = readCookie("capitulo");
@@ -206,11 +221,18 @@ $(document).ready(function() {
     }
 
     function reproducirAmbiente(){
-
-        var cookieDirectorio = readCookie("capitulo");
-        let rutaAudio = "audio/" + cookieDirectorio + "/"
-        rutaAudio += "musicaAmbiente";
-        rutaAudio += itineradorAmbiente + ".mp3";
+        var cookieDirectorioSec = readCookie("mision");
+        let rutaAudio = '';
+        if(cookieDirectorioSec == 'false'){
+            var cookieDirectorio = readCookie("capitulo");
+            rutaAudio = "audio/" + cookieDirectorio + "/"
+            rutaAudio += "musicaAmbiente";
+            rutaAudio += itineradorAmbiente + ".mp3";
+        } else{
+            rutaAudio = "audio/" + cookieDirectorioSec + "/"
+            rutaAudio += "musicaAmbiente";
+            rutaAudio += itineradorAmbiente + ".mp3";
+        }
         try{
             etiquetaAudioAmbiente.pause();
         }catch(e){
@@ -220,6 +242,7 @@ $(document).ready(function() {
         etiquetaAudioAmbiente.setAttribute("autoplay", "true");
         etiquetaAudioAmbiente.play();
     }
+
 
     function reproducirMusicaBattalla(){
         cancionAlAzar = Math.floor(Math.random()*10);
@@ -415,14 +438,36 @@ $(document).ready(function() {
         etiquetaAudio4.play();
     }
 
-function reproducirAhorcado(){
-    let rutaAudio= "audio/ahorcado.mp3";
-    try{
-        etiquetaAudio3.pause();
-    }catch(e){
-        logMyErrors(e);
+    function reproducirAhorcado(){
+        let rutaAudio= "audio/ahorcado.mp3";
+        try{
+            etiquetaAudio3.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio3.setAttribute("src", rutaAudio);
+        etiquetaAudio3.play();
     }
-    etiquetaAudio3.setAttribute("src", rutaAudio);
-    etiquetaAudio3.play();
-}
 
+    function reproducirSuenio(){
+        pausarMusicaAmbiente();
+        let rutaAudio= "audio/musicaDormir.mp3";
+        try{
+        etiquetaAudio3.pause();
+        }catch(e){
+        logMyErrors(e);
+        }
+        etiquetaAudio3.setAttribute("src", rutaAudio);
+        etiquetaAudio3.play();
+    }
+
+    function reproducirTaberna(){
+        let rutaAudio= "audio/ambienteTaberna.mp3";
+        try{
+            etiquetaAudio4.pause();
+        }catch(e){
+            logMyErrors(e);
+        }
+        etiquetaAudio4.setAttribute("src", rutaAudio);
+        etiquetaAudio4.play();
+    }

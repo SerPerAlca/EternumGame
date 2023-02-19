@@ -14,13 +14,12 @@ $(document).ready(function() {
             $("#rowDosCabecera").show();
 
             // Mostramos el mapa
-            $("#divImagen").css({
-                "visibility" : "visible"
-            })
-
+     //       $("#divImagen").css({
+     //           "visibility" : "visible"
+     //       })
             booleanMapa = true;
-            document.cookie = "ubicacion=Itineracion";
-            document.cookie = "capitulo=Itineracion";
+ //           document.cookie = "ubicacion=Itineracion";
+ //           document.cookie = "capitulo=Itineracion";
             mostrarTituloCapitulo();
         } else {
             //$("#divMapa img").remove();
@@ -59,7 +58,7 @@ function obtenerTituloCapitulo(){
             break;     
     }
 
-    mostrarTituloCapitulo();
+   // mostrarTituloCapitulo();
 
 }
 
@@ -69,3 +68,19 @@ function mostrarTituloCapitulo(){
     $(`<p> ${titulo} </p>`).appendTo("#capiActual");
 }
 
+function mostrarUbicacion(){
+    let titulo= readCookie("ubicacion");
+    $("#capiActual p").remove();
+    $(`<p> ${titulo} </p>`).appendTo("#capiActual");
+}
+
+function limpiarCache(){
+    document.cookie = "capitulo=Despertar";
+    document.cookie = "despertar=";
+    document.cookie = "ubicacion=KISLEV";
+    document.cookie = "batalla=false";
+    document.cookie = "EscenaCasaCons=false";
+    document.cookie = "M1=false";
+    document.cookie = "destino=";
+    document.cookie = "liel=";
+}

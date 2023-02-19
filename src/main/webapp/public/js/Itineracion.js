@@ -3,6 +3,7 @@ var destino = [];
 var booleanDistancia = false;
 var booleanItineracion = false;
 var booleanPrimeraIti = false;
+var segundoClick =  false;
 var resultadoNecesario= "";
 var recorrido = "";
 var x1, y1, x2, y2, catAbs, catOrd, distancia;
@@ -10,11 +11,12 @@ var caminoRecorrido = 0;
 var widthProgreso = "";
 var booleanItinerando = false;
 var ventanaFight = "width=1500,height=1000,scrollbars=NO,resizable=NO"
-document.cookie =  "ubicacion=KISLEV";
+//document.cookie = "ubicacion=KISLEV";
+var entrarUbicacion = false;
 
 $(document).ready(function() {
 
-
+    segundoClick = false;
 
     $('body').on("mousemove", "#divImagen", function(event){
         mostrarPosicionPuntero(event);
@@ -29,7 +31,6 @@ $(document).ready(function() {
         if (posicion != -1){
             // Estamos dentro de una zona de combate
             nombreLugar = nombreLugar.slice(4);
-            document.cookie = "ubicacion="+nombreLugar;
         } else {
             //Estamos en una ubicacion concreta
             llamadaDescripcionLugar(this.id);
@@ -40,6 +41,40 @@ $(document).ready(function() {
     $("#mapaImperio").children().on("mouseout", function(event){
         borrarDescripcion();
     });
+
+    $("#mapaImperio").children().on("click", function(event){
+        //Consultamos si es el click de destino en la itineración
+        var cadenaZona = "zona";
+        var nombreLugar = this.id;
+        var posicion = nombreLugar.search(cadenaZona);
+        //Si es el click del destino
+       if(segundoClick){
+           // Si el destino no es una zona,si no una ubicación determinada...
+           if (posicion == -1) {
+           /* Como es una ubicación concreta, seteamos la cookie de
+           * destino que más tarde utilizaremos para entrar en el mismo. */
+               nombreLugar = nombreLugar.toUpperCase();
+               document.cookie = "destino=" + nombreLugar;
+           // Ponemos a true la variable q se usará para entrar al lugar cuando lleguemos
+               entrarUbicacion = true;
+           }
+        //Como es el primer click que hacemos
+       } else {
+           //Como es una zona de las establecidas en BD
+           if(posicion == -1){
+            /*seteamos la cookie de ubicación para que se tenga en cuenta esta zona
+             a la hora de mostrar los enemigos de la misma en los combates */
+               document.cookie = "ubicacion=" + nombreLugar;
+           //Como no es una zona determinada
+           } else{
+               //Quitamos la cadena 'zona' para quedarnos con la ubicación específica
+               nombreLugar = nombreLugar.slice(4);
+               document.cookie = "ubicacion=" + nombreLugar;
+           }
+           segundoClick = true;
+       }
+    });
+
 
 });
 
@@ -176,12 +211,25 @@ function resetearValoresItineracion(){
 // Función que se invoca al llegar al destino en la itineración
 function llegarDestino(){
     booleanItinerando = false;
+    var cookieDestino = readCookie("destino");
+
     alert("¡¡ HAS LLEGADO A TU DESTINO !!");
+
     situarPuntero(x2, y2);
     resetearValoresItineracion();
     $("#punteroEspada").show();
     booleanPrimeraIti = false;
     $("#descripcionItineracion p").text("");
+
+    //SI el destino es una ubicación específica
+    if(entrarUbicacion){
+        if(confirm("¿Entrar en "+ cookieDestino + " ?")){
+            // Cerramos la ventana de campaña
+            cerrarVentanaCampania(cookieDestino);
+        } else {
+            console.log("Decidiste no entrar en " + cookieDestino);
+        }
+    }
 }
 
 // Función que simula el avance de una barra de progreso
@@ -243,8 +291,9 @@ function eventoMapaCampaña(){
 
 function eventoMapaBueno(){
 
-    let randomId = getRandomInt(1,18);
+    let randomId = getRandomInt(1,19);
     var tipo = "Buenos";
+    comprobarGanarDinero(randomId);
     llamadaEvento(tipo,randomId);
 }
 
@@ -252,6 +301,7 @@ function eventoMapaMalo(){
 
     let randomId = getRandomInt(1,15);
     var tipo = "Malos";
+    comprobarPerderDinero(randomId);
     llamadaEvento(tipo,randomId);
 }
 
@@ -286,4 +336,31 @@ function pintarDescripcionLugar(texto){
 
 function borrarDescripcion(){
     $("#DescripcionTXT p").text("");
+}
+
+//Comprueba según id del json que
+// eventos hacen perder dinero a los jugadores
+function comprobarPerderDinero(id){
+
+    switch(id){
+        case 1 : perderDinero(30);
+                    break;
+        case 5 : perderDinero(40);
+                    break;
+        case 13 : perderDinero(25);
+                    break;
+    }
+}
+//Comprueba según id del json que
+// eventos hacen ganar dinero a los jugadores
+function comprobarGanarDinero(id){
+
+    switch(id){
+        case 2 : ganarDinero(30);
+            break;
+        case 17 : ganarDinero(40);
+            break;
+        case 18 : ganarDinero(35);
+            break;
+    }
 }

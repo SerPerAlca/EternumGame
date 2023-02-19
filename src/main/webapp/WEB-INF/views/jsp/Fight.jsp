@@ -21,7 +21,7 @@
     <script src="js/Itineracion.js"></script>
     <script src="js/TratamientoAudio.js"></script>
 
-    <title>JSP de Prueba</title>
+    <title>Fight</title>
 </head>
 <body>
 <div class="container-fluid">

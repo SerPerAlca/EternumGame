@@ -71,6 +71,11 @@
                 <input type="submit" class="btn btn-primary" id="btn-salirTienda" value="Salir"/>
             </div>
         </div>
+        <div class ="row align-items-end">
+            <div id="dineroActual">
+                <h2>Vuestro dinero: <span id="dinero"><%= session.getAttribute("dinero") %></span></h2>
+            </div>
+        </div>
     </form>
 </div>
 </body>

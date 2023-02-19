@@ -101,7 +101,7 @@ public class MainController {
 		// Obtenemos el numero de enemigos de ese tipo que van a salir
 		//utilidadesEnemigos.calcularNumEnemigos(enemigo,numeroJugadores);
 
-		return enemigo;
+ 		return enemigo;
 	}
 	// Controlador encargado de devolver el enemigo al que se enfrentarán los jugadores
 	@RequestMapping(value = "/combateJefe", method = RequestMethod.POST)
@@ -135,5 +135,21 @@ public class MainController {
 					break;
 		}
 		return object;
+	}
+
+	@RequestMapping(value = "/perderDinero", method = RequestMethod.POST)
+	@ResponseBody public int perderDinero(@RequestParam int cantidad, HttpServletRequest request,
+												   HttpServletResponse response) {
+
+		sessionPnjService.perderDinero(cantidad);
+		return cantidad;
+	}
+
+	@RequestMapping(value = "/ganarDinero", method = RequestMethod.POST)
+	@ResponseBody public int ganarDinero(@RequestParam int cantidad, HttpServletRequest request,
+										  HttpServletResponse response) {
+
+		sessionPnjService.ganarDinero(cantidad);
+		return cantidad;
 	}
 }

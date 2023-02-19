@@ -61,8 +61,8 @@
           <area id="CarreraBlanca" shape="rect" coords="868,827,921,860" alt="Write" href="#" />
           <area id="PuertaNorte" shape="rect" coords="844,58,917,92" alt="Write" href="#" />
           <area id="PuertaSur" shape="rect" coords="814,949,873,995" alt="Write" href="#" />
-          <area id="CampamentoGreriusBron" shape="rect" coords="964,250,977,266" alt="Write" href="#" />
-          <area id="CampamentoHood" shape="rect" coords="788,521,796,535" alt="Write" href="#" />
+          <area id="campamento_grerius" shape="rect" coords="964,250,977,266" alt="Write" href="#" />
+          <area id="campamento_hood" shape="rect" coords="788,521,796,535" alt="Write" href="#" />
           <!-- Areas para delimitar las zonas de combate -->
           <area id="zonaKISLEV" shape="rect" coords="751,58,988,274" alt="Write" href="#" />
           <area id="zonaAVERLAN" shape="rect" coords="621,235,982,582" alt="Write" href="#" />

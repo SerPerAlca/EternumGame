@@ -37,7 +37,9 @@
                         <div id="botonesCabecera" class="col-md-6">
                             <!--<button type="button" class="btn btn-secondary" value="mostrarMapaNacional" id="btn-mostrarMapa">Mostrar Mapa</button> -->
                             <a href="javascript:abrirMapaCampania()">Viaje Campaña</a>
+                            <button type="button" class="btn btn-success" onclick="limpiarCache()" id="btn_cache">Limpiar Caché</button>
                         </div>
+
                         <div id="capiActual" class="col-md-4"></div>
                     </div> 
                     <div id="rowDosCabecera" class="row"> 

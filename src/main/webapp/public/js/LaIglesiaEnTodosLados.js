@@ -12,33 +12,25 @@ $(document).ready(function() {
     var booleanErrorChromeIII = false;
     var contFilasCarta = 0;
     var botonDado = $(".rollBtn");
+    var lugar = readCookie("ubicacion");
+    var cookieLIEL = readCookie("liel");
 
+    function inicioLIEL(){
 
-        function inicioLIEL(){
-                // Cookies
-                document.cookie = "ubicacion=CAMPAMENTO_GRERIUS";
-                document.cookie = "capitulo=LaIglesiaEnTodosLados";
-                document.cookie = "ramificacion=X";
-                document.cookie = "batalla=false";
-                obtenerTituloCapitulo();
-                borradoCuerpoTexto();
-
-                $("#btn-Salir").remove();
-                
-                itinerador = 0;
-                itineradorAmbiente = 1;
-
-                if(!booleanCapitulo2){
-                    $("#imagenes img").remove();
-                    $("<div class='Inicio'>II. La Iglesia En Todos Lados </div>")
-                    .filter(".Inicio").click(function(){
-                        primeraSecuenciaLIEL();
-                    }).end().appendTo("#texto");
-                    booleanCapitulo2 = true;
-                } else {
-                    animacionFinalCapiLIEL();
-                }
-        };
+        obtenerTituloCapitulo();
+        borradoCuerpoTexto();
+        $("#btn-Salir").remove();
+        if('true' != cookieLIEL || null == cookieLIEL){
+            $("#imagenes img").remove();
+            $("<div class='Inicio'>II. La Iglesia En Todos Lados </div>")
+                .filter(".Inicio").click(function(){
+                document.cookie = "liel=true";
+                primeraSecuenciaLIEL();
+            }).end().appendTo("#texto");
+        } else {
+            animacionFinalCapiLIEL();
+        }
+    };
 
 
 
@@ -46,7 +38,12 @@ $(document).ready(function() {
 
 // LLEGADA AL CAMPAMENTO DE BRON
     function primeraSecuenciaLIEL(){
+        document.cookie = "ubicacion=CAMPAMENTO_GRERIUS";
+        document.cookie = "capitulo=LaIglesiaEnTodosLados";
+        document.cookie = "ramificacion=X";
+        document.cookie = "batalla=false";
         borradoCuerpoTexto();
+        itineradorAmbiente = 1;
         reproducirAmbiente();
         mostrarInfoSecuencia("primeraSecuenciaLIEL");
         $("#btn-itinerar").hide();
@@ -612,5 +609,9 @@ $(document).ready(function() {
     function salirDelCampamento(){
         $("#btn-SalirLIEL").remove();
         $("#btn-itinerar").show();
+        itineradorIndice = 3;
+        itinerador = 0;
+        controladorCapi();
+        mostrarTituloCapitulo();
         abrirMapaCampania();
     }

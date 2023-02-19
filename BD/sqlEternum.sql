@@ -399,7 +399,7 @@ INSERT INTO ZONA(ID_ZONA,NOMBRE_ZONA,COD_TIPO_ZONA,PELIGROSIDAD)VALUES(1,'KISLEV
                                                               (8,'WISLEN','LLA',2),
                                                               (9,'TIERRAS_DE_HOET','LLA',2),
                                                               (10,'CARRERA_BLANCA','LLA',2),
-                                                              (11,'CAMPAMENTO_GRERIUS','LLA',2),
+                                                              (11,'CampamentoGreriusBron','LLA',2),
                                                               (12,'CAMPAMENTO_HOOD','BOS',2),
                                                               (13,'IMPERIALES_HOOD','BOS',3);       
 
@@ -476,8 +476,8 @@ INSERT INTO ARMA(ID_ARMA,NOMBRE_ARMA,COD_TIPO_ARMA,DESCRIPCION,DAÑO_FISICO,DAÑ
                                                                                                                         (3,'DAGA ARTEFACTO','DAGA','+1 DAÑO FISICO VS HUMANOS',2,0,1,110,'/public/images/Arma/dagaArtefacto.png','S',4,4),
                                                                                                                         (4,'DAGA DEL TIGRE','DAGA','',2,1,1,155,'/public/images/Arma/dagaDelTigre.png','S',4,5),
                                                                                                                         (5,'DAGA DEL ROMANCE','DAGA','',3,0,1,120,'/public/images/Arma/dagaRomance.png','S',4,3),
-                                                                                                                        (6,'ARCO BRETONIANO','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,0,6,190,'/public/images/Arma/ArcoBretoniano.png','N',9,5),
-                                                                                                                        (7,'ARCO DEL NOGAL','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,1,7,220,'/public/images/Arma/arcoDelNogal.png','S',9,6),
+                                                                                                                        (6,'ARCO BRETONIANO','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,0,6,190,'/public/images/Arma/ArcoBretoniano.png','S',9,5),
+                                                                                                                        (7,'ARCO DEL NOGAL','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,1,7,220,'/public/images/Arma/arcoDelNogal.png','N',9,6),
                                                                                                                         (8,'ARCO AFLIGIDO','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS CRIATURAS',5,1,8,315,'/public/images/Arma/arcoAfligido.png','S',9,8),
                                                                                                                         (9,'ARCO SILVANAS','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS HUMANOS',5,1,9,330,'/public/images/Arma/arcoSilvanas.png','S',8,8),
                                                                                                                         (10,'MARTILLO DEL BUCANERO','DOSM','+1 FISICO ADICIONAL SI LA ARMADURA SE DESTRUYE ',5,0,2,330,'/public/images/Arma/martilloBucanero.png','S',12,6),

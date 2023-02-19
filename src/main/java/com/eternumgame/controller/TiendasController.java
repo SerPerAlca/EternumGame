@@ -42,6 +42,9 @@ public class TiendasController {
     public String mostrarTiendas(@PathVariable String tipoTienda,@PathVariable String ubicacion, Model model,
                                  HttpServletRequest request) throws IOException, ParseException {
 
+        SessionEntity sessionEntity = sessionPnjService.findLastEntity();
+        int dineroActual = sessionEntity.getDinero();
+
         switch(tipoTienda){
             case "Arma" :       TiendaArmas tiendaArmas = tiendaService.findTiendaArmas(tipoTienda,ubicacion);
                                 List<Arma> armaList = new ArrayList<Arma>();
@@ -65,6 +68,7 @@ public class TiendasController {
                                 }
                                 request.getSession().setAttribute("nombreTienda", tiendaArmas.getNombreTienda());
                                 request.getSession().setAttribute("esloganTienda", tiendaArmas.getEslogan());
+                                request.getSession().setAttribute("dinero", dineroActual);
                                 model.addAttribute("venta", armaList);
                                 return "TiendaArma";
 
@@ -90,6 +94,7 @@ public class TiendasController {
                                 }
                                 request.getSession().setAttribute("nombreTienda", tiendaArmaduras.getNombreTienda());
                                 request.getSession().setAttribute("esloganTienda", tiendaArmaduras.getEslogan());
+                                request.getSession().setAttribute("dinero", dineroActual);
                                 model.addAttribute("venta", armaduraList);
                                 return "TiendaArmadura";
 
@@ -109,6 +114,7 @@ public class TiendasController {
                                 }
                                 request.getSession().setAttribute("nombreTienda", tiendaItems.getNombreTienda());
                                 request.getSession().setAttribute("esloganTienda", tiendaItems.getEslogan());
+                                request.getSession().setAttribute("dinero", dineroActual);
                                 model.addAttribute("venta",listaItems);
                                 return "TiendaItem";
 
@@ -130,6 +136,7 @@ public class TiendasController {
             sessionPnjService.saveSession(sessionEntity);
             int dineroRestante = sessionEntity.getDinero();
             mensaje = Constantes.COMPRAOK + Constantes.ORORESTANTE + dineroRestante;
+            request.getSession().setAttribute("dinero", dineroRestante);
             return mensaje;
         }
 
@@ -154,6 +161,7 @@ public class TiendasController {
                 sessionPnjService.saveSession(sessionEntity);
                 int dineroRestante = sessionEntity.getDinero();
                 mensaje = Constantes.COMPRAOK + Constantes.ORORESTANTE + dineroRestante;
+                request.getSession().setAttribute("dinero", dineroRestante);
                 return mensaje;
             } else {
                 //Como ya se tenía ese objeto de antes
@@ -170,6 +178,7 @@ public class TiendasController {
                 int dineroRestante = sessionEntity.getDinero();
                 sessionPnjService.saveSession(sessionEntity);
                 mensaje = Constantes.COMPRAOK + Constantes.ORORESTANTE + dineroRestante;
+                request.getSession().setAttribute("dinero", dineroRestante);
                 return mensaje;
             } else {
                 //Como ya se tenía ese objeto de antes

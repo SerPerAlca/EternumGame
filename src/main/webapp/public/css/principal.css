@@ -96,17 +96,18 @@ body{
 }
 
 #texto{
-      background-color: inherit;
-      color: black;
-      width: 40rem;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 4rem;
-      font-family: medieval !important;
-      font-size: 1.6rem;
-      padding-top: 3rem;
-      overflow:hidden;
-      font-weight: bold;
+        background-color: inherit;
+        color: black;
+        width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 4rem;
+        font-family: medieval !important;
+     /* font-size: 1.6rem; */
+        font-size: 1.9rem;
+        padding-top: 3rem;
+        overflow:hidden;
+        font-weight: bold;
 
 }
 #textoOpciones{

@@ -133,6 +133,8 @@ function comprarItem(precio){
 
     requestItem.done(function(data){
         alert(data);
+        location.reload();
+
     });
 }
 
@@ -158,6 +160,7 @@ function comprarArm(precio, id, tipo) {
 
     requestArm.done(function(data){
         alert(data);
+        location.reload();
     });
 
 }

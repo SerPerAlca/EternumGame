@@ -72,7 +72,7 @@
   {
     "id": 15,
     "evento" : "Mientras camináis, una flecha se clava al lado de vuestros pies. Unas carcajadas resuenan desde el Este. Seguís las carcajadas y véis varios muchachos nobles alrededor de un campesino, el cual, tienen amordazado y atado a un árbol con una manzana en la cabeza. El campesino, tiene una flecha clavada en un brazo y otra en una pierna. Además, hay varias flechas clavadas en el árbol y alrededor de éste. Uno de los nobles está cargando su arco, suelta y la flecha sale disparada hasta clavarse en los pies del campesino. -Mira que eres malo Robin.- Dice uno de los nobles mientras los demás estallan en una carcajada. El que disparó la flecha, frunce el entrecejo y saca un pistolón de su cinturón. Dispara y los sesos del campesino se esparcen por doquier. -¡No joder, nos has jodido la diversión imbécil! -Grita otro de los nobles. -Así no os volveréis a reir de mi... .Acto seguido, todos vuelven a estallar en carcajadas. El noble de la pistola coge su arco y lo lanza por los aires. -¡Esto no sirve para nada!- Dice, al mismo tiempo que se dan la vuelta y se alejan del árbol.",
-    "resultado" : " Ganáis un Arco Bretoniano"
+    "resultado" : " Ganáis un Arco Del Nogal"
   },
   {
     "id": 16,
@@ -83,5 +83,10 @@
     "id": 17,
     "evento" : "Veis a un mercader apeado a un lado del camino junto a su a dos mulas. Parece que una de ellas se ha torcido la pata y no pasará de esta noche. El mercader lleva muchos años viajando por los caminos con esa mula y le apena enormemente tener que sacrificarla, por lo que os pide que lo hagáis vosotros, unos mercenarios curtidos en mil batallas. Accedéis, por lo que hundís vuestro cuchillo en la garganta del animal, tiñiendo todo el suelo de rojo. El mercader, con lágrimas en los ojos, os lo agradece y os obsequia con unas monedas.",
     "resultado" : " +40 monedas de oro"
+  },
+  {
+    "id" : 18,
+    "evento" : "Llegáis a una taberna en medio del camino. Se ha hecho de noche y necesitáis irremediablemente una buena jarra de hidromiel y un buen estofado para calentaros. El tabernero os informa de que sus precios son altos, debido a la gran cantidad de nobles que se hospedan ahí. Os parece una locura pagar tanto por una cena. El tabernero os ofrece una solución...más asequible. Lleva mucho timpo solo desde que su mujer murió y lo único que desea más que el oro es el contacto con otro ser vivo, a ser posible de género masculino. Os miráis, y decidís echar a suertes quien pasará la noche con él. A la mañana siguiente el elegido decide olvidar todo aquello, no sin antes una cachetada en el trasero y una pequeña propina por parte del tabernero.",
+    "resultado" : "+35 monedas de oro"
   }
 ]

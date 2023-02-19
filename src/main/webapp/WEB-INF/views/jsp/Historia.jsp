@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <head>
 
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,14 +17,15 @@
     <script src="js/Averlan.js"></script>
     <script src="js/Servicios/ServiciosLIEL.js"></script>
     <script src="js/Servicios/ServiciosGenerales.js"></script>
-    <script src="js/Servicios/ServiciosEF.js"></script>
     <script src="js/TratamientoAudio.js"></script>
     <script src="js/Dado.js"></script>
     <script src="js/Itineracion.js"></script>
     <script src="js/AJAXcombate.js"></script>
     <script src="js/Tiendas.js"></script>
-
+    <script src="js/M1.js"></script>
+    <script src="js/Servicios/ServiciosSecundarias.js"></script>
     <script src="js/FuncionesCompartidas.js"></script>
+    <script src="js/Ubicaciones.js"></script>
 
 
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/principal.css">
@@ -77,9 +77,6 @@
     <div>
         <div class="row">
             <div class="col-md-4"></div>
-            <!--<div id="CabeceraAudio" class="col-md-5">
-                <button type="button" class="btn btn-warning" id="btn-PararAudio">MUTE</button>
-            </div> -->
             <div class="col-md-3"></div>
         </div>
     </div>
@@ -109,7 +106,6 @@
         <div id="resultado"></div>
     </div>
 
-    <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
             integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
             crossorigin="anonymous"></script>

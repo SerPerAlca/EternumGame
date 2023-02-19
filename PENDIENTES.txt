@@ -14,7 +14,14 @@
  
 3. Sistema de compra 
 
-	3.1 Modificar las tablas para añadir el dinero en la session. 
-	3.2 Creación de metodos PNJ para la Session 
-	3.2 Creación de tiendas en Kislev
-	3.2 Metodos AJAX 		
+	3.1 Modificar las tablas para añadir el dinero en la session.  <--- HECHO
+	3.2 Creación de tiendas en Kislev  <---HECHO
+	3.2 Metodos JS para la compra de objetos en tiendas <---- HECHO	
+
+4. Sistema de Itineracion
+	
+	4.1 Crear sistema para volver a KISLEV sin tener que empezar el capi 1. 
+
+5. Creación de Secundarias.
+
+	5.1 Meter la secundaria de KISLEV. 	

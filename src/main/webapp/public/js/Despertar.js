@@ -1,64 +1,49 @@
-    $(document).ready(function() {
+var aunNoHaCorrido = true;
+$(document).ready(function() {
     //ocultamos y mostramos los botones necesarios
         ocultarDado();
         ocultacionBotones();
+        $("#btn-itinerar").hide();
 
-        obtenerTituloCapitulo();
 
-/***********************************************************************/
-    // Cookies
-         document.cookie = "ubicacion=KISLEV";
-         document.cookie = "capitulo=Despertar";
-         document.cookie = "batalla=false";
-/***********************************************************************/
-    //Pintamos el titulo del capitulo como portada
-       inicioDespertar();
+        var lugar = readCookie('ubicacion');
+        var despertar = readCookie("despertar");
 
-/************************** I T I N E R A C I O N  **************************************/
-      /*  $('body').on('click', '#btn_tiendas', function() {
-            borradoCuerpoTexto();
-            borradoTextoItineracion();
-            llamadaTiendas();
-        }); */
+
+        // Consultamos si es la primera vez que entramos en este javascript (
+        if(aunNoHaCorrido){
+            aunNoHaCorrido = false;
+            //Se consulta si estamos en KISLEV o si acabamos de empezar el juego
+            if(lugar == 'KISLEV' || null == lugar){
+                //Se consulta si ya se hizo esta parte de la historia
+                if(despertar != 'true' || null == despertar){
+                    //Si no se hizo empieza el capítulo
+                    inicioDespertar();
+                } else{
+                    //Si se hizo se entra en Kislev
+                    entrarEnKislev();
+                }
+            }
+        }
+
         $('body').on('click', '#btn-Palacio', function() {
             borradoCuerpoTexto();
             borradoTextoItineracion();
             $(`<p style="color:black"> GUARDIA: ¿ A donde creeis que vais? ¡Largooo! </p>`).appendTo("#textoOpciones");
         });
- /********** CASA CONSISTORIAL ***********************************************************************/
 
-        $('body').on('click', '#btn-CasaC', function() {
-            console.log("CONTADOR DE BOTON al llamar a terceraSecuencia(): " + itinerador);
-                if (itinerador == 1 ){
-                    borradoCuerpoTexto();
-                    borradoTextoItineracion();
-                    $("#btn-Palacio").hide();
-                    $("#btn-CasaC").hide();
-                    $("#btn_tiendas").hide();
-                    $("#btn_siguiente").hide();
-                    itinerador++;
-                    terceraSecuenciaDespertar();
-                } else {
-                    borradoCuerpoTexto();
-                    borradoTextoItineracion();
-                    $(`<p style="color:black"> GUARDIA: ¡El capitán Rostford se encuentra reunido en este momento! ¿No tenéis
-                        mejores cosas que hacer? ¡Largo! </p>`).appendTo("#textoOpciones");
-                }
-        });
-/**********************************************************************************************************/
-    });
+});
 
-           //Creo esta función porque se repite la creacion del div Inicio
     function inicioDespertar(){
-        $("#btn-itinerar").hide();
-        if(!despertarBoolean){
-            $("<div class='Inicio'>I. El Despertar </div>")
+
+        obtenerTituloCapitulo();
+        $("<div class='Inicio'>I. El Despertar </div>")
             .filter(".Inicio").click(function(){
-                primeraSecuenciaDespertar();
-            }).end().appendTo("#texto");
-            despertarBoolean= true;
-        };
-    };
+            primeraSecuenciaDespertar();
+        }).end().appendTo("#texto");
+        document.cookie = "capitulo=Despertar";
+        document.cookie = "despertar=true";
+    }
 /************************ S E C U E N C I A S *****************************************************************/
 
         // contador para la Itineracion
@@ -69,12 +54,17 @@
         /* PRIMERA FUNCION DE LA SECUENCIA  TEXTO + PREGUNTAS
          Sala de curas  **********/
         function primeraSecuenciaDespertar(){
+        //    document.cookie = "capitulo=Despertar";
+            document.cookie = "batalla=false";
+            document.cookie = "EscenaCasaCons=false";
+            document.cookie = "ubicacion=KISLEV";
             document.cookie = "capitulo=Despertar";
+
             borradoCuerpoTexto();
             mostrarInfoSecuencia("primeraSecuenciaDespertar");
             $("#btn_empezar").hide();
             $("#btn_tiendas").hide();
-            $(`<img src="images/DespertarImg/ancianoKislev.jpeg" style="border-radius:12px">`)
+            $(`<img src="images/DespertarImg/ancianoKislev.jpeg" style="border-radius:12px; ">`)
             .appendTo("#imagenes");
 
             new Promise(function(resolve) {
@@ -99,15 +89,15 @@
                     src : "images/DespertarImg/ItineracionKislev.jpg",
                     width : "830rem"
                 });
-                libreAlbedrio();
+                libreAlbedrioSinTiendasKislev();
             }, 1000);
         }
 
         /* TERCERA FUNCION DE LA SECUENCIA
          Llegada Casa Consistorial   ********/
         function terceraSecuenciaDespertar(){
-            var textoCasaCons = "Guardia: ¡El capitán Rostford no se encuentra en este momento!";
-
+        //    var textoCasaCons = "Guardia: ¡El capitán Rostford no se encuentra en este momento!";
+            borrarBotonesItineracion();
             mostrarInfoSecuencia("terceraSecuenciaDespertar");
             $("#imagenes img").attr({
                 src : "images/DespertarImg/CapitanBorvskark.jpg",
@@ -115,11 +105,9 @@
                 height : "550rem"
             });
             console.log("CONTADOR DEL BOTON: "+ itinerador);
-            if(itinerador == 2 ){
-                llamadaTexto(itinerador);
-            } else {
-                pintarTexto(textoCasaCons);
-            }
+            itinerador = 2
+            llamadaTexto(itinerador);
+
             setTimeout(function(){
                 llamadaOpcionesConPausa(itinerador);
             }, 10000);
@@ -142,7 +130,7 @@
             .then(function(result) {
             //CAMBIAMOS A LA IMAGEN DE SIR GREGOR
                 $("#imagenes img").attr({
-                    src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
+                    src : "images/DespertarImg/SumoInquisidor.png",
                     width : "450px",
                     height : "550rem"
                 });
@@ -187,7 +175,7 @@
                 //SILENCIO!!
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
+                        src : "images/DespertarImg/SumoInquisidor.png",
                         width : "450px",
                         height : "550rem"
                     });
@@ -229,7 +217,7 @@
                 //Está bien..Quiero que acabéis con ellos
                 setTimeout(function(){
                     $("#imagenes img").attr({
-                        src : "images/DespertarImg/Inquisidor_Gregor_Eisenhorn.jpg",
+                        src : "images/DespertarImg/SumoInquisidor.png",
                         width : "450px",
                         height : "550rem"
                     });
@@ -253,12 +241,19 @@
             reproducirTexto(itinerador);
 
             $(`<p class='textoJson'> SIR GREGOR: ¡Ahora marchad! ¡De inmediato! Si lo conseguís, buscadme en
-            <span style="color:#7876cc;font-weight: bold">Averlan </span>. Si no, más os vale morir a manos de esos infelices.</p>`)
+            <span title="La ciudad del verde Salvia" style="color:#7876cc;font-weight: bold">Averlan </span>. Si no, más os vale morir a manos de esos infelices.</p>`)
             .appendTo("#texto");
+            document.cookie = "EscenaCasaCons=true";
             setTimeout(function(){
-                libreAlbedrio();
+                $(`<p style="color: green;">Recibís 200 monedas de oro para vuestro cometido</p>`)
+                    .appendTo("#texto");
+            }, 3000)
+
+            setTimeout(function(){
+
+                libreAlbedrioKislev();
                 $("#btn-Salir").show();
-            }, 3000);
+            }, 7500);
 
       }
 /****************************************************************************************************************************************/
@@ -358,27 +353,93 @@
             },  1500);
         }
 
-    // funcion que habilita los botones de la itineracion en Despertar (kislev)
-        function libreAlbedrio(){
+        function libreAlbedrioSinTiendasKislev(){
+            borrarBotonesItineracion();
             $("<h3>... TENEIS LIBRE ALBEDRIO ...</h3>").appendTo("#textoRespuestas").hide().fadeIn(5000);
 
-            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Arma')" id="tiendaArmas">Tienda Armeria</button>`)
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Arma')" id="tiendaArmas" disabled>Tienda Armeria</button>`)
                 .appendTo("#itineracion p");
-            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Armadura')" id="tiendaArmadura">Armaduras Kislev</button>`)
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Armadura')" id="tiendaArmadura" disabled>Armaduras Kislev</button>`)
                 .appendTo("#itineracion p");
-            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Item')" id="tiendaItems">Tienda Item</button>`)
+            $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Item')" id="tiendaItems" disabled>Tienda Item</button>`)
                 .appendTo("#itineracion p");
-            $(`<button type="button" class="btn btn-secondary" id="btn-CasaC">Casa Consistorial</button>`)
+            $(`<button type="button" class="btn btn-secondary" id="btn-CasaC" onclick="botonCasaC()">Casa Consistorial</button>`)
+                .appendTo("#itineracion p");
+            $(`<button type="button" class="btn btn-secondary" id="btn-M1" onclick="M1()">Taberna (M1)</button>`)
                 .appendTo("#itineracion p");
             $(`<button type="button" class="btn btn-secondary" id="btn-Palacio">Palacio del Conde</button>`)
                 .appendTo("#itineracion p");
         }
 
+    // funcion que habilita los botones de la itineracion en Despertar (kislev)
+    function libreAlbedrioKislev(){
+        borradoCuerpoTexto();
+        pausarAudio();
+        borrarBotonesItineracion();
+        $("#imagenes img").attr({
+            src : "images/DespertarImg/ItineracionKislev.jpg",
+            width : "830rem"
+        });
+        $("<h3>... TENEIS LIBRE ALBEDRIO ...</h3>").appendTo("#textoRespuestas").hide().fadeIn(5000);
+        $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Arma')" id="tiendaArmas">Tienda Armeria</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Armadura')" id="tiendaArmadura">Armaduras Kislev</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Item')" id="tiendaItems">Tienda Item</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" id="btn-CasaC" onclick="botonCasaC()">Casa Consistorial</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" id="btn-Palacio">Palacio del Conde</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" id="btn-M1" onclick="M1()">Taberna (M1)</button>`)
+            .appendTo("#itineracion p");
+        $(`<button type="button" class="btn btn-secondary" id="btn-SalirCiudad" onclick="salirDeKislev()">Salir de la Ciudad</button>`)
+            .appendTo("#itineracion p");
+    }
+
+    // Función que se activa al pulsar sobre el botón de Casa Consistorial
+    function botonCasaC(){
+        console.log("CONTADOR DE BOTON al llamar a terceraSecuencia(): " + itinerador);
+        var casaEscena = readCookie("EscenaCasaCons");
+        if (casaEscena == "false"){
+            borradoCuerpoTexto();
+            borradoTextoItineracion();
+            $("#btn-Palacio").hide();
+            $("#btn-CasaC").hide();
+            $("#btn_tiendas").hide();
+            $("#btn_siguiente").hide();
+            //    itinerador++;
+            terceraSecuenciaDespertar();
+        } else {
+            borradoCuerpoTexto();
+            borradoTextoItineracion();
+            $(`<p style="color:black"> GUARDIA: ¡El capitán Rostford se encuentra reunido en este momento! ¿No tenéis
+                                    mejores cosas que hacer? ¡Largo! </p>`).appendTo("#textoOpciones");
+        }
+    }
+
+    //Funcion que se activa al pulsar en Salir de la ciudad en kislev
+    function salirDeKislev(){
+        borrarBotonesItineracion();
+        $("#btn-SalirCiudad").hide();
+        itineradorIndice = 1;
+        itinerador = 0;
+        controladorCapi();
+        mostrarTituloCapitulo();
+        abrirMapaCampania();
+    }
 
 
-
-
-
+    function borrarBotonesItineracion(){
+        $("#btn-SalirCiudad").remove();
+        $("#btn-M1").remove();
+        $("#btn-Salir").remove();
+        $("#tiendaArmas").remove();
+        $("#tiendaArmadura").remove();
+        $("#tiendaItems").remove();
+        $("#btn-Palacio").remove();
+        $("#btn-CasaC").remove();
+    }
 
 
 
