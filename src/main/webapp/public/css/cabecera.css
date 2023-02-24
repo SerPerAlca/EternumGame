@@ -19,6 +19,11 @@ body{
     height: 100%;
 }
 
+.SiguienteCapitulo{
+    font-size: 1.7rem;
+    color: white;
+    font-weight: bolder;
+}
 /*
 #divMapa{
     border: 1px solid aqua;
@@ -27,6 +32,13 @@ body{
 #descripcionItineracion{
    /* border: 2px double chartreuse;  */
     color: maroon;
+    font-family: medieval !important;
+}
+
+#btn-itinerar{
+    background-color: black;
+    padding: 0.7rem;
+    margin: 0.5rem;
     font-family: medieval !important;
 }
 

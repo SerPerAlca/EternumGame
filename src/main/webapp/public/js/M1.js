@@ -6,6 +6,8 @@ var switchM1= false;
 function M1(){
     var booleanM1 = readCookie("M1");
     borradoCuerpoTexto();
+    document.cookie="capitulo=ANDROGENES";
+    obtenerTituloCapitulo()
     if('false' != booleanM1){
         document.cookie = "mision=false";
         serviciosTaberna();
@@ -147,5 +149,32 @@ function pagSiguienteDespertarSec(){
                 break;
         default: console.log("no se encuentra Secuencia Secundaria");
     }
+}
+
+function escenaRecompensaM1(){
+    borradoCuerpoTexto();
+    $("#imagenes img").attr({
+        src : "images/M1/CapitanRostford.png",
+        width : "550px",
+        height : "550rem"
+    });
+    document.cookie = "mision=M1";
+    new Promise( function(resolve){
+        //Capitán Rostford: Joooder, Puto bicho...
+        itineradorSecundaria = 9;
+        resolve(llamadaTextoSec(itineradorSecundaria));
+    }) .then (function(result){
+        ganarDinero(285);
+
+        setTimeout(()=>{
+            $(`<p><span style="color:#FF7D33; font-weight: bold">Obtenéis 285G</span> </p>`)
+                .appendTo("#textoOpciones");
+        }, 15000);
+
+        setTimeout(()=>{
+            document.cookie = "mision=false";
+            libreAlbedrioKislev();
+        }, 22000);
+    });
 }
 

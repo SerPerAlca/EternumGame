@@ -1,8 +1,6 @@
 
 function abrirtienda(idTienda){
     var ubicacion= readCookie("ubicacion");
-  //  var tipoTienda = idTienda.slice(7,idTienda.length);
-  //  window.open("/mostrarTienda/"+tipoTienda);
     window.open("/mostrarTienda/"+idTienda+ "/" + ubicacion);
 }
 

@@ -1,4 +1,3 @@
-
 var booleanCapitulo4 = false;
 
 function inicioAV(){
@@ -8,22 +7,25 @@ function inicioAV(){
     document.cookie = "ramificacion=X";
     document.cookie = "batalla=false";
 
-   borradoCuerpoTexto();
-   $("#btn-itinerar").hide();
-   $("#btn-Salir").remove();
-   obtenerTituloCapitulo();
-   itinerador = 0;
-   itineradorAmbiente = 1;
-   pausarAudio();
-   if(!booleanCapitulo4){
-       $("#imagenes img").remove();
-       $("<div class='Inicio'>IV. Averlan </div>")
-       .filter(".Inicio").click(function(){
-           primeraSecuenciaAV();
-       }).end().appendTo("#texto");
-       booleanCapitulo4 = true;
+    var averlanHorca = readCookie("averlanHorca");
+    borradoCuerpoTexto();
+    //$("#btn-itinerar").hide();
+    $("#btn-Salir").remove();
+    obtenerTituloCapitulo();
+    itinerador = 0;
+    itineradorAmbiente = 1;
+    pausarAudio();
+    if (averlanHorca != 'true') {
+        document.cookie = "capitulo=Averlan";
+        mostrarTituloCapitulo();
+        $("#imagenes img").remove();
+        $("<div class='Inicio'>IV. Averlan </div>")
+            .filter(".Inicio").click(function (){
+            primeraSecuenciaAV();
+        }).end().appendTo("#texto");
+        booleanCapitulo4 = true;
     } else {
-       console.log("Ya habías entrado aquí");
+        libreAlbedrioAverlan();
     }
 }
 
@@ -32,209 +34,236 @@ function inicioAV(){
 
 function primeraSecuenciaAV(){
     document.cookie = "capitulo=Averlan";
+    document.cookie = "averlanHorca=true";
     $("#CabeceraAudio").hide();
-    $("#btn-itinerar").hide();
+   // $("#btn-itinerar").hide();
     $("#imagenes img").remove();
     borradoCuerpoTexto();
     mostrarInfoSecuencia("primeraSecuenciaAV");
     esconderSig();
 
     $(`<img src="images/Averlan/callePrincipal.png" style="border-radius:12px; width: 540px; height: 50rem;">`)
-    .appendTo("#imagenes");
-    itineradorAmbiente= 2;
+        .appendTo("#imagenes");
+    itineradorAmbiente = 2;
     reproducirAmbiente();
-    
+
     itinerador = 0;
-    new Promise(function(resolve) {
+    new Promise(function (resolve){
         // Entráis en la ciudad enseñando el salvoconducto
         resolve(llamadaTexto(itinerador));
-    }).then(function(result){
+    }).then(function (result){
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/callePrincipal.png",
-                width : "450px"
+                src: "images/Averlan/callePrincipal.png",
+                width: "450px"
             });
             itinerador = 1;
             // Subís por la calle principal y llegáis a la plaza central.
             llamadaTexto(itinerador);
         }, 23000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             reproducirAbucheos();
             $("#imagenes img").attr({
-                src : "images/Averlan/multitudAverlan.jpg",
-                width : "450px"
+                src: "images/Averlan/multitudAverlan.jpg",
+                width: "450px"
             });
             itinerador = 2;
             // SACERDOTE: Estos Herejes, le dieron la espalda a Sigmar.
             llamadaTexto(itinerador);
         }, 57000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/SacerdotePatibulo.png",
-                width : "450px"
+                src: "images/Averlan/SacerdotePatibulo.png",
+                width: "450px"
             });
             itinerador = 3;
             // SACERDOTE: SACERDOTE: Gracias a Sigmar y a su sagrado ejército
             llamadaTexto(itinerador);
         }, 72000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/SirGregorCondeYPaladin.png",
-                width : "450px"
+                src: "images/Averlan/SirGregorCondeYPaladin.png",
+                width: "450px"
             });
             itinerador = 4;
             // Miráis a lo alto, a la derecha del patíbulo
             llamadaTexto(itinerador);
         }, 87500)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/SacerdotePatibulo.png",
-                width : "450px"
+                src: "images/Averlan/SacerdotePatibulo.png",
+                width: "450px"
             });
             itinerador = 5;
             // SACERDOTE: Un paso al frente condenados
             llamadaTexto(itinerador);
         }, 108500)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/RuloPatibulo.png",
-                width : "450px"
+                src: "images/Averlan/RuloPatibulo.png",
+                width: "450px"
             });
             itinerador = 6;
             // Se trata de cuatro personas y un enano. Os llama la atención uno de ellos. 
             llamadaTexto(itinerador);
         }, 122000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             reproducirAbucheos();
             $("#imagenes img").attr({
-                src : "images/Averlan/RuloYSacerdote.png",
-                width : "450px"
+                src: "images/Averlan/RuloYSacerdote.png",
+                width: "450px"
             });
             itinerador = 7;
             // SACERDOTE: Aquí los tenéis fieles de Averlan 
             llamadaTexto(itinerador);
-        },140000)
+        }, 140000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             reproducirAbucheos();
             $("#imagenes img").attr({
-                src : "images/Averlan/vergudoSoga.png",
-                width : "450px"
+                src: "images/Averlan/vergudoSoga.png",
+                width: "450px"
             });
             itinerador = 8;
             //SACERDOTE: Vais a ser colgados como dicta
             llamadaTexto(itinerador);
-        },152000)
+        }, 152000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/SacerdotePatibulo.png",
-                width : "450px"
+                src: "images/Averlan/SacerdotePatibulo.png",
+                width: "450px"
             });
             itinerador = 9;
             //SACERDOTE: Decid ahora vuestras últimas palabras
             llamadaTexto(itinerador);
-        },171000)
+        }, 171000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             reproducirAbucheos();
             $("#imagenes img").attr({
-                src : "images/Averlan/condenado.png",
-                width : "450px"
+                src: "images/Averlan/condenado.png",
+                width: "450px"
             });
             itinerador = 10;
             //CONDENADO: Pido perdón a Sigmar
             llamadaTexto(itinerador);
-        },179000)
+        }, 179000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").attr({
-                src : "images/Averlan/condenadoMorado.png",
-                width : "450px"
+                src: "images/Averlan/condenadoMorado.png",
+                width: "450px"
             });
             itinerador = 11;
             //La base de sus pies se abre y el individuo
             llamadaTexto(itinerador);
             reproducirAhorcado();
-        },187000)
+        }, 187000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").remove();
             $(`<img src="images/Averlan/niño.png" style="border-radius:12px; width: 440px; height: 50rem;">`)
-            .appendTo("#imagenes");
+                .appendTo("#imagenes");
 
             itinerador = 12;
             //NIÑO: ¿!Paadre?!
             llamadaTexto(itinerador);
-        },198000)
+        }, 198000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             reproducirAbucheos();
             $("#imagenes img").remove();
             $(`<img src="images/Averlan/lengua arrancara.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
-            .appendTo("#imagenes");
+                .appendTo("#imagenes");
 
             itinerador = 13;
             //SACERDOTE: –¡La lengua de un hereje
             llamadaTexto(itinerador);
-        },210000)
+        }, 210000)
 
-        setTimeout(()=>{
+        setTimeout(() => {
             borradoCuerpoTexto();
             $("#imagenes img").remove();
             animacionRuloHorca();
-        },221000)
+        }, 221000)
 
     });
-    
+
 }
-
-
-
-
 
 
 /***** FUNCIONES AUXILIARES *************************************************************************************************************/
 
 function animacionRuloHorca(){
     itinerador = 14;
+    pausarAudio();
     reproducirTexto(itinerador);
-    $("#imagenes").hide();
     $("#cuerpo").hide();
-    $('#padreCuerpo')
-            .css({"background-image":"url('images/Averlan/RuloAhorcado.jpg')",
-             "height": "100vh", 
-             "background-size": "cover", 
-             "text-align" : "center"});
-    $(`<div id="divTemp" style="
+
+    $(`<div id="divTemp" style="background-image: url('images/Averlan/RuloAhorcado.jpg'); height: 100vh; background-size: cover; text-align : center;">`)
+        .prependTo("#padreCuerpo");
+
+    $(`<div id="textoTemp" style="
         margin-right:auto;
         width: 30%;
         justify-content: center;
         padding-top: 20%;
         padding-left: 2%;
         font-weight: bold;
-        font-size: 4rem;
-    ">Los cuerpos de Rulo, los tres hombres y el enano yacen colgados en mitad de la plaza mientras la multitud vuelve a sus casas a tiempo para la cena ... </div>`)
-    .appendTo("#padreCuerpo").hide().fadeIn(3000);  
+        font-size: 4rem;"
+    >Los cuerpos de Rulo, los tres hombres y el enano yacen colgados en mitad de la plaza mientras la multitud vuelve a sus casas a tiempo para la cena ... </div>`)
+        .appendTo("#padreCuerpo").hide().fadeIn(3000);
 
+    setTimeout(()=>{
+        eliminarEscenaHorca();
+    }, 10000);
+}
+
+function eliminarEscenaHorca(){
+    $("#textoTemp").remove();
+    $("#divTemp").remove();
+    $("#cuerpo").show();
+    libreAlbedrioAverlan();
+}
+
+function libreAlbedrioAverlan(){
+    document.cookie = "ubicacion=AVERLAN";
+    (`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Arma')" id="tiendaArmas">Armas Averlan</button>`)
+        .appendTo("#itineracion p");
+    $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Armadura')" id="tiendaArmadura">Tienda Armaduras</button>`)
+        .appendTo("#itineracion p");
+    $(`<button type="button" class="btn btn-secondary" onclick="abrirtienda('Item')" id="tiendaItems">Items Legalizados</button>`)
+        .appendTo("#itineracion p");
+    $(`<button type="button" class="btn btn-secondary" onclick="averlanDos()" id="tiendaItems">Palacio del Conde</button>`)
+        .appendTo("#itineracion p");
+    $(`<button type="button" class="btn btn-secondary" onclick="caballerizasAverlan()" id="tiendaItems" disabled>Caballerizas</button>`)
+        .appendTo("#itineracion p");
+}
+
+function averlanDos(){
+    var escenaHorca = readCookie("averlanHorca");
+    if(escenaHorca == 'true'){
+        segundaSecuenciaAV();
+    }
 }

@@ -64,8 +64,8 @@
         <p> <button type="button" class="btn btn-secondary" id="btn_botin">OBTENER BOTÍN</button>
             <button type="button" class="btn btn-secondary" id="btn-Salir">Salir de la Ciudad</button>
             <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrarDado()">Abrir Dado</a>
-            <button type="button" class="btn btn-secondary" value="itinerar" id="btn-itinerar">Siguiente Capítulo
-            </button>
+            <!--<button type="button" class="btn btn-secondary" value="itinerar" id="btn-itinerar">Siguiente Capítulo
+            </button> -->
             <a id="cerrar" class="abrir-cerrar" href="#" onclick="ocultarDado()">Ocultar Dado</a>
         </p>
     </div>

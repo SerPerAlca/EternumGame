@@ -3,40 +3,42 @@
 var booleanCapitulo3 = false;
 
 
-      function inicioEF(){
+function inicioEF(){
                 // Cookies
-                 document.cookie = "ubicacion=CAMPAMENTO_HOOD";
-                 document.cookie = "capitulo=ElForajido";
-                 document.cookie = "ramificacion=X";
-                 document.cookie = "batalla=false";
+    var forajido = readCookie("forajido");
 
-                borradoCuerpoTexto();
-                $("#btn-Salir").remove();
-                obtenerTituloCapitulo();
-                itinerador = 0;
-                itineradorAmbiente = 1;
-                
-                if(!booleanCapitulo3){
-                    $("#imagenes img").remove();
-                    $("<div class='Inicio'>III. El Forajido </div>")
-                    .filter(".Inicio").click(function(){
-                        primeraSecuenciaEF();
-                    }).end().appendTo("#texto");
-                    booleanCapitulo3 = true;
-                } else {
-                    console.log("Ya habías entrado aquí");
-                }
-      };
+    if('true' != forajido){
+        borradoCuerpoTexto();
+        $("#btn-Salir").remove();
+        obtenerTituloCapitulo();
+        itinerador = 0;
+        itineradorAmbiente = 1;
+        $("#imagenes img").remove();
+        document.cookie = "capitulo=ElForajido";
+        mostrarTituloCapitulo();
+        $("<div class='Inicio'>III. El Forajido </div>")
+        .filter(".Inicio").click(function(){
+            primeraSecuenciaEF();
+        }).end().appendTo("#texto");
+    } else {
+        restosCampamento();
+    }
+
+};
 
 
 /****************   S E C U E N C I A S ***********************************************************************************/
 
     // Según os acercáis a las afueras de Averlan....
     function primeraSecuenciaEF(){
-
+        document.cookie = "ubicacion=CAMPAMENTO_HOOD";
+        document.cookie = "capitulo=ElForajido";
+        document.cookie = "ramificacion=X";
+        document.cookie = "batalla=false";
+        document.cookie = "forajido=true";
         mostrarInfoSecuencia("primeraSecuenciaEF");
         $("#CabeceraAudio").hide();
-        $("#btn-itinerar").hide();
+        //$("#btn-itinerar").hide();
         $("#imagenes img").remove();
         $(`<img src="images/ElForajidoImg/averlan.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
@@ -182,6 +184,7 @@ var booleanCapitulo3 = false;
     function cuartaSecuenciaEF(){
 
         borradoCuerpoTexto();
+       // reproducirLaud();
         mostrarInfoSecuencia("cuartaSecuenciaEF");
         $("#imagenes img").attr({
             src : "images/ElForajidoImg/HoodYRulo.jpg",
@@ -241,8 +244,9 @@ var booleanCapitulo3 = false;
         .appendTo("#imagenes");
 
         itinerador= 12; 
-        // Parece que lucháis bien  
+        // Parece que lucháis bien
         new Promise(function(resolve) {
+            esconderSig();
             resolve(llamadaTexto(itinerador));
         }).then(function(result){
 
@@ -287,6 +291,7 @@ var booleanCapitulo3 = false;
     // ¿Creéis que Sigmar os va a proteger?
     function SecuenciaAespUno(){
 
+        esconderSig();
         borradoCuerpoTexto();
         mostrarInfoSecuencia("SecuenciaAespUno");
         retornarDeFight();
@@ -312,7 +317,7 @@ var booleanCapitulo3 = false;
         borradoCuerpoTexto();
         mostrarInfoSecuencia("SecuenciaAespDos");
         retornarDeFight();
-
+        esconderSig();
         insertarSangreEnemigo();
         $(`<img src="images/ElForajidoImg/Hood.jpg" style="border-radius:12px; width: 540px; height: 50rem;">`)
         .appendTo("#imagenes");
@@ -449,6 +454,11 @@ var booleanCapitulo3 = false;
                 $("#itineracion").show();
                 $("#btn-itinerar").show();
             }, 15000);
+
+            setTimeout(()=>{
+                itineradorIndice = 4;
+                controladorCapi();
+            }, 26000)
         })
     }
     
@@ -666,7 +676,7 @@ var booleanCapitulo3 = false;
         }
         new Promise(function(resolve){
             itinerador= 33;
-            // SACERDOTE: ¡Infieles! ¡Por Sigmar! ¡Eran herejes!
+            // SACERDOTE: ¡No quedará así, sigmar os juzgará
             // Al acabar. Hundís vuestro cuchillo en su cuello
             resolve(llamadaTexto(itinerador));
         }).then(function(result){
@@ -676,7 +686,10 @@ var booleanCapitulo3 = false;
                 }, 10000 )
             }
             $("#itineracion").show();
-            $("#btn-itinerar").show();
+            $(`<button class="btn btn-secondary" id='botonTemp' onclick='volverAlCamino()'>Volver al camino</button>`)
+                .appendTo("#itineracion");
+        //    $("#btn-itinerar").show();
+
         });
     }
 
@@ -758,7 +771,7 @@ var booleanCapitulo3 = false;
         $(`<div> ¿ Pagar ? </div>`)
         .appendTo("#texto");
 
-        $(`<div> <span style="color: red"> SI </span> <span style="color: red" onclick="segundaSecuenciaEF()"> NO </span></div>`)
+        $(`<div> <span style="color: red"> SI &nbsp;&nbsp; </span> <span style="color: red" onclick="segundaSecuenciaEF()">&nbsp;&nbsp; NO </span></div>`)
         .appendTo("#textoOpciones").hide().fadeIn(2000);
     }
 
@@ -773,7 +786,8 @@ var booleanCapitulo3 = false;
     function AtacarSacer(){
 
         document.cookie = "ramificacion=A";
-        document.cookie = "combateJefe=SACERDOTE DE LA CONFESION"
+        document.cookie = "combateJefe=SACERDOTE DE LA CONFESION";
+        document.cookie = "sacerdoteMuerto=true";
         fight();
     }
 
@@ -807,3 +821,31 @@ var booleanCapitulo3 = false;
         }
         $('#imagenes img').css({opacity: opacidad});
     }
+
+    function volverAlCamino(){
+        $("#botonTemp").remove();
+        document.cookie = "ubicacion=AVERLAN";
+        pausarAudio();
+        itineradorIndice=4;
+        controladorCapi();
+        abrirMapaCampania();
+    }
+
+    function restosCampamento(){
+        $("#cuerpo").hide();
+        $("#imagenes img").hide();
+        $('#padreCuerpo')
+            .css({"background-image":"url('images/ElForajidoImg/restosCampamento.png')", "height": "100vh", "background-size": "cover", "text-align" : "center"});
+
+        setTimeout(()=>{
+            $(`<div style="margin-top: 8rem"> <span style="color: aqua;" > Aquí se libró una gran Batalla. Solo quedan restos de hierro y comida para los cuervos... </span> </div> `)
+                .appendTo('#padreCuerpo').hide().fadeIn(2000);
+            $(`<button type="button" className="btn btn-secondary" style="color:white;" id="btn-SalirLIEL"
+                    onClick="salirDelCampamento()">Volver al camino</button>`)
+                .appendTo("#itineracion").fadeIn(3000);
+            itinerador=0;
+            itineradorIndice=4;
+        },2000)
+
+    }
+

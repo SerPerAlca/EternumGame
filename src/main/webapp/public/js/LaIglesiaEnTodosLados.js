@@ -16,11 +16,14 @@ $(document).ready(function() {
     var cookieLIEL = readCookie("liel");
 
     function inicioLIEL(){
+        var cookieLIEL = readCookie("liel");
 
         obtenerTituloCapitulo();
         borradoCuerpoTexto();
         $("#btn-Salir").remove();
         if('true' != cookieLIEL || null == cookieLIEL){
+            document.cookie = "capitulo=LaIglesiaEnTodosLados";
+            mostrarTituloCapitulo();
             $("#imagenes img").remove();
             $("<div class='Inicio'>II. La Iglesia En Todos Lados </div>")
                 .filter(".Inicio").click(function(){
@@ -46,7 +49,7 @@ $(document).ready(function() {
         itineradorAmbiente = 1;
         reproducirAmbiente();
         mostrarInfoSecuencia("primeraSecuenciaLIEL");
-        $("#btn-itinerar").hide();
+   //     $("#btn-itinerar").hide();
         $("#btn_empezar").hide();
 
         //$("#btn_tiendas").hide();
@@ -58,7 +61,7 @@ $(document).ready(function() {
             itinerador=0;
             resolve(llamadaTexto(itinerador));
         })
-        
+
         //Efecto de SOnido flecha impactando
         setTimeout(()=>{
             reproducirFlecha();
@@ -211,7 +214,7 @@ $(document).ready(function() {
             })
             .then(function(result){
                 setTimeout(function(){
-                    
+
                     $(`<div  style="display : table-cell; flex-direction : row; margin: 1rem;" onclick="decideQuemar()"> ¿Qué hacer con la carta? </div>`)
                     .appendTo("#texto").hide().fadeIn();
 
@@ -225,7 +228,7 @@ $(document).ready(function() {
 
         // ¿Cortarle la cabeza a Grerius Bron?
         function septimaSecuencia(){
-            
+
             borradoCuerpoTexto();
             mostrarInfoSecuencia("septimaSecuencia");
             $("#imagenes img").attr({
@@ -233,23 +236,23 @@ $(document).ready(function() {
             });
 
             new Promise(function(resolve) {
-                resolve(llamadaTexto(itinerador)); 
-            }) 
+                resolve(llamadaTexto(itinerador));
+            })
             .then(function(result){
-                
+
                 $(`<div  style="display: flex; margin-top: 2rem;" onclick="decapitar()" onmouseover="this.style.color='#ea8069';" onmouseout="this.style.color='black';"> SI </div>`)
                 .appendTo("#textoOpciones").hide().fadeIn(2000);
                 $(`<div  style="display: flex; margin-top: 2rem; " onclick="finCapitulo()" onmouseover="this.style.color='#ea8069';" onmouseout="this.style.color='black';"> NO </div>`)
                 .appendTo("#textoOpciones").hide().fadeIn(2000);
-                
-            });  
+
+            });
         }
 
 
         //Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día…
         function finCapitulo(){
 
-            borradoCuerpoTexto();       
+            borradoCuerpoTexto();
             $(`<button type="button" class="btn btn-secondary" id="btn-SalirLIEL" onclick="animacionFinalCapiLIEL()">Salir del campamento</button>`)
                 .appendTo("#siguiente");
 
@@ -261,7 +264,7 @@ $(document).ready(function() {
 
     // Función que se ejecuta cuando se decide decapitar a Grerius Bron
         function decapitar(){
-            
+
             document.cookie = "grerius=decapitado";
 
             borradoCuerpoTexto();
@@ -269,6 +272,8 @@ $(document).ready(function() {
 
             insertarSangreEnemigo();
             reproducirDecapitacionDos();
+            //Guardamos esta decisión para más adelante.
+            document.cookie = "GreriusDecap=true";
 
             $(`<img src="images/LIELImg/CabezaGrerius.jpg"
             style="border-radius:12px; width: 450px; height: 40rem;">`)
@@ -276,7 +281,7 @@ $(document).ready(function() {
 
             new Promise(function(resolve) {
                 resolve(llamadaEspecialLIELDos());
-            })   
+            })
             .then(function(result){
 
                 setTimeout(function(){
@@ -285,7 +290,7 @@ $(document).ready(function() {
             });
         }
 
-        
+
         // Función que se ejecuta cuando se decide quemar la carta
         function decideQuemar(){
 
@@ -301,17 +306,17 @@ $(document).ready(function() {
 
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Es peligroso tener eso en vuestro poder... </p>`)
             .appendTo("#textoRespuestas").hide().fadeIn(3000);
-            
+
            enseniarSig();
 
         }
 
         // Función que se ejecuta cuando se decide guardar la carta
         function decideGuardar(){
-            
+
             document.cookie = "carta=guardada";
             borradoCuerpoTexto();
- 
+
          /*   $("#imagenes img").attr({
                 src : "images/LIELImg/CabezaGrerius.jpg"
             });  */
@@ -321,7 +326,7 @@ $(document).ready(function() {
 
             $(`<p id="mensaje" style="color: red; font-weight: bold;"> Puede ser un buen salvavidas llegado el momento... </p>`)
             .appendTo("#textoRespuestas").hide().fadeIn(3000);
-            
+
            enseniarSig();
 
         }
@@ -429,6 +434,7 @@ $(document).ready(function() {
 
     // Pinta +200g en pantalla si se consigue destapar el texto con id 2. en el modo carta
     function masDoscientosG(){
+        ganarDinero(200);
          setTimeout( function() {
                 $(`<p> <span style="color: red; font-weight: bold;"> +200G por descubrir dinero del cofre </span> </p>`)
                 .appendTo("#2")
@@ -589,28 +595,32 @@ $(document).ready(function() {
         $("#btn-SalirLIEL").hide();
         $("#cuerpo").hide();
 		$("#imagenes img").hide();
-        $('#padreCuerpo')
-            .css({"background-image":"url('images/LIELImg/fuego.gif')", "height": "100vh", "background-size": "cover", "text-align" : "center"});
+		$(`<div id="divTemp" style="background-image: url('images/LIELImg/fuego.gif'); height: 100vh; background-size: cover; text-align : center;">`)
+            .prependTo("#padreCuerpo");
+
         reproducirFuegoFuerte();
         setTimeout(function(){
 
-                $(`<div style="margin-top: 8rem"> <span style="color: aqua;" > Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día… </span> </div> `)
-                .appendTo('#padreCuerpo').hide().fadeIn(2000);
+           $(`<div id="textoTemp" style="margin-top: 8rem"> <span style="color: aqua;" > Abandonáis el campamento en llamas, justo cuando el sol emite los últimos rayos del día… </span> </div> `)
+              .prependTo('#divTemp').hide().fadeIn(2000);
          //       $("#btn-itinerar").show();
-                itinerador=9;
-                reproducirTexto(itinerador);
-                $(`<button type="button" className="btn btn-secondary" style="color:white;" id="btn-SalirLIEL"
-                    onClick="salirDelCampamento()">Salir del campamento</button>`)
+           itinerador=9;
+           reproducirTexto(itinerador);
+           $(`<button type="button" className="btn btn-secondary" style="color:white;" id="btn-SalirLIEL"
+                onClick="salirDelCampamento()">Salir del campamento</button>`)
                     .appendTo("#itineracion").fadeIn(3000);
-        }, 3000);    
-        
+        }, 3000);
+
     }
 
     function salirDelCampamento(){
+        itinerador = 0;
+        itineradorIndice = 3;
         $("#btn-SalirLIEL").remove();
         $("#btn-itinerar").show();
-        itineradorIndice = 3;
-        itinerador = 0;
+        $("#cuerpo").show();
+        $("#textoTemp").remove();
+        $("#divTemp").remove();
         controladorCapi();
         mostrarTituloCapitulo();
         abrirMapaCampania();

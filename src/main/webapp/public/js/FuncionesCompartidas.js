@@ -7,7 +7,6 @@ var mapaCampania;
 
 /** Lista de cookies de capítulos y misiones **/
 //document.cookie = "despertar=false";
-document.cookie = "M1=false;"
 var LIEL;
 var elForajido;
 var Averlan;
@@ -153,7 +152,7 @@ function ocultacionBotones(){
     $("#btn_tiendas").hide();
     $("#btn_empezar").hide();
     $("#btn-Palacio").hide();
-    $("#btn-CasaC").hide();
+    //$("#btn-CasaC").hide();
     $("#btn-Salir").hide();
     $("#CabeceraAudio").show();
     $("#btn-itinerar").show();
@@ -325,15 +324,16 @@ function controladorAciertosGeneral(){
 
 /* Función controladora del botón Al siguiente capítulo */
 function controladorCapi(){
-
+    pausarMusicaAmbiente();
+    pausarAudio();
     switch (itineradorIndice) {
-        case 1:
+        case 2:
             inicioLIEL();
             break;
-        case 2:
+        case 3:
             inicioEF();
             break;
-        case 3:
+        case 4:
             inicioAV();
             break;
         default:
@@ -358,8 +358,8 @@ function controladorLibreAlbedrio(){
 function comprobarSiEstamosEnBatalla(){
     var jefe = readCookie("combateJefe");
     let batalla = readCookie("batalla");
-    if (batalla = "true") {
-        alert("Estamos en Batalla");
+    if (batalla == "true") {
+        console.log("Seguimos en Batalla");
         if (jefe != "false") {
             reproducirMusicaBattalla();
         } else {
@@ -378,7 +378,7 @@ function interMusicaBatalla(boleano){
     if (boleano) {
         intervaloMusicaBatalla = setInterval(function (){
             console.log("***** COMPROBANDO BATALLA ******");
-            comprobarSiEstamosEnBatalla();
+            //comprobarSiEstamosEnBatalla();
         }, 420000);
     } else {
         console.log("Se acabó la batalla");
@@ -406,6 +406,10 @@ function pausarAccion(id, itinerador, opcionObligada){
 function pausarAccionV2(id, itinerador, opcionObligada, rama){
     new Promise(function (resolve){
         document.cookie = "ramificacion=" + rama;
+        //En el capitulo 3 se cumplen si cumplen estas condiciones ganan 250G
+        if(id == 1 && itinerador == 14 && opcionObligada == true && rama =='A'){
+            ganarDinero(250);
+        }
         resolve(llamadaRespuestas(id, itinerador));
     })
         .then(function (result){
@@ -584,6 +588,12 @@ function controladoraEntrarEn(destino){
         case 'CAMPAMENTO_GRERIUS':
             inicioLIEL();
             break;
+        case 'CAMPAMENTO_HOOD' :
+            restosCampamento();
+            break;
+        case 'AVERLAN':
+            controladorAverlan();
+            break;
         default: console.log("Ubicacion no encontrada");
                  break;
     }
@@ -592,4 +602,17 @@ function controladoraEntrarEn(destino){
 //Función para cerrar el jsp de Mapa de Campaña
 function cerrarVentanaCampania(destino){
     window.opener.controladoraEntrarEn(destino);
+}
+
+/* Funcion que decide si se inicia el capitulo 3
+o el 4, ya que los dos se inician en Averlan */
+function controladorAverlan(){
+    var forajido = readCookie("forajido");
+    //Si no se ha jugado el tercer capitulo
+    if(forajido != 'true'){
+        inicioEF();
+    //Si se ha jugado nos vamos a Averlan
+    } else {
+        inicioAV();
+    }
 }

@@ -1,30 +1,31 @@
-        @font-face {
-            font-family: GoticaBastard;
-            src: url('../fuentes/GoticaBastard.ttf');
-        }
-        @font-face {
-            font-family: medieval;
-            src: url('../fuentes/MedievalSharp-Regular.ttf');
-        }
+@font-face {
+    font-family: GoticaBastard;
+    src: url('../fuentes/GoticaBastard.ttf');
+}
 
-        @font-face {
-            font-family: marcador;
-            src: url('../fuentes/m06.TTF');
-        }
+@font-face {
+    font-family: medieval;
+    src: url('../fuentes/MedievalSharp-Regular.ttf');
+}
 
-body{
+@font-face {
+    font-family: marcador;
+    src: url('../fuentes/m06.TTF');
+}
+
+body {
     background-color: black !important;
     height: 100vh;
-    
+
 
 }
 
-.cabecera{
+.cabecera {
     margin-top: 10rem;
     z-index: 999
 }
 
-.cabeceraMenu{
+.cabeceraMenu {
     font-family: GoticaBastard !important;
     font-size: 4rem;
     color: #F9461F;
@@ -32,29 +33,30 @@ body{
     border-image: url('../images/bordeCenefa.jpg') 30 round;
 }
 
-.Inicio{
+.Inicio {
     color: black;
     font-family: GoticaBastard !important;
     font-size: 3rem;
 }
-.Inicio:hover{
+
+.Inicio:hover {
     color: #F9461F;
 }
 
-#padre{
-     background-color: inherit;
-     padding: 1rem;
-     margin: 4rem;
+#padre {
+    background-color: inherit;
+    padding: 1rem;
+    margin: 4rem;
 
 }
 
-#padreCuerpo{
+#padreCuerpo {
 
     font-family: medieval !important;
     /*margin-top: 6rem; */
 }
 
-#cuerpo{
+#cuerpo {
     background-color: inherit;
     margin-left: 4rem;
     margin-right: auto;
@@ -68,92 +70,95 @@ body{
 
 }
 
-#imagenes{
+#imagenes {
     float: left;
     padding-right: 5rem;
     padding-left: 14rem;
     padding-bottom: 1rem;
-    overflow:hidden;
+    overflow: hidden;
     padding-top: 2rem;
-  /*  background-image: url('../images/FondoPapiro.jpg');  */
+    /*  background-image: url('../images/FondoPapiro.jpg');  */
 
 }
-#imagenes img{
+
+#imagenes img {
     border-radius: 20px;
     box-shadow: 0 0 15px 10px maroon;
     height: 100%;
     z-index: 2;
 }
 
-#cuerpo-texto{
+#cuerpo-texto {
     float: left;
     font-family: medieval !important;
-   /* border: solid 1px green; */
-   /* background-image: url('../images/FondoPapiro.jpg'); */
-    overflow:hidden;
+    /* border: solid 1px green; */
+    /* background-image: url('../images/FondoPapiro.jpg'); */
+    overflow: hidden;
     font-weight: bold;
 
 }
 
-#texto{
-        background-color: inherit;
-        color: black;
-        width: 40rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 4rem;
-        font-family: medieval !important;
-     /* font-size: 1.6rem; */
-        font-size: 1.9rem;
-        padding-top: 3rem;
-        overflow:hidden;
-        font-weight: bold;
+#texto {
+    background-color: inherit;
+    color: black;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+    font-family: medieval !important;
+    /* font-size: 1.6rem; */
+    font-size: 1.9rem;
+    padding-top: 3rem;
+    overflow: hidden;
+    font-weight: bold;
 
 }
-#textoOpciones{
-      background-color: inherit;
-      width: 40rem;
-      margin-left: auto;
-      margin-right: auto;
-      color: black;
-      overflow: hidden;
-      pointer-events: auto;
-      font-family: medieval !important;
-      font-size: 1.6rem;
-      overflow:hidden;
+
+#textoOpciones {
+    background-color: inherit;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    overflow: hidden;
+    pointer-events: auto;
+    font-family: medieval !important;
+    font-size: 1.9rem;
+    overflow: hidden;
 
 }
 
 #textoRespuestas {
-      background-color: inherit;
-      width: 40rem;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 2rem;
-      color: black;
-      font-family: medieval !important;
-      font-size: 1.6rem;
-      overflow:hidden;
+    background-color: inherit;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    color: black;
+    font-family: medieval !important;
+    font-size: 1.9rem;
+    overflow: hidden;
 }
-#siguiente{
-     background-color: inherit;
-     width: 6rem;
-     margin-left: auto;
-     margin-right: auto;
-     color: black;
-     font-family: medieval !important;
-     display: flex;
-     justify-content: center
+
+#siguiente {
+    background-color: inherit;
+    width: 6rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+    font-family: medieval !important;
+    display: flex;
+    justify-content: center
 
 }
 
-#siguiente button{
+#siguiente button {
     padding: 0.7rem;
     margin: 0.5rem;
     font-family: medieval !important;
 }
 
-#itineracion{
+#itineracion {
     background-color: inherit;
     width: 6rem;
     margin-left: auto;
@@ -165,7 +170,7 @@ body{
     justify-content: center;
 }
 
-#itineracion button{
+#itineracion button {
     padding: 0.7rem;
     margin: 0.5rem;
     font-family: medieval !important;
@@ -184,27 +189,29 @@ body{
 
 }
 
-#informacion{
+#informacion {
     color: white;
     border-color: yellow;
 }
 
-#infoDebug{
+#infoDebug {
     display: grid;
     justify-content: end;
 }
-#infoDebugSecuencia{
-    color: #FDD017;
-    justify-content: end;
-    display: flex;
-}
-#infoDebugTexto{
+
+#infoDebugSecuencia {
     color: #FDD017;
     justify-content: end;
     display: flex;
 }
 
-#infoDebugAudio{
+#infoDebugTexto {
+    color: #FDD017;
+    justify-content: end;
+    display: flex;
+}
+
+#infoDebugAudio {
     color: #FDD017;
     justify-content: end;
     display: flex;
@@ -213,43 +220,43 @@ body{
 
 /******* listar elementos *****************************/
 
-#imgEnemigo{
+#imgEnemigo {
     width: 6rem;
     height: 9rem;
 }
 
-#tableEnemigos{
+#tableEnemigos {
     color: white;
     font-size: large;
 }
 
-#botonVolver{
-    float:right;
+#botonVolver {
+    float: right;
 }
 
-#botonVolverHome{
+#botonVolverHome {
     margin-left: 50%;
     margin-top: 3rem;
 }
 
 /****** O R D E N A R    T A B L A  ********************************/
 
-        table tr th {
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+table tr th {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
-        .sorting {
-            background-color: #D4D4D4;
-        }
+.sorting {
+    background-color: #D4D4D4;
+}
 
-        .asc:after {
-            content: ' ↑';
-        }
+.asc:after {
+    content: ' ↑';
+}
 
-        .desc:after {
-            content: " ↓";
-        }
+.desc:after {
+    content: " ↓";
+}

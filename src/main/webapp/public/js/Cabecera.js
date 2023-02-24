@@ -74,6 +74,7 @@ function mostrarUbicacion(){
     $(`<p> ${titulo} </p>`).appendTo("#capiActual");
 }
 
+//Reseteamos las cookies
 function limpiarCache(){
     document.cookie = "capitulo=Despertar";
     document.cookie = "despertar=";
@@ -83,4 +84,10 @@ function limpiarCache(){
     document.cookie = "M1=false";
     document.cookie = "destino=";
     document.cookie = "liel=";
+    document.cookie = "forajido=";
+    document.cookie = "averlanHorca=";
+    document.cookie = "mision=false";
+    document.cookie = "sacerdoteMuerto=";
+    document.cookie = "combateJefe=false";
+    document.cookie = "GreriusDecap=";
 }

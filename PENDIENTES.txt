@@ -9,8 +9,11 @@
 	2.3 Introducir musica especial para combates de jefes.   <----HECHO
 	2.4 Revisar mapa de campaña (no sale boton botin)  <--- HECHO
 	2.5 La foto de Grerius Bron no concuerda.  <---- HECHO
-	2.6 Colocar mejor el texto de la experiencia obtenida.  
-	2.7 Invocar los metodos de musica de batalla desde obtenerEnemigos(); <--- HECHO
+	2.6 Colocar mejor el texto de la experiencia obtenida.  <---- HECHO
+	2.7 Invocar los metodos de musica de batalla desde obtenerEnemigos(); <--- HECHO	
+	2.8 Mostrar la agilidad de los enemigos. <---HECHO
+	2.9 Pruebas de REGRESIÓN después de introducir la itineración a las ubicaciones desde el mapa de campaña. <---HECHO
+	2.10 Revisar experiencia obtenida en el combate de Grerius Bron (me da 0). <---HECHO
  
 3. Sistema de compra 
 
@@ -20,8 +23,25 @@
 
 4. Sistema de Itineracion
 	
-	4.1 Crear sistema para volver a KISLEV sin tener que empezar el capi 1. 
+	4.1 Crear sistema para volver a KISLEV sin tener que empezar el capi 1.<--HECHO
+	4.2 Llegar al campamento de Grerius Bron desde el mapa Campaña <-- HECHO
+	4.3 Llegar a Averlan desde el mapa de campaña <---HECHO
 
 5. Creación de Secundarias.
 
-	5.1 Meter la secundaria de KISLEV. 	
+	5.1 Meter la secundaria M1 de KISLEV. <---HECHO	
+
+6. GENERAL
+	6.1 Adaptar el tamaño de la fuente de opciones y respuestas a la que tiene el texto corriente. <---HECHO
+	6.2 Revisar los json para corregir discrepancias con respecto al audio o posibles faltas ortográficas.
+	6.3 Añadir dinero obtenido en el capitulo II (con la carta dado +4). <----HECHO
+	6.4 En el capitulo III si se desvalijan los bolsillos a los enemigos en el campamento de HOOD ganan 250G. <---HECHO
+	6.4 Recordar si se le cortó la cabeza a Grerius Bron en el capítulo IV.	 <---HECHO
+	6.5 Recordar si se mato al sacerdote de la confesión del capitulo III. <--- HECHO
+	6.6. Retocar la foto de el Conde y el paladin con el nuevo Sir Gregor.  <----HECHO
+	6.7. Revisar todos los flujos del capítulo 3. <---HECHO
+	6.8 Crear TIERS para las armas y armaduras.
+
+7. SONIDO
+	7.1 Revisar la musica de los combates normales y de jefes. <---HECHO
+	7.2 Revisar Música ambiente del capitulo II, III y IV. <---HECHO

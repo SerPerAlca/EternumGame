@@ -163,6 +163,7 @@ function obtenerEnemigos(){
         console.log(enemy);
         pintarTarjetaEnemy(enemy);
         $("#siguiente").show();
+        $("#itineracion").show();
         $("#btn_botin").show();
     });
     // si la llamada falla
@@ -228,6 +229,9 @@ function obtenerRecompensa(recompensa){
         $("#btn_botin").click();
         cantidadEnemigos = 0;
     }
+    if(jefe == "false"){
+        experienciaTotal = 0;
+    }
     // Se comprueba si se ha combatido contra un jefe
     if (jefe != "false") {
         $("#btn_botin").click();
@@ -243,7 +247,7 @@ function obtenerRecompensa(recompensa){
         enseniarSig();
     }
     document.cookie = "batalla=false";
-    experienciaTotal = 0;
+
 }
 
 //Funcion que pinta la tarjeta de recompensa del combate
@@ -298,6 +302,7 @@ function obtenerCombateJefe(jefe){
         //  enemy.numero = data.numeroEnemigos
         console.log(enemy);
         pintarTarjetaJefe(enemy);
+        $("#itineracion").show();
         $("#btn_botin").show();
     });
     // si la llamada falla

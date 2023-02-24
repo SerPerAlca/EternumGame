@@ -399,7 +399,7 @@ INSERT INTO ZONA(ID_ZONA,NOMBRE_ZONA,COD_TIPO_ZONA,PELIGROSIDAD)VALUES(1,'KISLEV
                                                               (8,'WISLEN','LLA',2),
                                                               (9,'TIERRAS_DE_HOET','LLA',2),
                                                               (10,'CARRERA_BLANCA','LLA',2),
-                                                              (11,'CampamentoGreriusBron','LLA',2),
+                                                              (11,'CAMPAMENTO_GRERIUS','LLA',2),
                                                               (12,'CAMPAMENTO_HOOD','BOS',2),
                                                               (13,'IMPERIALES_HOOD','BOS',3);       
 
@@ -490,7 +490,7 @@ INSERT INTO ARMA(ID_ARMA,NOMBRE_ARMA,COD_TIPO_ARMA,DESCRIPCION,DAÑO_FISICO,DAÑ
                                                                                                                         (17,'HACHA DE NORSCA ','HACH','+1 DAÑO DE PERFORACION (IGNORA ARMADURA)',5,1,2,420,'/public/images/Arma/hachaOrcaNorsca.png','S',8,8),
                                                                                                                         (18,'BASTÓN DEL GUSANO','BAST','+2 DAÑO MÁGICO VS CRIATURAS',0,4,10,500,'/public/images/Arma/bastonCaracol.png','N',13,8),
                                                                                                                         (19,'BASTÓN DE MORKUL','BAST','+3 DAÑO MAGICO VS ALTOS ELFOS',0,5,11,480,'/public/images/Arma/bastonMorkul.png','S',13,10),
-                                                                                                                        (20,'BASTÓN DEL BRUJO DIMITROVICH','BAST','OTORGA HECHIZO SUEÑO',0,6,8,550,'/public/images/Arma/bastonDimitrovich.png','S',14,11),
+                                                                                                                        (20,'BASTÓN DEL BRUJO DIMITROVICH','BAST','OTORGA HECHIZO SUEÑO',0,6,8,550,'/public/images/Arma/bastonDimitrovich.png','N',14,11),
                                                                                                                         (21,'ESPADA DE AVERLAN','ESPA','+2 DAÑO FISICO VS HUMANOS',5,0,1,410,'/public/images/Arma/espadaAverlan.png','S',9,6),
                                                                                                                         (22,'ESPADA DE LA FAMILIA HALAS','ESPA','+2 DAÑO MAGICO VS NO MUERTOS',4,2,1,430,'/public/images/Arma/espadaHalas.png','S',7,7),
                                                                                                                         (23,'ESPADA LOGRADA','ESPA','+2 DAÑO DE PERFORACION (IGNORA ARMADURA)',4,0,1,420,'/public/images/Arma/espadaLograda.png','S',7,7),

@@ -3,7 +3,7 @@ $(document).ready(function() {
     //ocultamos y mostramos los botones necesarios
         ocultarDado();
         ocultacionBotones();
-        $("#btn-itinerar").hide();
+        //$("#btn-itinerar").hide();
 
 
         var lugar = readCookie('ubicacion');
@@ -35,7 +35,7 @@ $(document).ready(function() {
 });
 
     function inicioDespertar(){
-
+        document.cookie = "capitulo=Despertar";
         obtenerTituloCapitulo();
         $("<div class='Inicio'>I. El Despertar </div>")
             .filter(".Inicio").click(function(){
@@ -354,6 +354,7 @@ $(document).ready(function() {
         }
 
         function libreAlbedrioSinTiendasKislev(){
+            borradoCuerpoTexto();
             borrarBotonesItineracion();
             $("<h3>... TENEIS LIBRE ALBEDRIO ...</h3>").appendTo("#textoRespuestas").hide().fadeIn(5000);
 
@@ -365,7 +366,7 @@ $(document).ready(function() {
                 .appendTo("#itineracion p");
             $(`<button type="button" class="btn btn-secondary" id="btn-CasaC" onclick="botonCasaC()">Casa Consistorial</button>`)
                 .appendTo("#itineracion p");
-            $(`<button type="button" class="btn btn-secondary" id="btn-M1" onclick="M1()">Taberna (M1)</button>`)
+            $(`<button type="button" class="btn btn-secondary" id="btn-M1" onclick="M1()" disabled>Taberna (M1)</button>`)
                 .appendTo("#itineracion p");
             $(`<button type="button" class="btn btn-secondary" id="btn-Palacio">Palacio del Conde</button>`)
                 .appendTo("#itineracion p");
@@ -395,12 +396,14 @@ $(document).ready(function() {
             .appendTo("#itineracion p");
         $(`<button type="button" class="btn btn-secondary" id="btn-SalirCiudad" onclick="salirDeKislev()">Salir de la Ciudad</button>`)
             .appendTo("#itineracion p");
+        $("#btn-CasaC").show();
     }
 
     // Función que se activa al pulsar sobre el botón de Casa Consistorial
     function botonCasaC(){
         console.log("CONTADOR DE BOTON al llamar a terceraSecuencia(): " + itinerador);
         var casaEscena = readCookie("EscenaCasaCons");
+        var booleanM1 = readCookie("M1");
         if (casaEscena == "false"){
             borradoCuerpoTexto();
             borradoTextoItineracion();
@@ -410,6 +413,8 @@ $(document).ready(function() {
             $("#btn_siguiente").hide();
             //    itinerador++;
             terceraSecuenciaDespertar();
+        } else if(booleanM1 == 'true'){
+            escenaRecompensaM1();
         } else {
             borradoCuerpoTexto();
             borradoTextoItineracion();
@@ -422,7 +427,7 @@ $(document).ready(function() {
     function salirDeKislev(){
         borrarBotonesItineracion();
         $("#btn-SalirCiudad").hide();
-        itineradorIndice = 1;
+        itineradorIndice = 2;
         itinerador = 0;
         controladorCapi();
         mostrarTituloCapitulo();

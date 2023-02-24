@@ -24,6 +24,9 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     private UtilidadesItems utilidadesItems;
 
+    @Autowired
+    private SessionPnjServiceServiceImpl sessionPnjServiceService;
+
     @Override
     public List<Item> findAllItems() {
         List<Item> itemList = new ArrayList<>();
@@ -48,6 +51,10 @@ public class ItemServiceImpl implements IItemService {
             itemList.add(item);
         }
         Item itemRecompensa = utilidadesItems.obtenerItemRandom(itemList);
+        // si la recompensa es oro, guardamos en session el oro obtenido
+        if(itemRecompensa.getNombre().equals("ORO")){
+            sessionPnjServiceService.ganarDinero(itemRecompensa.getCantidad());
+        }
         return itemRecompensa;
     }
 }
