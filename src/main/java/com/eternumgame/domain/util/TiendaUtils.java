@@ -18,7 +18,7 @@ import java.util.Map;
 public class TiendaUtils {
 
 
-    // METHOD PARA EXTRAER LA LISTA DE HEROES DE UN JSON
+    //Metodo para extraer la tienda de json en base al tipo de tieda y la ubicación
     public int findIdByParams(String tipoTienda, String ubicacion) throws IOException, ParseException {
 
         String json  = "";

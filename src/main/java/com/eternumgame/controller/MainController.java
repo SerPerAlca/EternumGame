@@ -124,16 +124,19 @@ public class MainController {
 	@ResponseBody public Object  obtenerRecompensa(@RequestParam String zona, HttpServletRequest request,
 												   HttpServletResponse response) {
 		// generamos un numero random
-		int indexRandom = (int)(Math.random()*20);
 		Object object = new Object();
-		switch (indexRandom){
-			case 7: object = armaService.getOneArma();
+		do {
+			int indexRandom = (int)(Math.random()*20);
+			switch (indexRandom){
+				case 7: object = armaService.getArmaRecompensa();
 					break;
-			case 11: object = armaduraService.getOneArmadura();
+				case 11: object = armaduraService.getArmaduraRecompensa();
 					break;
-			default: object = itemService.getOneItem();
+				default: object = itemService.getOneItem();
 					break;
-		}
+			}
+		} while (object == null);
+
 		return object;
 	}
 

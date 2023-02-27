@@ -24,6 +24,8 @@ public class ArmaduraMapper {
         armadura.setRutaImagen(armaduraEntity.getRutaImagen());
         armadura.setTamanio(armaduraEntity.getTamanio());
         armadura.setTipoArmaduraDescripcion(armaduraEntity.getTipoArmaduraEntity().getDescripcion());
+        armadura.setTier(armaduraEntity.getTier());
+        armadura.setObtenida(armaduraEntity.getObtenida());
         return armadura;
     }
 
@@ -40,6 +42,8 @@ public class ArmaduraMapper {
         armaduraEntity.setRutaImagen(armadura.getRutaImagen());
         armaduraEntity.setDestreza(armadura.getDestreza());
         armaduraEntity.setTamanio(armadura.getTamanio());
+        armaduraEntity.setTier(armadura.getTier());
+        armaduraEntity.setObtenida(armadura.getObtenida());
         return armaduraEntity;
     }
 

@@ -13,7 +13,7 @@ public interface IArmaService {
 
     public void ordenarPorTipo(List<Arma> armaList);
 
-    public Arma getOneArma();
+   // public Arma getOneArma();
 
     public void modificarRecompensaArray(int[] ids);
 
@@ -21,4 +21,5 @@ public interface IArmaService {
 
     public boolean modificarEstadoRecompensa(int id);
 
+    public Arma getArmaRecompensa();
 }

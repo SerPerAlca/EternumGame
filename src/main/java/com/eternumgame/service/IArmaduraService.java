@@ -13,11 +13,13 @@ public interface IArmaduraService {
 
     public void ordenarPorTipo(List<Armadura> armaduraList);
 
-    public Armadura getOneArmadura();
+  //  public Armadura getOneArmadura();
 
     public void modificarRecompensaArray(int[] ides);
 
     public boolean comprobarEstadoRecompensa(ArmaduraEntity armaduraEntity);
 
     public boolean modificarEstadoRecompensa(int id);
+
+    public Armadura getArmaduraRecompensa();
 }

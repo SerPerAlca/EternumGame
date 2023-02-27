@@ -40,8 +40,11 @@ public class Arma extends ObjetoVenta {
 
     private int cantidad;
 
-    public Arma(int idArma, String codigoClase, String tipoArmaDescripcion, String nombre, String descripcion, int ataqueFisico, int ataqueMagico, int alcance, int precio, String rutaImagen, MultipartFile imagen, char recompensa, int tamanio, int destreza, int cantidad) {
-        super();
+    private int tier;
+
+    private char obtenida;
+
+    public Arma(int idArma, String codigoClase, String tipoArmaDescripcion, String nombre, String descripcion, int ataqueFisico, int ataqueMagico, int alcance, int precio, String rutaImagen, MultipartFile imagen, char recompensa, int tamanio, int destreza, int cantidad, int tier, char obtenida) {
         this.idArma = idArma;
         this.codigoClase = codigoClase;
         this.tipoArmaDescripcion = tipoArmaDescripcion;
@@ -57,5 +60,7 @@ public class Arma extends ObjetoVenta {
         this.tamanio = tamanio;
         this.destreza = destreza;
         this.cantidad = cantidad;
+        this.tier = tier;
+        this.obtenida = obtenida;
     }
 }

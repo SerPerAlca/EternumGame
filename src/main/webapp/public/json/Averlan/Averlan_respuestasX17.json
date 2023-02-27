@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "respuesta": "El rostro de Sir Gregor se enrojece."
+  },
+  {
+    "id": "1",
+    "respuesta" : "SIR GREGOR: De que carta estás hablando. !Entrégamela! ¡De inmediato!."
+  },
+  {
+    "id": "1",
+    "respuesta" : "Al mismo tiempo da un paso al frente el caballero de la armadura y la maza."
+  },
+  {
+    "id": "2",
+    "respuesta": "SIR GREGOR: ¿La marca dices? La marca de los ángeles. Blasfemias de los herejes. Esos paganos que os capturaron creen en Dioses y magias paganas."
+  },
+  {
+    "id": "2",
+    "respuesta": " Olvidadlo. Solo debéis creer en el poder de Sigmar...Y lo que digo yo."
+  },
+  {
+    "id": "3",
+    "respuesta" : "SIR GREGOR: Hood el Forajido. Se dedicaba a asesinar y violar en los caminos del bosque. Se estaba preparando para atacar la ciudad. Esos idiotas se creen que están por encima de Sigmar y la Iglesia."
+  },
+  {
+    "id": "3",
+    "respuesta" : "Pensáis, que es mejor no sacarle de su error."
+  }
+]

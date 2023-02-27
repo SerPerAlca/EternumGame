@@ -53,6 +53,12 @@ public class ArmaEntity {
     @Column(name="DESTREZA")
     private int destreza;
 
+    @Column(name="TIER")
+    private int tier;
+
+    @Column(name="OBTENIDA")
+    private char obtenida;
+
     @ManyToMany(mappedBy = "armaEntitySet")
     private Set<TiendaEntity> tiendaEntitySet;
 

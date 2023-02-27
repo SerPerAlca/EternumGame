@@ -90,4 +90,5 @@ function limpiarCache(){
     document.cookie = "sacerdoteMuerto=";
     document.cookie = "combateJefe=false";
     document.cookie = "GreriusDecap=";
+    document.cookie = "SirGregorAverlan=";
 }

@@ -45,3 +45,9 @@
 7. SONIDO
 	7.1 Revisar la musica de los combates normales y de jefes. <---HECHO
 	7.2 Revisar Música ambiente del capitulo II, III y IV. <---HECHO
+
+
+
+document.cookie = "despertar=true";
+document.cookie = "EscenaCasaCons=true";
+document.cookie = "M1=true";

@@ -1,0 +1,23 @@
+[
+  {
+    "obligatoria" : "SI",
+    "id" : "1",
+    "especial" : "NO",
+    "rama" : "X",
+    "pregunta": "1. - Encontramos una carta en el bolsillo de Grerius Bron. Decía cosas muy interesantes..."
+  },
+  {
+    "obligatoria" : "NO",
+    "id" : "2",
+    "especial" : "NO",
+    "rama" : "X",
+    "pregunta": "2. - ¿Sabes que significa eso de la 'marca' de la que hablaban aquellos malnacidos que nos capturaron?"
+  },
+  {
+    "obligatoria" : "NO",
+    "id" : "3",
+    "especial" : "NO",
+    "rama" : "X",
+    "pregunta": "3. - ¿Quién era ese al que han colgado en la plaza?"
+  }
+]

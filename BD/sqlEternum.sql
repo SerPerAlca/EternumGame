@@ -126,6 +126,8 @@ CREATE TABLE IF NOT EXISTS HEROE (
         RECOMPENSA CHAR(1) NOT NULL,
         TAMAÑO INT(2) NOT NULL,
         DESTREZA INT(2) NOT NULL,
+        TIER INT(1) NOT NULL,
+        OBTENIDA CHAR(1) NOT NULL,
         PRIMARY KEY(ID_ARMA),
         FOREIGN KEY(ID_PNJ) REFERENCES PNJ(ID_PNJ),
         FOREIGN KEY(COD_TIPO_ARMA) REFERENCES TIPO_ARMA(COD_TIPO_ARMA),
@@ -154,6 +156,8 @@ CREATE TABLE IF NOT EXISTS HEROE (
         TAMAÑO INT(13) NOT NULL,
         RECOMPENSA CHAR(1) NOT NULL,
         DESTREZA INT(2) NOT NULL,
+        TIER INT(1) NOT NULL,
+        OBTENIDA CHAR(1) NOT NULL,
         PRIMARY KEY(ID_ARMADURA),
         FOREIGN KEY(COD_TIPO_ARMADURA) REFERENCES TIPO_ARMADURA(COD_TIPO_ARMADURA),
         FOREIGN KEY(COD_EFECTO_MAGICO) REFERENCES EFECTO_MAGICO(COD_EFECTO_MAGICO),
@@ -180,7 +184,7 @@ CREATE TABLE IF NOT EXISTS HEROE (
 
     CREATE TABLE IF NOT EXISTS ITEM_TIENDA(
         ID_TIENDA INT(2) NOT NULL,
-             INT(2) NOT NULL,
+        ID_ITEM INT(2) NOT NULL,
         FOREIGN KEY(ID_ITEM) REFERENCES ITEM(ID_ITEM),
         FOREIGN KEY(ID_TIENDA) REFERENCES TIENDA(ID_TIENDA),
         PRIMARY KEY(ID_ITEM, ID_TIENDA)
@@ -209,50 +213,50 @@ INSERT INTO EFECTO_MAGICO(COD_EFECTO_MAGICO,NOMBRE_EFECTO_MAGICO,DESCRIPCION_EFE
                                                                             ('CAOT', 'CAOTICO','AÑADE +X AL DAÑO MÁGICO EN CADA ATAQUE');        
 
 
-INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA)VALUES(1,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL BOSQUE MALDITO','+1 DEFF. ANTE CRIATURAS / +2 DEFM. EN BOSQUE',3,4,500,'/public/images/Armadura/armaduraBosqueMal.jpg',23,'S',4),
-                                                                                                                                                        (2,'COMP',NULL,NULL,'ARMADURA DEL CORSARIO ROJO','+1 AGILIDAD && +3 DEFM EN AGUA',5,2,620,'/public/images/Armadura/armCorsRojo.jpg',20,'S',5),
-                                                                                                                                                        (3,'COMP',NULL,NULL,'TUNICA DEL SACERDOTE DEL AGUA','+1 DE PM / +1 ATAQUE MAGICO',2,2,410,'/public/images/Armadura/TunicaSacAgua.jpg',21,'S',4),
-                                                                                                                                                        (4,'COMP',NULL,NULL,'TÚNICA DE LAPISLAZULI', '+2 PM / +1 ATAQUE MAGICO', 2,7,560,'/public/images/Armadura/tunicaLapislazuli.jpg',21,'S',5),
-                                                                                                                                                        (5,'COMP',NULL,NULL,'ARMADURA PESADA SILVANA', '+2 ATAQUE FIS Y MAG VS CRIATURAS / +3 DEF FIS Y MAG EN BOSQUE', 3,3,620,'/public/images/Armadura/armaduraPesadaSilvana.jpg',20,'S',6),
-                                                                                                                                                        (6,'COMP',NULL,NULL,'ARMADURA DE SURCA', '+3 DEF FIS EN AGUA / +1 DEF MAG EN AGUA', 2,1,450,'/public/images/Armadura/Armadura de Surca.jpg',20,'S',5),
-                                                                                                                                                        (7,'COMP',NULL,NULL,'ARMADURA DE CARRERA BLANCA',' +1 ESQUIVA / +1 DEF FISICA EN PRADERA',3,1,360,'/public/images/Armadura/armaduraCarreraBlanca.jpg',20,'S',4),
-                                                                                                                                                        (8,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL PICARO GUERRERO','+1 DEFMAG VS HUMANOS / +1 VELOCIDAD',5,1,420,'/public/images/Armadura/armComPicaro.jpg',22,'S',6),
-                                                                                                                                                        (9,'CORA',NULL,NULL,'ARMADURA RUBI','+1 DEF FIS VS ELFOS / +2 DEF MAG VS ELFOS',4,2,560,'/public/images/Armadura/Armadura Rubí.jpg',20,'S',5),
-                                                                                                                                                        (10,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA LUZ',' +3 VELOCIDAD / +1 ESQUIVA / +3 DESTREZA',7,6,760,'/public/images/Armadura/armaduraCompleta.jpg',25,'S',7),
-                                                                                                                                                        (11,'COMP',NULL,NULL,'TUNICA VENTORMENTA','+2 PM / 3PM EN BOSQUE',2,5,480,'/public/images/Armadura/tunicaVentormenta.jpg',20,'S',5),
-                                                                                                                                                        (12,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA LLAMA BLANCA','+1 DEF FIS VS CRIATURAS',6,4,650,'/public/images/Armadura/armaduraLlamaBlanca.jpg',22,'S',6),
-                                                                                                                                                        (13,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA ARAÑA',' +2 DEF FIS Y MAG VS CRIATURAS Y ALTOS ELFOS',4,5,650,'/public/images/Armadura/ArmaduraAraña.jpg',23,'S',5),
-                                                                                                                                                        (14,'COMP',NULL,NULL,'TUNICA DEL ESPECTRO','+1 VELOCIDAD / +2 ATAQUE MAG',1,6,480,'/public/images/Armadura/tunicaEspectro.jpg',20,'S',4),
-                                                                                                                                                        (15,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL DEFENSOR DE LA HUMANIDAD','+1 VELOCIDAD / +3 DEF FIS VS NO HUMANOS',4,4,580,'/public/images/Armadura/armaduraDefensor.jpg',25,'S',4),
-                                                                                                                                                        (16,'COMP',NULL,NULL,'ARMADURA COMPLETA DE SOMBRA','+2 VELOCIDAD / +2 DESTREZA / +1 ATAQUE FIS VS ELFOS',4,3,560,'/public/images/Armadura/armaduraSombra.png',23,'S',4),
-                                                                                                                                                        (17,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL RUBI','+3 DEF MAG VS HUMANOS / +3 DEF FIS VS ELFOS',5,4,720,'/public/images/Armadura/armaduraCompletaRubi.png',24,'S',5),
-                                                                                                                                                        (18,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA FE','+2 DEF FIS VS NO HUMANOS / +2 DEF MAG VS NO HUMANOS',5,3,650,'/public/images/Armadura/armaduraCompletaFe.jpg',24,'S',5),
-                                                                                                                                                        (19,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL MAGO DE RUTH','+1 DESTREZA / +1 VELOCIDAD',3,5,500,'/public/images/Armadura/completaRuth.jpg',23,'S',4),
-                                                                                                                                                        (20,'COMP',NULL,NULL,'TUNICA DEL MAGO DEFENSOR','+1 DESTREZA / +2 PM ',2,6,550,'/public/images/Armadura/magoDefensor.jpg',20,'S',4),
-                                                                                                                                                        (21,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL FENIX','+3 DEF MAG Y FIS VS ELFOS OSCUROS / +2 PM',6,4,720,'/public/images/Armadura/armaduraComFenix.jpg',23,'S',7),
-                                                                                                                                                        (22,'COMP',NULL,NULL,'ARMADURA COMPLETA DE KARAK','+2 DEF FIS VS ORCOS / +1 DESTREZA / +1 ESQUIVA VS ORCOS',8,1,700,'/public/images/Armadura/armaduraComKarak.png',20,'S',7),
-                                                                                                                                                        (23,'COMP',NULL,NULL,'ARMADURA SAQUEADOR DE NORSCA','+2 DEF FIS Y MAG VS HUMANOS/ +1 DESTREZA',3,1,520,'/public/images/Armadura/armaduraSaqNorsca.png',20,'S',4),
-                                                                                                                                                        (24,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL PROSCRITO','+2 VELOCIDAD/ +1 PM',4,2,500,'/public/images/Armadura/armaduraComProscrito.jpg',22,'S',5),
-                                                                                                                                                        (25,'COMP',NULL,NULL,'ARMADURA DEL TIGRE DE ACERO','+2 DESTREZA/ +2 DEF FISICA VS CRIATURAS',5,3,640,'/public/images/Armadura/armaduraDelTigre.jpg',22,'S',6),
-                                                                                                                                                        (26,'COMP',NULL,NULL,'ARMADURA CEREMONIAL DE ULTHUAN','+3 DESTREZA / +2 PM / +2 DEF FIS Y MAG VS DRAGONES',3,3,600,'/public/images/Armadura/armaduraCeremonialUlth.jpg',19,'S',4),
-                                                                                                                                                        (27,'COMP',NULL,NULL,'ARMADURA COMPLETA NEGRA DE VALIDOR','+2 PM / +1 DEF FIS Y MAG VS ELFOS',6,4,800,'/public/images/Armadura/negraValidor.jpg',24,'S',8),
-                                                                                                                                                        (28,'COMP',NULL,NULL,'ARMADURA COMPLETA DRACONICA','+2 PM / +2 DESTREZA / +3 DEF FIS Y MAG VS DRAGONES Y CRIATURAS',6,3,860,'/public/images/Armadura/draconica.jpeg',25,'S',8),
-                                                                                                                                                        (29,'COMP',NULL,NULL,'TUNICA DE LA ORDEN DEL BUHO','+3 PM / +2 PM EN BOSQUE / +1 PM EN MONTAÑA',2,5,700,'/public/images/Armadura/buho.jpg',21,'S',7),
-                                                                                                                                                        (30,'COMP',NULL,NULL,'ARMADURA DE AMAZONA','+3 VELOCIDAD / +1 ESQUIVA / +2 DEF FIS EN BOSQUE',3,4,600,'/public/images/Armadura/amazona.jpg',19,'S',5);
+INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA,TIER,OBTENIDA)VALUES(1,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL BOSQUE MALDITO','+1 DEFF. ANTE CRIATURAS / +2 DEFM. EN BOSQUE',3,4,500,'/public/images/Armadura/armaduraBosqueMal.jpg',23,'S',4,3,'N'),
+                                                                                                                                                        (2,'COMP',NULL,NULL,'ARMADURA DEL CORSARIO ROJO','+1 AGILIDAD && +3 DEFM EN AGUA',5,2,620,'/public/images/Armadura/armCorsRojo.jpg',20,'S',5,3,'N'),
+                                                                                                                                                        (3,'COMP',NULL,NULL,'TUNICA DEL SACERDOTE DEL AGUA','+1 DE PM / +1 ATAQUE MAGICO',2,2,410,'/public/images/Armadura/TunicaSacAgua.jpg',21,'N',4,1,'N'),
+                                                                                                                                                        (4,'COMP',NULL,NULL,'TÚNICA DE LAPISLAZULI', '+2 PM / +1 ATAQUE MAGICO', 2,7,560,'/public/images/Armadura/tunicaLapislazuli.jpg',21,'S',5,4,'N'),
+                                                                                                                                                        (5,'COMP',NULL,NULL,'ARMADURA PESADA SILVANA', '+2 ATAQUE FIS Y MAG VS CRIATURAS / +3 DEF FIS Y MAG EN BOSQUE', 3,3,620,'/public/images/Armadura/armaduraPesadaSilvana.jpg',20,'S',6,2,'N'),
+                                                                                                                                                        (6,'COMP',NULL,NULL,'ARMADURA DE SURCA', '+3 DEF FIS EN AGUA / +1 DEF MAG EN AGUA', 2,1,450,'/public/images/Armadura/Armadura de Surca.jpg',20,'N',5,1,'N'),
+                                                                                                                                                        (7,'COMP',NULL,NULL,'ARMADURA DE CARRERA BLANCA',' +1 AGILIDAD / +1 DEF FISICA EN PRADERA',3,1,360,'/public/images/Armadura/armaduraCarreraBlanca.jpg',20,'S',4,1,'N'),
+                                                                                                                                                        (8,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL PICARO GUERRERO','+1 DEFMAG VS HUMANOS / +1 VELOCIDAD',5,1,420,'/public/images/Armadura/armComPicaro.jpg',22,'N',6,2,'N'),
+                                                                                                                                                        (9,'CORA',NULL,NULL,'ARMADURA RUBI','+1 DEF FIS VS ELFOS / +2 DEF MAG VS ELFOS',4,2,560,'/public/images/Armadura/Armadura Rubí.jpg',20,'S',5,2,'N'),
+                                                                                                                                                        (10,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA LUZ',' +3 VELOCIDAD / +1 ESQUIVA / +3 DESTREZA',7,6,760,'/public/images/Armadura/armaduraCompleta.jpg',25,'S',7,5,'N'),
+                                                                                                                                                        (11,'COMP',NULL,NULL,'TUNICA VENTORMENTA','+2 PM / 3PM EN BOSQUE',2,5,480,'/public/images/Armadura/tunicaVentormenta.jpg',20,'N',5,3,'N'),
+                                                                                                                                                        (12,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA LLAMA BLANCA','+1 DEF FIS VS CRIATURAS',6,4,650,'/public/images/Armadura/armaduraLlamaBlanca.jpg',22,'S',6,4,'N'),
+                                                                                                                                                        (13,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA ARAÑA',' +2 DEF FIS Y MAG VS CRIATURAS Y ALTOS ELFOS',4,5,650,'/public/images/Armadura/ArmaduraAraña.jpg',23,'S',5,4,'N'),
+                                                                                                                                                        (14,'COMP',NULL,NULL,'TUNICA DEL ESPECTRO','+1 VELOCIDAD / +2 ATAQUE MAG',1,6,480,'/public/images/Armadura/tunicaEspectro.jpg',20,'S',4,3,'N'),
+                                                                                                                                                        (15,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL DEFENSOR DE LA HUMANIDAD','+1 VELOCIDAD / +3 DEF FIS VS NO HUMANOS',4,4,580,'/public/images/Armadura/armaduraDefensor.jpg',25,'S',4,3,'N'),
+                                                                                                                                                        (16,'COMP',NULL,NULL,'ARMADURA COMPLETA DE SOMBRA','+2 VELOCIDAD / +2 DESTREZA / +1 ATAQUE FIS VS ELFOS',4,3,560,'/public/images/Armadura/armaduraSombra.png',23,'S',4,3,'N'),
+                                                                                                                                                        (17,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL RUBI','+3 DEF MAG VS HUMANOS / +3 DEF FIS VS ELFOS',5,4,720,'/public/images/Armadura/armaduraCompletaRubi.png',24,'S',5,4,'N'),
+                                                                                                                                                        (18,'COMP',NULL,NULL,'ARMADURA COMPLETA DE LA FE','+2 DEF FIS VS NO HUMANOS / +2 DEF MAG VS NO HUMANOS',5,3,650,'/public/images/Armadura/armaduraCompletaFe.jpg',24,'S',5,3,'N'),
+                                                                                                                                                        (19,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL MAGO DE RUTH','+1 DESTREZA / +1 VELOCIDAD',3,5,500,'/public/images/Armadura/completaRuth.jpg',23,'S',4,3,'N'),
+                                                                                                                                                        (20,'COMP',NULL,NULL,'TUNICA DEL MAGO DEFENSOR','+1 DESTREZA / +2 PM ',2,6,550,'/public/images/Armadura/magoDefensor.jpg',20,'S',4,3,'N'),
+                                                                                                                                                        (21,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL FENIX','+3 DEF MAG Y FIS VS ELFOS OSCUROS / +2 PM',6,4,720,'/public/images/Armadura/armaduraComFenix.jpg',23,'S',7,4,'N'),
+                                                                                                                                                        (22,'COMP',NULL,NULL,'ARMADURA COMPLETA DE KARAK','+2 DEF FIS VS ORCOS / +1 DESTREZA / +1 ESQUIVA VS ORCOS',8,1,700,'/public/images/Armadura/armaduraComKarak.png',20,'S',7,4,'N'),
+                                                                                                                                                        (23,'COMP',NULL,NULL,'ARMADURA SAQUEADOR DE NORSCA','+2 DEF FIS Y MAG VS HUMANOS/ +1 DESTREZA',3,1,520,'/public/images/Armadura/armaduraSaqNorsca.png',20,'S',4,1,'N'),
+                                                                                                                                                        (24,'COMP',NULL,NULL,'ARMADURA COMPLETA DEL PROSCRITO','+2 VELOCIDAD/ +1 PM',4,2,500,'/public/images/Armadura/armaduraComProscrito.jpg',22,'S',5,2,'N'),
+                                                                                                                                                        (25,'COMP',NULL,NULL,'ARMADURA DEL TIGRE DE ACERO','+2 DESTREZA/ +2 DEF FISICA VS CRIATURAS',5,3,640,'/public/images/Armadura/armaduraDelTigre.jpg',22,'S',6,3,'N'),
+                                                                                                                                                        (26,'COMP',NULL,NULL,'ARMADURA CEREMONIAL DE ULTHUAN','+3 DESTREZA / +2 PM / +2 DEF FIS Y MAG VS DRAGONES',3,3,600,'/public/images/Armadura/armaduraCeremonialUlth.jpg',19,'S',4,2,'N'),
+                                                                                                                                                        (27,'COMP',NULL,NULL,'ARMADURA COMPLETA NEGRA DE VALIDOR','+2 PM / +1 DEF FIS Y MAG VS ELFOS',6,4,800,'/public/images/Armadura/negraValidor.jpg',24,'S',8,4,'N'),
+                                                                                                                                                        (28,'COMP',NULL,NULL,'ARMADURA COMPLETA DRACONICA','+2 PM / +2 DESTREZA / +3 DEF FIS Y MAG VS DRAGONES Y CRIATURAS',6,3,860,'/public/images/Armadura/draconica.jpeg',25,'S',8,4,'N'),
+                                                                                                                                                        (29,'COMP',NULL,NULL,'TUNICA DE LA ORDEN DEL BUHO','+3 PM / +2 PM EN BOSQUE / +1 PM EN MONTAÑA',2,5,700,'/public/images/Armadura/buho.jpg',21,'S',7,3,'N'),
+                                                                                                                                                        (30,'COMP',NULL,NULL,'ARMADURA DE AMAZONA','+3 VELOCIDAD / +1 ESQUIVA / +2 DEF FIS EN BOSQUE',5,4,800,'/public/images/Armadura/amazona.jpg',19,'S',5,4,'N');
 
 
-INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA)VALUES(31,'CORA',NULL,NULL,'CHALECO DE MERCENARIO','+2 ALCANCE',1,0,300,'/public/images/Armadura/chalecoMerc.jpg',13,'S',2),
-                                                                                                                                                            (32,'CORA',NULL,NULL,'CORAZA DE CARREBURGO','+1 DEF FIS EN CARREBURGO',1,0,290,'/public/images/Armadura/corazaCarreburgo.png',12,'S',2),
-                                                                                                                                                            (33,'CORA',NULL,NULL,'CORAZA COMUN DE KISLEV','+1 DEF FIS EN KISLEV',1,0,290,'/public/images/Armadura/corazaKislev.jpg',12,'S',2),
-                                                                                                                                                            (34,'CORA',NULL,NULL,'CORAZA STIRLAN','+2 DEF FIS VS CRIATURAS',1,0,330,'/public/images/Armadura/corazaStirlan.png',14,'S',2),
-                                                                                                                                                            (35,'CORA',NULL,NULL,'CORAZA DEL MAGO BUCANERO','+1 PM / +1 PM EN MAR',1,2,400,'/public/images/Armadura/magoMarinero.png',12,'S',3),
-                                                                                                                                                            (36,'CORA',NULL,NULL,'CORAZA DE WISLEN','+1 DEF FIS EN WISLEN',1,0,300,'/public/images/Armadura/Coraza De Wislen.png',12,'S',2),
-                                                                                                                                                            (37,'CORA',NULL,NULL,'COTA DE MALLA ENANA','+2 DEF FIS SI ES LLEVADA POR ENANO',2,0,350,'/public/images/Armadura/cotaMallaEnana.png',10,'S',3);
+INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA,TIER,OBTENIDA)VALUES(31,'CORA',NULL,NULL,'CHALECO DE MERCENARIO','+2 ALCANCE',1,0,300,'/public/images/Armadura/chalecoMerc.jpg',13,'N',2,1,'N'),
+                                                                                                                                                            (32,'CORA',NULL,NULL,'CORAZA DE CARREBURGO','+1 DEF FIS EN CARREBURGO',1,0,290,'/public/images/Armadura/corazaCarreburgo.png',12,'S',2,1,'N'),
+                                                                                                                                                            (33,'CORA',NULL,NULL,'CORAZA COMUN DE KISLEV','+1 DEF FIS EN KISLEV',1,0,290,'/public/images/Armadura/corazaKislev.jpg',12,'N',2,1,'N'),
+                                                                                                                                                            (34,'CORA',NULL,NULL,'CORAZA STIRLAN','+2 DEF FIS VS CRIATURAS',1,0,330,'/public/images/Armadura/corazaStirlan.png',14,'S',2,1,'N'),
+                                                                                                                                                            (35,'CORA',NULL,NULL,'CORAZA DEL MAGO BUCANERO','+1 PM / +1 PM EN MAR',1,2,400,'/public/images/Armadura/magoMarinero.png',12,'S',3,2,'N'),
+                                                                                                                                                            (36,'CORA',NULL,NULL,'CORAZA DE WISLEN','+1 DEF FIS EN WISLEN',1,0,300,'/public/images/Armadura/Coraza De Wislen.png',12,'S',2,1,'N'),
+                                                                                                                                                            (37,'CORA',NULL,NULL,'COTA DE MALLA ENANA','+2 DEF FIS SI ES LLEVADA POR ENANO',2,0,350,'/public/images/Armadura/cotaMallaEnana.png',10,'N',3,1,'N');
 
-INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA)VALUES(38,'YELM',NULL,NULL,'YELMO DEL IMPERIANO JUSTO','',2,0,200,'/public/images/Armadura/yelmoImperianoJusto.png',6,'S',2),      
-                                                                                                                                                                (39,'YELM',NULL,NULL,'YELMO BRETONIANO','+1 DEF FIS VS CRIATURAS',1,1,230,'/public/images/Armadura/yelmoBretoniano.png',7,'S',2),  
-                                                                                                                                                                (40,'YELM',NULL,NULL,'YELMO DEL SUMO INQUISIDOR','+1 DEF FIS VS NO HUMANOS',2,1,300,'/public/images/Armadura/yelmoSumoInquisidor.png',7,'S',2),  
-                                                                                                                                                                (41,'YELM',NULL,NULL,'YELMO CRUZADO','+1 DEF FIS Y MAG VS NO HUMANOS',1,0,250,'/public/images/Armadura/yelmoCruzado.png',6,'S',2);                                                                                                                                                 
+INSERT INTO ARMADURA(ID_ARMADURA,COD_TIPO_ARMADURA,COD_EFECTO_MAGICO,ID_PNJ,NOMBRE_ARMADURA,DESCRIPCION,DEFENSA_FISICA,DEFENSA_MAGICA,PRECIO_BASE,RUTA_IMAGEN,TAMAÑO, RECOMPENSA,DESTREZA,TIER,OBTENIDA)VALUES(38,'YELM',NULL,NULL,'YELMO DEL IMPERIANO JUSTO','',2,0,200,'/public/images/Armadura/yelmoImperianoJusto.png',6,'N',2,1,'N'),      
+                                                                                                                                                                (39,'YELM',NULL,NULL,'YELMO BRETONIANO','+1 DEF FIS VS CRIATURAS',1,1,230,'/public/images/Armadura/yelmoBretoniano.png',7,'S',2,1,'N'),  
+                                                                                                                                                                (40,'YELM',NULL,NULL,'YELMO DEL SUMO INQUISIDOR','+1 DEF FIS VS NO HUMANOS',2,1,300,'/public/images/Armadura/yelmoSumoInquisidor.png',7,'N',2,2,'N'),  
+                                                                                                                                                                (41,'YELM',NULL,NULL,'YELMO CRUZADO','+1 DEF FIS Y MAG VS NO HUMANOS',1,0,250,'/public/images/Armadura/yelmoCruzado.png',6,'N',2,1,'N');                                                                                                                                                 
 
 
 
@@ -471,32 +475,32 @@ INSERT INTO TIPO_ARMA(COD_TIPO_ARMA,DESCRIPCION_TIPO_ARMA)VALUES('ESPA','ESPADA'
                                                                 ('DOSM','DOS MANOS'),
                                                                 ('PIST','PISTOLA');    
 
-INSERT INTO ARMA(ID_ARMA,NOMBRE_ARMA,COD_TIPO_ARMA,DESCRIPCION,DAÑO_FISICO,DAÑO_MAGICO,ALCANCE,PRECIO_BASE,RUTA_IMAGEN,RECOMPENSA,TAMAÑO,DESTREZA)VALUES(1,'DAGA RAJA-ENANOZ','DAGA','+3 DAÑO FÍSICO VS ENANOS',3,0,1,130,'/public/images/Arma/dagaRajaEnanoz.png','S',4,4),
-                                                                                                                        (2,'DAGA DE LA PUTREFACCIÓN','DAGA','TIRADA 12 ENVENENA 2 TURNOS',3,1,1,160,'/public/images/Arma/dagaPutrefaccion.png','S',4,5),
-                                                                                                                        (3,'DAGA ARTEFACTO','DAGA','+1 DAÑO FISICO VS HUMANOS',2,0,1,110,'/public/images/Arma/dagaArtefacto.png','S',4,4),
-                                                                                                                        (4,'DAGA DEL TIGRE','DAGA','',2,1,1,155,'/public/images/Arma/dagaDelTigre.png','S',4,5),
-                                                                                                                        (5,'DAGA DEL ROMANCE','DAGA','',3,0,1,120,'/public/images/Arma/dagaRomance.png','S',4,3),
-                                                                                                                        (6,'ARCO BRETONIANO','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,0,6,190,'/public/images/Arma/ArcoBretoniano.png','S',9,5),
-                                                                                                                        (7,'ARCO DEL NOGAL','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,1,7,220,'/public/images/Arma/arcoDelNogal.png','N',9,6),
-                                                                                                                        (8,'ARCO AFLIGIDO','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS CRIATURAS',5,1,8,315,'/public/images/Arma/arcoAfligido.png','S',9,8),
-                                                                                                                        (9,'ARCO SILVANAS','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS HUMANOS',5,1,9,330,'/public/images/Arma/arcoSilvanas.png','S',8,8),
-                                                                                                                        (10,'MARTILLO DEL BUCANERO','DOSM','+1 FISICO ADICIONAL SI LA ARMADURA SE DESTRUYE ',5,0,2,330,'/public/images/Arma/martilloBucanero.png','S',12,6),
-                                                                                                                        (11,'MARTILLO DEL ENANO JUSTO','DOSM','+2 FISICO ADICIONAL SI LA ARMADURA SE DESTRUYE EN EL PRIMER ATAQUE',5,2,2,380,'/public/images/Arma/martilloEnanoJusto.png','S',12,8),    
-                                                                                                                        (12,'LA BUCANERA','PIST','+2 DAÑO DE PERFORACION (IGNORA ARMADURA)',5,0,6,320,'/public/images/Arma/laBucanera.png','S',5,6),
-                                                                                                                        (13,'LA RESTAURA HONOR','PIST','SI SE SACA +8 (DOS DADOS) ATACA DOS VECES',3,0,4,335,'/public/images/Arma/restauraHonor.png','S',5,5),
-                                                                                                                        (14,'LA AVERLIANA','PIST','+3 DAÑO FISICO VS HUMANOS',3,0,4,350,'/public/images/Arma/averliana.png','S',5,6),
-                                                                                                                        (15,'YO SOY GROOT','HACH','+3 DAÑO FISICO VS ELFOS',4,1,2,400,'/public/images/Arma/yoSoyGroot.png','S',7,7),
-                                                                                                                        (16,'HACHA DE NOBLE','HACH','+2 DAÑO FISICO VS HUMANOS',4,1,2,365,'/public/images/Arma/hachaNoble.png','S',7,5),
-                                                                                                                        (17,'HACHA DE NORSCA ','HACH','+1 DAÑO DE PERFORACION (IGNORA ARMADURA)',5,1,2,420,'/public/images/Arma/hachaOrcaNorsca.png','S',8,8),
-                                                                                                                        (18,'BASTÓN DEL GUSANO','BAST','+2 DAÑO MÁGICO VS CRIATURAS',0,4,10,500,'/public/images/Arma/bastonCaracol.png','N',13,8),
-                                                                                                                        (19,'BASTÓN DE MORKUL','BAST','+3 DAÑO MAGICO VS ALTOS ELFOS',0,5,11,480,'/public/images/Arma/bastonMorkul.png','S',13,10),
-                                                                                                                        (20,'BASTÓN DEL BRUJO DIMITROVICH','BAST','OTORGA HECHIZO SUEÑO',0,6,8,550,'/public/images/Arma/bastonDimitrovich.png','N',14,11),
-                                                                                                                        (21,'ESPADA DE AVERLAN','ESPA','+2 DAÑO FISICO VS HUMANOS',5,0,1,410,'/public/images/Arma/espadaAverlan.png','S',9,6),
-                                                                                                                        (22,'ESPADA DE LA FAMILIA HALAS','ESPA','+2 DAÑO MAGICO VS NO MUERTOS',4,2,1,430,'/public/images/Arma/espadaHalas.png','S',7,7),
-                                                                                                                        (23,'ESPADA LOGRADA','ESPA','+2 DAÑO DE PERFORACION (IGNORA ARMADURA)',4,0,1,420,'/public/images/Arma/espadaLograda.png','S',7,7),
-                                                                                                                        (24,'ESPADA DE KISLEV','ESPA','+1 DAÑO MÁGICO VS CRIATURAS',4,0,1,400,'/public/images/Arma/espadaKislev.png','S',7,6),
-                                                                                                                        (25,'ESPADA REVITALIZADORA','ESPA','CURA 1 PUNTO DE VIT AL PORTADOR CADA VEZ QUE ATACA',5,1,1,620,'/public/images/Arma/espadaRevitalizadora.png','N',10,10),
-                                                                                                                        (26,'RÁBENDA','ESPA','+2 DAÑO DE PERFORACIÓN (IGNORA ARMADURA)',5,1,1,600,'/public/images/Arma/rabendal.png','S',9,9);
+INSERT INTO ARMA(ID_ARMA,NOMBRE_ARMA,COD_TIPO_ARMA,DESCRIPCION,DAÑO_FISICO,DAÑO_MAGICO,ALCANCE,PRECIO_BASE,RUTA_IMAGEN,RECOMPENSA,TAMAÑO,DESTREZA,TIER,OBTENIDA)VALUES(1,'DAGA RAJA-ENANOZ','DAGA','+3 DAÑO FÍSICO VS ENANOS',3,0,1,130,'/public/images/Arma/dagaRajaEnanoz.png','S',4,4,1,'N'),
+                                                                                                                        (2,'DAGA DE LA PUTREFACCIÓN','DAGA','TIRADA 12 ENVENENA 2 TURNOS',3,1,1,160,'/public/images/Arma/dagaPutrefaccion.png','S',4,5,2,'N'),
+                                                                                                                        (3,'DAGA ARTEFACTO','DAGA','+1 DAÑO FISICO VS HUMANOS',2,0,1,110,'/public/images/Arma/dagaArtefacto.png','S',4,4,1,'N'),
+                                                                                                                        (4,'DAGA DEL TIGRE','DAGA','',2,1,1,155,'/public/images/Arma/dagaDelTigre.png','N',4,5,1,'N'),
+                                                                                                                        (5,'DAGA DEL ROMANCE','DAGA','',3,0,1,120,'/public/images/Arma/dagaRomance.png','S',4,3,1,'N'),
+                                                                                                                        (6,'ARCO BRETONIANO','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,0,6,190,'/public/images/Arma/ArcoBretoniano.png','N',9,5,2,'N'),
+                                                                                                                        (7,'ARCO DEL NOGAL','ARCO','+1 DAÑO  DE PERFORACION (IGNORA ARMADURA)',4,1,7,220,'/public/images/Arma/arcoDelNogal.png','N',9,6,2,'N'),
+                                                                                                                        (8,'ARCO AFLIGIDO','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS CRIATURAS',5,1,8,315,'/public/images/Arma/arcoAfligido.png','S',9,8,2,'N'),
+                                                                                                                        (9,'ARCO SILVANAS','ARCO','+2 DAÑO DE PERFORACION (IGNORA ARMADURA) VS HUMANOS',5,1,9,330,'/public/images/Arma/arcoSilvanas.png','S',8,8,2,'N'),
+                                                                                                                        (10,'MARTILLO DEL BUCANERO','DOSM','+1 FISICO ADICIONAL SI LA ARMADURA SE DESTRUYE ',5,0,2,330,'/public/images/Arma/martilloBucanero.png','S',12,6,2,'N'),
+                                                                                                                        (11,'MARTILLO DEL ENANO JUSTO','DOSM','+2 FISICO ADICIONAL SI LA ARMADURA SE DESTRUYE EN EL PRIMER ATAQUE',5,2,2,380,'/public/images/Arma/martilloEnanoJusto.png','S',12,8,3,'N'),    
+                                                                                                                        (12,'LA BUCANERA','PIST','+2 DAÑO DE PERFORACION (IGNORA ARMADURA)',5,0,6,320,'/public/images/Arma/laBucanera.png','S',5,6,2,'N'),
+                                                                                                                        (13,'LA RESTAURA HONOR','PIST','SI SE SACA +8 (DOS DADOS) ATACA DOS VECES',3,0,4,335,'/public/images/Arma/restauraHonor.png','S',5,5,1,'N'),
+                                                                                                                        (14,'LA AVERLIANA','PIST','+3 DAÑO FISICO VS HUMANOS',3,0,4,350,'/public/images/Arma/averliana.png','N',5,6,1,'N'),
+                                                                                                                        (15,'YO SOY GROOT','HACH','+3 DAÑO FISICO VS ELFOS',4,1,2,400,'/public/images/Arma/yoSoyGroot.png','S',7,7,2,'N'),
+                                                                                                                        (16,'HACHA DE NOBLE','HACH','+2 DAÑO FISICO VS HUMANOS',4,1,2,365,'/public/images/Arma/hachaNoble.png','N',7,5,2,'N'),
+                                                                                                                        (17,'HACHA DE NORSCA ','HACH','+1 DAÑO DE PERFORACION (IGNORA ARMADURA)',5,1,2,420,'/public/images/Arma/hachaOrcaNorsca.png','S',8,8,2,'N'),
+                                                                                                                        (18,'BASTÓN DEL GUSANO','BAST','+2 DAÑO MÁGICO VS CRIATURAS',0,4,10,500,'/public/images/Arma/bastonCaracol.png','N',13,8,2,'N'),
+                                                                                                                        (19,'BASTÓN DE MORKUL','BAST','+3 DAÑO MAGICO VS ALTOS ELFOS',0,5,11,480,'/public/images/Arma/bastonMorkul.png','S',13,10,2,'N'),
+                                                                                                                        (20,'BASTÓN DEL BRUJO DIMITROVICH','BAST','OTORGA HECHIZO SUEÑO',0,6,8,550,'/public/images/Arma/bastonDimitrovich.png','N',14,11,2,'N'),
+                                                                                                                        (21,'ESPADA DE AVERLAN','ESPA','+2 DAÑO FISICO VS HUMANOS',5,0,1,410,'/public/images/Arma/espadaAverlan.png','N',9,6,2,'N'),
+                                                                                                                        (22,'ESPADA DE LA FAMILIA HALAS','ESPA','+2 DAÑO MAGICO VS NO MUERTOS',4,2,1,430,'/public/images/Arma/espadaHalas.png','S',7,7,2,'N'),
+                                                                                                                        (23,'ESPADA LOGRADA','ESPA','+2 DAÑO DE PERFORACION (IGNORA ARMADURA)',4,0,1,420,'/public/images/Arma/espadaLograda.png','S',7,7,2,'N'),
+                                                                                                                        (24,'ESPADA DE KISLEV','ESPA','+1 DAÑO MÁGICO VS CRIATURAS',4,0,1,400,'/public/images/Arma/espadaKislev.png','N',7,6,2,'N'),
+                                                                                                                        (25,'ESPADA REVITALIZADORA','ESPA','CURA 1 PUNTO DE VIT AL PORTADOR CADA VEZ QUE ATACA',5,1,1,620,'/public/images/Arma/espadaRevitalizadora.png','N',10,10,2,'N'),
+                                                                                                                        (26,'RÁBENDA','ESPA','+2 DAÑO DE PERFORACIÓN (IGNORA ARMADURA)',5,1,1,600,'/public/images/Arma/rabendal.png','N',9,9,2,'N');
 
 
 
@@ -520,23 +524,40 @@ INSERT INTO ITEM(ID_ITEM,NOMBRE_ITEM,DESCRIPCION_ITEM,PROBABILIDAD_APARACION,RUT
 
 INSERT INTO TIENDA(ID_TIENDA,ID_ZONA,NOMBRE_TIENDA,ESLOGAN,MULTIPLICADOR_PRECIO_BASE)VALUES(1,1,'POCIONES KISLEV','POCIONES QUE NO EXPLOTAN (SI NO QUIERES)',1),
                                                                                         (2,1,'ARMADURAS KISLEV','NO CAZES GOBLIN SIN UNA DE ESTAS',1),
-                                                                                        (3,1,'ARMERO KISLEV', 'PARA AMANTES DEL ASESINATO',1);
+                                                                                        (3,1,'ARMERO KISLEV', 'PARA AMANTES DEL ASESINATO',1),
+                                                                                        (4,2,'ITEMS AVERLAN', 'ITEMS DE FIABILIDAD',1),
+                                                                                        (5,2,'HERRERO DE ARMADURAS','ARMADURAS IMPERIANAS AUTENTICAS',1),
+                                                                                        (6,2,'ARMAS AVERLAN', 'LAS MEJORES DEL IMPERIO',1);
 
 INSERT INTO ITEM_TIENDA(ID_TIENDA,ID_ITEM)VALUES(1,1),
                                                 (1,2),
                                                 (1,4),
                                                 (1,7),
                                                 (1,9),
-                                                (1,10);                                            
+                                                (1,10),
+                                                (4,1),
+                                                (4,4),
+                                                (4,5), 
+                                                (4,7),
+                                                (4,10),
+                                                (4,11);
+                                                                                           
 
 INSERT INTO ARMADURA_TIENDA(ID_TIENDA,ID_ARMADURA)VALUES(2,33),
                                                         (2,11),
                                                         (2,6),
                                                         (2,31),
-                                                        (2,38);
+                                                        (2,38),
+                                                        (5,3),
+                                                        (5,8),
+                                                        (5,37),
+                                                        (5,40);
 
 INSERT INTO ARMA_TIENDA(ID_TIENDA,ID_ARMA)VALUES(3,4),
                                                 (3,6),
-                                                (3,12),
                                                 (3,16),
-                                                (3,24);
+                                                (3,24),
+                                                (6,14),
+                                                (6,26),
+                                                (6,21);
+                                                

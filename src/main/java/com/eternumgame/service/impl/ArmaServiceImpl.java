@@ -43,8 +43,8 @@ public class ArmaServiceImpl implements IArmaService {
             }
         });
     }
-
-    @Override
+/*
+   @Override
     public Arma getOneArma() {
         Arma arma = new Arma();
         int cantidadArmas = armaRepository.findCount();
@@ -52,8 +52,9 @@ public class ArmaServiceImpl implements IArmaService {
         do{
             int indexRandom = (int)(Math.random()*cantidadArmas+1);
             armaEntity = armaRepository.getOne(indexRandom);
-/* Si el valor Recompensa es igual a 'N' repetimos el proceso (Esto significa que el objeto ya ha sido obtenido como recompensa) */
-        } while (armaEntity.getRecompensa() == 'N');
+        // mientras que sea una arma de recompensa y no se haya obtenido antes
+        } while (armaEntity.getRecompensa() == Constantes.S &&
+                    armaEntity.getObtenida() != Constantes.S);
 
         // Le seteamos el valor de recompensa para que no vuelva a salir
         armaEntity.setRecompensa('N');
@@ -64,6 +65,26 @@ public class ArmaServiceImpl implements IArmaService {
         arma.setCantidad(1);
 
         return arma;
+    }
+*/
+    public Arma getArmaRecompensa(){
+        Arma arma = new Arma();
+        ArmaEntity armaEntity = new ArmaEntity();
+        int armasDisponibles = armaRepository.findCountDisponibles();
+        if(armasDisponibles > 0){
+            do{
+                int indexRandom = (int) (Math.random() * armasDisponibles + 1);
+                armaEntity = armaRepository.getOne(indexRandom);
+            } while (armaEntity.getRecompensa() != Constantes.S &&
+                        armaEntity.getObtenida() == Constantes.S);
+            armaEntity.setObtenida(Constantes.S);
+            armaRepository.save(armaEntity);
+            arma = armaMapper.fromEntitytoDomain(armaEntity);
+            arma.setCantidad(1);
+            return arma;
+        } else{
+            return null;
+        }
     }
 
     @Override
@@ -80,10 +101,10 @@ public class ArmaServiceImpl implements IArmaService {
 
     @Override
     public boolean comprobarEstadoRecompensa(ArmaEntity armaEntity) {
-        if(armaEntity.getRecompensa() != Constantes.N){
-            return true;
+        if(armaEntity.getObtenida() != Constantes.N){
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -91,7 +112,7 @@ public class ArmaServiceImpl implements IArmaService {
         ArmaEntity armaEntity = new ArmaEntity();
         armaEntity = armaRepository.getOne(id);
         if(comprobarEstadoRecompensa(armaEntity)) {
-            armaEntity.setRecompensa(Constantes.N);
+            armaEntity.setObtenida(Constantes.S);
             return true;
         }
         return false;

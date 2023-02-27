@@ -1,8 +1,6 @@
 package com.eternumgame.controller.mapper;
 
 import com.eternumgame.domain.Arma;
-import com.eternumgame.domain.Tienda;
-import com.eternumgame.domain.TiendaArmas;
 import com.eternumgame.persistence.entity.ArmaEntity;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +21,8 @@ public class ArmaMapper {
         arma.setTamanio(armaEntity.getTamanio());
         arma.setDestreza(armaEntity.getDestreza());
         arma.setTipoArmaDescripcion(armaEntity.getTipoArma().getDescripcion());
+        arma.setTier(armaEntity.getTier());
+        arma.setObtenida(armaEntity.getObtenida());
         return arma;
     }
 
@@ -39,6 +39,8 @@ public class ArmaMapper {
         armaEntity.setRecompensa(arma.getRecompensa());
         armaEntity.setTamanio(arma.getTamanio());
         armaEntity.setDestreza(arma.getDestreza());
+        armaEntity.setTier(arma.getTier());
+        armaEntity.setObtenida(arma.getObtenida());
         return armaEntity;
     }
 

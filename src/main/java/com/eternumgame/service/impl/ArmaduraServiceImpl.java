@@ -43,7 +43,7 @@ public class ArmaduraServiceImpl implements IArmaduraService {
         });
     }
 
-    @Override
+   /* @Override
     public Armadura getOneArmadura() {
         Armadura armadura = new Armadura();
         int cantidadArmaduras = armaduraRepository.findCount();
@@ -51,13 +51,36 @@ public class ArmaduraServiceImpl implements IArmaduraService {
         do{
           int indexRandom = (int)(Math.random()*cantidadArmaduras+1);
           armaduraEntity = armaduraRepository.getOne(indexRandom);
-        }  while (armaduraEntity.getRecompensa() == 'N');
+        // mientras que sea una armadura de recompensa y no se haya obtenido antes
+        }  while (armaduraEntity.getRecompensa() == Constantes.S &&
+                    armaduraEntity.getObtenida() != Constantes.S);
 
         armaduraEntity.setRecompensa('N');
         armaduraRepository.save(armaduraEntity);
         armadura = mapper.fromArmaduraEntityToDomain(armaduraEntity);
         armadura.setCantidad(1);
         return armadura;
+    }
+    */
+    @Override
+    public Armadura getArmaduraRecompensa() {
+        Armadura armadura = new Armadura();
+        ArmaduraEntity armaduraEntity = new ArmaduraEntity();
+        int armadurasDisponibles = armaduraRepository.findCountDisponibles();
+        if(armadurasDisponibles > 0){
+            do{
+                int indexRandom = (int) (Math.random() * armadurasDisponibles + 1);
+                armaduraEntity = armaduraRepository.getOne(indexRandom);
+            } while (armaduraEntity.getRecompensa() != Constantes.S &&
+                        armaduraEntity.getObtenida() == Constantes.S);
+            armaduraEntity.setObtenida(Constantes.S);
+            armaduraRepository.save(armaduraEntity);
+            armadura = mapper.fromArmaduraEntityToDomain(armaduraEntity);
+            armadura.setCantidad(1);
+            return armadura;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -74,10 +97,10 @@ public class ArmaduraServiceImpl implements IArmaduraService {
 
     @Override
     public boolean comprobarEstadoRecompensa(ArmaduraEntity armaduraEntity) {
-        if(armaduraEntity.getRecompensa() != Constantes.N){
-            return true;
+        if(armaduraEntity.getObtenida() != Constantes.N){
+            return false;
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -85,9 +108,11 @@ public class ArmaduraServiceImpl implements IArmaduraService {
         ArmaduraEntity armaduraEntity = new ArmaduraEntity();
         armaduraEntity = armaduraRepository.getOne(id);
         if(comprobarEstadoRecompensa(armaduraEntity)) {
-            armaduraEntity.setRecompensa(Constantes.N);
+            armaduraEntity.setObtenida(Constantes.S);
             return true;
         }
         return false;
     }
+
+
 }

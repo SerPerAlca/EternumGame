@@ -235,6 +235,9 @@ function ControladorBotonSiguiente(){
         case "ElForajido":
             ControladorPagSiguienteEF();
             break;
+        case "Averlan":
+            controladorPagSiguienteAV();
+            break;
         case "Itineracion":
             $("#btn-mostrarMapa").click();
             break;
@@ -615,4 +618,17 @@ function controladorAverlan(){
     } else {
         inicioAV();
     }
+}
+
+function borrarBotonesItineracion(){
+    $("#btn-SalirCiudad").remove();
+    $("#btn-M1").remove();
+    $("#btn-Salir").remove();
+    $("#tiendaArmas").remove();
+    $("#tiendaArmadura").remove();
+    $("#tiendaItems").remove();
+    $("#btn-Palacio").remove();
+    $("#btn-CasaC").remove();
+    $("#palacioConde").remove();
+    $("#caballerizas").remove();
 }
